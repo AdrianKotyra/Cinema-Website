@@ -2,14 +2,20 @@
     --nav-bg:  background-color: rgba(0, 0, 0, 0.384);
     --primary-colour: #482bd9;
     --secondary-colour-black : #0a0a0c;
+    --secondary-colour-gray :#242428;
     --Heading-size:  4.5rem;
     --Heading-line-height:  5rem;
 
     --text-large-size : 2.5rem;
     --text-large-line :2.25rem;
     --black-bottom-top-clear-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    --black-top-bottom-clear-gradient: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     --text-mid-size : 1.5rem;
     --text-mid-line :2rem;
+}
+.col-custom{
+    display: flex;
+    flex-direction: column;
 }
 .text-mid {
     font-size: var(--text-large-size);
@@ -34,11 +40,12 @@
     font-style: normal;
 }
 body {
+    display: none;
     font-family: "Libre Caslon Text", serif;
     font-weight: 400;
     font-style: normal;
     margin: 0;
-   background-color: rgba(0, 0, 0, 0.473);
+   background-color: rgb(0, 0, 0);
 }
 .hiddenNav {
     opacity: 0%;
@@ -89,6 +96,7 @@ a{
     border-radius: 1.25rem;
 }
 .hero-bottom-title {
+    opacity: 0%;
     z-index: 2;
     width: 87%;
     padding: 2rem 0;
@@ -101,7 +109,77 @@ a{
    
     
 }
+.movie-card .text-container{
+    padding-bottom: 2vh;
+}
+.button-custom:hover{
+    filter: brightness(2);
+}
+.button-custom {
+    width: 100px;
+    height: 40px;
+    background-color: var(--primary-colour);
+    color: white;
+    border: none;
+}
+#card1 {
+    background-image: url("../imgs/rock-movie.jpeg");
+}
 
+.movie-card:hover{
+    transition: 0.3s;
+
+    width: 250px;
+   
+    height: 250px;
+}
+.movie-card-info-container {
+    color: white;
+    width: 50%;
+    position: absolute;
+    top: 25vh;
+    left: 5%;
+}
+.movie-card {
+    
+    transition: 0.3s;
+    padding: 0.5rem;
+    border-radius: 5px;
+    user-select: none;
+    color: white;
+    background-repeat: no-repeat;
+   background-position: center;
+    background-size: cover;
+    background-color: var(--secondary-colour-gray);
+    font-family: monospace;
+    width: 175px;
+    height: 200px;
+    margin-right: 4rem;
+    flex: 0 0 auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+
+
+}
+.movies-selection-bar {
+    width: 100%;
+    height: 300px;
+
+    position: absolute;
+    bottom: 0;
+   
+}
+.black-gradient-animation-top{
+    transform: translateY(0);
+    background: var(--black-top-bottom-clear-gradient);
+    position: absolute;
+    top: 0;
+    height: 200px;
+    width: 100%;
+}
 .black-gradient-animation{
     transform: translateY(0);
     background: var(--black-bottom-top-clear-gradient);
@@ -114,6 +192,16 @@ a{
     object-fit: fill;
     width: 100%;
     height: 100%;
+}
+.movies-section{
+    position: relative;
+    margin: 15vh 0;
+    background-image: url("../imgs/the_dark_knight_rises-wallpaper-1920x1200.jpg");
+    height: 120vh;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 .hero-section {
     overflow: hidden;
@@ -131,81 +219,40 @@ a{
     width: 100%;
     height: 100%;
 }
-.main-section {
-    background-color: black;
-    height: 2000px;
-    
+
+.slides_container {
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    height:100%;
+}
+.slides_container .slide {
+    position:absolute;
+    width:100%;
+    height:100%;
+    visibility:hidden;
+    opacity:0;
+    transition:opacity 1s ease, visibility 0s ease 1s;
+}
+.slides_container .slide.active {
+    visibility:visible;
+    opacity:1;
+    transition:opacity 1s ease;
+}
+.scrolling-wrapper {
+  display: flex;
+  flex-wrap: no-wrap;
+  overflow-x: auto;
+  cursor: grab;
+  opacity:100%;
+  overflow-x: hidden;
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  
+.scrolling-wrapper.active {
+  cursor: grabbing;
  
-  
-  .slide {
+}
 
-    height: 100%;
-    width: 100%;
-    opacity: 1;
-    transition: opacity 0.8s;
-    position: absolute;
-  }
-  
-  button {
-    font-size: 64px;
-    color: white;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    top: 110px;
-    transition-duration: 0.3s;
-  }
-  .dots-slider {
-    left: 50%;
-    margin-right: 20px;
-    z-index: 3;
-    gap: 0.5rem;
-    bottom: 5rem;
-    right: 0;
-    position: absolute;
-    transform: translateX(-50%);
-    justify-content: center;
-  }
-  
-  #next {
-   
-    top: 40%;
-    right: 2rem
-  }
-  
-  #previous {
-    top: 40%;
-    left:  2rem
-  }
-  
-  button:hover {
-    color:var(--primary-colour)
-    
-  }
-  
-
-  
-  .thumbnail {
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .thumbnail:hover,
-  .active {
-    background-color: var(--primary-colour)
-  }
-  
+.scrolling-wrapper[data-dragging="true"] a {
+  pointer-events: none;
+}

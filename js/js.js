@@ -1,3 +1,11 @@
+
+window.onload = function() {
+  var content = document.querySelector('body');
+  content.style.display = 'block';
+};
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
 
     const heroSection = document.querySelector('.hero-section');
@@ -6,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenNav = document.querySelectorAll(".hiddenNav")
     const logoContainer = document.querySelector(".logo-container")
     const blackGradientHero = document.querySelector(".black-gradient-animation")
-    const dotsSlider = document.querySelector(".dots-slider")
+
   
     const calculateViewportHeightPercentage = () => {
 
@@ -25,11 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         logoContainer.style.transform = `scale(calc(100% - ${fontSizeAdjust}% * 0.3))`; // change fontsize logo title
         const translateValue = 200 + 900 * (fontSizeAdjust / 100);
-        const dotsOpacity = 100 - fontSizeAdjust*4 // change dots opacity slider 
-        console.log(dotsOpacity)
-        // Apply the new height to the element
+      
+       
+      
         blackGradientHero.style.height = `${translateValue}px`;
-        dotsSlider.style.opacity=`${dotsOpacity}%`
+      
 
     };
 
@@ -45,67 +53,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // -------------------------slider--------------------------------
 
-let slides = document.querySelector("#slides");
-let imgslides = document.querySelectorAll(".slide");
-let liItem = document.querySelectorAll(".thumbnail");
-let previous = document.querySelector("#previous");
-let ul = document.querySelector("ul");
-let next = document.querySelector("#next");
-let timeout = 6000;
-let current = -1;
+$(function(){
+	/*make sure the first element shows up*/
+	$('.slides_container .slide:first-child').addClass("active");
+	var interval = 5000,
+     active_slide = 0,
+     dom_slides = $('.slides_container .slide'),
+     num_slides = dom_slides.length;
+	setInterval(function(){
+		++active_slide;
+		if((active_slide = active_slide%num_slides)<0) active_slide+=num_slides;
+		dom_slides.removeClass('active').eq(active_slide).addClass('active');
+	},interval);
+});
 
-let slider = setTimeout(fadeNextSlide, timeout);
+// -------------------------draggable list of movies slider--------------------------------
 
-function fadeNextSlide() {
-  for (let i = 0; i < imgslides.length; i++) {
-    imgslides[i].style.opacity = 0;
-    liItem[i].classList.remove("active");
-  }
+const slider = document.querySelector('.scrolling-wrapper');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  if (current !== imgslides.length - 1) {
-    current++;
-  } else {
-    current = 0;
-  }
-  imgslides[current].style.opacity = 1;
-  liItem[current].classList.add("active");
-  slider = setTimeout(fadeNextSlide, timeout);
+slider.addEventListener('mousedown', (e) => {
+  let rect = slider.getBoundingClientRect();
+  isDown = true;
+  slider.classList.add('active');
+  // Get initial mouse position
+  startX = e.pageX - rect.left;
+  // Get initial scroll position in pixels from left
+  scrollLeft = slider.scrollLeft;
+  console.log(startX, scrollLeft);
+});
+
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  slider.dataset.dragging = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('mouseup', () => {
+  isDown = false;
+  slider.dataset.dragging = false;
+  slider.classList.remove('active');
+});
+
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  let rect = slider.getBoundingClientRect();
+  e.preventDefault();
+  slider.dataset.dragging = true;
+  // Get new mouse position
+  const x = e.pageX - rect.left;
+  // Get distance mouse has moved (new mouse position minus initial mouse position)
+  const walk = (x - startX);
+  // Update scroll position of slider from left (amount mouse has moved minus initial scroll position)
+  slider.scrollLeft = scrollLeft - walk;
+  console.log(x, walk, slider.scrollLeft);
+});
+
+// -------------------------change movies section background on card hover--------------------------------
+
+function changeBackgroundOnHover(){
+  const moviesSection = document.querySelector(".movies-section");
+  const cards = document.querySelectorAll(".movie-card");
+  cards.forEach(card=>card.addEventListener("mouseover", ()=>{
+    const computedStyle = getComputedStyle(card);
+    const CardbackgroundImage = computedStyle.backgroundImage;
+    moviesSection.style.backgroundImage=CardbackgroundImage
+  }))
 }
-
-next.addEventListener("click", function () {
-  clearTimeout(slider);
-  fadeNextSlide();
-});
-
-function fadePrevSlide() {
-  for (let i = 0; i < imgslides.length; i++) {
-    imgslides[i].style.opacity = 0;
-    liItem[i].classList.remove("active");
-  }
-  if (current == 0) {
-    current = imgslides.length - 1;
-  } else {
-    current--;
-  }
-  imgslides[current].style.opacity = 1;
-  liItem[current].classList.add("active");
-  slider = setTimeout(fadeNextSlide, timeout);
-}
-
-previous.addEventListener("click", function () {
-  clearTimeout(slider);
-  fadePrevSlide();
-});
-
-ul.addEventListener("click", function (event) {
-  let liIndex = event.target.dataset.numb;
-  for (let i = 0; i < imgslides.length; i++) {
-    imgslides[i].style.opacity = 0;
-    liItem[i].classList.remove("active");
-  }
-  clearTimeout(slider);
-  current = liIndex;
-  imgslides[liIndex].style.opacity = 1;
-  liItem[liIndex].classList.add("active");
-  slider = setTimeout(fadeNextSlide, timeout);
-});
+changeBackgroundOnHover()
