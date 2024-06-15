@@ -69,57 +69,64 @@ $(function(){
 
 // -------------------------draggable list of movies slider--------------------------------
 
-const slider = document.querySelector('.scrolling-wrapper');
+const slider = document.querySelectorAll('.scrolling-wrapper');
 let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
-  let rect = slider.getBoundingClientRect();
+slider.forEach(ele=>ele.addEventListener('mousedown', (e) => {
+  let rect = ele.getBoundingClientRect();
   isDown = true;
-  slider.classList.add('active');
+  ele.classList.add('active');
   // Get initial mouse position
   startX = e.pageX - rect.left;
   // Get initial scroll position in pixels from left
-  scrollLeft = slider.scrollLeft;
+  scrollLeft = ele.scrollLeft;
   console.log(startX, scrollLeft);
-});
+}));
 
-slider.addEventListener('mouseleave', () => {
+slider.forEach(ele=>ele.addEventListener('mouseleave', () => {
   isDown = false;
-  slider.dataset.dragging = false;
-  slider.classList.remove('active');
-});
+  ele.dataset.dragging = false;
+  ele.classList.remove('active');
+}));
 
-slider.addEventListener('mouseup', () => {
+slider.forEach(ele=>ele.addEventListener('mouseup', () => {
   isDown = false;
-  slider.dataset.dragging = false;
-  slider.classList.remove('active');
-});
+  ele.dataset.dragging = false;
+  ele.classList.remove('active');
+}));
 
-slider.addEventListener('mousemove', (e) => {
+slider.forEach(ele=>ele.addEventListener('mousemove', (e) => {
   if (!isDown) return;
-  let rect = slider.getBoundingClientRect();
+  let rect = ele.getBoundingClientRect();
   e.preventDefault();
-  slider.dataset.dragging = true;
+  ele.dataset.dragging = true;
   // Get new mouse position
   const x = e.pageX - rect.left;
   // Get distance mouse has moved (new mouse position minus initial mouse position)
   const walk = (x - startX);
   // Update scroll position of slider from left (amount mouse has moved minus initial scroll position)
-  slider.scrollLeft = scrollLeft - walk;
-  console.log(x, walk, slider.scrollLeft);
-});
+  ele.scrollLeft = scrollLeft - walk;
+  console.log(x, walk, ele.scrollLeft);
+}));
 
-// -------------------------change movies section background on card hover--------------------------------
+// -------------------------change movies section background, desc on card click--------------------------------
 
 function changeBackgroundOnHover(){
   const moviesSection = document.querySelector(".movies-section");
-  const cards = document.querySelectorAll(".movie-card");
-  cards.forEach(card=>card.addEventListener("mouseover", ()=>{
-    const computedStyle = getComputedStyle(card);
-    const CardbackgroundImage = computedStyle.backgroundImage;
-    moviesSection.style.backgroundImage=CardbackgroundImage
+  const cards = document.querySelectorAll(".movie-card-detailed");
+ 
+  
+  cards.forEach(card=>card.addEventListener("click", ()=>{
+    cards.forEach(card=>card.classList.remove("active-card"))
+    setTimeout(() => {
+      card.classList.add("active-card")
+      const computedStyle = getComputedStyle(card);
+      const CardbackgroundImage = computedStyle.backgroundImage;
+      moviesSection.style.backgroundImage=CardbackgroundImage
+    }, 1);
+  
   }))
 }
 changeBackgroundOnHover()
