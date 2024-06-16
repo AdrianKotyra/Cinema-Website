@@ -31,9 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
         hiddenNav.forEach(element => { // change opacity hero title
             element.style.opacity=`${visibleHeightPercentage}%`
         });
-        logoContainer.style.transform = `scale(calc(100% - ${fontSizeAdjust}% * 0.3))`; // change fontsize logo title
+
+        const scaleValue = `calc(100% - ${fontSizeAdjust}% * 0.3)`;
+       
+        // Combine scale and translateX transformations
+        logoContainer.style.transform = `scale(${scaleValue})`;
+
         const translateValue = 200 + 900 * (fontSizeAdjust / 100);
-      
+       
        
       
         blackGradientHero.style.height = `${translateValue}px`;
@@ -113,12 +118,27 @@ slider.forEach(ele=>ele.addEventListener('mousemove', (e) => {
 
 // -------------------------change movies section background, desc on card click--------------------------------
 
-function changeBackgroundOnHover(){
+function initialActiveCard(){ //<==========initial first card active
+  const moviesSection = document.querySelector(".movies-section");
+  const cards = document.querySelectorAll(".movie-card-detailed");
+  cards[0].classList.add("active-card")
+  const computedStyle = getComputedStyle(cards[0]);
+  const CardbackgroundImage = computedStyle.backgroundImage;
+  moviesSection.style.backgroundImage=CardbackgroundImage
+}
+
+
+
+function changeBackgroundOnHover(){ //<==========change active card 
   const moviesSection = document.querySelector(".movies-section");
   const cards = document.querySelectorAll(".movie-card-detailed");
  
-  
+ 
+
+
+  initialActiveCard()
   cards.forEach(card=>card.addEventListener("click", ()=>{
+    
     cards.forEach(card=>card.classList.remove("active-card"))
     setTimeout(() => {
       card.classList.add("active-card")
