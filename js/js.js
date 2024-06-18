@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hiddenNav = document.querySelectorAll(".hiddenNav")
     const logoContainer = document.querySelector(".logo-container")
     const blackGradientHero = document.querySelector(".black-gradient-animation")
-
+    const searchBar = document.querySelector(".wrapper-search")
   
     const calculateViewportHeightPercentage = () => {
 
@@ -28,11 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         heroBottomTitle.style.opacity=`${visibleHeightPercentage}%`;   // change opacity hero title
         navContainer.style.backgroundColor = `rgba(0, 0, 0, ${fontSizeAdjust}%)`;
-        hiddenNav.forEach(element => { // change opacity hero title
-            element.style.opacity=`${visibleHeightPercentage}%`
-        });
 
-        const scaleValue = `calc(100% - ${fontSizeAdjust}% * 0.3)`;
+      
+        const scaleValue = `calc(100% - ${fontSizeAdjust}% * 0.2)`;
        
         // Combine scale and translateX transformations
         logoContainer.style.transform = `scale(${scaleValue})`;
@@ -150,3 +148,23 @@ function changeBackgroundOnHover(){ //<==========change active card
   }))
 }
 changeBackgroundOnHover()
+
+
+function searchBar(){
+  $(".search_field .input").click(function(){
+    $(".wrapper-search .search_box .dropdown").addClass("show");
+  });
+  
+  
+  
+  $(".default_option").click(function(){
+    $(".dropdown ul").toggleClass("active");
+  });
+  
+  $(".dropdown ul li").click(function(){
+    var text = $(this).text();
+    $(".default_option").text(text);
+    $(".dropdown ul").removeClass("active");
+  });
+}
+searchBar()
