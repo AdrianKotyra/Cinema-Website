@@ -25,8 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fontSizeAdjust = (100-(visibleHeight / heroSectionHeight) * 100);
         const visibleHeightPercentage = (100-(visibleHeight / heroSectionHeight) * 100)*2;
        
-
-        heroBottomTitle.style.opacity=`${visibleHeightPercentage}%`;   // change opacity hero title
+        heroBottomTitle?  heroBottomTitle.style.opacity=`${visibleHeightPercentage}%`: null // change opacity hero title
         navContainer.style.backgroundColor = `rgba(0, 0, 0, ${fontSizeAdjust}%)`;
 
       
@@ -119,10 +118,13 @@ slider.forEach(ele=>ele.addEventListener('mousemove', (e) => {
 function initialActiveCard(){ //<==========initial first card active
   const moviesSection = document.querySelector(".movies-section");
   const cards = document.querySelectorAll(".movie-card-detailed");
-  cards[0].classList.add("active-card")
-  const computedStyle = getComputedStyle(cards[0]);
-  const CardbackgroundImage = computedStyle.backgroundImage;
-  moviesSection.style.backgroundImage=CardbackgroundImage
+  
+  if(cards[0]) {
+    cards[0].classList.add("active-card")
+    const computedStyle = getComputedStyle(cards[0]);
+    const CardbackgroundImage = computedStyle.backgroundImage;
+    moviesSection.style.backgroundImage=CardbackgroundImage
+  } 
 }
 
 
@@ -135,7 +137,7 @@ function changeBackgroundOnHover(){ //<==========change active card
 
 
   initialActiveCard()
-  cards.forEach(card=>card.addEventListener("click", ()=>{
+  cards? cards.forEach(card=>card.addEventListener("click", ()=>{
     
     cards.forEach(card=>card.classList.remove("active-card"))
     setTimeout(() => {
@@ -145,8 +147,8 @@ function changeBackgroundOnHover(){ //<==========change active card
       moviesSection.style.backgroundImage=CardbackgroundImage
     }, 1);
   
-  }))
-}
+  })): null
+} 
 changeBackgroundOnHover()
 
 
