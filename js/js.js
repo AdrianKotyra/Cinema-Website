@@ -151,6 +151,7 @@ function changeBackgroundOnHover(){ //<==========change active card
 } 
 changeBackgroundOnHover()
 
+// -------------------------Search movies bar nav--------------------------------
 
 function searchBar(){
   $(".search_field .input").click(function(){
@@ -170,3 +171,23 @@ function searchBar(){
   });
 }
 searchBar()
+
+
+// -------------------------change current movie background--------------------------------
+
+function movieCurrentBackground() {
+  const movieCurrentSection = document.querySelector(".background-section-current-movie");
+  const movieCurrentMovie = document.querySelector(".movie-section-current img");
+  
+
+  const movieCurrentMovieImage = movieCurrentMovie.getAttribute("src");
+  
+
+  movieCurrentSection.style.backgroundImage = `url(${movieCurrentMovieImage})`;
+  
+
+
+
+}
+const movieCurrentSection = document.querySelector(".background-section-current-movie");
+movieCurrentSection?  movieCurrentBackground() : null
