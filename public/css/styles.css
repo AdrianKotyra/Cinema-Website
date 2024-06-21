@@ -11,6 +11,7 @@
     --black-bottom-top-clear-gradient: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     --black-top-bottom-clear-gradient: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     --text-mid-size : 1.5rem;
+    --text-small-size : 1.2rem;
     --text-mid-line :2rem;
     --white-filter:  invert(100%) sepia(100%) saturate(2%) hue-rotate(148deg) brightness(106%) contrast(101%);
 }
@@ -59,7 +60,7 @@
     width: 50%;
 }
 body {
-
+  
     display: none;
     font-family: "Libre Caslon Text", serif;
     font-weight: 400;
@@ -99,12 +100,22 @@ nav a{
     color: white;
     margin-top: 60px;
 }
-.background-section-current-movie {
+.background-section-current-movie{
     position: absolute;
     right: 0;
     width: 60%;
     height: 100%;
     filter: grayscale(60%) ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.background-section-popular-movies {
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    filter: grayscale(60%) brightness(0.8);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -186,6 +197,8 @@ nav a{
     
 }
 .movie-card .text-container{
+    font-weight: 700;
+    z-index: 2;
     padding-bottom: 2vh;
     user-select: none;
     -webkit-user-drag: none;
@@ -215,10 +228,12 @@ nav a{
     height: 250px;
 }
 .movie-card-info-container {
+    position: absolute;
+  
     color: white;
-    width: 50%;
+    width: 70%;
  
-    margin-top: 30vh;
+    top: 15%;
   
 }
 .section-header {
@@ -281,10 +296,19 @@ nav a{
  
 
 }
+.card-movie-img-popular {
+    object-fit: cover;
+    filter: brightness(0.7);
+    -webkit-user-drag: none;
+    user-select: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
 .movie-card {
+    position: relative;
     z-index: 2;
     transition: 0.3s;
-  
     border-radius: 5px;
     user-select: none;
     color: white;
@@ -349,19 +373,23 @@ nav a{
     height: 100%;
     position: absolute;
 }
-
+.selected_movie_description {
+  font-size: var(--text-small-size);
+}
 .blog-section .posts-container {
     height: 80vh;
 }
 .movies-selection-bar {
-   
+    position: absolute;
     width: 100%;
     height: 300px;
     overflow-x: hidden;
+    bottom: 10%;
 
    
 }
 .black-gradient-animation-top{
+    z-index: 2;
     transform: translateY(0);
     background: var(--black-top-bottom-clear-gradient);
     position: absolute;
@@ -406,7 +434,7 @@ footer {
 }
 .wrapper-content {
 
-    height: 100%;
+   height: 100%;
     margin: 0 5%;
     position: relative;
 }
@@ -414,7 +442,7 @@ footer {
    
     position: relative;
     margin: 15vh 0;
-    background-image: url("../imgs/the_dark_knight_rises-wallpaper-1920x1200.jpg");
+   
     height: 120vh;
     width: 100%;
     background-repeat: no-repeat;

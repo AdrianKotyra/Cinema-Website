@@ -1,66 +1,7 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cinema project</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-  </head>
-  <body>
-    <nav>
-        <div class="navigation-container row-custom">
-            <div class="navigation-container-col row-custom ">
-                <a class="logo-container text-big row-custom" href="">
-                    <img src="./imgs/icons/cinema.svg" alt="">
-                    <div>
-                        Cinema City
-                    </div>
-                
-
-                </a>
-            </div>
-            <div class="navigation-container-col ">  
-                <div class="wrapper-search">
-                    <div class="search_box">
-                        <div class="dropdown">
-                            <div class="default_option">All</div>  
-                            <ul>
-                              <li>All</li>
-                              <li>Trending</li>
-                              <li>Recent</li>
-                              <li>Comming soon</li>
-                            </ul>
-                        </div>
-                        <div class="search_field">
-                          <input type="text" class="input" placeholder="Search">
-                          <i class="fas fa-search"></i>
-                      </div>
-                    </div>
-                </div>
-            
-            </div>
-            <div class="navigation-container-col  row-custom navigation-container-col-mid hiddenNav">
-                <a class="link active-nav" href="index.html">home</a>
-                <a class="link"href="">News</a>
-                <a class="link" href="">link</a>
-                
-            </div>
-            <div class="navigation-container-col  row-custom ">
-                <a class="link">Sign up</a>
-                <a class="hiddenNav active-link login-link" href="">Log in</a>
-
-            </div>
-
-            
-        </div>
-
-    </nav>
+<?php include "includes/header.php"?>
+<?php include "includes/nav.php"?>
+    
+  
     <section class="hero-section">
         <div class="hero-text ">
             <h3 class="text-big">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
@@ -147,8 +88,8 @@
        
 
         <div class="hero-bottom-title">
-            <h1 class="heading-custom"> Lorem ipsum dolor sit amet consectetur.</h1>
-            <h5 class="text-big">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
+            <h1 class="heading-custom "> Lorem ipsum dolor sit amet consectetur.</h1>
+            <h5 class="text-big ">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h5>
            
         </div>
 
@@ -156,89 +97,25 @@
 
         </div>
     </section>
+
     <section class="movies-section">
         <div class="black-gradient-animation-top ">
     
         </div>
+        <div class="background-section-popular-movies">
+
+        </div>
         <div class="wrapper-content col-custom movies-section-container">
-       
+           
             <div class="movie-card-info-container">
-                <h1 class="text-big">Lorem, ipsum dolor.</h1>
-                <p class="text-mid">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore unde saepe laboriosam ipsam culpa laudantium?</p>
+                <h1 class="text-big selected_movie_title">Lorem, ipsum dolor.</h1>
+                <p class="text-mid selected_movie_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore unde saepe laboriosam ipsam culpa laudantium?</p>
             </div>
           
             <div class="movies-selection-bar col-custom">
                 <div class="scrolling-wrapper">
-                   <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/rock-movie.jpeg');">   <!--<==== hardcoded to dynamic will be changed -->
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/680417.jpg');">   <!--<==== hardcoded to dynamic will be changed -->
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/1336451.jpg');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/lord-vader.png');">   <!--<==== hardcoded to dynamic will be changed -->
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/spider-man.jpg');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/lastofus.jpg');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/lord-vader.png');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/lord-vader.png');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                    <div class="movie-card movie-card-detailed" style="background-image: url('./imgs/lord-vader.png');">   <!--<==== hardcoded to dynamic will be changed -->
-    
-                        <div class="text-container ">
-                            <p>Lorem ipsum dolor sit.</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                        
-                    </div>
-                   
+                    <?php get_popular_movies()?>
+                  
                   
                    
                  
@@ -262,69 +139,8 @@
             <h5 class="section-header text-mid">Trending</h5>
             <div class="movies-container">
                 <div class="scrolling-wrapper row-custom">
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
+                   
+                    <?php get_trending_movies(); ?>
                 
                 </div>        
             </div>
@@ -492,6 +308,7 @@
         <div class="wrapper-content">
             <h5 class="section-header text-mid">You may like this</h5>
             <div class="container-custom">
+                
                 <div class="movie-card-more" >   <!--<==== hardcoded to dynamic will be changed -->
                     <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
                     <div class="text-container card-info ">
@@ -580,7 +397,7 @@
                         <p class="card-movie-age"> 6+</p>
                     </div>
                 </div>
-                <div class="movie-card-more" >   <!--<==== hardcoded to dynamic will be changed -->
+                <div class="movie-card-more" >  
                     <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
                     <div class="text-container card-info ">
                         <p class="card-movie-title">Lorem ipsum dolor sit.</p>
@@ -714,47 +531,7 @@
 
     </section>
 
-    <footer>
-        <div class="black-gradient-animation-top ">    </div>
-        <div class="wrapper-content">
-            <div class="footer-container ">
-                <div class="col-footer col-custom">
-                    <h5>Profile</h5>
-                    <a>FAQ</a>
-                    <a>Pricing plan</a>
-                    <a>Order tracking</a>
-                    <a>Returns</a>
-                </div>
-                <div class="col-footer col-custom">
-                    <h5>Customer</h5>
-                    <a>Help & contact us</a>
-                    <a>Return</a>
-                    <a>Online store</a>
-                    <a>Terms and conditions</a>
-                </div>
-                <div class="col-footer col-custom">
-                    <h5>Posts</h5>
-                    <a>Blog</a>
-                    <a>Recent post</a>
-                    <a>Order tracking</a>
-                    <a>Returns</a>
-                </div>
-                <div class="col-footer col-custom">
-                    <h5>Contact</h5>
-                    <div class="row-custom icons-footer">
-                        <a href="">  <img class="contact-icon" alt="" src="./imgs/icons/facebook.svg"></a>
-                        <a href="">   <img class="contact-icon" alt="" src="./imgs/icons/linkedin.svg"></a>
-                        <a href=""> <img class="contact-icon" alt="" src="./imgs/icons/twitter.svg"></a>
-                       
-                    </div>
-                
-                </div>
-
-
-            </div>
-
-        </div>
-    </footer>
+    <?php include("includes/footer.php")?>
 
 
   

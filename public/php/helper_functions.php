@@ -1,0 +1,174 @@
+<?php 
+
+
+    function class_auto_loader($class) {
+        $class= strtolower($class);
+
+        $the_path = "includes/{$class}.php";
+        if (file_exists($the_path)) {
+            include($the_path);
+        } else {
+            die("This file name $the_path does not exist");
+        }
+    }
+    function redirect($location) {
+
+        header("Location: {$location}");
+        
+        
+    }
+
+    function query($sql) {
+
+        global $connection;
+    
+    
+        return mysqli_query($connection, $sql);
+    }
+    
+    
+    function escape_string($string) {
+        global $connection;
+        return mysqli_real_escape_string($connection, $string);
+    }
+    
+    
+    function fetch_array($result) {
+        return mysqli_fetch_array($result);
+    }
+    function selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc) {
+        $html = '
+              <div class="current-movie-wrapper row-custom">
+                <img src="./'.$movie_poster.' ">
+                <div class="current-movie-desc-container col-custom">
+                <div>
+                    <h1>'.$movie_title.'</h1>
+                    <span>director</span>
+                </div>
+              
+                <div class="movie-details row-custom">
+                    <span>year</span>
+                    <span>time</span>
+               
+                </div>
+
+                <button class="button-custom">
+                    Book
+                </button>
+
+                <p class="movie-desc">
+                    '.$movie_desc.'
+                </p>
+            </div>
+            </div>
+        ';
+    
+        return $html;
+    }
+
+    function card_movies($title, $img, $date,$movie_id) {
+        $html = '
+            <div class="movie-card movie-card-trending">   
+                <img class="card-movie-img" src="./' . $img . '" alt=' . $title . '">
+                <div class="text-container card-info">
+                    <p class="card-movie-title">' . $title . '</p>
+                    <p class="card-movie-date">'. $date .'</p>
+                    <p class="card-movie-age">6+</p>
+                    <a href="movie.php?movie='.$movie_id.'"> 
+                        <button class="button-custom">Book</button>
+                    </a>
+                </div>
+            </div>
+        ';
+    
+        return $html;
+    }
+    
+    function card_movies_popular($title, $img, $date, $movie_id) {
+        $html = '
+
+                <div class="movie-card movie-card-detailed " data-id='.$movie_id.'>
+                    <img class="card-movie-img-popular" src="./'.$img.'">
+                    <div class="text-container ">
+                        <p>'.$title.'</p>
+                        <a href="movie.php?movie='.$movie_id.'"> 
+                            <button class="button-custom">Book</button>
+                        </a>
+                    </div>
+                        
+                </div>
+        ';
+    
+        return $html;
+    }
+
+    function get_selected_movie() {
+        if (isset($_GET["movie"])) {
+            $movie_id = $_GET["movie"];
+            $query = query("SELECT * from movies where id = $movie_id");
+            while ($row = mysqli_fetch_array($query)) {
+                $movie_title = $row["title"];
+                $movie_poster = $row["poster"];
+                $release_date = $row["release_date"];
+                $movie_desc  = $row["description"];
+                echo  selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc);
+            }
+           
+        }
+      
+    }
+    
+
+    function get_trending_movies() {
+        global $connection;
+        $query = query("
+            SELECT m.title, m.poster, m.release_date, m.id
+            FROM movies m
+            JOIN movies_kinds mk ON m.id = mk.movie_id
+            WHERE mk.movie_kind_id = 1
+        ");
+        
+        while ($row = mysqli_fetch_array($query)) {
+            $movie_title = $row["title"];
+            $movie_poster = $row["poster"];
+            $release_date = $row["release_date"];
+            $movie_id = $row["id"];
+            echo card_movies($movie_title, $movie_poster, $release_date,  $movie_id);
+        }
+        
+        
+       
+    }
+    function get_popular_movies() {
+        global $connection;
+        $query = query("
+            SELECT m.title, m.poster, m.release_date, m.id
+            FROM movies m
+            JOIN movies_kinds mk ON m.id = mk.movie_id
+            WHERE mk.movie_kind_id = 2
+        ");
+        
+        while ($row = mysqli_fetch_array($query)) {
+            $movie_title = $row["title"];
+            $movie_id = $row["id"];
+            $movie_poster = $row["poster"];
+            $release_date = $row["release_date"];
+            echo card_movies_popular($movie_title, $movie_poster, $release_date, $movie_id);
+        }
+        
+        
+       
+    }
+
+
+
+
+
+
+
+
+
+
+    
+        
+?>

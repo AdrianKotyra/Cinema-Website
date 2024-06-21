@@ -84,7 +84,7 @@ slider.forEach(ele=>ele.addEventListener('mousedown', (e) => {
   startX = e.pageX - rect.left;
   // Get initial scroll position in pixels from left
   scrollLeft = ele.scrollLeft;
-  console.log(startX, scrollLeft);
+  
 }));
 
 slider.forEach(ele=>ele.addEventListener('mouseleave', () => {
@@ -110,27 +110,27 @@ slider.forEach(ele=>ele.addEventListener('mousemove', (e) => {
   const walk = (x - startX);
   // Update scroll position of slider from left (amount mouse has moved minus initial scroll position)
   ele.scrollLeft = scrollLeft - walk;
-  console.log(x, walk, ele.scrollLeft);
+
 }));
 
 // -------------------------change movies section background, desc on card click--------------------------------
 
 function initialActiveCard(){ //<==========initial first card active
-  const moviesSection = document.querySelector(".movies-section");
+  const moviesSection = document.querySelector(".background-section-popular-movies");
   const cards = document.querySelectorAll(".movie-card-detailed");
   
   if(cards[0]) {
     cards[0].classList.add("active-card")
-    const computedStyle = getComputedStyle(cards[0]);
-    const CardbackgroundImage = computedStyle.backgroundImage;
-    moviesSection.style.backgroundImage=CardbackgroundImage
+ 
+    const CardbackgroundImage = document.querySelector(`.active-card img`)
+    moviesSection.style.backgroundImage = `url('${CardbackgroundImage.src}')`;
   } 
 }
 
 
 
-function changeBackgroundOnHover(){ //<==========change active card 
-  const moviesSection = document.querySelector(".movies-section");
+function changeBackgroundOnClick(){ //<==========change active card 
+  const moviesSection = document.querySelector(".background-section-popular-movies");
   const cards = document.querySelectorAll(".movie-card-detailed");
  
  
@@ -142,14 +142,13 @@ function changeBackgroundOnHover(){ //<==========change active card
     cards.forEach(card=>card.classList.remove("active-card"))
     setTimeout(() => {
       card.classList.add("active-card")
-      const computedStyle = getComputedStyle(card);
-      const CardbackgroundImage = computedStyle.backgroundImage;
-      moviesSection.style.backgroundImage=CardbackgroundImage
+      const CardbackgroundImage = document.querySelector(`.active-card img`)
+      moviesSection.style.backgroundImage = `url('${CardbackgroundImage.src}')`;
     }, 1);
   
   })): null
 } 
-changeBackgroundOnHover()
+changeBackgroundOnClick()
 
 // -------------------------Search movies bar nav--------------------------------
 
@@ -179,15 +178,90 @@ function movieCurrentBackground() {
   const movieCurrentSection = document.querySelector(".background-section-current-movie");
   const movieCurrentMovie = document.querySelector(".movie-section-current img");
   
-
-  const movieCurrentMovieImage = movieCurrentMovie.getAttribute("src");
+  if(movieCurrentMovie) {
+    const movieCurrentMovieImage = movieCurrentMovie.getAttribute("src");
   
 
-  movieCurrentSection.style.backgroundImage = `url(${movieCurrentMovieImage})`;
-  
+    movieCurrentSection.style.backgroundImage = `url(${movieCurrentMovieImage})`;
+    
+  }
+
 
 
 
 }
 const movieCurrentSection = document.querySelector(".background-section-current-movie");
 movieCurrentSection?  movieCurrentBackground() : null
+
+// -------------------------Select popular movie and get it by sending ajax--------------------------------
+
+function getIdFromPopularMovies(){
+ 
+  const selectedMoviePopularId = document.querySelectorAll(".movie-card-detailed");
+
+  selectedMoviePopularId.forEach(ele=>ele.addEventListener("click", ()=> {
+    const MovieSelectedTitle = document.querySelector(".selected_movie_title");
+    const MovieSelectedDescription = document.querySelector(".selected_movie_description");
+    const selectedMovieId = ele.getAttribute("data-id")
+    
+    SendDataAjax(selectedMovieId, "ajax/GET_MOVIE_BY_ID.php")
+    .then(data => {
+      const movieData = JSON.parse(data);
+      const selectedMovieTitle = movieData[0]
+      const selectedMovieDescription = movieData[1]
+      const selectedMovieDescriptionShorted = selectedMovieDescription.substring(0, 250);
+      console.log(selectedMovieTitle)
+      MovieSelectedTitle.textContent=selectedMovieTitle;
+      MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  }))
+ 
+  
+} 
+
+
+function initialiseAjaxFirstSelectedMoviePopular(){
+    const ids = []
+    const popularMoviesCards = document.querySelectorAll(".movie-card-detailed");
+    popularMoviesCards.forEach(card=>{
+      ids.push(card.getAttribute("data-id"));
+    })
+    SendDataAjax(ids[0], "ajax/GET_MOVIE_BY_ID.php")
+    .then(data => {
+      const MovieSelectedTitle = document.querySelector(".selected_movie_title");
+      const MovieSelectedDescription = document.querySelector(".selected_movie_description");
+      const movieData = JSON.parse(data);
+      const selectedMovieTitle = movieData[0]
+      const selectedMovieDescription = movieData[1]
+      const selectedMovieDescriptionShorted = selectedMovieDescription.substring(0, 250);
+    
+      MovieSelectedTitle.textContent=selectedMovieTitle;
+      MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+  
+}
+getIdFromPopularMovies()
+
+initialiseAjaxFirstSelectedMoviePopular()
+
+
+// -------------------------AJAX--------------------------------
+
+function SendDataAjax(sendData, file) {
+  return new Promise((resolve, reject) => {
+      $.post(file, {data: sendData}, function(data) {
+          resolve(data);
+      }).fail(function(jqXHR, textStatus, errorThrown) {
+          reject(errorThrown);
+      });
+  });
+}
+            
+ 
+  
