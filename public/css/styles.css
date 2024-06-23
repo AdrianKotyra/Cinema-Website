@@ -12,8 +12,16 @@
     --black-top-bottom-clear-gradient: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     --text-mid-size : 1.5rem;
     --text-small-size : 1.2rem;
+    --text-very-small-size : 0.9rem;
     --text-mid-line :2rem;
     --white-filter:  invert(100%) sepia(100%) saturate(2%) hue-rotate(148deg) brightness(106%) contrast(101%);
+}
+.hamburger {
+    cursor: pointer;
+    filter: var(--white-filter);
+}
+nav .link {
+    font-size: var(--text-very-small-size)
 }
 .login-link {
     padding: 10px 15px;
@@ -165,7 +173,7 @@ nav a{
 .navigation-container {
     height: 60px;
     margin: auto;
-    padding: 0 2%;
+    padding: 0 3%;
    
 
     
@@ -189,10 +197,9 @@ nav a{
     padding: 2rem 5%;
     text-align: left;
     color: white;
-    position: absolute;
+   
     bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 0);
+   
    
     
 }
@@ -228,15 +235,17 @@ nav a{
     height: 250px;
 }
 .movie-card-info-container {
-    position: absolute;
+    
   
     color: white;
     width: 70%;
  
-    top: 15%;
+    top: 20%;
   
 }
 .section-header {
+
+    z-index: 5;
     color: white;
     text-align: left;
   
@@ -330,9 +339,9 @@ nav a{
 
 }
 
-.movies-section-container {
+.movies-section-container >*{
    
-    justify-content: space-between;
+    padding: 20px
 }
 .post, .recent-post {
     position: relative;
@@ -380,11 +389,11 @@ nav a{
     height: 80vh;
 }
 .movies-selection-bar {
-    position: absolute;
+
     width: 100%;
     height: 300px;
     overflow-x: hidden;
-    bottom: 10%;
+   
 
    
 }
@@ -406,7 +415,7 @@ nav a{
     width: 100%;
 }
 .video {
-    object-fit: fill;
+    object-fit: cover;
     width: 100%;
     height: 100%;
 }
@@ -443,7 +452,7 @@ footer {
     position: relative;
     margin: 15vh 0;
    
-    height: 120vh;
+   
     width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -453,10 +462,10 @@ footer {
    text-align: left;
     color: white;
     z-index: 2;
-    top: 20%;
+    top: 30%;
     left: 5%;
     position: absolute;
-    width: 40%;
+    width: 600px;
     
 }
 .hero-section {
@@ -464,7 +473,7 @@ footer {
     overflow: hidden;
     width: 100%;
     position: relative;
-    height: 150vh;
+    height: 100vh;
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;

@@ -221,7 +221,7 @@ function getIdFromPopularMovies(){
  
   
 } 
-
+// -------------------------Load first active selected movie using ajax--------------------------------
 
 function initialiseAjaxFirstSelectedMoviePopular(){
     const ids = []
@@ -264,4 +264,36 @@ function SendDataAjax(sendData, file) {
 }
             
  
+// -------------------------Display hamburger--------------------------------
+
+function displayHamburger() {
+  const NavLinks = ` 
+  <a class="link active-nav" href="index.php">home</a>
+  <a class="link"href="">News</a>
+  <a class="link" href="">link</a>
+  <a class="link">Sign up</a>
+  <a class="hiddenNav active-link login-link link" href="">Log in</a>
+  `
+  const hamburger = `<img src="./imgs/icons/hamburger.svg" class="hamburger">`;
+  const containerLinks = document.querySelector(".container-links");
   
+  function changeToHamburger() {
+   
+
+    if (window.innerWidth <= 1250) {
+      containerLinks.innerHTML = hamburger;
+    } else {
+      containerLinks.innerHTML = NavLinks; 
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    changeToHamburger();
+  });
+
+  window.addEventListener("resize", () => {
+    changeToHamburger();
+  });
+}
+
+displayHamburger();
