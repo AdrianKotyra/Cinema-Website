@@ -268,9 +268,9 @@ function SendDataAjax(sendData, file) {
 
 function displayHamburger() {
   const NavLinks = ` 
-  <a class="link active-nav" href="index.php">home</a>
+  <a class="link active-nav" href="">home</a>
   <a class="link"href="">News</a>
-  <a class="link" href="">link</a>
+  <a class="link" href="/movies">Movies</a>
   <a class="link">Sign up</a>
   <a class="hiddenNav active-link login-link link" href="">Log in</a>
   `

@@ -117,7 +117,19 @@
         }
       
     }
-    
+    function get_selected_movie_name() {
+        if (isset($_GET["movie"])) {
+            $movie_id = $_GET["movie"];
+            $query = query("SELECT * from movies where id = $movie_id");
+            while ($row = mysqli_fetch_array($query)) {
+                $movie_title = $row["title"];
+              
+                echo $movie_title;
+            }
+           
+        }
+      
+    }
 
     function get_trending_movies() {
         global $connection;
@@ -160,6 +172,7 @@
        
     }
 
+    
 
 
 
