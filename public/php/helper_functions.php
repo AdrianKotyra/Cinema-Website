@@ -1,6 +1,6 @@
 <?php 
-
-
+    require_once("data_base.php");
+  
     function class_auto_loader($class) {
         $class= strtolower($class);
 
@@ -18,24 +18,6 @@
         
     }
 
-    function query($sql) {
-
-        global $connection;
-    
-    
-        return mysqli_query($connection, $sql);
-    }
-    
-    
-    function escape_string($string) {
-        global $connection;
-        return mysqli_real_escape_string($connection, $string);
-    }
-    
-    
-    function fetch_array($result) {
-        return mysqli_fetch_array($result);
-    }
     function selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc) {
         $html = '
               <div class="current-movie-wrapper row-custom">
@@ -103,9 +85,11 @@
     }
 
     function get_selected_movie() {
+        global $database;
         if (isset($_GET["movie"])) {
             $movie_id = $_GET["movie"];
-            $query = query("SELECT * from movies where id = $movie_id");
+            
+            $query = $database-> query_array("SELECT * from movies where id = $movie_id");
             while ($row = mysqli_fetch_array($query)) {
                 $movie_title = $row["title"];
                 $movie_poster = $row["poster"];
@@ -118,9 +102,11 @@
       
     }
     function get_selected_movie_name() {
+        global $database;
         if (isset($_GET["movie"])) {
             $movie_id = $_GET["movie"];
-            $query = query("SELECT * from movies where id = $movie_id");
+
+            $query = $database-> query_array("SELECT * from movies where id = $movie_id");
             while ($row = mysqli_fetch_array($query)) {
                 $movie_title = $row["title"];
               
@@ -132,13 +118,17 @@
     }
 
     function get_trending_movies() {
+        global $database;
         global $connection;
-        $query = query("
+
+        $query =  $database-> query_array("
             SELECT m.title, m.poster, m.release_date, m.id
             FROM movies m
             JOIN movies_kinds mk ON m.id = mk.movie_id
             WHERE mk.movie_kind_id = 1
         ");
+      
+     
         
         while ($row = mysqli_fetch_array($query)) {
             $movie_title = $row["title"];
@@ -153,7 +143,8 @@
     }
     function get_popular_movies() {
         global $connection;
-        $query = query("
+        global $database;
+        $query  = $database-> query_array("
             SELECT m.title, m.poster, m.release_date, m.id
             FROM movies m
             JOIN movies_kinds mk ON m.id = mk.movie_id

@@ -1,7 +1,7 @@
 <nav>
         <div class="navigation-container row-custom">
             <div class="navigation-container-col row-custom ">
-                <a class="logo-container text-mid row-custom" href="">
+                <a class="logo-container text-mid row-custom" href="index.php">
                     <img src="./imgs/icons/cinema.svg" alt="">
                     <div>
                         Cinema City
@@ -13,7 +13,8 @@
             <div class="navigation-container-col">  
                 <div class="wrapper-search">
                     <div class="search_box">
-                        <div class="dropdown ">
+                        <!-- to be developed?  -->
+                        <!-- <div class="dropdown ">
                             <div class="default_option">All</div>  
                             <ul>
                               <li>All</li>
@@ -21,11 +22,17 @@
                               <li>Recent</li>
                               <li>Comming soon</li>
                             </ul>
-                        </div>
+                        </div> -->
                         <div class="search_field">
-                          <input type="text" class="input" placeholder="Search">
+                          <input type="text" class="input search-movie" placeholder="Search" >
                           <i class="fas fa-search"></i>
-                      </div>
+                          <div class="search-results">
+                            <ul class="list-searched-movies">
+
+                            </ul>
+                          </div>
+                        </div>
+
                     </div>
                 </div>
             

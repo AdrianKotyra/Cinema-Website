@@ -268,7 +268,7 @@ function SendDataAjax(sendData, file) {
 
 function displayHamburger() {
   const NavLinks = ` 
-  <a class="link active-nav" href="">home</a>
+  <a class="link active-nav" href="index.php">home</a>
   <a class="link"href="">News</a>
   <a class="link" href="/movies">Movies</a>
   <a class="link">Sign up</a>
@@ -297,3 +297,55 @@ function displayHamburger() {
 }
 
 displayHamburger();
+
+function searchMovies(){
+ 
+  const resultsSearched = document.querySelector(".list-searched-movies")
+  const movieSearcheInput = document.querySelector(".search-movie");
+
+ 
+  movieSearcheInput.addEventListener("keyup", function(){
+    const movieSearcheInputValue = movieSearcheInput.value;
+    if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
+      SendDataAjax(movieSearcheInputValue, "ajax/GET_SEARCHED_MOVIES.php")
+      .then(data => {
+      resultsSearched.innerHTML=data;
+        
+        
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+    }
+    else {
+      resultsSearched.innerHTML=""
+    }
+    
+  
+  })
+ 
+}
+searchMovies()
+
+
+function searchbarWider(){
+  const searchBar = document.querySelector(".wrapper-search .search_box .search_field");
+  searchBar.addEventListener("click", ()=>{
+    searchBar.style.width="300px"
+  })
+
+}
+searchbarWider()
+
+
+// function sliderArrow() {
+//   const slider = document.querySelector(".slider-trending");
+//   const arrow = document.querySelector(".slider-arrow-trending");
+//   let counter = 1
+//   arrow.addEventListener("click", () => {
+//     counter+=1
+//       slider.style.transform = `translateX(calc(${counter} * 300px)`;
+//   });
+// }
+
+// sliderArrow();

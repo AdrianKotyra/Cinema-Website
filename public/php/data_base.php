@@ -1,12 +1,14 @@
-<?php
-    require_once("config.php");
+<?php 
+    include("config.php");
     class Database {
         public $connection;
         function __construct() {
+         
             $this->open_db_connection();
         }
-
+    
         public function open_db_connection() {
+          
             $this-> connection  = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME );
 
         }
@@ -22,6 +24,11 @@
         public function the_insert_id(){
             return mysqli_insert_id($this->connection);
         }
+        public function test(){
+            $test = "fsdfdsfdsfds";
+            return $test;
+        }
+
 
 
 
@@ -29,6 +36,6 @@
 
     $database = new Database();
 
-
+ 
 
 ?>

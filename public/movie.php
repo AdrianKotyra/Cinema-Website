@@ -22,7 +22,7 @@
     </section>
 
     <section class="actors-section">
-        <img class="slider-arrow"src="./imgs/icons/right-arrow.svg" alt="">
+        <img class="arrow-section slider-arrow"src="./imgs/icons/right-arrow.svg" alt="">
         <div class="wrapper-content">
             <h5 class="section-header text-mid"> Cast of <?php get_selected_movie_name()?></h5>
                 <div class="container-custom">
@@ -80,7 +80,7 @@
     </section>
 
     <section class="reviews-section">
-        <img class="slider-arrow"src="./imgs/icons/right-arrow.svg" alt="">
+        <img class="arrow-section slider-arrow"src="./imgs/icons/right-arrow.svg" alt="">
         <div class="wrapper-content">
             <h5 class="section-header text-mid"> Reviews of <?php get_selected_movie_name()?></h5>
                 <div class="container-custom">

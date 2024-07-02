@@ -3,6 +3,7 @@
     --primary-colour: #482bd9;
     --secondary-colour-black : #0a0a0c;
     --secondary-colour-gray :#222224;
+    --secondary-colour-gray-light :#535356;
     --Heading-size:  4.5rem;
     --Heading-line-height:  5rem;
 
@@ -13,8 +14,30 @@
     --text-mid-size : 1.5rem;
     --text-small-size : 1.2rem;
     --text-very-small-size : 0.9rem;
+    --text-extra-very-small-size : 0.8rem;
     --text-mid-line :2rem;
     --white-filter:  invert(100%) sepia(100%) saturate(2%) hue-rotate(148deg) brightness(106%) contrast(101%);
+}
+.list-searched-movies::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+.list-searched-movies::-webkit-scrollbar-track {
+    background: var(--secondary-colour-gray)
+}
+.list-searched-movies::-webkit-scrollbar-thumb {
+    background: var(--secondary-colour-gray-light)
+}
+
+.movie-searched-title {
+    color: white;
+    padding-left: 15px !important;
+    text-align: left;
+}
+.search-movie-img {
+    max-width: 70px;
+    min-width: 70px;
+    height: 70px;
+    object-fit: cover;
 }
 .hamburger {
     cursor: pointer;
@@ -263,7 +286,20 @@ nav a{
 .actor-name {
     color: white;
 }
+.trending-section:hover .comming-arrow {
+    opacity: 100%;
+    transition: 0.3s;
+}
 .reviews-section:hover .slider-arrow {
+    opacity: 100%;
+    transition: 0.3s;
+}
+.trending-section:hover .slider-arrow-trending {
+    opacity: 100%;
+    transition: 0.3s;
+
+} 
+.current-movies-section:hover .current-movie-arrow{
     opacity: 100%;
     transition: 0.3s;
 }
@@ -280,23 +316,29 @@ nav a{
 .actors-container {
     position: relative;
 }
-.slider-arrow-review {
+.arrow-section{
     opacity: 0%;
-    top: 55%;
+   
     filter: var(--white-filter);
     width: 40px;
     height: 40px;
     position: absolute;
     right: 10px;
 }
-.slider-arrow{
-    opacity: 0%;
+.slider-arrow-review {
+  
     top: 55%;
-    filter: var(--white-filter);
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    right: 10px;
+  
+}
+.comming-arrow, .current-movie-arrow, .slider-arrow-trending {
+    top: 48%;
+    cursor: pointer;
+    z-index: 4;
+}
+.slider-arrow{
+    
+    top: 55%;
+   
 }
 
 .actor-role {
@@ -452,6 +494,7 @@ nav a{
 
 
 .trending-section .movie-card-trending {
+
     width: 300px;
     height: 400px;
    position: relative;
@@ -720,7 +763,14 @@ footer {
   cursor: grabbing;
  
 }
-
+.list-searched-movies {
+    overflow-y: scroll;
+    background-color: var(--secondary-colour-gray);
+    max-height: 500PX;
+    font-size: var(--text-extra-very-small-size);
+    width: 100%;
+    text-align: center;
+}
 .scrolling-wrapper[data-dragging="true"] a {
   pointer-events: none;
 }
@@ -731,11 +781,32 @@ footer {
     outline: none;
     list-style: none;
 }
-.wrapper-search{
-    opacity: 80%;
+
+.movie-searched {
   
+    align-items: center;
+    height: 90px;
+    width: 100%;
+    cursor: pointer;
+    color: black;
+    padding: 10px;
+
 }
-  
+
+
+.movie-searched:hover {
+    background-color: var(--primary-colour);
+    color: white !important;
+    
+}
+.search-results{
+    background: #fff;
+border-radius: 5px;
+margin-top: 10px;
+display: flex;
+
+box-shadow: 0 8px 6px -10px #b3c6ff;
+}
 .wrapper-search .search_box{
     margin: 12px;
 
@@ -765,7 +836,7 @@ font-size: 14px;
 color: black;
 user-select: none;
 }
-  
+
 .wrapper-search .search_box .dropdown ul{
   
 z-index: 2;
@@ -814,8 +885,9 @@ border-color: #5078ef transparent transparent transparent;
     width: 180px;
     height: 100%;
     position: relative;
+    transition: 0.4s;
   }
-  
+
 .wrapper-search .search_box .search_field .input{
 width: 100%;
 height: 100%;
@@ -836,15 +908,15 @@ color: #5078ef;
 cursor: pointer;
 }
   
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #9fa3b1;
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-   color: #9fa3b1;
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    color: #9fa3b1;
-  }
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+color: #9fa3b1;
+}
+::-moz-placeholder { /* Firefox 19+ */
+color: #9fa3b1;
+}
+:-ms-input-placeholder { /* IE 10+ */
+color: #9fa3b1;
+}
   
 /*<==medium  */
 @media (max-width: 992px) {
