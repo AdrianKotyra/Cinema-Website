@@ -9,5 +9,5 @@
   
     require_once("db_object.php");
     require_once("user.php");
-  
-?>
+   
+   

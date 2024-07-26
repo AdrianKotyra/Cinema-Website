@@ -16,7 +16,9 @@
     --text-very-small-size : 0.9rem;
     --text-extra-very-small-size : 0.8rem;
     --text-mid-line :2rem;
+    --main-color-filter: invert(16%) sepia(100%) saturate(7469%) hue-rotate(255deg) brightness(89%) contrast(90%);
     --white-filter:  invert(100%) sepia(100%) saturate(2%) hue-rotate(148deg) brightness(106%) contrast(101%);
+    --gray-filter:  invert(100%) sepia(0%) saturate(5516%) hue-rotate(277deg) brightness(112%) contrast(67%);
 }
 .list-searched-movies::-webkit-scrollbar {
     width: 12px;               /* width of the entire scrollbar */
@@ -89,10 +91,25 @@ nav .link {
 }
 .col-50 {
     width: 50%;
+}  
+
+.body_mask {
+   
+    animation: fadeIn 0.4s forwards;
+    transition: 0.4s;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.567);
+    pointer-events: none; 
+    z-index: 99999; 
 }
 body {
-  
-    display: none;
+   
+
     font-family: "Libre Caslon Text", serif;
     font-weight: 400;
     font-style: normal;
@@ -657,6 +674,143 @@ footer {
     background-size: cover;
 
 }
+.registration_container {
+    overflow-y: scroll;
+}
+.registration_content {
+    
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.poster-desc {
+    color: white;
+    font-size: var(--text-small-size);
+}
+.poster_text {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+}
+.poster-title {
+    font-size: var(--text-mid-size);
+   color: gold;
+}
+.form_reg input, .login_form input {
+    display: block;
+    width: 90%;
+    
+    border: 2px solid rgba(0, 0, 0, 0.078);
+    margin: 30px auto;
+    padding: 10px;
+}
+.poster_reg_form span{
+    display: block;
+    margin: auto;
+    width: 100%;
+   
+}
+.poster-registration {
+    margin: auto;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background-image: url("../imgs/pop.jpg");
+}
+.poster_reg_form {
+    display: flex;
+    text-align: center;
+    color: WHITE;
+    width: 100%;
+    height: 150px;
+    background-image: url("../imgs/pop.jpg");
+}
+.reg-cross {
+    cursor: pointer;
+    position: fixed;
+    z-index: 2;
+    top: 5px;
+    right: 15px;
+    width: 36px;
+    height: 36px;
+    filter: var(--gray-filter)
+}
+.registration_content p {
+    text-align: center;
+   opacity: 80%;
+}
+.right-arrow-btn {
+    filter: var(--main-color-filter);
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+   
+}
+.confirm_reg_new_user:hover {
+    -webkit-box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+    -moz-box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+    box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+}
+.login_button:hover {
+    transition: 0.3s;
+    -webkit-box-shadow: 2px -2px 55px -14px rgba(83,83,86,1);
+    -moz-box-shadow: 2px -2px 55px -14px rgba(83,83,86,1);
+    box-shadow: 2px -2px 55px -14px rgba(83,83,86,1);
+}
+.login_form p {
+    text-align: center;
+    margin-top: 30px;
+    opacity: 80%;
+}
+.login_user_button{
+    padding: 16px 0;
+    width: 90%;
+    margin:  10px auto;
+    display: block;
+    border: 3px solid var(--primary-colour)
+}
+.login_button {
+    transition: 0.3s;
+    padding: 16px 0;
+    width: 40%;
+    margin:  10px auto;
+    display: block;
+    border: 3px solid var(--secondary-colour-gray-light)
+}
+.register_button:hover {
+    transition: 0.3s;
+    -webkit-box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+    -moz-box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+    box-shadow: 2px -2px 55px -14px rgba(72,43,217,1);
+}
+.register_button {
+    transition: 0.3s;
+    padding: 16px 0;
+    width: 80%;
+    margin:  40px auto;
+    display: block;
+    border: 3px solid var(--primary-colour);
+    
+}
+.sign_up_link {
+    cursor: pointer;
+}
+.registration_container {
+    filter: none;
+    animation: registration_animation 0.5s forwards;
+    display: none;
+    top: 0;
+    position: fixed;
+    right: 0;
+    background-color:white;
+    width: 500px;
+    height: 100vh;
+    z-index: 9999999;    
+
+}
 .hero-text {
    text-align: left;
     color: white;
@@ -666,6 +820,12 @@ footer {
     position: absolute;
     width: 600px;
     
+}
+.hero-img {
+    z-index: 2;
+    position: absolute;
+    right: 10%;
+    top: 10%;
 }
 .hero-section {
     /* background-image: url("../imgs/her-bg.png"); */
@@ -687,7 +847,7 @@ footer {
 
 .slides_container {
     filter: brightness(0.8);
-    position:relative;
+    position:absolute;
     overflow:hidden;
     width:100%;
     height:100%;
@@ -907,15 +1067,17 @@ font-size: 22px;
 color: #5078ef;
 cursor: pointer;
 }
-  
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-color: #9fa3b1;
+.well label {
+    opacity: 80%;
+    margin-left: 6%;
 }
-::-moz-placeholder { /* Firefox 19+ */
-color: #9fa3b1;
-}
-:-ms-input-placeholder { /* IE 10+ */
-color: #9fa3b1;
+.confirm_reg_new_user {
+    width: 80%;
+    display: block;
+    margin: auto;
+    padding: 10px;
+    border: 2px solid var(--primary-colour);
+    margin-bottom: 40px;
 }
   
 /*<==medium  */
@@ -934,7 +1096,8 @@ color: #9fa3b1;
 }
 /*<==mobile  */
 @media (max-width: 767px) {
-    .background-section-current-movie {
+
+    .background-section-current-movie, .registration_container {
         width: 100%;
     }
     .footer-container {
@@ -984,5 +1147,29 @@ color: #9fa3b1;
     }
     100%{
         opacity: 100%;
+    }
+}
+@keyframes fadeIn_backwards {
+    100%{
+        opacity: 0%;
+    }
+    0%{
+        opacity: 100%;
+    }
+}
+@keyframes registration_animation {
+    0%{
+        transform: translateX(100%);
+    }
+    100%{
+        transform: translateX(0%);
+    }
+}
+@keyframes registration_animation_backwards {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(100%);
     }
 }

@@ -12,6 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-  
+    <link rel="icon" type="image/x-icon" href="./imgs/icons/movie-clapper-open.ico">
   </head>
-<body>
+<?php  include("./includes/registration_form.php");  ?>

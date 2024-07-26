@@ -5,7 +5,10 @@
             <button class="button-custom">Sign up</button>
 
         </div>
+     
+  
         <div class="slides_container">
+       
             <div class="slide" >
 
                 <video class="video" width="100%" height="100%" autoplay  muted loop>
