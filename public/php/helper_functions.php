@@ -163,8 +163,35 @@
        
     }
 
-    
 
+    function get_genres_movies(){
+        global $database;
+        global $connection;
+        $query =  $database-> query_array("select * from genres");
+      
+        while ($row = mysqli_fetch_array($query)) {
+            $cat_title = $row["name"];
+          
+           echo  '<a class="catgory_box" href="category.php?category='.$cat_title.'">'.$cat_title.'</a>';
+           
+           
+        }
+
+    }
+    
+    function get_kinds_movies(){
+        global $database;
+        global $connection;
+        $query =  $database-> query_array("select * from kinds");
+      
+        while ($row = mysqli_fetch_array($query)) {
+            $movie_title = $row["name"];
+            echo  '<a class="catgory_box" href="category.php?category='.$movie_title.'">'.$movie_title.'</a>';
+           
+           
+        }
+
+    }
 
 
 

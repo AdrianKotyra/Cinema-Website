@@ -5,7 +5,6 @@
   <?php include "includes/nav.php"?>
  
   <?php include("./includes/hero-section.php")  ?>
-
   <?php include("./includes/popular-movies-section.php")  ?>
   <?php include("./includes/trending-movies-section.php")  ?>
   <?php include("./includes/comming-movies-section.php")  ?>

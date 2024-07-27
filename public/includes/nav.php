@@ -38,10 +38,28 @@
             
             </div>
 
-          
+            <img src="./imgs/icons/hamburger.svg" class="hamburger">
            
             <div class="navigation-container-col  row-custom  container-links">
-              
+                <a class="link active-nav" href="index.php">home</a>
+                <a class="link"href="">News</a>
+                <div class="link movies_link"> Movies 
+                    <div class="movies_dropdown dropdown_nav">
+                    <h5> Categories </h5>
+                    <div class="categories_container row-custom">
+                        <!-- <-------------to be dynamic from hardcoded -->
+                        <?php get_genres_movies();?>
+                        <?php get_kinds_movies();?>
+                    </div>
+                    
+                    
+                    
+                    </div>
+                
+                
+                </div>
+                <span class="link sign_up_link">Sign up</span>
+                <a class="hiddenNav active-link login-link link" href="">Log in</a>
 
             </div>
 
@@ -49,6 +67,8 @@
         </div>
 
     </nav>
+
+
 <div class="body_mask">
 
 </div>

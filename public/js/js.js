@@ -338,24 +338,21 @@ function displayRegistration(){
 
 function displayHamburger() {
   
-  const NavLinks = ` 
-  <a class="link active-nav" href="index.php">home</a>
-  <a class="link"href="">News</a>
-  <a class="link" href="/movies">Movies</a>
-  <span class="link sign_up_link">Sign up</span>
-  <a class="hiddenNav active-link login-link link" href="">Log in</a>
-  `
-  const hamburger = `<img src="./imgs/icons/hamburger.svg" class="hamburger">`;
+  // const NavLinks = ` 
+ 
+  // `
+  const hamburger =  document.querySelector(".hamburger");
   const containerLinks = document.querySelector(".container-links");
   
   function changeToHamburger() {
    
 
     if (window.innerWidth <= 1250) {
-      containerLinks.innerHTML = hamburger;
+      hamburger.style.display = "block"; 
+      containerLinks.style.display = "none"; 
     } else {
-      containerLinks.innerHTML = NavLinks; 
-
+      containerLinks.style.display = "flex"; 
+      hamburger.style.display = "none"; 
       displayRegistration()    
       
     }
@@ -510,15 +507,21 @@ function loginForm(){
 return logForm
 }
 
+// -------------------------Display hamburger--------------------------------
 
-// function sliderArrow() {
-//   const slider = document.querySelector(".slider-trending");
-//   const arrow = document.querySelector(".slider-arrow-trending");
-//   let counter = 1
-//   arrow.addEventListener("click", () => {
-//     counter+=1
-//       slider.style.transform = `translateX(calc(${counter} * 300px)`;
-//   });
-// }
+function displayCatMoviesNav(){
+  const allDropdowns = document.querySelectorAll(".dropdown_nav");
+  const moviesDropdown = document.querySelector(".movies_dropdown");
+  const dropNavTrigger = document.querySelector(".movies_link");
+  dropNavTrigger.addEventListener("mouseover", ()=>{
+    allDropdowns.forEach(drop=>drop.style.display="none")
+    moviesDropdown.style.display="block";
 
-// sliderArrow();
+  })
+
+  moviesDropdown.addEventListener("mouseout", ()=>{
+    moviesDropdown.style.display="none";
+  })
+
+}
+displayCatMoviesNav()
