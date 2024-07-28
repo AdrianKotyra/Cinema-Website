@@ -83,7 +83,53 @@
     
         return $html;
     }
+    function get_catgeory_page(){
+        global $database;
+        
+        if (isset($_GET["category"])) {
+            $category_name = $_GET["category"];
+            $query = $database->query_array("SELECT * FROM genres WHERE name = '".$category_name."'");
 
+            while ($row = mysqli_fetch_array($query)) {
+                $category_desc = $row["desc"];
+                $category_img = $row["category_img"];
+            }
+
+            echo '  
+            <div class="movie-section-current">
+                <div class="background-section-current-movie category_background" style="background-image: url(\''.$category_img.'\');">
+                </div>
+                <div class="hero-text">
+                    <h3 class="text-big">'.$category_name.' Movies</h3>
+                    <p class="text-mid">'.$category_desc.'</p>
+                    <button class="button-custom">Sign up</button>
+                </div>
+            </div>';
+        
+        }
+            
+        if (isset($_GET["subcategory"])) {
+            $category_name = $_GET["subcategory"];
+            $query = $database->query_array("SELECT * FROM kinds WHERE name = '".$category_name."'");
+
+            while ($row = mysqli_fetch_array($query)) {
+                $category_desc = $row["desc"];
+                $category_img = $row["kinds_img"];
+            }
+
+            echo '  
+            <div class="movie-section-current">
+                <div class="background-section-current-movie category_background" style="background-image: url(\''.$category_img.'\');">
+                </div>
+                <div class="hero-text">
+                    <h3 class="text-big">'.$category_name.' Movies</h3>
+                    <p class="text-mid">'.$category_desc.'</p>
+                    <button class="button-custom">Sign up</button>
+                </div>
+            </div>';
+        
+        }
+    }
     function get_selected_movie() {
         global $database;
         if (isset($_GET["movie"])) {
@@ -186,7 +232,7 @@
       
         while ($row = mysqli_fetch_array($query)) {
             $movie_title = $row["name"];
-            echo  '<a class="catgory_box" href="category.php?category='.$movie_title.'">'.$movie_title.'</a>';
+            echo  '<a class="catgory_box" href="category.php?subcategory='.$movie_title.'">'.$movie_title.'</a>';
            
            
         }

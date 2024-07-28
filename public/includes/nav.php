@@ -45,12 +45,12 @@
                 <a class="link"href="">News</a>
                 <div class="link movies_link"> Movies 
                     <div class="movies_dropdown dropdown_nav">
-                    <h5> Categories </h5>
-                    <div class="categories_container row-custom">
-                        <!-- <-------------to be dynamic from hardcoded -->
-                        <?php get_genres_movies();?>
-                        <?php get_kinds_movies();?>
-                    </div>
+                        <h5> Categories </h5>
+                        <div class="categories_container row-custom">
+                            <!-- <-------------to be dynamic from hardcoded -->
+                            <?php get_genres_movies();?>
+                            <?php get_kinds_movies();?>
+                        </div>
                     
                     
                     

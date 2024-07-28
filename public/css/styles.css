@@ -160,6 +160,9 @@ nav a{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.category_background::before {
+    background: linear-gradient(to right, rgba(0, 0, 1), rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 60%)!important;
+}
 .background-section-popular-movies {
     position: absolute;
     right: 0;
@@ -183,11 +186,12 @@ nav a{
 }
 .movie-section-current {
    position: relative;
-    margin-top: 60px;
+  
     height: 100%;
     width: 100%;
 }
 .current-movie-wrapper {
+    padding-top: 60px;
     align-content: center;
     position: relative;
     z-index: 2;
@@ -220,6 +224,12 @@ nav a{
 
     
     justify-content: space-between;
+}
+.category_background {
+    filter: grayscale(0%) !important;
+    right: 0;
+    position: absolute;
+   
 }
 .navigation-container-col {
     gap: 2rem;
@@ -1113,6 +1123,9 @@ cursor: pointer;
 }
 .container-links {
    display: none; 
+}
+.menu_form {
+    display: none;
 }
 .well label {
     opacity: 80%;

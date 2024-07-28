@@ -264,74 +264,6 @@ function SendDataAjax(sendData, file) {
       });
   });
 }
-// -------------------------Display registration menu-------------------------------
-function regMenuInit(){
-  const registerButton = document.querySelector(".register_button");
-  const regMenu = document.querySelector(".registration_content");
-  const registrationForm = registration_form();
-  registerButton? registerButton.addEventListener("click", ()=>{
-    regMenu.innerHTML=registrationForm;
-  }) : null
-  logUser()
-}
-regMenuInit()
-
-
-
-function logUser(){
-  const registerMenu = document.querySelector(".registration_content");
-  const regMenu = document.querySelector(".registration_content");
-  const loginTrigger = document.querySelector(".login_button")
-  loginTrigger? loginTrigger.addEventListener("click", ()=>{
-    regMenu.innerHTML=loginForm();
-    const join_button = document.querySelector(".join_button")
-    join_button.addEventListener("click", ()=>{
-      registerMenu.innerHTML=registration_form();
-      displayRegistration()
-    })
-   
-  }): null
-}
-
-function displayRegistration(){
-
-  const loginTrigger = document.querySelector(".login_button")
-  const registerMenu = document.querySelector(".registration_content");
-  const body = document.querySelector("body");
-  const BodyMask = document.querySelector(".body_mask")
-  const cross = document.querySelector(".reg-cross");
-
-  const registrationTrigger = document.querySelector(".sign_up_link");
-  const registration = document.querySelector(".registration_container");
-  logUser()
-  registrationTrigger.addEventListener("click", ()=>{
-    BodyMask.style.display="block"
-    registration.style.display="block"
-      body.style.overflowY="hidden"
-
-  })
-
-
-  cross? cross.addEventListener("click", ()=>{
-
-    body.style.overflowY="scroll";
-    BodyMask.style.animation="fadeIn_backwards 0.4s forwards";
-    registration.style.animation="registration_animation_backwards 0.4s forwards";
-    setTimeout(() => {
-      registerMenu.innerHTML=menu_form();
-      regMenuInit();
-      registration.style.display="none";
-      BodyMask.style.display="none";
-      registration.style.animation="registration_animation 0.4s forwards";
-      BodyMask.style.animation="fadeIn 0.4s forwards";
-    
-    }, 401);
-  }): null
-
-
-
-
-}
    
  
 // -------------------------Display hamburger--------------------------------
@@ -353,7 +285,7 @@ function displayHamburger() {
     } else {
       containerLinks.style.display = "flex"; 
       hamburger.style.display = "none"; 
-      displayRegistration()    
+      // displayRegistration()    
       
     }
   }
@@ -408,104 +340,7 @@ function searchbarWider(){
 }
 searchbarWider()
 
-function menu_form(){
-  const menuForm = `
-  <div class="registration_content">
-       
-        <div class="reg_menu">
-            <div class="poster-registration">
-                <div class="poster_text">
-                    <p class="poster-title">
-                        Become a Cinema City member
-                    </p>
 
-                    <p class="poster-desc">FOR EXCLUSIVE OFFERS, PERSONALISED CONTENT, ACCESS TO SPEEDY PAYMENT AND MORE</p>
-                
-                </div>
-            
-            
-            </div>
-            <button class="register_button"> JOIN US </button>
-            <p>Already have Account?</p>
-            <button class="login_button"> 
-                <span class="span-log">login</span>         
-                <img class="right-arrow-btn" src="./imgs/icons/right-arrow-nobg.svg" alt="">
-            </button>
-        </div>
-        
-       
-    </div>
-  `
-  return menuForm;
-}
-
-function registration_form(){
-
-  const regForm = `<div class="registration_form">
-      <div class="poster_reg_form">
-          <span> BECOME A CINEMA CITY MEMBER</span>
-  
-      </div>
-      <form class="form_reg"action="registration.php" method="POST">
-          
-          <input type="text" class="reg_user_name" placeholder="name" name="name">
-          <input type="text" class="reg_user_surname"  placeholder="surname" name="surname">
-          <input type="text" class="reg_user_email"  placeholder="email" name="email">
-          <input type="text" class="reg_user_email_confirmation"  placeholder="confirm email" name="confirm_email">
-          <input type="text" class="reg_user_password"  placeholder="password" name="password">
-          <input type="text" class="reg_user_password_confirmation"  placeholder="confirm password" name="confirm_password">
-          <div class="well"> 
-              <div class="form-group">
-                  <label>Date of Birth</label>
-                  <input type="date" class="form-control" id="exampleInputDOB1" placeholder="Date of Birth">
-              </div>
-          </div>
-
-        
-          <button class="confirm_reg_new_user">JOIN</button>
-
-
-      </form>
-
-
-
-  </div>
-  `
-  return regForm
-}
-
-function loginForm(){
-  const logForm = ` <div class="login_form">
-        <div class="poster_reg_form">
-            <span> LOG INTO YOUR ACCOUNT</span>
-           
-        </div>
-        <form class="login_form"action="login.php" method="POST">
-          
-
-          <input type="text" class="reg_user_email"  placeholder="email" name="email">
-          <input type="text" class="reg_user_password"  placeholder="password" name="password">
-          
-
-        
-            <button class="login_user_button"> 
-                <span class="span-log">login</span>         
-              
-            </button>
-            
-
-
-        </form>
-        <p>Not a Cinema City member?</p>
-        <button class="login_button join_button"> 
-            <span class="span-log">Join us</span>         
-            <img class="right-arrow-btn" src="./imgs/icons/right-arrow-nobg.svg" alt="">
-        </button>
-
-    </div>
-`
-return logForm
-}
 
 // -------------------------Display hamburger--------------------------------
 
@@ -525,3 +360,82 @@ function displayCatMoviesNav(){
 
 }
 displayCatMoviesNav()
+
+
+
+// -------------------------Display registration menu-------------------------------
+function menuReg(){
+  const body = document.querySelector("body");
+  const BodyMask = document.querySelector(".body_mask")
+  const cross = document.querySelector(".reg-cross");
+  const registrationTrigger = document.querySelector(".sign_up_link");
+
+  const loginTrigger = document.querySelector(".login_button");
+  const menuLayout = document.querySelector(".registration_container");
+  const allMenus = document.querySelectorAll(".menu_form");
+  const menu_1 = document.querySelector(".menu_form_1");
+  const menu_2 = document.querySelector(".menu_form_2");
+  const menu_3 = document.querySelector(".menu_form_3");
+  const registerButton = document.querySelectorAll(".register_button");
+
+ // display registration form
+  function displayRegistartion(){
+  
+    registerButton.forEach(ele=>ele.addEventListener("click", ()=>{
+  
+      allMenus.forEach(menu=>menu.style.display="none")
+      setTimeout(() => {
+     
+        menu_2.style.display="block";
+      }, 1);
+    })) 
+  }
+
+  // display login form
+  function displayLoginForm(){
+   
+
+    loginTrigger.addEventListener("click", ()=>{
+  
+      allMenus.forEach(menu=>menu.style.display="none")
+      setTimeout(() => {
+        menu_3.style.display="block";
+        displayRegistartion()
+      
+        
+      }, 1);
+      
+    }) 
+  }
+  // display menu form
+  function initiateMenuForm(){
+    registrationTrigger? registrationTrigger.addEventListener("click", ()=>{
+   
+      BodyMask.style.display="block";
+      menuLayout.style.display="block";
+      allMenus.forEach(menu=>menu.style.display="none")
+      menu_1.style.display="block";
+    }) : null
+  }
+
+  initiateMenuForm()
+  displayRegistartion()
+  displayLoginForm()
+
+  cross? cross.addEventListener("click", ()=>{
+
+        body.style.overflowY="scroll";
+        BodyMask.style.animation="fadeIn_backwards 0.4s forwards";
+        menuLayout.style.animation="registration_animation_backwards 0.4s forwards";
+        setTimeout(() => {
+          menuLayout.style.display="none";
+          BodyMask.style.display="none";
+          menuLayout.style.animation="registration_animation 0.4s forwards";
+          BodyMask.style.animation="fadeIn 0.4s forwards";
+        
+        }, 401);
+      }): null
+
+}
+menuReg()
+

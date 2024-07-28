@@ -1,13 +1,27 @@
 <section class="hero-section">
-        <div class="hero-text ">
-            <h3 class="text-big">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
-            <p class="text-mid">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="button-custom">Sign up</button>
+      
+     
+        <section class="hero-section movie-section category_hero">
+        <div class="movie-section-current">
+                <div class="background-section-current-movie category_background" style="background-image: url('./imgs/categories/animated_movies.jpg');">
+                </div>
+                <div class="hero-text ">
+                    <h3 class="text-big">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</h3>
+                    <p class="text-mid">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <button class="button-custom">Sign up</button>
+
+                </div>
+            </div>
+   
+
+    
+
+        <div class="black-gradient-animation">
 
         </div>
-     
-  
-        <div class="slides_container">
+       
+        </section>
+        <!-- <div class="slides_container">
        
             <div class="slide" >
 
@@ -83,7 +97,7 @@
               
             </div>
        
-        </div>
+        </div> -->
        
 
     
