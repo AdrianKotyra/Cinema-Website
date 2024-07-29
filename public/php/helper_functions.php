@@ -213,7 +213,7 @@
     function get_genres_movies(){
         global $database;
         global $connection;
-        $query =  $database-> query_array("select * from genres");
+        $query =  $database-> query_array("select * from genres ORDER BY name ASC");
       
         while ($row = mysqli_fetch_array($query)) {
             $cat_title = $row["name"];
@@ -228,7 +228,7 @@
     function get_kinds_movies(){
         global $database;
         global $connection;
-        $query =  $database-> query_array("select * from kinds");
+        $query =  $database-> query_array("select * from kinds ORDER BY name ASC");
       
         while ($row = mysqli_fetch_array($query)) {
             $movie_title = $row["name"];
@@ -238,6 +238,50 @@
         }
 
     }
+
+     
+    function get_categories_movies_cards(){
+        global $database;
+        global $connection;
+        if (isset($_GET["category"])) {
+            $movie_cat = $_GET["category"];
+            $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster  FROM movies INNER JOIN 
+            movies_genres ON movies.id = movies_genres.movie_id INNER JOIN genres ON 
+            movies_genres.genre_id = genres.id WHERE genres.name ='$movie_cat'");
+          
+            while ($row = mysqli_fetch_array($query)) {
+                    $movie_title = $row["title"];
+                    $movie_id = $row["id"];
+                    $movie_poster = $row["poster"];
+
+                    echo ' 
+                    <a href="movie.php?movie='.$movie_id.'">
+                        <div class="movie-card-more">  
+                            <img class="card-movie-img" src="./'.$movie_poster.' " alt="">
+                            <div class="text-container card-info">
+                                <p class="card-movie-title">'.$movie_title.'</p>
+                                <p class="card-movie-date">20 April</p>
+                                <p class="card-movie-age">6+</p>
+                            </div>
+                        </div>
+                    </a>
+                ';
+                
+                        
+                    
+                }
+                  
+          
+
+                  
+            // }
+        
+        }
+}    
+           
+
+
+
 
 
 

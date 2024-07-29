@@ -12,8 +12,24 @@
         </div>
        
     </section>
-
+    <section class="category_movies">
    
+      <div class="wrapper-content">
+      
+        <div class="container-custom">
+          <?php get_categories_movies_cards()?>
+        </div>
+      </div>
+    </section>
+   
+     
+
+      
+ 
+   
+
+ 
+  
     <?php include("includes/footer.php")?>
   
   

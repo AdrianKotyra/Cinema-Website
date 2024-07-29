@@ -382,10 +382,11 @@ function menuReg(){
   function displayRegistartion(){
   
     registerButton.forEach(ele=>ele.addEventListener("click", ()=>{
+   
   
       allMenus.forEach(menu=>menu.style.display="none")
       setTimeout(() => {
-     
+       
         menu_2.style.display="block";
       }, 1);
     })) 
@@ -410,7 +411,7 @@ function menuReg(){
   // display menu form
   function initiateMenuForm(){
     registrationTrigger? registrationTrigger.addEventListener("click", ()=>{
-   
+      body.style.overflowY="hidden";
       BodyMask.style.display="block";
       menuLayout.style.display="block";
       allMenus.forEach(menu=>menu.style.display="none")
