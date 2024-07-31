@@ -369,7 +369,7 @@ function menuReg(){
   const BodyMask = document.querySelector(".body_mask")
   const cross = document.querySelector(".reg-cross");
   const registrationTrigger = document.querySelector(".sign_up_link");
-
+  const loginTriggerNav = document.querySelector(".login-link");
   const loginTrigger = document.querySelector(".login_button");
   const menuLayout = document.querySelector(".registration_container");
   const allMenus = document.querySelectorAll(".menu_form");
@@ -408,6 +408,18 @@ function menuReg(){
       
     }) 
   }
+    // display menu form
+    function initiateMenuFormLogin(){
+      loginTriggerNav? loginTriggerNav.addEventListener("click", ()=>{
+        body.style.overflowY="hidden";
+        BodyMask.style.display="block";
+        menuLayout.style.display="block";
+        allMenus.forEach(menu=>menu.style.display="none")
+        menu_3.style.display="block";
+      }) : null
+    }
+  
+
   // display menu form
   function initiateMenuForm(){
     registrationTrigger? registrationTrigger.addEventListener("click", ()=>{
@@ -420,6 +432,7 @@ function menuReg(){
   }
 
   initiateMenuForm()
+  initiateMenuFormLogin()
   displayRegistartion()
   displayLoginForm()
 

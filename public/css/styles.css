@@ -211,6 +211,9 @@ nav a{
     width: 300px;
     height: 60%;
 }
+.link {
+    cursor: pointer;
+}
 .active-link {
     background-color: var(--primary-colour);
 }
@@ -506,6 +509,32 @@ nav a{
   
  
 }
+.movie-card-category img {
+    height: 300px;
+}
+.movie-card-more img{
+    height: 200px;
+}
+.movie-card-category {
+    z-index: 2;
+    
+    position: relative;
+    border-radius: 5px;
+    user-select: none;
+    color: white;
+    background-repeat: no-repeat;
+   background-position: center;
+    background-size: cover;
+    background-color: var(--secondary-colour-gray);
+    font-family: monospace;
+    
+    
+    flex-direction: column;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+}
 .movie-card-more {
 
     z-index: 2;
@@ -520,7 +549,7 @@ nav a{
     background-color: var(--secondary-colour-gray);
     font-family: monospace;
     
-    height: 250px;
+    
     flex-direction: column;
     display: flex;
     justify-content: end;

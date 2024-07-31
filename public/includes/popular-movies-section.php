@@ -16,9 +16,9 @@
       
         <div class="movies-selection-bar col-custom">
             <div class="scrolling-wrapper">
-                <?php get_popular_movies()?>
+                <?php get_kinds_movies_cards("popular", "movie_small_card")?>
               
-              
+          
                
              
             </div>

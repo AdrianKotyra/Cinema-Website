@@ -7,60 +7,7 @@
             <h5 class="section-header text-mid">Currently playing</h5>
             <div class="movies-container">
                 <div class="scrolling-wrapper row-custom">
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
-                    <div class="movie-card movie-card-trending" >   <!--<==== hardcoded to dynamic will be changed -->
-                        <img  class="card-movie-img" src="./imgs/rock-movie.jpeg"  alt="">
-                        <div class="text-container card-info ">
-                            <p class="card-movie-title">Lorem ipsum dolor sit.</p>
-                            <p class="card-movie-date"> 20 April</p>
-                            <p class="card-movie-age"> 6+</p>
-                            <button class="button-custom">Book</button>
-                        </div>
-                    </div>
+                    <?php get_kinds_movies_cards("current", "movie_big_card")?>
                 
                 </div>        
             </div>

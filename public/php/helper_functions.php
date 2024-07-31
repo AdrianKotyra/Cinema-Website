@@ -163,51 +163,6 @@
       
     }
 
-    function get_trending_movies() {
-        global $database;
-        global $connection;
-
-        $query =  $database-> query_array("
-            SELECT m.title, m.poster, m.release_date, m.id
-            FROM movies m
-            JOIN movies_kinds mk ON m.id = mk.movie_id
-            WHERE mk.movie_kind_id = 1
-        ");
-      
-     
-        
-        while ($row = mysqli_fetch_array($query)) {
-            $movie_title = $row["title"];
-            $movie_poster = $row["poster"];
-            $release_date = $row["release_date"];
-            $movie_id = $row["id"];
-            echo card_movies($movie_title, $movie_poster, $release_date,  $movie_id);
-        }
-        
-        
-       
-    }
-    function get_popular_movies() {
-        global $connection;
-        global $database;
-        $query  = $database-> query_array("
-            SELECT m.title, m.poster, m.release_date, m.id
-            FROM movies m
-            JOIN movies_kinds mk ON m.id = mk.movie_id
-            WHERE mk.movie_kind_id = 2
-        ");
-        
-        while ($row = mysqli_fetch_array($query)) {
-            $movie_title = $row["title"];
-            $movie_id = $row["id"];
-            $movie_poster = $row["poster"];
-            $release_date = $row["release_date"];
-            echo card_movies_popular($movie_title, $movie_poster, $release_date, $movie_id);
-        }
-        
-        
-       
-    }
 
 
     function get_genres_movies(){
@@ -238,7 +193,71 @@
         }
 
     }
+    function movie_small_card($movie_id, $movie_poster, $movie_title) {
+        $html = '
 
+            <div class="movie-card movie-card-detailed " data-id='.$movie_id.'>
+                <img class="card-movie-img-popular" src="./'.$movie_poster.'">
+                <div class="text-container ">
+                    <p>'.$movie_title.'</p>
+                    <a href="movie.php?movie='.$movie_id.'"> 
+                        <button class="button-custom">Book</button>
+                    </a>
+                </div>
+                    
+            </div>
+        ';
+    
+        return $html;
+    }
+    function movie_more_card($movie_id, $movie_poster, $movie_title) {
+        $html = '
+            <a href="movie.php?movie='.$movie_id.'">
+                <div class="movie-card-more"> 
+                    <img class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                    <div class="text-container card-info">
+                        <p class="card-movie-title">'.$movie_title.'</p>
+                        <p class="card-movie-date">20 April</p>
+                        <p class="card-movie-age">6+</p>
+                    </div>
+                </div>
+            </a>';
+        return $html;
+    }
+    
+    function movie_big_card($movie_id, $movie_poster, $movie_title) {
+        $movie_card = '<a href="movie.php?movie='.$movie_id.'">
+                    <div class="movie-card movie-card-trending">
+                       <img class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                            <div class="text-container card-info">
+                                <p class="card-movie-title">'.$movie_title.'</p>
+                                <p class="card-movie-date">20 April</p>
+                                <p class="card-movie-age">6+</p>
+                                <button class="button-custom">Book</button>
+                            </div>
+                    </div>
+            </a>';
+    
+        return $movie_card;
+    }
+    
+    function get_kinds_movies_cards($type_movies, $card_type) {
+        global $database;
+        global $connection;
+    
+        $query = $database->query_array("SELECT movies.title, movies.id, movies.poster FROM movies INNER JOIN 
+        movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON 
+        movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$type_movies'");
+    
+        while ($row = mysqli_fetch_array($query)) {
+            $movie_title = $row["title"];
+            $movie_id = $row["id"];
+            $movie_poster = $row["poster"];
+            
+            echo $card_type($movie_id, $movie_poster, $movie_title);
+        }
+    }
+    
      
     function get_categories_movies_cards(){
         global $database;
@@ -248,6 +267,33 @@
             $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster  FROM movies INNER JOIN 
             movies_genres ON movies.id = movies_genres.movie_id INNER JOIN genres ON 
             movies_genres.genre_id = genres.id WHERE genres.name ='$movie_cat'");
+          
+            while ($row = mysqli_fetch_array($query)) {
+                    $movie_title = $row["title"];
+                    $movie_id = $row["id"];
+                    $movie_poster = $row["poster"];
+
+                    echo ' 
+                    <a href="movie.php?movie='.$movie_id.'">
+                        <div class="movie-card-category">  
+                            <img class="card-movie-img" src="./'.$movie_poster.' " alt="">
+                            <div class="text-container card-info">
+                                <p class="card-movie-title">'.$movie_title.'</p>
+                                <p class="card-movie-date">20 April</p>
+                                <p class="card-movie-age">6+</p>
+                            </div>
+                        </div>
+                    </a>
+                ';
+                
+            }
+        
+        }
+        if (isset($_GET["subcategory"])) {
+            $movie_subcat = $_GET["subcategory"];
+            $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster  FROM movies INNER JOIN 
+            movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON 
+            movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$movie_subcat'");
           
             while ($row = mysqli_fetch_array($query)) {
                     $movie_title = $row["title"];
@@ -267,14 +313,7 @@
                     </a>
                 ';
                 
-                        
-                    
-                }
-                  
-          
-
-                  
-            // }
+            }
         
         }
 }    

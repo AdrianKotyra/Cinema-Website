@@ -46,6 +46,7 @@
                 <div class="link movies_link"> Movies 
                     <div class="movies_dropdown dropdown_nav">
                         <h5> Categories </h5>
+                        
                         <div class="categories_container row-custom">
                             <!-- <-------------to be dynamic from hardcoded -->
                             <?php get_genres_movies();?>
@@ -59,7 +60,7 @@
                 
                 </div>
                 <span class="link sign_up_link">Sign up</span>
-                <a class="hiddenNav active-link login-link link" href="">Log in</a>
+                <span class="hiddenNav active-link login-link link" >Log in</span>
 
             </div>
 

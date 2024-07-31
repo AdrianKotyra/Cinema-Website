@@ -9,7 +9,7 @@
     <div class="movies-container">
         <div class="scrolling-wrapper slider-trending row-custom">
         
-            <?php get_trending_movies(); ?>
+            <?php get_kinds_movies_cards("trending", "movie_big_card"); ?>
         
         </div>        
     </div>
