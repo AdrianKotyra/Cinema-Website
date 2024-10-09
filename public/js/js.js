@@ -78,6 +78,10 @@ function displaConfirmationModalBooking(day, time, movieId, ticketQuantity, Tick
     <img class="cross_quiz" src="./imgs/icons/cross.svg" alt="">
       <input class="input-hidden" name="day" value="${day}">
       <input class="input-hidden" name="time" value="${time}">
+      <input class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
+      <input class="input-hidden" name="Ticket_price_unit" value="${TicketPriceUnit}">
+      <input class="input-hidden" name="total_price_number" value="${totalPriceNumber}">
+
    
       <div class="row-custom modal-booking-container">
           <img class="modal_movie_img" src="${imgMovieSrc}" alt="">

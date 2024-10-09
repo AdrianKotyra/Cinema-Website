@@ -1,6 +1,7 @@
 <?php include "includes/header.php"?>
 <?php include "includes/nav.php"?>
-    <?php  movie_booking_redirect()?>
+    <!-- movie_booking_redirect() -->
+    <script src="js/pages/movie_booking/render_seats.js"></script>
 
     <div class="movie-booking-section">
 
@@ -19,13 +20,22 @@
                     
                     $day = $_POST["day"];
                     $time = $_POST["time"];
-                 
+                    $ticket_quantity = $_POST["ticket_quantity"];
+                    $Ticket_price_unit = $_POST["Ticket_price_unit"];
+                    $total_price_number = $_POST["total_price_number"];
+
                     echo 'Cinema: Edinburgh Limelight  <br>
-                    Date: '.$day.' 
+                    Date: <span class="day_booking"> '.$day.'  </span>
                     <br> 
-                    Time: '.$time.'';
-                  
-                   
+                    Time: <span class="time_booking"> '.$time.' </span>
+                    <br> 
+                    Ticket quantity: <span class="ticket_quantity_booking"> '.$ticket_quantity.'  </span>
+                    <br> 
+                    Ticket price: <span class="ticket_price_booking"> '.$Ticket_price_unit.'</span>
+                    <br> 
+                    Total price: <span class="total_price_booking">'.$total_price_number.'</span>
+                    <br> 
+                    Seat Number:  <span class="seat_number_booking"> </span>';
                 }
             
                 
@@ -42,21 +52,23 @@
 
         <div class="choose-seats-container">
             <h3>Choose Seats</h3>
+            <div class="seats-container-box">
             <div class="seats-grid">
-                <div class="seat-card">
-                    
-                    <span class="seat-number">1</span>
-                    <img src="./imgs/icons/sofa-chair.svg" alt="">
-                </div>
+                
+            <script> renderSeats() </script>
             </div>
+            
         </div>
+
+       
 
 
     </div>
-   
-   
+    <button class="button-custom confirm-booking-ticket">Confirm</button>
+ 
     
     <?php include("includes/footer.php")?>
+    <script src="js/pages/movie_booking/movie_booking.js"></script>
    
   </body>
 </html>

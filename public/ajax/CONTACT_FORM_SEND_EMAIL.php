@@ -12,7 +12,7 @@ global $connection;
     $errors = [];
     $min = 3;
     $max = 26;
-
+    $max_message = 106;
   
  
     if(strlen($firstname)<=$min) {
@@ -39,7 +39,16 @@ global $connection;
     
     if(strlen($email)<=$min) {
   
-        $errors[] = "Your lemail is too short, should be longer than $min characters";
+        $errors[] = "Your email is too short, should be longer than $min characters";
+    }
+    if(strlen($text)>=$max_message) {
+
+        $errors[] = "Your message is too long, should be shorter than $max_message characters";
+    }
+    
+    if(strlen($text)<=$min) {
+  
+        $errors[] = "Your message is too short, should be longer than $min characters";
     }
   
     if(!empty($errors)) {
