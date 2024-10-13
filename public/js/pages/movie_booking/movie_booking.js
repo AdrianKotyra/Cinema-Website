@@ -30,6 +30,7 @@ function ApproveTicketGetInfo(){
 
 
   approveBookingButton.addEventListener("click", ()=>{
+    initiateModalWindowBg()
     const modalMain = document.querySelector(".modal_container");
     const dayBooking = document.querySelector(".day_booking").innerHTML;
     const timeBooking = document.querySelector(".time_booking").innerHTML;
@@ -37,12 +38,14 @@ function ApproveTicketGetInfo(){
     const ticketPrice = document.querySelector(".ticket_price_booking").innerHTML;
     const totalPrice = document.querySelector(".total_price_booking").innerHTML;
     const SeatNumber = document.querySelector(".seat_number_booking").innerHTML;
+    const ticketId = document.querySelector(".ticket_id").innerHTML;
     const imgMovieSrc = document.querySelector(".movie-booking-banner img").src;
-   
+    console.log(ticketId)
     if(SeatNumber.trim()!=="") {
       modalMain.innerHTML= ` <form id="form_booking" method="POST" >
       <div class="modal-forum-posts_delete modal-booking">
       <img class="cross_quiz" src="./imgs/icons/cross.svg" alt="">
+        <input class="input-hidden" name="ticket_id" value="${ticketId}">
         <input class="input-hidden" name="day" value="${dayBooking}">
         <input class="input-hidden" name="time" value="${timeBooking}">
         <input class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
@@ -54,7 +57,7 @@ function ApproveTicketGetInfo(){
         <div class="row-custom modal-booking-container">
             <img class="modal_movie_img" src="${imgMovieSrc}" alt="">
             <div>
-              <h5>Date: <b> </b></h5> 
+              <h5><b>Date: </b></h5> 
               <p class="day-booking-conf">
               ${dayBooking}
               </p>
@@ -70,7 +73,7 @@ function ApproveTicketGetInfo(){
               <p>${totalPrice}£ </p>
         
              <h5>  <b>Seat Number: </b></h5>
-              <p>${SeatNumber}£ </p>
+              <p>${SeatNumber} </p>
         
   
               <button class="button-custom approve_booking" name="approve_booking">
@@ -81,6 +84,13 @@ function ApproveTicketGetInfo(){
     
     </div>
     </form>`
+
+    const crossExit = document.querySelector(".cross_quiz")
+    crossExit.addEventListener("click", ()=>{
+      modalMain.innerHTML=""
+      closeModalWindowBg()
+    })
+
     ApproveTicketAJAX()
     } 
     else {
@@ -96,7 +106,7 @@ function ApproveTicketGetInfo(){
 
 function ApproveTicketAJAX() {
   const triggerButton = document.querySelector(".approve_booking");
-  
+  const modalMain = document.querySelector(".modal_container");
   triggerButton.addEventListener("click", (e) => {
     e.preventDefault();
     var form = document.getElementById('form_booking');
@@ -113,11 +123,16 @@ function ApproveTicketAJAX() {
 
      
         try {
-          var jsonResponse = JSON.parse(response);
+    
           
-   
-          if (jsonResponse.success) {
-            console.log(jsonResponse)
+          const responseArray = JSON.parse(response);
+          if (responseArray[0]=="success") {
+            modalMain.innerHTML="";
+        
+            BookingModal("You have bought a ticket", "tick", "green_icons",responseArray[1]  )
+            // setTimeout(() => {
+            //   window.location.href = `movie.php?movie=${responseArray[1]}`;
+            // }, 2000);
           
           } else {
            

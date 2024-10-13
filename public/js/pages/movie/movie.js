@@ -1,14 +1,14 @@
 // ------------Function to show more items---------
 
-let itemsPerPage = 10;  
-let currentlyVisible = 10; 
+let itemsPerPageMovie = 10;  
+let currentlyVisibleMovie = 10; 
 function showItems() {
 
   const items = document.querySelectorAll('.movie-similar-titles .card-layout-more-card');
   const buttonShowMore = document.querySelector(".show-more-titles-button")
 
   items&&items.forEach((item, index) => {
-    if (index < currentlyVisible) {
+    if (index < currentlyVisibleMovie) {
       item.style.display = 'block';  
     } else {
       item.style.display = 'none';  
@@ -16,12 +16,12 @@ function showItems() {
   });
   
   // Hide "Load More" button if all items are visible
-  if (buttonShowMore&& currentlyVisible >= items.length) {
+  if (buttonShowMore&& currentlyVisibleMovie >= items.length) {
     buttonShowMore.style.display = "none";
   }
   
   buttonShowMore&&buttonShowMore.addEventListener("click", () => {
-  currentlyVisible += itemsPerPage;  // Increment visible items
+    currentlyVisibleMovie += itemsPerPageMovie;  // Increment visible items
   showItems();  // Update the displayed items
 });
 
@@ -30,4 +30,6 @@ function showItems() {
 
 // Initial display of 20 items
 showItems();
+
+
 

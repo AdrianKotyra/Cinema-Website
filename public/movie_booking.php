@@ -1,6 +1,6 @@
 <?php include "includes/header.php"?>
 <?php include "includes/nav.php"?>
-    <!-- movie_booking_redirect() -->
+<?php movie_booking_redirect()?>
     <script src="js/pages/movie_booking/render_seats.js"></script>
 
     <div class="movie-booking-section">
@@ -17,7 +17,16 @@
 
                 <?php 
                 if(isset($_POST["submit_booking"])) {
-                    
+                    global $connection;
+                    $movie_id_booking = $_GET["movie"];
+                    $query = "select ticket_id from tickets where ticket_movie_id = $movie_id_booking";
+                    $select_ticket_id_query = mysqli_query($connection, $query );
+
+                    while($row = mysqli_fetch_array($select_ticket_id_query)) {
+                        $ticket_id = $row["ticket_id"];
+
+                    }
+                 
                     $day = $_POST["day"];
                     $time = $_POST["time"];
                     $ticket_quantity = $_POST["ticket_quantity"];
@@ -25,6 +34,7 @@
                     $total_price_number = $_POST["total_price_number"];
 
                     echo 'Cinema: Edinburgh Limelight  <br>
+                    <span class="ticket_id hidden-form-review-input"> '.$ticket_id.'  </span> <br>
                     Date: <span class="day_booking"> '.$day.'  </span>
                     <br> 
                     Time: <span class="time_booking"> '.$time.' </span>

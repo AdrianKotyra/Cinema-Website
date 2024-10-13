@@ -70,6 +70,7 @@ zoomReviewCard()
 
 function displaConfirmationModalBooking(day, time, movieId, ticketQuantity, TicketPriceUnit, totalPriceNumber){
   const modalMain = document.querySelector(".modal_container");
+  
   const Trigger = document.querySelector(".book-modal-trigger");
   const imgMovieSrc = document.querySelector(".selected_movie_image").src;
   Trigger.addEventListener("click", ()=>{
@@ -1342,7 +1343,42 @@ function displayUserSettingsPostCards() {
     }
   });
 }
+function BookingModal(text, icon, classColourFilter, movieID){
+
+  const modalContainer = document.querySelector(".modal_container")
+  const modal = `<div class="modal-forum-posts_delete modal_general">
+
+  
+	<div class="col-custom">
+		<img class="modal-tick ${classColourFilter}" src="./imgs/icons/${icon}.svg" alt="">
+		<h5>${text} <br> <b>
+	
+	
+		<button class="button-custom button-post-added bookingApprove">
+			OK
+		</button>
+
+	</div>   
+
+</div>`
+modalContainer.innerHTML=modal;
+initiateModalWindowBg()
+const modalWindow = document.querySelector(".modal-forum-posts_delete");
+const buttonExit = document.querySelectorAll(".button-post-added");
+
+buttonExit.forEach(element => { element.addEventListener("click", ()=>{
+  closeModalWindowBg()
+ 
+  window.location.href = `movie.php?movie=${movieID}`
+  modalWindow.style.display="none";
+
+})
+  
+});
+ 
+}
 function GeneralModal(text, icon, classColourFilter){
+
   const modalContainer = document.querySelector(".modal_container")
   const modal = `<div class="modal-forum-posts_delete modal_general">
 
@@ -1360,11 +1396,12 @@ function GeneralModal(text, icon, classColourFilter){
 
 </div>`
   modalContainer.innerHTML=modal;
+  initiateModalWindowBg()
   const modalWindow = document.querySelector(".modal-forum-posts_delete");
 	const buttonExit = document.querySelectorAll(".button-post-added");
   
 	buttonExit.forEach(element => { element.addEventListener("click", ()=>{
-
+    closeModalWindowBg()
 		modalWindow.style.display="none";
 
 	})

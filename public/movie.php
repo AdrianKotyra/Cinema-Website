@@ -1,6 +1,6 @@
 <?php include "includes/header.php"?>
 <?php include "includes/nav.php"?>
-  
+<script src="js/pages/movie/renderTimesBooking.js"></script>
     <section class=" movie-section">
       
         <div class="movie-section-current ">
@@ -33,166 +33,7 @@
        
         <div class="screen-box-grid">
       
-            <div class="select-booking screen-card-select col-custom" data-time="10.15 screen 1">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">10.15</span>
-                    <span class="number-screen">screen 1</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="10.30 screen 2">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">10.30</span>
-                    <span class="number-screen">screen 2</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="10.45 screen 3">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">10.45</span>
-                    <span class="number-screen">screen 3</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="11.00 screen 4">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">11.00</span>
-                    <span class="number-screen">screen 4</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="11.15 screen 5">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">11.15</span>
-                    <span class="number-screen">screen 5</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="11.30 screen 6">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">11.30</span>
-                    <span class="number-screen">screen 6</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="11.45 screen 7">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">11.45</span>
-                    <span class="number-screen">screen 7</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="12.00 screen 8">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">12.00</span>
-                    <span class="number-screen">screen 8</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="12.15 screen 9">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">12.15</span>
-                    <span class="number-screen">screen 9</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="12.30 screen 10">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">12.30</span>
-                    <span class="number-screen">screen 10</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="12.45 screen 11">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">12.45</span>
-                    <span class="number-screen">screen 11</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="13.00 screen 12">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">13.00</span>
-                    <span class="number-screen">screen 12</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="13.15 screen 13">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">13.15</span>
-                    <span class="number-screen">screen 13</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="13.30 screen 14">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">13.30</span>
-                    <span class="number-screen">screen 14</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="13.45 screen 15">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">13.45</span>
-                    <span class="number-screen">screen 15</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="14.00 screen 16">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">14.00</span>
-                    <span class="number-screen">screen 16</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="14.15 screen 17">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">14.15</span>
-                    <span class="number-screen">screen 17</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="14.30 screen 18">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">14.30</span>
-                    <span class="number-screen">screen 18</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom " data-time="15.00 screen 19">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">14.45</span>
-                    <span class="number-screen">screen 19</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-
-            <div class="select-booking screen-card-select col-custom" data-time="15.30 screen 20">
-                <div class="screen-card-info col-custom">
-                    <span class="time-screen">15.00</span>
-                    <span class="number-screen">screen 20</span>
-                </div>
-                <button class="button-custom book-screen">Select</button>
-            </div>
-  
+            <script> renderTimesBooking() </script>
            
                
                 
@@ -355,6 +196,6 @@
   
       
     <?php include("includes/footer.php")?>
-    <script src="js/pages/movie.js"></script>
+    <script src="js/pages/movie/movie.js"></script>
   </body>
 </html>
