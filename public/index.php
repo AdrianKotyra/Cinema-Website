@@ -3,6 +3,7 @@
 <body>
 
   <?php include "includes/nav.php"?>
+
   <?php include("./includes/hero-section.php")  ?>
   <?php include("./includes/quiz-section.php")  ?>
   <?php include("./includes/top-rated-movies-section.php")  ?>

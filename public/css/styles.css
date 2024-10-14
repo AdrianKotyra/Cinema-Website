@@ -196,6 +196,15 @@
   
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
+.user_settings_tickets_container {
+    padding-top: 25px;
+    gap: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.ticket_data {
+    font-size: var(--text-small-medium-size);
+}
 .seats-grid {
     display: grid;
     gap: 6px;
@@ -301,6 +310,7 @@
     background-color: var(--secondary-colour-gray);
 }
 .nots_container_list{
+    margin: 0 !important;
     overflow-y: scroll;
 }
 .user-notification-dropdown {
@@ -3333,6 +3343,9 @@ footer {
     padding: 8px;
 }
 .rating_container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
     padding: 5px 0;
 }
 .username_drop {
@@ -3596,8 +3609,21 @@ transform: translate(0px, -3px);
    width: 100%;
    padding: 20px;
 }
-
-
+.notification_card-even{
+    background-color: var(--secondary-colour-gray);
+}
+.not_count_span{
+    color: var(--primary-colour);
+}
+.nots_movie_img {
+    margin-right: 6px;
+    filter: none !important;
+    width: 50px;
+    height: 50px;
+}
+.movie_bookings_nots_container {
+    align-items: center;
+}
 .user_avatar_dashboard_controller span img {
     width: 20px;
     height: 20px;
@@ -3607,7 +3633,7 @@ transform: translate(0px, -3px);
 }
 .user_avatar_dashboard_controller {
     margin-top: 26px;
-    width: 260px;
+    width: 100%;
     
 
     border: 2px solid var(--primary-colour);
@@ -3630,7 +3656,8 @@ transform: translate(0px, -3px);
     width:  100%;
 }
 .user_dashboard_box {
-    padding: 50px 16px;
+    overflow-y: scroll;
+    padding: 20px 16px;
     background-color: var(--secondary-colour-black);
    
     width: 400px;
@@ -4820,6 +4847,22 @@ h1 {
 }
 /*<==mobile  */
 @media (max-width: 767px) {
+   
+    .review-card {
+        flex-direction: column;
+    }
+    .review-card-layout {
+        width: 100%;
+    }
+    .rating_container {
+        flex-direction: column;
+    }
+    .movie_rating {
+        margin: auto;
+    
+    display: block;
+  
+    }
     .background-section-current-movie::before {
         background: linear-gradient(to right, rgb(132 127 127), rgb(106 106 106 / 70%) 100%, rgba(0, 0, 0, 0) 80%);
     }
@@ -4828,6 +4871,7 @@ h1 {
     }
 
     .current-movie-desc-container {
+        background-color: var(--secondary-colour-gray);
         margin: 0;
     }
     .img-book-container-movie {
@@ -5099,4 +5143,257 @@ h1 {
         }
     }
 
-    
+    .ticket-big {
+        overflow: hidden;
+        width: 300px !important;
+     
+        background-color: white;
+        margin: 25px auto;
+        position: relative;
+    }
+    .ticket-big .holes-top {
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        margin-left: -25px;
+        top: -25px;
+    }
+    .ticket-big .holes-top:before, .holes-top:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        position: absolute;
+        border-radius: 50%;
+    }
+    .ticket-big .holes-top:before {
+        left: -200px;
+    }
+    .ticket-big .holes-top:after {
+        left: 200px;
+    }
+    .ticket-big .holes-lower {
+        position: relative;
+        margin: 25px;
+        border: 1px dashed #aaa;
+    }
+    .ticket-big .holes-lower:before, .holes-lower:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        position: absolute;
+        border-radius: 50%;
+    }
+    .ticket-big .holes-lower:before {
+        top: -25px;
+        left: -50px;
+    }
+    .ticket-big .holes-lower:after {
+        top: -25px;
+        left: 350px;
+    }
+    .ticket-big .title {
+        text-align: center;
+        padding: 2% 5%
+    }
+    .ticket-big .info {
+        padding: 2% 5%
+    }
+    .ticket-big .cinema {
+        color: #aaa;
+        font-size: var(--text-small-size)
+    }
+    .ticket-big .movie-title {
+        font-size: var(--text-small-size)
+    }
+    .ticket-big .info {
+   
+    }
+    .ticket-big table {
+        width: 100%;
+        font-size: var(--text-small-medium-size);
+        margin-bottom: 15px;
+    }
+    .ticket-big table tr {
+        margin-bottom: 10px;
+    }
+    .ticket-big table th {
+        text-align: left;
+    }
+    .ticket-big table th:nth-of-type(1) {
+        width: 38%;
+    }
+    .ticket-big table th:nth-of-type(2) {
+        width: 40%;
+    }
+    .ticket-big table th:nth-of-type(3) {
+        width: 15%;
+    }
+    .ticket_seat_p {
+        text-align: center !important;
+    }
+    .ticket table td {
+        width: 33%;
+        font-size: var(--text-small-size)
+    }
+    .ticket-big .bigger {
+        text-align: center;
+        font-size: 48px;
+    }
+    .ticket-big .serial {
+        
+    }
+    .ticket-big .serial table {
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    .ticket-big .serial td {
+        width: 3px;
+        height: 50px;
+    }
+    .ticket-big .poster img {
+        object-fit: cover;
+        width: 100%;
+        height: 200px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .ticket-small {
+        overflow: hidden;
+      
+        background-color: var(--secondary-colour-gray);
+       
+      border-radius: 8px;
+        position: relative;
+    }
+    .numbers span{
+        letter-spacing: 12px;
+        display: block;
+        text-align: center;
+    }
+    .ticket-small .holes-top {
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        margin-left: -25px;
+        top: -25px;
+    }
+    .ticket-small .holes-top:before, .holes-top:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        position: absolute;
+        border-radius: 50%;
+    }
+    .ticket-small .holes-top:before {
+        left: -200px;
+    }
+    .ticket-small .holes-top:after {
+        left: 200px;
+    }
+    .ticket-small .holes-lower {
+        position: relative;
+        margin: 25px;
+        border: 1px dashed #aaa;
+    }
+    .ticket-smallicket-big .holes-lower:before, .holes-lower:after {
+        content: '';
+        height: 50px;
+        width: 50px;
+        background-color: Thistle;
+        position: absolute;
+        border-radius: 50%;
+    }
+    .ticket-small .holes-lower:before {
+        top: -25px;
+        left: -50px;
+    }
+    .ticket-small .holes-lower:after {
+        top: -25px;
+        left: 350px;
+    }
+    .ticket-small.title {
+        text-align: center;
+        padding: 2% 5%
+    }
+    .ticket-small .info {
+        padding: 2% 5%
+    }
+    .ticket-small .cinema {
+        text-align: center;
+        color: var(--primary-colour);
+        font-size: var(--text-small-size)
+    }
+    .ticket-small .movie-title {
+        text-align: center;
+        font-size: var(--text-small-size)
+    }
+    .ticket-small .info {
+   
+    }
+    .ticket-small table {
+        width: 100%;
+        font-size: var(--text-small-medium-size);
+        margin-bottom: 15px;
+    }
+    .ticket-small table tr {
+        margin-bottom: 10px;
+    }
+    .ticket-small table th {
+        text-align: left;
+    }
+    .ticket-small table th:nth-of-type(1) {
+        width: 50%;
+    }
+    .ticket-big table th:nth-of-type(2) {
+        width: 40%;
+    }
+    .ticket-small table th:nth-of-type(3) {
+        width: 15%;
+    }
+    .ticket_seat_p {
+        text-align: center !important;
+    }
+    .ticket table td {
+        width: 33%;
+        font-size: var(--text-small-size)
+    }
+    .ticket-small .bigger {
+        text-align: center;
+        font-size: var(--text-mid-size)
+    }
+    .ticket-small .serial {
+        
+    }
+    .ticket-small .serial table {
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    .ticket-small .serial td {
+        width: 3px;
+        height: 50px;
+    }
+    .ticket-small .poster img {
+        object-fit: cover;
+        width: 100%;
+        height: 100px;
+    }

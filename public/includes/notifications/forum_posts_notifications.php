@@ -3,7 +3,7 @@
 <?php 
 global $connection;
     $user_id = $user->user_id;
-
+    $row_num =0;
  
     $query = "SELECT * FROM notifications_forum_posts_comments where user_notification_id = $user_id ";
     $search_query = mysqli_query($connection, $query);
@@ -17,7 +17,9 @@ global $connection;
             $query2 = "SELECT * FROM users where user_id = $comment_user_id ";
             $search_query2 = mysqli_query($connection, $query2);
             if($search_count>=1) {
+
                 while($row = mysqli_fetch_array($search_query2)) {
+                $row_num +=1;
                 $user_firstname = $row["user_firstname"];
                 $user_lastname = $row["user_lastname"];
 

@@ -86,6 +86,7 @@
                 <?php render_quiz_nav()?>
              
                 <div class="user_nav_component_container">
+                    
                     <?php include("includes/user_logged_components/nav_user_profile.php")?>
                 </div>
                  

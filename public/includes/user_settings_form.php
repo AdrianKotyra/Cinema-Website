@@ -17,6 +17,10 @@
         <div class="user_avatar_dashboard_controller col-custom">
           
 
+            <span class="row-custom user_tickets_link user_settings_link"> 
+                <img class="icon-user-setting" src="./imgs/icons/ticket.svg" alt="">
+                Tickets
+            </span>
             <span class="row-custom user_reviews_link user_settings_link"> 
                 <img class="icon-user-setting" src="./imgs/icons/feedback.svg" alt="">
                 Reviews

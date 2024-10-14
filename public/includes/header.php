@@ -26,3 +26,4 @@ include "php/init.php"?>
 
 <div class="modal_container"></div>
 <div class="default_loader"></div>
+

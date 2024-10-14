@@ -17,7 +17,7 @@
 
        
     </section>
-   
+  
     <div class="book_container">
         <span class="book-anchor"></span>
         <div class="scrolling-wrapper row-custom date-calendar">
@@ -133,8 +133,9 @@
         </div>
 
     </section> -->
+
     <div class="movie-wrapper">
-  
+
     <section class="reviews-section">
         <img class="arrow-section slider-arrow"src="./imgs/icons/right-arrow.svg" alt="">
         <div class="wrapper-content">

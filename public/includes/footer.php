@@ -53,7 +53,10 @@
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script src="./js/js.js"></script>
+        <script src="./js/global.js"></script>
+        <script src="./js/user_settings.js"></script>
+        <script src="./js/user_login_register.js"></script>
+    
         <?php ob_end_flush();?>
         
     </footer>

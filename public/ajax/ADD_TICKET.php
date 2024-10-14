@@ -18,15 +18,24 @@ include "../php/init.php";
         $ticket_price_unit = $_POST["Ticket_price_unit"];
         $total_price_number = $_POST["total_price_number"];
         $seat_number = $_POST["seat_number"];
-
-        $query = "INSERT INTO bookings(date_booking, time_show, ticket_quantity, ticket_id, seat_number, total_payment, ticket_price, user_id) ";
+      
+        $serial_number = get_ticket_serial_number();
+        $query = "INSERT INTO bookings(date_booking, time_show, ticket_quantity, ticket_id, seat_number, total_payment, ticket_price, user_id, serial_number) ";
     
-        $query .= "VALUES('{$currentDateTime}','{$time}','{$ticket_quantity}','{$ticket_id}','{$seat_number}','{$total_price_number}', '{$ticket_price_unit}', '{$user_id}' ) ";
+        $query .= "VALUES('{$currentDateTime}','{$time}','{$ticket_quantity}','{$ticket_id}','{$seat_number}','{$total_price_number}', '{$ticket_price_unit}', '{$user_id}', '{$serial_number}' ) ";
         
         $create_ticket = mysqli_query($connection, $query);
+
+        // INSERT BOOKING NOTIFICATION
+        $query2 = "INSERT INTO notifications_bookings(user_notification_id, ticket_id) ";
+        $query2 .="VALUES('{$user_id}','{$ticket_id}' ) ";
+        $create_nots_bookings = mysqli_query($connection, $query2);
+
         // GET MOVIE ID FROM BOUGHT TICKET TO USE IT AFTER BOOKING TO BACK TO PAGE MOVIE
         $query_Select_movie = "SELECT ticket_movie_id FROM tickets WHERE ticket_id =  $ticket_id";
         $select_movie = mysqli_query($connection, $query_Select_movie);
+
+
    
         while ($row = mysqli_fetch_array($select_movie)) {
             $movie_id = $row["ticket_movie_id"];

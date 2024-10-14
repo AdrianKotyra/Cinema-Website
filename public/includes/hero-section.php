@@ -1,8 +1,8 @@
 <section class="hero-section">
       
-     
+
         <section class="hero-section  category_hero">
-       >
+       
           <div class="hero-text ">
               <?php include("hero_section_paragraph.php");?>
                 

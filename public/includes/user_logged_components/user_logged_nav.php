@@ -23,6 +23,7 @@
                 
                 </div>
                 <div class="nots_container_list">
+                    <?php include("./includes/notifications/bookings_notifications.php"); ?>
                     <?php include("./includes/notifications/forum_posts_notifications.php"); ?>
                 </div>
            

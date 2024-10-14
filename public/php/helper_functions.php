@@ -51,15 +51,92 @@
        
       
     }
+    function render_ticket_big(){
+        $ticket = '
+            <div class="ticket-big">
 
+                <div class="title">
+                    <p class="cinema">Limelight Cinema</p>
+                    <p class="movie-title">ONLY GOD FORGIVES</p>
+                </div>
+                <div class="poster">
+                    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/25240/only-god-forgives.jpg" alt="Movie: Only God Forgives" />
+                </div>
+                <div class="info">
+                <table>
+                    <tr>
+                    
+                        <th class="ticket_seat_p">SEAT</th>
+                    </tr>
+                    <tr>
+                        <td class="bigger">18</td>
+                        
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <th>PRICE</th>
+                        <th>DATE</th>
+                        <th>TIME</th>
+                    </tr>
+                    <tr>
+                        <td>$12.00</td>
+                        <td>1/13/17</td>
+                        <td>19:30</td>
+                    </tr>
+                </table>
+                </div>
+
+                <div class="serial">
+                    <table class="barcode"><tr></tr></table>
+                    <table class="numbers">
+                        <tr>
+                            <td>9</td>
+                            <td>1</td>
+                            <td>7</td>
+                            <td>3</td>
+                            <td>7</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>7</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>2</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+
+            ' ;      
+            return $ticket;
+    }
     function notifications_count($user_id){
         global $database;
 
      
         $query1 = "SELECT * FROM notifications_forum_posts_comments where user_notification_id = $user_id ";
         $search_query= $database->query_array($query1);
-        $notes_number=mysqli_num_rows($search_query);
-        echo $notes_number;
+        $notes_number1=mysqli_num_rows($search_query);
+
+        $query2 = "SELECT * FROM notifications_bookings where user_notification_id = $user_id ";
+        $search_query2= $database->query_array($query2);
+        $notes_number2=mysqli_num_rows($search_query2);
+
+        $notes_all = $notes_number2 + $notes_number1;
+
+        echo  $notes_all;
 
     }
 
@@ -493,11 +570,21 @@ function get_movie_rating($movie_id){
         else {
               $rate_colour = "red";
         }
-        return  '<div class="rating_container">average users rating: <span style="background-color:'.$rate_colour.'" class="movie_rating"> '.$rating_list.'/10</span> </div>';
+        return  '<div class="rating_container">Average users rating:  <span style="background-color:'.$rate_colour.'" class="movie_rating"> '.$rating_list.'/10</span> </div>';
      
     
 
 }
+function get_ticket_serial_number() {
+    $number = '';
+    for ($i = 0; $i <= 10; $i++) {
+        $number .= random_int(0, 9);  // Use random_int for better randomness
+    }
+    return $number;
+}
+
+
+
 function renderNext7Days() {
     if(isset($_GET["movie"])) {
         $movie_id = $_GET["movie"];
