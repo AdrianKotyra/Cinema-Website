@@ -1,4 +1,8 @@
 <section class="quiz-section">
+         
+      <h5 class="section-header text-mid header-intersect16">Test Yourself</h5>
+      
+      <span class="header-trigger16 trigger"></span>
       <div class="row-custom">
       <div class="quiz_img_container">
         <img src="./imgs/quiz2.png" alt="">

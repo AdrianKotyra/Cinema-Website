@@ -4,11 +4,11 @@
         <section class="hero-section  category_hero">
        
           <div class="hero-text ">
-              <?php include("hero_section_paragraph.php");?>
+              <?php include("./includes/hero_section_paragraph.php");?>
                 
           </div>
         <div class="slides_container">
-          <?php include("slider/slider-hero.php");?>
+          <?php include("./includes/slider/slider-hero.php");?>
             <!-- <div class="background-section-current-movie category_background" style="background-image: url('./imgs/categories/animated_movies.jpg');">
             </div> -->
            
