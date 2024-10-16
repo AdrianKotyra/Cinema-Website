@@ -1,7 +1,7 @@
 function renderSeats(){
 
 
-    Array.from({ length: 35 }, (v, i) => document.write(`<div seat_num='${i}' class="seat-card">
+    Array.from({ length: 35 }, (v, i) => document.write(`<div seat_num='${i+1}' class="seat-card">
                       
     <span class="seat-number">${i+1}</span>
     <img src="./imgs/icons/sofa-chair.svg" alt="">

@@ -1,27 +1,39 @@
-function selectSeat(){
+function selectSeat() {
   const seats = document.querySelectorAll(".seat-card");
-  seats.forEach(seat=>{
-    seat.addEventListener("click", ()=>{
-    
-      seats.forEach(seat=>{
+  const numberSeats = document.querySelectorAll(".seat_number_booking").length;
+  let currentActiveSeats = 0;
 
-        seat.classList.remove("active-seat-number")
-      })
-      seat.classList.add("active-seat-number");
-      getSeatNumberInfo()
+  seats.forEach(seat => {
+    seat.addEventListener("click", () => {
 
-    })
-  })
+      // Check if the seat is already active
+      if (seat.classList.contains("active-seat-number")) {
+        seat.classList.remove("active-seat-number");
+        currentActiveSeats -= 1;
+        
+        // Clear the corresponding seat number booking when a seat is deselected
+        document.querySelector(`.seat_number_booking${currentActiveSeats + 1}`).innerHTML = "";
+
+      } else {
+        // Check if we can still add seats based on available slots
+        if (currentActiveSeats < numberSeats) {
+          currentActiveSeats += 1;
+
+          // Add active class to the clicked seat
+          seat.classList.add("active-seat-number");
+
+          // Get the seat number from the clicked seat (assuming it's stored in seat_num attribute)
+          const seatBookingElement = seat.getAttribute("seat_num");
+
+          // Set the corresponding seat number in the booking element
+          document.querySelector(`.seat_number_booking${currentActiveSeats}`).innerHTML = seatBookingElement;
+        }
+      }
+    });
+  });
 }
+
 selectSeat()
-
-
-function getSeatNumberInfo(){
-  const activeSeat = document.querySelector(".active-seat-number");
-  const seatContainerInfo = document.querySelector(".seat_number_booking");
-  const numberSeat = activeSeat.getAttribute("seat_num");
-  seatContainerInfo.innerHTML=numberSeat
-}
 
 
 function ApproveTicketGetInfo(){
@@ -31,27 +43,40 @@ function ApproveTicketGetInfo(){
 
   approveBookingButton.addEventListener("click", ()=>{
     initiateModalWindowBg()
+
+    const activeSeats = document.querySelectorAll(".active-seat-number");
+    let BookedSeats = [];
+    activeSeats.forEach(activeSeat=>{
+      BookedSeats.push(activeSeat.getAttribute("seat_num"));
+    })
+
+
+  
+    const numberSeats = document.querySelectorAll(".seat_number_booking").length;
+ 
     const modalMain = document.querySelector(".modal_container");
     const dayBooking = document.querySelector(".day_booking").innerHTML;
     const timeBooking = document.querySelector(".time_booking").innerHTML;
     const ticketQuantity = document.querySelector(".ticket_quantity_booking").innerHTML;
     const ticketPrice = document.querySelector(".ticket_price_booking").innerHTML;
     const totalPrice = document.querySelector(".total_price_booking").innerHTML;
-    const SeatNumber = document.querySelector(".seat_number_booking").innerHTML;
+
     const ticketId = document.querySelector(".ticket_id").innerHTML;
+    const ranNumber = document.querySelector(".ran_number").innerHTML;
     const imgMovieSrc = document.querySelector(".movie-booking-banner img").src;
-    console.log(ticketId)
-    if(SeatNumber.trim()!=="") {
+  
+    if(BookedSeats.length==numberSeats) {
       modalMain.innerHTML= ` <form id="form_booking" method="POST" >
       <div class="modal-forum-posts_delete modal-booking">
       <img class="cross_quiz" src="./imgs/icons/cross.svg" alt="">
-        <input class="input-hidden" name="ticket_id" value="${ticketId}">
-        <input class="input-hidden" name="day" value="${dayBooking}">
-        <input class="input-hidden" name="time" value="${timeBooking}">
-        <input class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
-        <input class="input-hidden" name="Ticket_price_unit" value="${ticketPrice}">
-        <input class="input-hidden" name="total_price_number" value="${totalPrice}">
-        <input class="input-hidden" name="seat_number" value="${SeatNumber}">
+        <input type="hidden" class="input-hidden" name="random_number" value="${ranNumber}">
+        <input type="hidden" class="input-hidden" name="ticket_id" value="${ticketId}">
+        <input type="hidden" class="input-hidden" name="day" value="${dayBooking}">
+        <input type="hidden" class="input-hidden" name="time" value="${timeBooking}">
+        <input type="hidden"class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
+        <input type="hidden"class="input-hidden" name="Ticket_price_unit" value="${ticketPrice}">
+        <input type="hidden"class="input-hidden" name="total_price_number" value="${totalPrice}">
+        <input type="hidden"class="input-hidden" name="seat_number" value="${BookedSeats}">
   
      
         <div class="row-custom modal-booking-container">
@@ -67,14 +92,14 @@ function ApproveTicketGetInfo(){
               <p>${ticketQuantity} </p>
   
               <h5><b>Ticket Price: </b></h5>
-              <p>${ticketPrice}£ </p>
+              <p>${ticketPrice} </p>
   
               <h5> <b>Total Price: </b></h5>
-              <p>${totalPrice}£ </p>
+              <p>${totalPrice} </p>
         
-             <h5>  <b>Seat Number: </b></h5>
-              <p>${SeatNumber} </p>
-        
+           
+               <h5><b>Seat Number:</b></h5>
+                ${BookedSeats.map(seat => `<p>${seat}</p>`).join('')}
   
               <button class="button-custom approve_booking" name="approve_booking">
                 Proceed

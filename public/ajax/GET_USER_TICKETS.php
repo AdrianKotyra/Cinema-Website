@@ -72,7 +72,7 @@ if($user_id_logged) {
                         <tr>
                           
                             <td class="ticket_data">'.$seat_number.'</td>
-                            <td class="ticket_data">'. $total_payment.'£</td>
+                            <td class="ticket_data">'. $ticket_price.'£</td>
                         </tr>
                     </table>
                   

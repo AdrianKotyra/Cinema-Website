@@ -2,7 +2,7 @@
 <div class="slide" >
 
    <video class="video_mixed" width="100%" height="100%" autoplay  muted loop>
-       <source src="./videos/slider_adults/comming_movies_animation4.mp4" type="video/mp4">
+       <source src="./videos/slider_adults/welcome_vod_outlined_compressed.mp4" type="video/mp4">
       
     
    </video>

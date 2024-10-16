@@ -11,7 +11,7 @@
         
     ?>
     <section class="wrapper-content news-section ">
-        <h5 class="section-header text-mid">Users Posts</h5>
+        <h5 class="section-header text-mid header-subpage">Users Posts</h5>
     
         <div class="searcher-container-reviews">
             <?php include "includes/search-forum-posts.php"?>

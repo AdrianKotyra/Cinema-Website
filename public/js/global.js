@@ -65,23 +65,37 @@ function zoomReviewCard() {
 }
 
 zoomReviewCard()
+function generateRandomNumbers(count = 10) {
+  let randomNumbers = '';
+  for (let i = 0; i < count; i++) {
+      randomNumbers += Math.floor(Math.random() * 10); // Random digit between 0 and 9
+  }
+  return parseInt(randomNumbers, 10); // Convert the concatenated string to an integer
+}
+
+
+
+
 
 // DISPLAY CONFIRMATION WINDOW MODAL BOOKING
 
 function displaConfirmationModalBooking(day, time, movieId, ticketQuantity, TicketPriceUnit, totalPriceNumber){
   const modalMain = document.querySelector(".modal_container");
-  
+
   const Trigger = document.querySelector(".book-modal-trigger");
   const imgMovieSrc = document.querySelector(".selected_movie_image").src;
   Trigger.addEventListener("click", ()=>{
+    let ranNumber = generateRandomNumbers();
+    console.log(ranNumber)
     const modal = ` <form class="form_booking" method="POST" action="./movie_booking.php?movie=${movieId}" >
     <div class="modal-forum-posts_delete modal-booking">
     <img class="cross_quiz" src="./imgs/icons/cross.svg" alt="">
-      <input class="input-hidden" name="day" value="${day}">
-      <input class="input-hidden" name="time" value="${time}">
-      <input class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
-      <input class="input-hidden" name="Ticket_price_unit" value="${TicketPriceUnit}">
-      <input class="input-hidden" name="total_price_number" value="${totalPriceNumber}">
+      <input type="hidden" class="input-hidden" name="random_number" value="${ranNumber}">
+      <input type="hidden" class="input-hidden" name="day" value="${day}">
+      <input type="hidden" class="input-hidden" name="time" value="${time}">
+      <input type="hidden" class="input-hidden" name="ticket_quantity" value="${ticketQuantity}">
+      <input type="hidden" class="input-hidden" name="Ticket_price_unit" value="${TicketPriceUnit}">
+      <input type="hidden" class="input-hidden" name="total_price_number" value="${totalPriceNumber}">
 
    
       <div class="row-custom modal-booking-container">

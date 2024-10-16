@@ -576,9 +576,11 @@ function get_movie_rating($movie_id){
 
 }
 function get_ticket_serial_number() {
+  
+ 
     $number = '';
     for ($i = 0; $i <= 10; $i++) {
-        $number .= random_int(0, 9);  // Use random_int for better randomness
+        $number .= mt_rand(0, 9);  // Use random_int for better randomness
     }
     return $number;
 }

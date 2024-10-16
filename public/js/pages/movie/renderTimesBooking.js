@@ -43,7 +43,7 @@ function renderTimesBooking() {
         hour += 1;
         minutes = 0;
       }
-  
+      
       // Format time as HH.MM (e.g., 10.10, 10.20)
       let time = hour + '.' + (minutes === 0 ? '00' : minutes);
   

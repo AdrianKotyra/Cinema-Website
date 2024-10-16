@@ -1800,6 +1800,9 @@ nav a{
 .booking_title_movie{
     font-size: var(--text-large-size);
 }
+.booking_title_movie span{
+    font-size: var(--text-mid-size);
+}
 .choose-seats-container h3 {
     padding: 0 0 16px 0;
     text-align: center;
@@ -2888,6 +2891,7 @@ nav a{
     top: 10%;
 }
 .hero-section .video_mixed{
+    filter: brightness(1.06);
     object-fit: contain;
     width: 60%;
     float: right;
@@ -3547,6 +3551,9 @@ transform: translate(0px, -3px);
     cursor: pointer;
     color: white;
     background-color: var(--primary-colour);
+}
+.header-subpage {
+    padding: 100px 0 0 0 !important;
 }
 .settings_card_options {
     display: none;
