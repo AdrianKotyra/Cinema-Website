@@ -87,8 +87,8 @@ function userSettingsFunctionality() {
             dataType: "html",
             success: function(data) {
               settingsContentContainer.innerHTML=data;
-            
-             
+              displayUserSettingsPostCards()
+              downloadTicket()
       
              },
             error: function(e) 
@@ -482,6 +482,31 @@ function settingsConfirmationModal($element, $text){
             container.innerHTML=data;
             updateSelectedReviewAjax()
   
+  
+          
+          })
+          .catch(error => {
+              console.error('Error:', error);
+          })
+      })
+    })
+    
+  }
+
+  function downloadTicket(){
+   
+  
+    const triggerButtonS = document.querySelectorAll(".download_settings_button")
+    const container = document.querySelector(".user_dashboard_form");
+    triggerButtonS.forEach(button=>{
+      button.addEventListener("click", ()=>{
+        
+        const bookingId = button.getAttribute("data-booking-id");
+    
+        SendDataAjax(bookingId, "ajax/GET_PDF_TICKET.php")
+          .then(data => {
+         
+            
   
           
           })

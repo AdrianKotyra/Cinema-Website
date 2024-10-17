@@ -55,6 +55,39 @@ function loginUserAJAX(){
       });
   
   })}
+  function displayConfirmationWindowLoggin(){
+ 
+    const confirmationWindowLogin = document.querySelector(".login-confirmation-window");
+    confirmationWindowLogin.style.display="none";
+    setTimeout(() => {
+      const acceptButtonLogin = document.querySelector(".accept-buttom-login");
+      const regContainer = document.querySelector(".registration_container");
+    
+    
+    
+      const BodyMask = document.querySelector(".body_mask")
+      const body = document.querySelector("body");
+      regContainer.style.display="none";
+      confirmationWindowLogin.style.display="block";
+    
+      acceptButtonLogin.addEventListener("click", ()=>{
+        BodyMask.style.display="none";
+        confirmationWindowLogin.style.display="none";
+        body.style.overflowY="scroll"  
+        window.location.href = window.location.href;
+      })
+    
+      
+    }, 1);
+ 
+ 
+
+    
+
+
+  
+}
+
   loginUserAJAX()
   // DISPLAY REGISTRATION  USER  CONFIRMATION WINDOW MODAL USING AJAX
   function displayConfirmationWindowRegister(){
@@ -68,12 +101,12 @@ function loginUserAJAX(){
     confirmationWindow.style.display="block";
   
   
-    acceptButton.addEventListener("click", ()=>{
+    acceptButton&&acceptButton.addEventListener("click", ()=>{
       BodyMask.style.display="none";
       confirmationWindow.style.display="none";
       body.style.overflowY="scroll"  
     })
-    acceptButtonLogin.addEventListener("click", ()=>{
+    acceptButtonLogin&&acceptButtonLogin.addEventListener("click", ()=>{
       BodyMask.style.display="none";
       confirmationWindow.style.display="none";
       body.style.overflowY="scroll"  

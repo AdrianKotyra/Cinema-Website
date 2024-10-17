@@ -4,11 +4,18 @@ include("../php/init.php");
 $user_id_logged = $user->user_id;
 if($user_id_logged) {
     global $connection;
+    $query_select_user = $database-> query_array("SELECT * FROM users where user_id = $user_id_logged "); 
+    while($row = mysqli_fetch_array($query_select_user)) {
+        $user_firstname = $row["user_firstname"];
+        $user_lastname = $row["user_lastname"];
+    }
+
     $query = $database-> query_array("SELECT * FROM bookings where user_id = $user_id_logged order by date_booking desc  ");
 
     echo  '   <h1 class="edit_post_header">Users Tickets</h1>
     <div class="user_settings_tickets_container">';
     while($row = mysqli_fetch_array($query)) {
+        $booking_id = $row["id"];
         $date_booking = $row["date_booking"];
         $time_show = $row["time_show"];
         $ticket_quantity = $row["ticket_quantity"];
@@ -28,8 +35,12 @@ if($user_id_logged) {
                 $movie_img = $row["poster"];
                 $movie_title = $row["title"];
                 echo '
-                <div class="ticket-small">
-
+                <div class="ticket-small settings_user_card">
+                    <div class="settings_card_options options-tickets-container">
+                    
+                        <p class="option_card_settings delete_settings_button" data-booking-id="'.$booking_id.'"> Cancel </p>
+                        <p class="option_card_settings download_settings_button" data-booking-id="'.$booking_id.'"> Download </p>
+                    </div>
                     <div class="title">
                         <p class="cinema">Limelight Cinema</p>
                         <p class="movie-title">'.  $movie_title.'</p>
@@ -38,6 +49,19 @@ if($user_id_logged) {
                         <img src="'.$movie_img.'" alt="Movie: Only God Forgives" />
                     </div>
                     <div class="info">
+
+                    <table>
+                        <tr>
+                           
+                            <th>NAME</th>
+                            <th>SURNAME</th>
+                        </tr>
+                        <tr>
+                          
+                            <td class="ticket_data">'.$user_firstname .'</td>
+                            <td class="ticket_data">'. $user_lastname .'</td>
+                        </tr>
+                    </table>
                   
                     <table>
                         <tr>

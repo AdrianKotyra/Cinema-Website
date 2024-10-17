@@ -17,7 +17,7 @@
             <?php include "includes/search-forum-posts.php"?>
         </div>
         <!-- if user logged in show to post form -->
-        <button class="add_form_post_trigger">
+        <button class="add_form_post_trigger button-custom">
             Add Post
         </button>
 

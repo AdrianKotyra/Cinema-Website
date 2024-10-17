@@ -2,9 +2,9 @@
         <div class="navigation-container row-custom">
             <div class="navigation-container-col row-custom logo_container_main ">
                 <a class="logo-container row-custom" href="index.php">
-                    <img src="./imgs/icons/city.svg" alt="">
+                    <img src="./imgs/icons/cinema.svg" alt="">
                     <div class="logo_name">
-                        Limelight City
+                        Limelight Cinema
                     </div>
                 
 

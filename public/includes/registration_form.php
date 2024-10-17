@@ -6,7 +6,7 @@
             <div class="poster-registration">
                 <div class="poster_text">
                     <p class="poster-title">
-                        Become a Cinema City member
+                        Become a Limelight Cinema member
                     </p>
 
                     <p class="poster-desc">FOR EXCLUSIVE OFFERS, PERSONALISED CONTENT, ACCESS TO SPEEDY PAYMENT AND MORE</p>
@@ -17,9 +17,8 @@
             </div>
             <button class="register_button"> JOIN US </button>
             <p>Already have Account?</p>
-            <button class="login_button"> 
-                <span class="span-log">login</span>         
-                <img class="right-arrow-btn" src="./imgs/icons/right-arrow-nobg.svg" alt="">
+            <button class="login_button button-custom"> 
+                login
             </button>
         </div>
 

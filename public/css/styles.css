@@ -1236,15 +1236,38 @@ nav a{
     width: 40px;
     height: 40px;
     position: absolute;
-    right: 10px;
+    
 }
 .slider-arrow-review {
   
     top: 55%;
   
 }
-.comming-arrow, .current-movie-arrow, .slider-arrow-trending {
-    top: 48%;
+
+.slider-trending {
+    overflow-x: auto;
+}
+.slider-arrow-trending-left,
+.slider-arrow-currnet-left,
+.slider-arrow-comming-left{
+    transform: translateY(-50%);
+    top: 50%;
+    cursor: pointer;
+    z-index: 4;
+    left: 14px;
+}
+.slider-arrow-trending-right, 
+.slider-arrow-currnet-right,
+.slider-arrow-comming-right{
+    transform: translateY(-50%);
+    top: 50%;
+    cursor: pointer;
+    z-index: 4;
+    right: 14px;
+}
+.comming-arrow, .current-movie-arrow  {
+    transform: translateY(-50%);
+    top: 50%;
     cursor: pointer;
     z-index: 4;
 }
@@ -2555,12 +2578,10 @@ nav a{
    background-color: var(--primary-colour)
 }
 .login_button {
-    transition: 0.3s;
-    padding: 16px 0;
-    width: 40%;
-    margin:  10px auto;
+  
+    margin: 0 auto;
     display: block;
-    border: 3px solid var(--secondary-colour-gray-light)
+    
 }
 
 
@@ -3560,11 +3581,10 @@ transform: translate(0px, -3px);
     border: 1px solid var(--primary-colour);
     z-index: 99;
     padding: 10px;
-    transform: translate(30%, 20%);
-    left: 50%;
+ 
     /* border: 2px solid black; */
-    border-radius: 12px;
-    width: 80%;
+
+    width: 100%;
     color: black;
     position: absolute;
     top: 50%;
@@ -3583,13 +3603,21 @@ transform: translate(0px, -3px);
     overflow: visible;
     padding: 0 !important;
 }
+.options-tickets-container {
+    bottom: 0;
+    top: unset !important;
+    width: 100% !important;
+}
+.review_sesttings_card .review_rating {
+    right: 0;
+}
 .settings_user_card{
 
     cursor: pointer;
     position: relative;
     background-color: var(--secondary-colour-gray);
   
-    height: 200px;
+  
 }
 .movie-card-detailed:after{
     transition: 0.3s;
@@ -3616,6 +3644,7 @@ transform: translate(0px, -3px);
   
 }
 .user_Settings_cross {
+    background-color: #52ff00ad;
     z-index: 999;
     cursor: pointer;
     width: 50px;
@@ -5306,6 +5335,7 @@ h1 {
 
 
     .ticket-small {
+
         overflow: hidden;
       
         background-color: var(--secondary-colour-gray);

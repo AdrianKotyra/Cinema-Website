@@ -3,9 +3,9 @@
         <div class="wrapper-content footer-content">
             <div class="logo-container-footer">
                         <a class="logo-container row-custom footer-logo" href="index.php">
-                            <img src="./imgs/icons/city.svg" alt="">
+                            <img src="./imgs/icons/cinema.svg" alt="">
                             <div class="logo_name_footer">
-                                Limelight City
+                                Limelight Cinema
                             </div>
                         
 
