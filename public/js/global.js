@@ -311,6 +311,11 @@ function displayBookMovieContent(){
   
       
       } 
+      else if(trimmed_data=="no_time") {
+        GeneralModal("Not available times for this movie", "cross", "red_icons" )
+  
+      
+      } 
       else if(trimmed_data=="no_logged") { 
         GeneralModal("Please log in to book a ticket", "cross", "red_icons" )
       }

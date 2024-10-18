@@ -36,8 +36,8 @@
   
     if(isset($_GET["ticket_id"])) {
         global $connection;
-
-        $query = "SELECT * from tickets";
+        $ticket_get_id = $_GET["ticket_id"];
+        $query = "SELECT * from tickets where ticket_id = $ticket_get_id ";
         $select_genres_query = mysqli_query($connection, $query);
         while($row = mysqli_fetch_assoc($select_genres_query)) {
             $ticket_id = $row["ticket_id"];
