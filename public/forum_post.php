@@ -1,6 +1,7 @@
 <?php include "includes/header.php"?>
 <?php include "includes/nav.php"?>
-<?php forum_post_redirect()?>   
+
+
 <section class="news-section ">
     <?php get_selected_forum_post_header()?>
     <div class="selected-post-wrapper row-custom">
@@ -26,7 +27,7 @@
     </div>
     <?php include "includes/comment-form-forum-posts.php"?>
 
-    
+    <?php include("includes/forum_post-comments-pagination.php")?>
     
     
     

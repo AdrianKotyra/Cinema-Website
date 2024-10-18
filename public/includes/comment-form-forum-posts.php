@@ -1,5 +1,16 @@
 
 <?php include("add_comment_forum_posts.php")?>
+<?php  
+    $limit = 5;
+    $post_id = $_GET["id"];
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($page - 1) * $limit;
+    $sql_total = "SELECT COUNT(comment_id) FROM comments_forum where comment_post_id =  $post_id";
+    $total_result = $database-> query_array($sql_total);
+    $total_records = $total_result->fetch_array()[0];
+    $total_pages = ceil($total_records / $limit);
+        
+?>
 <div class="comment-container">
 		<div class="col-md-12" id="fbcomment">
 			<div class="header_comment">
@@ -52,7 +63,7 @@
 					<ul id="list_comment" class="col-md-12">
 					
 							<div class="result_comment col-md-11">
-								<?php get_comments_on_forum_posts('comment_literal')?>
+								<?php get_comments_on_forum_posts('comment_literal',$limit, $start )?>
 							
 								
 							</div>

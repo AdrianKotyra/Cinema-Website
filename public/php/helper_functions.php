@@ -1570,6 +1570,9 @@ function renderNext7Days() {
         
        
     }
+
+
+    
     function get_render_forum_posts($limit, $start){
         global $connection;
         global $database;
@@ -2387,12 +2390,12 @@ function renderNext7Days() {
       
     }
 
-    function get_comments_on_posts($comment_literal){
+    function get_comments_on_posts($comment_literal, $limit, $start){
         global $database;
         if (isset($_GET["post"])) {
             $post_id = $_GET["post"];
             
-            $query = $database-> query_array("SELECT * from comments_news where comment_post_id = $post_id order by comment_date DESC");
+            $query = $database-> query_array("SELECT * from comments_news where comment_post_id = $post_id order by comment_date DESC limit $limit offset $start");
             $rowcount=mysqli_num_rows($query);
             if($rowcount>0) {
                 while ($row = mysqli_fetch_array($query)) {
@@ -2420,12 +2423,12 @@ function renderNext7Days() {
            
         }
     }
-    function get_comments_on_forum_posts($comment_literal){
+    function get_comments_on_forum_posts($comment_literal, $limit, $start){
         global $database;
         if (isset($_GET["id"])) {
             $post_id = $_GET["id"];
             
-            $query = $database-> query_array("SELECT * from comments_forum where comment_post_id = $post_id order by comment_date DESC");
+            $query = $database-> query_array("SELECT * from comments_forum where comment_post_id = $post_id order by comment_date DESC limit $limit offset $start ");
             $rowcount=mysqli_num_rows($query);
             if($rowcount>0) {
                 while ($row = mysqli_fetch_array($query)) {

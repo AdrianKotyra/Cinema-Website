@@ -1,4 +1,16 @@
 <?php include("add_comment_news.php")?>
+<?php  
+    $limit = 5;
+    $post_id = $_GET["post"];
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $start = ($page - 1) * $limit;
+    $sql_total = "SELECT COUNT(comment_id) FROM comments_news where comment_post_id =  $post_id";
+    $total_result = $database-> query_array($sql_total);
+    $total_records = $total_result->fetch_array()[0];
+    $total_pages = ceil($total_records / $limit);
+        
+?>
+
 <div class="comment-container">
 		<div class="col-md-12" id="fbcomment">
 			<div class="header_comment">
@@ -48,9 +60,9 @@
 				
 				<div class="row">
 					<ul id="list_comment" class="col-md-12">
-					
+				
 							<div class="result_comment col-md-11">
-								<?php get_comments_on_posts('comment_literal_news')?>
+								<?php get_comments_on_posts('comment_literal_news',$limit, $start )?>
 							
 								
 							</div>

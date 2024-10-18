@@ -256,4 +256,28 @@ jQuery(function ($) {
 	});
 
 });
-
+function scrollSlidersBy(classSection, triggerButtonRight, triggerButtonLeft ){
+	const sliderContainer = document.querySelector(`.${classSection}`);
+	const triggerRight = document.querySelector(`.${triggerButtonRight}`);
+	const triggerLeft = document.querySelector(`.${triggerButtonLeft}`);
+	triggerRight.addEventListener("click", ()=>{
+	  const currentScreenWidth = window.innerWidth;
+	  console.log(currentScreenWidth)
+	  sliderContainer.scrollBy({
+		left: currentScreenWidth * 0.8,  // Scroll horizontally by the width of the screen
+		behavior: 'smooth'         // Optional: adds smooth scrolling
+	  });
+	})
+	triggerLeft.addEventListener("click", ()=>{
+	  const currentScreenWidth = window.innerWidth;
+   
+	  sliderContainer.scrollBy({
+		left: -currentScreenWidth * 0.8,  
+		behavior: 'smooth'         
+	  });
+	})
+  }
+  
+  scrollSlidersBy("trends-slider", "slider-arrow-trending-right", "slider-arrow-trending-left")
+  scrollSlidersBy("current-slider", "slider-arrow-currnet-right", "slider-arrow-currnet-left")
+  scrollSlidersBy("comming-slider", "slider-arrow-comming-right", "slider-arrow-comming-left")
