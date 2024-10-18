@@ -24,7 +24,7 @@
 
         alert_text("Ticket has been edited", "tickets.php");
 
-
+        edit_ticket_times();
 
     }
 
@@ -78,7 +78,8 @@
         <label for="post_date">Ticket Quantity</label>
         <input type="number" class="form-control" name="ticket_quantity" value=<?php echo "$ticket_quantity"?>>
     </div>
-
+    <h3> <b>Available times:</b></h3>
+    <?php display_times_table_options()?>
     
 
    

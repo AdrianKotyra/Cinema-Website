@@ -139,7 +139,37 @@
         echo  $notes_all;
 
     }
-
+    function renderTimesMovie() {
+        global $database;
+        global $connection;
+        
+        if(isset($_GET["movie"])) {
+            $movie_id = $_GET["movie"];
+            $query = "SELECT * from movies_time_tables where movie_id = $movie_id";
+            $select_times = $database->query_array($query);
+            
+            while($row = mysqli_fetch_assoc($select_times)) {
+                $time_id = $row["time_id"];
+    
+                $query2 = "SELECT * from time_tables where time_id = $time_id";
+                $select_times2 = $database->query_array($query2);
+                
+                while($row2 = mysqli_fetch_assoc($select_times2)) {
+                    $time = $row2["time"];
+                    $trimmed_time = substr($time, 0, 5);
+                    echo ' 
+                        <div class="select-booking screen-card-select col-custom" data-time="' . $trimmed_time . '">
+                            <div class="screen-card-info col-custom">
+                                <span class="time-screen">' . $trimmed_time . '</span>
+                            </div>
+                            <button class="button-custom book-screen">Select</button>
+                        </div>
+                        ';
+                }
+            }
+        }
+    }
+    
     function get_selected_movie_genres_array_by_movie_id($movie_id) {
             global $database;
             $genres = []; 

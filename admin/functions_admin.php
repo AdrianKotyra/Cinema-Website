@@ -680,6 +680,8 @@ function select_and_display_admins_messages() {
   
 
 }
+
+
 function select_and_display_tickets() {
     global $connection;
     $query = "SELECT * from movies";
@@ -699,7 +701,7 @@ function select_and_display_tickets() {
 
 
             echo"<tr>";
-            echo "<td>$movie_id</td>";
+            echo "<td>$ticket_id</td>";
             echo "<td>$ticket_movie_id</td>";
             echo "<td>$movie_title</td>";
           
@@ -798,6 +800,49 @@ function display_kinds_options() {
         }
 
       
+    }
+}
+function display_times_table_options() {
+    global $connection;
+
+    // Check if movie_id is set
+    if (isset($_GET["ticket_id"])) {
+        $ticket_id = intval($_GET["ticket_id"]);
+        $query = "SELECT * from tickets where ticket_id = $ticket_id";
+        $find_movie = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_array($find_movie)) {
+            $movie_id = $row["ticket_movie_id"];
+        }
+   
+        $stmt1 = $connection->prepare("SELECT time_id FROM movies_time_tables WHERE movie_id = ?");
+        $stmt1->bind_param("i", $movie_id);
+        $stmt1->execute();
+        $result1 = $stmt1->get_result();
+
+        $selected_times = [];
+        while ($row = $result1->fetch_assoc()) {
+            $selected_times[] = intval($row["time_id"]);
+        }
+
+        // Prepare and execute query to get all times
+        $stmt2 = $connection->prepare("SELECT time_id, time FROM time_tables");
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+
+        // Display checkboxes for all genres
+        while ($row = $result2->fetch_assoc()) {
+            $time_id = intval($row["time_id"]);
+            $time= htmlspecialchars($row["time"], ENT_QUOTES, 'UTF-8');
+            $checked = in_array($time_id, $selected_times) ? 'checked' : '';
+            echo '<div>
+                    <input  type="checkbox" name="movie_times[]" value="' . $time_id . '" ' . $checked . ' id="genre_' . $time_id . '">
+                    <label for="genre_' . $time_id . '">' . $time . '</label><br>
+                  </div>';
+        }
+
+        // Close statements
+        $stmt1->close();
+        $stmt2->close();
     }
 }
 function display_genres_options() {
@@ -956,6 +1001,41 @@ function edit_movies_kinds(){
             // Construct the SQL query
             $query3 = "INSERT INTO movies_kinds(movie_id, movie_kind_id) ";
             $query3 .= "VALUES('{$movie_id_to_be_edited}', '{$kinds_id}')";
+    
+            // Execute the query
+            $query_insert_movies_kinds = mysqli_query($connection, $query3);
+    
+            // Check if the query execution was successful
+            if (!$query_insert_movies_kinds) {
+                die("Query failed: " . mysqli_error($connection));
+            }
+        }
+    }
+}
+
+function edit_ticket_times(){
+    global $connection;
+    if (isset($_GET["ticket_id"])) {
+        $ticket_id = intval($_GET["ticket_id"]);
+        $query = "SELECT * from tickets where ticket_id = $ticket_id";
+        $find_movie = mysqli_query($connection, $query);
+        while($row = mysqli_fetch_array($find_movie)) {
+            $movie_id_to_be_edited = $row["ticket_movie_id"];
+        }
+    }
+
+    // DELETE ALL RELATIONS BEFORE INSERTING NEW
+    $query_delete_movies_times = "DELETE from movies_time_tables where movie_id = $movie_id_to_be_edited";
+    $query_delete_times = mysqli_query($connection, $query_delete_movies_times);
+    // INSERTING NEW RELATIONS MOVIE_GENRES
+
+    $selected_times_ids = $_POST['movie_times'] ?? []; // Using null coalescing operator to ensure $selected_genres_ids is an array
+
+    if (!empty($selected_times_ids)) {
+        foreach ($selected_times_ids as $times_id) {
+            // Construct the SQL query
+            $query3 = "INSERT INTO movies_time_tables(movie_id, time_id) ";
+            $query3 .= "VALUES('{$movie_id_to_be_edited}', '{$times_id}')";
     
             // Execute the query
             $query_insert_movies_kinds = mysqli_query($connection, $query3);

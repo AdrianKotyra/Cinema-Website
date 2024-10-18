@@ -33,7 +33,7 @@
        
         <div class="screen-box-grid">
       
-            <script> renderTimesBooking() </script>
+           <?php renderTimesMovie();?>
            
                
                 
