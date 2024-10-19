@@ -9,8 +9,19 @@ window.onload = function() {
 
 };
 
+function mobileDropDowns(){
+  const DropTriggers = document.querySelectorAll(".mobile-dropdown");
+  DropTriggers.forEach(dropTrigger=>{
+    dropTrigger.addEventListener("click", ()=>{
 
-
+      const dropDown = dropTrigger.querySelector(".drop-down-content");
+      !dropDown.classList.contains("active-dropdown-mobile") ? 
+      dropDown.classList.add("active-dropdown-mobile") :
+      dropDown.classList.remove("active-dropdown-mobile")
+    })
+  })
+}
+mobileDropDowns()
 function zoomReviewCard() {
   const reviewCards = document.querySelectorAll(".review-card");
   let activeCard = null; // Track the currently active card
@@ -2013,21 +2024,6 @@ displayDropdowns();
 
 
 
-
-
-function displayMobileNav(){
-  const cross = document.querySelector(".cross_mobile")
-  const hamb = document.querySelector(".hamburger");
-  const mobileNav = document.querySelector(".mobile-nav");
-  hamb.addEventListener("click", ()=>{
-    mobileNav.style.display="block"
-  })
-  cross.addEventListener("click", ()=>{
-    mobileNav.style.display="none"
-  })
-}
-
-displayMobileNav()
 
 
 // ------------INTERSECTION HEADERS------------

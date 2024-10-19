@@ -172,7 +172,7 @@ function menuReg(){
   const BodyMask = document.querySelector(".body_mask")
   const cross = document.querySelector(".reg-cross");
   const registrationTrigger = document.querySelectorAll(".sign_up_link");
-  const loginTriggerNav = document.querySelector(".login-link");
+  const loginTriggerNav = document.querySelectorAll(".login-link");
   const loginTrigger = document.querySelector(".login_button");
   const menuLayout = document.querySelector(".registration_container");
   const allMenus = document.querySelectorAll(".menu_form");
@@ -180,6 +180,8 @@ function menuReg(){
   const menu_2 = document.querySelector(".menu_form_2");
   const menu_3 = document.querySelector(".menu_form_3");
   const registerButton = document.querySelectorAll(".register_button");
+
+
 
  // display registration form
   function displayRegistartion(){
@@ -211,15 +213,19 @@ function menuReg(){
       
     }) 
   }
+  
     // display menu form
     function initiateMenuFormLogin(){
-      loginTriggerNav? loginTriggerNav.addEventListener("click", ()=>{
-        body.style.overflowY="hidden";
-        BodyMask.style.display="block";
-        menuLayout.style.display="block";
-        allMenus.forEach(menu=>menu.style.display="none")
-        menu_3.style.display="block";
-      }) : null
+
+      loginTriggerNav? loginTriggerNav.forEach(login=>{
+        login.addEventListener("click", ()=>{
+          body.style.overflowY="hidden";
+          BodyMask.style.display="block";
+          menuLayout.style.display="block";
+          allMenus.forEach(menu=>menu.style.display="none")
+          menu_3.style.display="block";
+        }) 
+      }): null
     }
   
 
@@ -255,4 +261,22 @@ function menuReg(){
 
 }
 menuReg()
+
+
+
+function displayMobileNav(){
+  const cross = document.querySelector(".cross_mobile")
+  const hamb = document.querySelector(".hamburger");
+  const mobileNav = document.querySelector(".mobile-nav");
+  hamb.addEventListener("click", ()=>{
+    mobileNav.style.display="block"
+    menuReg()
+  })
+  cross.addEventListener("click", ()=>{
+    mobileNav.style.display="none"
+  })
+}
+
+displayMobileNav()
+
   

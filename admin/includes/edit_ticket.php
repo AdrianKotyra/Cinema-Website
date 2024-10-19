@@ -51,7 +51,7 @@
             while($row = mysqli_fetch_assoc($select_user_query)) {
                 $movie_title = $row["title"];
                 $movie_img = $row["poster"];
-            
+                $movie_id = $row["id"];
             }
         }
 
@@ -66,7 +66,7 @@
 <form action="" method="post" enctype="multipart/form-data">
 
     <h3> <b>Movie: <?php echo $movie_title;?></b></h3>
-    <img class="edit_tickets_img"src=<?php echo '../public/'.$movie_img.'' ?> alt="">
+        <a target="_blank" href="../public/movie.php?movie=<?php echo $movie_id;?>"><img class="edit_tickets_img"src=<?php echo '../public/'.$movie_img.'' ?> alt=""></a> 
 
     <div class="form-group">
         <label for="post_title">Ticket Price</label>

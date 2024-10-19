@@ -926,7 +926,7 @@ function renderNext7Days() {
             }
         }
     }
-    
+ 
     
     
 

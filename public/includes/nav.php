@@ -106,36 +106,63 @@
     </nav>
 
     <div class="mobile-nav">
-            <img class="cross_mobile" src="./imgs/icons/cross.svg" alt="">
-            <div class="reg-container-mobile-links row-custom dropdown-link">
-                <button class="sign_up_mobile button-custom">Sign up</button>
-                <button class="login_mobile button-custom" >Log in</button>
-            </div>
-            <hr>
 
-            <a class="link " href="index.php">
+            <img class="cross_mobile" src="./imgs/icons/cross.svg" alt="">
+           
+            <hr>
+            <div class="user_settings_mobile">
+                <?php    
+                    $session->signed_in? 
+                    include("includes/mobile_components/logged_mobile_settings.php") : 
+                    include("includes/mobile_components/login_reg.php")
+                ?>
+            </div>
+            <hr>  
+            <a class="link mobile-link <?php if($current_page == 'index.php'){ echo 'active-nav-mobile'; } ?>" href="index.php">
                 <h3 class="mobile_header">Home</h3>
             </a>
             <hr>
+            <a class="link mobile-link <?php if($current_page == 'about.php'){ echo 'active-nav-mobile'; } ?>" href="about.php">
+                <h3 class="mobile_header">About</h3>
+            </a>
+            <hr>
+            <a class="link mobile-link <?php if($current_page == 'contact.php'){ echo 'active-nav-mobile'; } ?>" href="contact.php">
+                <h3 class="mobile_header">Contact</h3>
+            </a>
+            <hr>
+            <div class="mobile-dropdown  <?php if($current_page == 'reviews.php' || $current_page == 'users.php' || $current_page ==  'user.php'|| $current_page == 'posts.php' || $current_page ==  'post.php' || $current_page == 'posts.php' || $current_page ==  'forum_posts_all.php'  ){ echo 'active-nav-mobile'; } ?>">
+                <p>Features</p>
+                <div class="drop-down-content col-custom">
+                    <a class="link "href="posts.php">
+                        <span >News</span>
+                    </a>
+                 
+                    <a class="link"href="reviews.php">
+                        <span >Reviews</span>
+                    </a>
+                  
+                    <a class="link"href="reviews.php">
+                        <span >Members</span>
+                    </a>
+                   
+                    <a class="link"href="forum_posts_all.php">
+                        <span >Posts</span>
+                    </a>
+               
+                </div>
 
-            <a class="link"href="posts.php">
-                <h3 class="mobile_header">News</h3>
-            </a>
-            <hr>
-            <a class="link"href="reviews.php">
-                <h3 class="mobile_header">Reviews</h3>
-            </a>
-            <hr>
-            <a class="link"href="reviews.php">
-                <h3 class="mobile_header">Users</h3>
-            </a>
-            <hr>
-            <div class="mobile_link_container col-custom">
-                <h3 class="mobile_header">Categories</h3>
-                <?php get_genres_movies();?>
-                <?php get_kinds_movies();?>
             </div>
             <hr>
+            <div class="mobile-dropdown <?php if($current_page == 'category.php'){ echo 'active-nav-mobile'; } ?>">
+                <p>Movies</p>
+                <div class="drop-down-content col-custom">
+                    <?php get_genres_movies();?>
+                    <?php get_kinds_movies();?>
+                </div>
+            </div>
+            <hr>
+
+           
          
     </div>
 
