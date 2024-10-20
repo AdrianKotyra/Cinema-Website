@@ -67,3 +67,43 @@ function createConfirmWindowDeleteRow(){
 
 }
 createConfirmWindowDeleteRow()
+
+function SendDataAjax(sendData, file) {
+    return new Promise((resolve, reject) => {
+        $.post(file, {data: sendData}, function(data) {
+            resolve(data);
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            reject(errorThrown);
+        });
+    });
+  }
+     
+// -------------------------Search  AJAX--------------------------------
+function searchMoviesAdmin(){
+ 
+    const moviesContainer = document.querySelector(".movies-table");
+    const movieSearcheInput = document.querySelector(".search-movies-input-admin");
+  
+   
+    movieSearcheInput.addEventListener("keyup", function(){
+      const movieSearcheInputValue = movieSearcheInput.value;
+      if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
+        SendDataAjax(movieSearcheInputValue, "../public/ajax/GET_SEARCHED_MOVIE_ADMIN.php")
+        .then(data => {
+            moviesContainer.innerHTML=data;
+            createConfirmWindowDeleteRow()
+          
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+      }
+      else {
+        resultsSearched.innerHTML=""
+      }
+      
+    
+    })
+   
+  }
+searchMoviesAdmin()
