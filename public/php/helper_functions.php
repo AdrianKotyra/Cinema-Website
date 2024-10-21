@@ -1330,11 +1330,12 @@ function renderNext7Days() {
     function get_categories_movies_cards(){
         global $database;
         global $connection;
+        $age_limit = user_logged_age_movies_selection();
         if (isset($_GET["category"])) {
             $movie_cat = $_GET["category"];
             $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN 
             movies_genres ON movies.id = movies_genres.movie_id INNER JOIN genres ON 
-            movies_genres.genre_id = genres.id WHERE genres.name ='$movie_cat'");
+            movies_genres.genre_id = genres.id WHERE genres.name ='$movie_cat' and movies.age <= $age_limit");
           
             while ($row = mysqli_fetch_array($query)) {
                     $movie_title = $row["title"];

@@ -2,8 +2,13 @@
 <section class="trending-section section-trending ">
 
 <div class="wrapper-content">
-<h5 class="section-header text-mid header-intersect2">Trending</h5>
 
+<div class="row-custom header-section-container">
+    <h5 class="section-header text-mid header-intersect2">Trending</h5>
+    <a href="category.php?subcategory=trending">View All</a>
+        
+</div>  
+        
 <span class="header-trigger2 trigger"></span>
     <div class="movies-container expandable-container">
     <img class="arrow-section slider-arrow-trending slider-arrow-trending-right"src="./imgs/icons/right-arrow.svg" alt="">

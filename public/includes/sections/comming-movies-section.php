@@ -4,7 +4,13 @@
         <img class="arrow-section comming-arrow  slider-arrow-comming-left"src="./imgs/icons/left-arrow.svg" alt="">
         <div class="wrapper-content">
             
-        <h5 class="section-header text-mid header-intersect3">Comming soon</h5>
+       
+
+            <div class="row-custom header-section-container">
+                <h5 class="section-header text-mid header-intersect3">Comming soon</h5>
+                <a href="category.php?subcategory=comming_soon">View All</a>
+                    
+            </div>  
             <span class="header-trigger3 trigger"></span>
             <div class="movies-container expandable-container">
                 <div class="scrolling-wrapper comming-slider row-custom">

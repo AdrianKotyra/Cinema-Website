@@ -4,7 +4,11 @@
 <div class="hero-test-container">
 
 <div class="titler pt-5">
-<h5 class="section-header text-mid header-intersect9 header-popular">Top Rated</h5>
+<div class="row-custom header-section-container">
+    <h5 class="section-header text-mid header-intersect9 header-popular">Top Rated</h5>
+    <a href="category.php?subcategory=Top%20Rated">View All</a>
+</div>
+
 <span class="header-trigger9 trigger"></span> 
     <div class="details-slider-wrapper">
         <div class="details-slider">

@@ -21,9 +21,13 @@
         </div>
 
 
-        
-        
+        <div class="row-custom header-section-container">
         <h5 class="section-header text-mid header-intersect1">Most popular</h5>
+            <a href="category.php?subcategory=popular">View All</a>
+            
+        </div>  
+        
+      
    
         <span class="header-trigger1 trigger"></span>
         <div class="row-custom container-popular-details-trailer">

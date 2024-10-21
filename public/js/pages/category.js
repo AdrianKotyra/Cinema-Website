@@ -29,3 +29,73 @@ function showItems() {
 
 // Initial display of 20 items
 showItems();
+
+
+function searchMoviesCat(){
+ 
+  const moviesContainer = document.querySelector(".category-movies-container");
+  const movieSearcheInput = document.querySelector(".search-movie-cat");
+
+ 
+  movieSearcheInput&&movieSearcheInput.addEventListener("keyup", function(){
+    const movieSearcheInputValue = movieSearcheInput.value;
+  // Get the full URL's query string
+    const queryString = window.location.search;
+    // Parse the query string
+    const urlParams = new URLSearchParams(queryString);
+    const categoryParam = urlParams.get('category');
+    const data = [categoryParam, movieSearcheInputValue ]
+  
+
+    SendDataAjax(data, "../public/ajax/GET_SEARCHED_MOVIES_CATEGORY.php")
+    .then(data => {
+        moviesContainer.innerHTML=data;
+        moreinfoCard()
+      
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+   
+    
+  
+  })
+ 
+}
+searchMoviesCat()
+
+
+function searchMoviesSUBCAT(){
+ 
+  const moviesContainer = document.querySelector(".category-movies-container");
+  const movieSearcheInput = document.querySelector(".search-movie-subcat");
+
+ 
+  movieSearcheInput&&movieSearcheInput.addEventListener("keyup", function(){
+    const movieSearcheInputValue = movieSearcheInput.value;
+  // Get the full URL's query string
+    const queryString = window.location.search;
+    // Parse the query string
+    const urlParams = new URLSearchParams(queryString);
+    const subcategoryParam = urlParams.get('subcategory');
+    const data = [subcategoryParam, movieSearcheInputValue ]
+  
+
+    SendDataAjax(data, "../public/ajax/GET_SEARCHED_MOVIES_SUBCATEGORY.php")
+    .then(data => {
+        moviesContainer.innerHTML=data;
+        moreinfoCard()
+      
+      
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+   
+    
+  
+  })
+ 
+}
+searchMoviesSUBCAT()
+

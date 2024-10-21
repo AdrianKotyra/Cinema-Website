@@ -3,7 +3,13 @@
         <img class="arrow-section current-movie-arrow  slider-arrow-currnet-right"src="./imgs/icons/right-arrow.svg" alt="">
         <img class="arrow-section current-movie-arrow  slider-arrow-currnet-left"src="./imgs/icons/left-arrow.svg" alt="">
         <div class="wrapper-content">
-        <h5 class="section-header text-mid header-intersect4">Currently playing</h5>
+
+            <div class="row-custom header-section-container">
+                <h5 class="section-header text-mid header-intersect4">Currently playing</h5>
+                <a href="category.php?subcategory=current">View All</a>
+                        
+            </div> 
+     
         <span class="header-trigger4 trigger"></span>
             <div class="movies-container expandable-container">
           
