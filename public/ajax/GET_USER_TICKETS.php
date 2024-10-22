@@ -17,6 +17,7 @@ if($user_id_logged) {
     while($row = mysqli_fetch_array($query)) {
         $booking_id = $row["id"];
         $date_booking = $row["date_booking"];
+        $date_booking_trimmed = substr(  $date_booking, 0 ,10);
         $time_show = $row["time_show"];
         $ticket_quantity = $row["ticket_quantity"];
         $ticket_id = $row["ticket_id"];
@@ -24,6 +25,7 @@ if($user_id_logged) {
         $total_payment = $row["total_payment"];
         $ticket_price = $row["ticket_price"];
         $serial_number = $row["serial_number"];
+
         $query2 = $database-> query_array("SELECT * from tickets where ticket_id = $ticket_id");
 
 
@@ -71,7 +73,7 @@ if($user_id_logged) {
                         </tr>
                         <tr>
                           
-                            <td class="ticket_data">'.$date_booking.'</td>
+                            <td class="ticket_data">'.$date_booking_trimmed.'</td>
                             <td class="ticket_data">'. $time_show.'</td>
                         </tr>
                     </table>

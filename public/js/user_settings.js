@@ -503,17 +503,32 @@ function settingsConfirmationModal($element, $text){
         
         const bookingId = button.getAttribute("data-booking-id");
     
-        SendDataAjax(bookingId, "ajax/GET_PDF_TICKET.php")
-          .then(data => {
-         
-            
-  
-          
-          })
-          .catch(error => {
-              console.error('Error:', error);
-          })
+
+          $.ajax({
+            url: 'ajax/GET_PDF_TICKET.php', // Path to your PHP file
+            method: 'POST',
+            data: { data: bookingId },
+            xhrFields: {
+                responseType: 'blob' // Important for handling binary data
+            },
+            success: function(response) {
+                // Create a link to download the PDF
+                var blob = new Blob([response], { type: 'application/pdf' });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = 'ticket_' + bookingId + '.pdf';
+                link.click();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Error generating PDF:', textStatus, errorThrown);
+            }
+        });
+
+
+
       })
     })
     
   }
+
+  

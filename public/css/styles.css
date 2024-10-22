@@ -2419,8 +2419,8 @@ nav a{
     background-color: var(--secondary-colour-gray-light);
 }
 .welcome-bg{
-    top: 10%;;
-    height: 620px;
+    top: 30%;;
+    height: 420px;
     left: 0;
     position: absolute;
     width: 50%;
@@ -5562,7 +5562,8 @@ line-height: 1 !important;
         font-size: var(--text-mid-size)
     }
     .ticket-small .serial {
-        
+        text-align: center;
+        letter-spacing: 0.7rem;
     }
     .ticket-small .serial table {
         border-collapse: collapse;
@@ -5578,3 +5579,16 @@ line-height: 1 !important;
         height: 100px;
     }
     
+
+    .ticket-small-pdf {
+        color: white;
+        text-align: center;
+    }
+    .ticket-small-pdf .info {
+        display: table;
+        margin: auto;
+    }
+    .ticket-small-pdf .serial-table {
+        text-align: center; display: table;
+        margin: auto;
+    }

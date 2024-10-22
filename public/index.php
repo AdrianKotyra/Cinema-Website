@@ -18,7 +18,8 @@
   <?php include("./includes/sections/blog-section.php")  ?>
   <?php include("./includes/sections/forum-section.php")  ?>
   <?php include("./includes/sections/questions-section.php")  ?>
-  
+
+
    
   <?php include("includes/footer.php")?>
   <script src="js/pages/index.js"></script>
