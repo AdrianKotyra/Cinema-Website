@@ -11,6 +11,7 @@
         
     ?>
     <section class="wrapper-content news-section ">
+        
         <h5 class="section-header text-mid header-subpage">Reviews</h5>
         <div class="searcher-container-reviews">
             <?php include "includes/search-reviews.php"?>

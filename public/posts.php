@@ -12,6 +12,7 @@
         
     ?>
     <section class="wrapper-content news-section ">
+        
         <h5 class="section-header text-mid header-subpage">All News</h5>
         <!-- <select class="sort_by">
         

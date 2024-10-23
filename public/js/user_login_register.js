@@ -262,7 +262,16 @@ function menuReg(){
 }
 menuReg()
 
-
+function mobileNavSettingsHamburger(){
+  const mobileLinksUser = document.querySelector(".mobile-settings-links-container");
+  const hambMobile = document.querySelector(".hamburger-menu-settings-mobile");
+  hambMobile.addEventListener("click", ()=>{
+    !mobileLinksUser.classList.contains("active-mobile-links")?
+    mobileLinksUser.classList.add("active-mobile-links") :
+    mobileLinksUser.classList.remove("active-mobile-links") 
+   
+  })
+}
 
 function displayMobileNav(){
   const cross = document.querySelector(".cross_mobile")
@@ -271,6 +280,12 @@ function displayMobileNav(){
   hamb.addEventListener("click", ()=>{
     mobileNav.style.display="block"
     menuReg()
+    LogOutUser(".user_logout-link");
+  
+    displayUserSettings()
+ 
+    userControllerSettings()
+    mobileNavSettingsHamburger()
   })
   cross.addEventListener("click", ()=>{
     mobileNav.style.display="none"
@@ -278,5 +293,8 @@ function displayMobileNav(){
 }
 
 displayMobileNav()
+
+
+
 
   

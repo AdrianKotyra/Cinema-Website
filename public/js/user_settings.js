@@ -16,10 +16,10 @@ function userSettingsFunctionality() {
   
   
   function displayUserSettings(){
-    const TriggerSettingsUser = document.querySelector(".user_settings-link");
-  
+    const TriggerSettingsUser = document.querySelectorAll(".user_settings-link");
+ 
    
-    TriggerSettingsUser? TriggerSettingsUser.addEventListener("click", ()=>{
+    TriggerSettingsUser? TriggerSettingsUser.forEach(trigger=>{trigger.addEventListener("click", ()=>{
   
    
       setTimeout(() => {
@@ -28,8 +28,8 @@ function userSettingsFunctionality() {
         
       }, 200);
      
-    }) : null
-   
+    })}) : null
+    
   }
   
   function userSettingsModalactiveLinks(){
@@ -197,44 +197,56 @@ function userSettingsFunctionality() {
   });
   }
   
-  function userControllerSettings(){
-    const triggerSettingsDashboard = document.querySelector(".user_settings-link");
-    triggerSettingsDashboard? triggerSettingsDashboard.addEventListener("click", ()=>{
-    
-    const userDetailsTrigger = document.querySelector(".user_details_link");
-    const userChangeDetailsTrigger = document.querySelector(".user_change_details_link");
-    const userPostsTrigger = document.querySelector(".user_posts_link");
-    const userReviewsTrigger = document.querySelector(".user_reviews_link");
-    const userTicketsTrigger = document.querySelector(".user_tickets_link");
-    userTicketsTrigger.addEventListener("click", ()=>{
-      get_user_tickets_ajax()
-     
-    
-    })
-    userChangeDetailsTrigger.addEventListener("click", ()=>{
-      get_user_form_settings_ajax()
-     
-    
-    })
-    userDetailsTrigger.addEventListener("click", ()=>{
-      get_user_details_settings_ajax()
-    
-    })
-    userPostsTrigger.addEventListener("click", ()=>{
-      get_user_posts_settings_ajax()
-      
-    })
-    
-    userReviewsTrigger.addEventListener("click", ()=>{
-      get_user_reviews_settings_ajax()
-      
-    })
-    
+  function querySelectAll(selector) {
+    return document.querySelectorAll(selector);
+  }
   
+  function userControllerSettings() {
+    const triggerSettingsDashboard = querySelectAll(".user_settings-link");
   
-    }) : null
+    if (triggerSettingsDashboard) {
+      triggerSettingsDashboard.forEach(trigger => {
+        trigger.addEventListener("click", () => {
   
+          const userDetailsTrigger = querySelectAll(".user_details_link");
+          const userChangeDetailsTrigger = querySelectAll(".user_change_details_link");
+          const userPostsTrigger = querySelectAll(".user_posts_link");
+          const userReviewsTrigger = querySelectAll(".user_reviews_link");
+          const userTicketsTrigger = querySelectAll(".user_tickets_link");
   
+          userTicketsTrigger.forEach(trigger => {
+            trigger.addEventListener("click", () => {
+              get_user_tickets_ajax();
+            });
+          });
+  
+          userChangeDetailsTrigger.forEach(trigger => {
+            trigger.addEventListener("click", () => {
+              get_user_form_settings_ajax();
+            });
+          });
+  
+          userDetailsTrigger.forEach(trigger => {
+            trigger.addEventListener("click", () => {
+              get_user_details_settings_ajax();
+            });
+          });
+  
+          userPostsTrigger.forEach(trigger => {
+            trigger.addEventListener("click", () => {
+              get_user_posts_settings_ajax();
+            });
+          });
+  
+          userReviewsTrigger.forEach(trigger => {
+            trigger.addEventListener("click", () => {
+              get_user_reviews_settings_ajax();
+            });
+          });
+  
+        });
+      });
+    }
   }
   
   
@@ -243,8 +255,8 @@ function userSettingsFunctionality() {
   
   
   function LogOutUser(buttonSelector){
-    button = document.querySelector(buttonSelector)
-    button? button.addEventListener("click", ()=>{
+    button = document.querySelectorAll(buttonSelector)
+    button? button.forEach(button=>{button.addEventListener("click", ()=>{
   
       $(document).ready(function(){
      
@@ -263,8 +275,8 @@ function userSettingsFunctionality() {
         });
       
     });
-    }): null;
-    
+    })
+  }): null;
   }
   
   // INITIALISE LOG OUT TRIGGER ON PAGE LOAD

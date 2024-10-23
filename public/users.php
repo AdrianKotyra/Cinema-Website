@@ -12,6 +12,7 @@
         
     ?> 
     <section class="wrapper-content news-section ">
+        
         <h5 class="section-header text-mid header-subpage">Users</h5>
         <?php include("includes/search-users.php")?>
 
