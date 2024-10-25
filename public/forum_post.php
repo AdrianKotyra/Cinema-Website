@@ -28,9 +28,23 @@
     <?php include "includes/comment-form-forum-posts.php"?>
 
     <?php include("includes/forum_post-comments-pagination.php")?>
-    
-    
-    
+
+    <div class="mobile-more-posts-container">
+        <?php include "includes/search-forum-posts.php"?>
+
+        <div class="widget-posts-mobile row-custom">
+            
+            <?php recent_forum_posts('recent_forum_posts_literal', 4, 0)?>
+            
+        </div>
+        <a href="forum_posts_all.php">
+            <button class="button-custom">
+                See more
+            </button>
+        </a>
+    </div>
+
+   
     
     
     

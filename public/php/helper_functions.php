@@ -1885,7 +1885,7 @@ function renderNext7Days() {
         }}
        
     }
-    function selected_post_literal($post_title, $post_id,$post_text, $post_img, $post_header, $post_date){
+    function selected_post_literal($post_title, $post_id,$post_text, $post_img, $post_header, $post_date_trimmed){
         $recent_post = '
 
         <div class="news-recent-post posts-main-post col-custom col-100">
@@ -1895,7 +1895,7 @@ function renderNext7Days() {
                 <h3 class="post-header">'.$post_header.'</h3>
                 <div class="post-details-container row-custom">
                     <div class="post-author-date col-custom ">
-                        <span>'.$post_date.'</span>
+                        <span>'.$post_date_trimmed.'</span>
                     
                     </div>
                   
@@ -2222,12 +2222,12 @@ function renderNext7Days() {
                 </a>';
         return $recent_post;
     }
-    function recent_posts_all_literal_main_page($post_title,  $post_id, $post_text, $post_img, $post_header, $post_date){
+    function recent_posts_all_literal_main_page($post_title,  $post_id, $post_text, $post_img, $post_header, $post_date_trimmed){
         $recent_post = '
                <a class="post row-custom" href="post.php?post='.$post_id.'">
                          <img class="posts_main_img"src="./'.$post_img.' " alt="">
                         <div class="post-text main-posts">
-                            <p class="post-date">'.$post_date.'</p>
+                            <p class="post-date">'.$post_date_trimmed.'</p>
                             <p class="post-header">'.$post_header.'</p>
                           
                         </div>
@@ -2264,12 +2264,13 @@ function renderNext7Days() {
             $post_img = $row["post_img"];
             $post_header = $row["post_header"];
             $post_date = $row["post_date"];
+            $post_date_trimmed = substr( $post_date, 0, 10);
             $post_id = $row["post_id"];
             $query2 =  $database-> query_array("SELECT * FROM comments_news where comment_post_id =  $post_id");
             $number_comments_post=mysqli_num_rows($query2);
             
             
-            echo  $literal_post($post_title, $post_id, $post_text, $post_img,  $post_header, $post_date, $number_comments_post);
+            echo  $literal_post($post_title, $post_id, $post_text, $post_img,  $post_header, $post_date_trimmed, $number_comments_post);
            
            
         }
@@ -2377,7 +2378,7 @@ function renderNext7Days() {
             while ($row = mysqli_fetch_array($query)) {
                 $post_title = $row["post_title"];
               
-                echo '<h5 class="section-header text-mid post-header-page">'.$post_title.'</h5>';
+                echo '<h5 class="section-header text-mid header-subpage post-header-page">'.$post_title.'</h5>';
             }
            
         }
@@ -2393,7 +2394,7 @@ function renderNext7Days() {
             while ($row = mysqli_fetch_array($query)) {
                 $post_title = $row["post_title"];
               
-                echo '<h5 class="section-header text-mid post-header-page">'.$post_title.'</h5>';
+                echo '<h5 class="section-header text-mid header-subpage post-header-page">'.$post_title.'</h5>';
             }
            
         }
@@ -2413,8 +2414,9 @@ function renderNext7Days() {
                 $post_img = $row["post_img"];
                 $post_header = $row["post_header"];
                 $post_date = $row["post_date"];
+                $post_date_trimmed = substr( $post_date, 0, 10);
                 $post_id = $row["post_id"];
-                echo  selected_post_literal($post_title, $post_id, $post_text, $post_img, $post_header, $post_date);
+                echo  selected_post_literal($post_title, $post_id, $post_text, $post_img, $post_header, $post_date_trimmed);
             }
            
         }

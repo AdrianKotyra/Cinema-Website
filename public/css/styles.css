@@ -437,7 +437,7 @@
 }
 .widget-posts button{
     display: block;
-    margin: 5% 0;
+  
     
 }
 
@@ -964,8 +964,8 @@ nav a{
 }
 .navigation-container {
    border-bottom: 1px solid rgba(255, 255, 255, 0.238);
-    background-color:var(--secondary-colour-gray-light);
-    backdrop-filter: blur(10px);
+    background-color:var(--secondary-colour-gray);
+   
     height: 54px;
     margin: auto;
     padding: 0 3%;
@@ -2169,8 +2169,9 @@ nav a{
     display: block;
 }
 .post {
+    margin: 4% 0;
     height: 100px;
-    padding-left: 5%;
+  
     
     
 }
@@ -2179,6 +2180,7 @@ nav a{
    
 }
 .selected-post-wrapper {
+    padding-bottom: 5%;
     margin: 5%;
     background-color: var(--secondary-colour-gray)
 }
@@ -2768,15 +2770,15 @@ nav a{
 }
 .forum_post_text {
     margin-left: 16px;
-    width: 200px;
+    
 }
 .forum_posts_main_img {
-   
-    width: 100px;
+   min-width: 140px;
+    width: 140px;
     object-fit: cover;
 }
 .forum_post {
-    margin: 6px 0;
+    margin: 4% 0;
     height: 120px;
     position: relative;
     justify-content: left;
@@ -3429,7 +3431,7 @@ nav a{
 }
 .search-post-container {
     padding-top: 20px;
-    margin-left: 5%;
+   
 }
 .news-recent-post {
   
@@ -3566,7 +3568,7 @@ footer {
     border: 1px solid var(--secondary-colour-gray);
     bottom: -100%;
     width: 200px;
-    height: 130px;
+  
     position: absolute;
     display: none;
     background-color: white;
@@ -5039,8 +5041,35 @@ h1 {
     padding: 0 !important;
 line-height: 1 !important;
 }
+.widget-posts-mobile {
+    display: grid;
+
+  
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.mobile-more-posts-container {
+    display: none;
+    padding: 5%;
+}
+.widget-posts-mobile .forum_post, .widget-posts-mobile .post{
+    border: 2px solid white;
+    height: 150px;
+    background-color: var(--secondary-colour-gray);
+}
 /*<==medium  */
 @media (max-width: 992px) {
+    .post-text {
+        margin: 5%;
+    }
+    .mobile-more-posts-container {
+        display: block;
+    }
+    .widget-posts {
+        display: none;
+    }
+    .selected-post-container {
+        width: 100%;
+    }
     .reviews_all {
         justify-content: left;
     }
@@ -5072,10 +5101,7 @@ line-height: 1 !important;
     .recent-post, .old_posts{
         width: 500px;
     }
-    .post {
-        height: 200px;
-        padding: 14px 14px 14px 0;
-    }
+   
 
   
 }

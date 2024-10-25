@@ -28,9 +28,19 @@
 
         <?php include("includes/news_post-comments-pagination.php")?>
       
-       
-       
-      
+        <div class="mobile-more-posts-container">
+            <?php include "includes/search-posts.php"?>
+            <div class="widget-posts-mobile row-custom">
+                
+                <?php recent_posts('recent_posts_all_literal_main_page', 5, 0)?>
+                
+            </div>
+            <a href="posts.php">
+                <button class="button-custom">
+                    See more
+                </button>
+            </a>
+        </div>
        
        
     </section>
