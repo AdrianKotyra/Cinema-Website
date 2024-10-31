@@ -25,7 +25,7 @@ if($user_id_logged) {
 
        
    
-        echo '<div class="review-card review_sesttings_card row-custom vetical-scroll-grab-class settings_user_card">
+        echo '<div class="review-card review-card-mobile review_sesttings_card row-custom vetical-scroll-grab-class settings_user_card">
                 <p class="review_rating">'.$review_rating.'/10</p>
                 <div class="settings_card_options">
                    <p class="option_card_settings"> <a  target="_blank" href="movie.php?movie='.$movie_review_id.'"> View </a> </p>

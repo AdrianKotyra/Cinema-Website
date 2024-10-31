@@ -315,8 +315,27 @@
     padding: 0 42px;
     cursor: pointer;
 }
+.not_trigger_container-mobile {
+    margin: 10px 0;
+    cursor: pointer;
+}
 .notification_container {
     margin-right: 20px !important;
+}
+.user-notification-dropdown-mobile {
+    display: none;
+    flex-direction: column;
+}
+.user-notification-dropdown-mobile  .nots-label-container {
+    padding: 0 !important;
+}
+.nots-mobile-active {
+    display: flex;
+}
+
+.notification_container_mobile {
+    margin-right: 0 !important;
+  
 }
 .user-avatar-dropdown {
     border: 2px solid white;
@@ -357,6 +376,7 @@
 }
 .login-trigger {
     padding: 0 42px;
+    cursor: pointer;
 }
 .login-trigger img{
     cursor: pointer;
@@ -673,7 +693,7 @@ body {
 }
 .show-more-titles-button {
     display: block;
-    margin: 40px auto;
+    margin: 40px 0 ;
 }
 .inactive-header:after {    
     background: none repeat scroll 0 0 transparent;
@@ -1261,6 +1281,7 @@ nav a{
    
 }
 .old_posts {
+    margin-left: 20px;
     z-index: 2;
     justify-content: space-between;
 }
@@ -2175,6 +2196,9 @@ nav a{
     
     
 }
+.post-main {
+    margin: 0 0 4% 0 !important;
+}
 .post-text {
     margin-left: 5%;
    
@@ -2893,7 +2917,7 @@ nav a{
     top: 30%;
     left: 50%;
     transform: translate(-50%, -30%);
-    z-index: 999999;
+    z-index: 999999999999999;
     width: 500px;
     padding: 20px;
     border-radius: 12px;
@@ -3399,6 +3423,7 @@ nav a{
     padding: 10px;
 }
 .nots_icons {
+    cursor: pointer;
     right: 0;
     position: absolute;
     filter: var(--main-color-filter);
@@ -3412,6 +3437,9 @@ nav a{
 }
 .notification_card:hover {
     filter: brightness(1.3);
+}
+.mobile-user-container-settings-user .notification_card a {
+    color: var(--primary-colour) !important;
 }
 .notification_card {
     background-color: #403d3d;
@@ -3430,7 +3458,7 @@ nav a{
     
 }
 .search-post-container {
-    padding-top: 20px;
+    padding: 20px 0;
    
 }
 .news-recent-post {
@@ -4975,6 +5003,7 @@ h1 {
     margin: auto;
 }
 .quiz_image {
+    width: 100%;
     object-fit: contain;
     display: block;
     margin: auto;
@@ -4982,6 +5011,7 @@ h1 {
     height: 300px;
 }
 .quiz-container {
+    z-index: 999999999999999999999999999999999;
     box-sizing: border-box;
     width: 100%;
     max-width: 800px;
@@ -4993,6 +5023,7 @@ h1 {
   }
 
   .choices {
+    flex-wrap: wrap;
     justify-content: center;
     display: flex;
   }
@@ -5006,6 +5037,7 @@ h1 {
  
   .mobile-user-container-settings-user .username_drop{
     text-align: center;
+    margin-top: 10px;
   }
   #question-text{
     margin-top: 20px !important;
@@ -5044,7 +5076,7 @@ line-height: 1 !important;
 .widget-posts-mobile {
     display: grid;
 
-  
+    gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 .mobile-more-posts-container {
@@ -5101,6 +5133,9 @@ line-height: 1 !important;
     .recent-post, .old_posts{
         width: 500px;
     }
+    .old_posts {
+        margin: 5% 0 0 0;
+    }
    
 
   
@@ -5109,6 +5144,15 @@ line-height: 1 !important;
 
 
 @media (max-width: 800px) {
+    .details-slider .detail-item .detail-content {
+        padding: 0;
+    }
+    .detail-content h3, .detail-content p, .detail-content div {
+        text-align: center;
+        margin: auto;
+        display: block;
+     
+    }
     .quiz-section {
        
         padding:  10% 5%;
@@ -5226,6 +5270,16 @@ line-height: 1 !important;
        
 }
 @media (max-width: 767px) {
+    .review-card-mobile {
+        height: auto !important;
+    }
+    .review-card-mobile img {
+        height: 80px !important;
+    }
+    .user_Settings_cross {
+        width: 25px;
+        height: 25px;
+    }
     .user_dashboard_box {
         display: none;
     }
@@ -5234,6 +5288,7 @@ line-height: 1 !important;
     }
     .mobile-dashboard-user-settings {
         display: block;
+        padding: 5%;
     }
     .registration_container {
         top: 0;
@@ -5356,6 +5411,11 @@ line-height: 1 !important;
     }
     .movie-details {
         margin: auto;
+    }
+    .quiz-container {
+        overflow-y: scroll;
+        height: 100%;
+        padding: 0;
     }
     .movie-desc {
         background-color: var(--secondary-colour-gray);

@@ -130,6 +130,7 @@
                 <h3 class="mobile_header">Contact</h3>
             </a>
             <hr>
+            <?php render_quiz_nav_mobile()?>
             <div class="mobile-dropdown  <?php if($current_page == 'reviews.php' || $current_page == 'users.php' || $current_page ==  'user.php'|| $current_page == 'posts.php' || $current_page ==  'post.php' || $current_page == 'posts.php' || $current_page ==  'forum_posts_all.php'  ){ echo 'active-nav-mobile'; } ?>">
                 <p>Features</p>
                 <div class="drop-down-content col-custom">

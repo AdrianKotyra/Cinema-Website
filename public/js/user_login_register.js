@@ -262,16 +262,61 @@ function menuReg(){
 }
 menuReg()
 
+// DELETE NOTS FROM USER NAV
+function deleteNotsNavMobile(){
+ 
+
+  const container = document.querySelector(".nots_container_list_mobile");
+  const deleteButton = document.querySelector(".delete_nots_trigger_mobile");
+  const notCounter = document.querySelector(".not_count_span_mobile");
+  deleteButton?
+  deleteButton.addEventListener("click", ()=>{
+  
+      const postId = "";
+      SendDataAjax(postId, "ajax/DELETE_AND_RERENDER_NOTS.php")
+        .then(data => {
+          container.innerHTML=data;
+          container.style.display="none"
+          notCounter.innerHTML="0"
+      
+        
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        })
+  
+  }) : null
+}
+  
+function userNotifications(){
+  const triggerNots = document.querySelector(".not_trigger_container-mobile");
+  const notsDropdown = document.querySelector(".user-notification-dropdown-mobile");
+  triggerNots.addEventListener("click", ()=>{
+    !notsDropdown.classList.contains("nots-mobile-active")?
+    notsDropdown.classList.add("nots-mobile-active") :
+    notsDropdown.classList.remove("nots-mobile-active") 
+  })
+  deleteNotsNavMobile()
+}
 function mobileNavSettingsHamburger(){
   const mobileLinksUser = document.querySelector(".mobile-settings-links-container");
   const hambMobile = document.querySelector(".hamburger-menu-settings-mobile");
+  const allNobileLinks = document.querySelectorAll(".user_settings_link");
   hambMobile.addEventListener("click", ()=>{
+  
     !mobileLinksUser.classList.contains("active-mobile-links")?
     mobileLinksUser.classList.add("active-mobile-links") :
     mobileLinksUser.classList.remove("active-mobile-links") 
    
   })
+  allNobileLinks.forEach(link=>{
+    link.addEventListener("click", ()=>{
+      mobileLinksUser.classList.remove("active-mobile-links") 
+    })
+  })
+  
 }
+
 
 function displayMobileNav(){
   const cross = document.querySelector(".cross_mobile")
@@ -286,13 +331,31 @@ function displayMobileNav(){
  
     userControllerSettings()
     mobileNavSettingsHamburger()
+    userNotifications()
+    
   })
   cross.addEventListener("click", ()=>{
     mobileNav.style.display="none"
   })
 }
 
-displayMobileNav()
+function activatedMobieMenuResizing() {
+   
+  if (window.innerWidth <= 1250) {
+
+ 
+    displayMobileNav();
+
+
+  }
+ 
+}
+activatedMobieMenuResizing()
+
+window.addEventListener("resize", () => {
+  displayMobileNav();
+});
+
 
 
 

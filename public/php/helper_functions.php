@@ -22,6 +22,16 @@
             </div>';
         }
     }
+    function render_quiz_nav_mobile(){
+        global $session;
+        global $user;
+        if($session->signed_in==true && $user->user_age <=17) {
+            echo ' <a class="link mobile-link quiz_link">
+                <h3 class="mobile_header">Quiz</h3>
+            </a>
+            <hr>';
+        }
+    }
     function redirect($location) {
 
         header("Location: {$location}");
@@ -1385,8 +1395,8 @@ function renderNext7Days() {
                     $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
 
                     echo ' 
-                    <div class="card-layout-trending-card">
-                   <div class="movie-card movie-card-trending movie-card-expandable" data-id="'.$movie_id.'">
+                    <div class="card-layout-more-card">
+                   <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
                         
                         <img loading="lazy" class="card-movie-img" src="./'.$movie_poster.'" alt="">
                             <div class="text-container card-info">
@@ -2224,7 +2234,7 @@ function renderNext7Days() {
     }
     function recent_posts_all_literal_main_page($post_title,  $post_id, $post_text, $post_img, $post_header, $post_date_trimmed){
         $recent_post = '
-               <a class="post row-custom" href="post.php?post='.$post_id.'">
+               <a class="post post-main row-custom" href="post.php?post='.$post_id.'">
                          <img class="posts_main_img"src="./'.$post_img.' " alt="">
                         <div class="post-text main-posts">
                             <p class="post-date">'.$post_date_trimmed.'</p>
