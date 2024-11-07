@@ -22,23 +22,22 @@
         <div class="contact-info">
           <h3 class="title">Let's get in touch</h3>
           <p class="text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-            dolorum adipisci recusandae praesentium dicta!
+          Have a question or comment? Fill out the form below, and we’ll respond promptly. We look forward to connecting with you and helping in any way we can!
           </p>
 
           <div class="info">
             <div class="information">
               <i class="fas fa-map-marker-alt"></i> &nbsp &nbsp
 
-              <p>92 Cherry Drive Uniondale, NY 11553</p>
+              <p>24 Milton Rd E, Edinburgh EH15 2PQ</p>
             </div>
             <div class="information">
               <i class="fas fa-envelope"></i> &nbsp &nbsp
-              <p>lorem@ipsum.com</p>
+              <p>courseapps@edinburghcollege.ac.uk</p>
             </div>
             <div class="information">
               <i class="fas fa-phone"></i>&nbsp&nbsp
-              <p>123-456-789</p>
+              <p>0131 297 8300 </p>
             </div>
           </div>
 
@@ -91,7 +90,7 @@
              
            
             </div>
-            <input value="Send" class="btn send-contact-form-btn" />
+            <input value="Send" class="btnform send-contact-form-btn" />
           </form>
          
 

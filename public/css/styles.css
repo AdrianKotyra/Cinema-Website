@@ -57,6 +57,7 @@
     padding-right: 5%;
 }
 .header-section-container a {
+    user-select: none;
  
     z-index: 9;
     font-size: var(--text-small-size);
@@ -76,6 +77,8 @@
     visibility: visible;
 }
 .review_rating {
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
     height: 54px;
     width: 60px;
     position: absolute;
@@ -84,6 +87,10 @@
     padding: 15px;
     background-color: var(--primary-colour);
     color: white;
+}
+.active-review-card .review_rating {
+    border-left: 2px solid var(--primary-colour);
+    border-bottom: 2px solid var(--primary-colour);
 }
 .screen-up-review {
     z-index: 2;
@@ -505,6 +512,15 @@
     height: 800px;
     width: 300px;
 }
+.card-cross-expendable {
+    filter: var(--white-filter);
+    width: 30px !important;
+    height: 30px!important;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
 .movie-searched-title {
     color: white;
     padding-left: 15px !important;
@@ -625,6 +641,12 @@ nav .link {
     height: 20px;
     width: 20px;
 }
+.main-posts .post-header {
+    line-height: 1.2rem;
+    color: white;
+    font-size: var(--text-very-small-size)
+
+}
 .list_cinemas {
     top: 12%;
     gap: 12px;
@@ -653,7 +675,61 @@ nav .link {
 .col-50 {
     width: 50%;
 }  
-
+.list-post-card:hover{
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.card-layout-trending-card:hover .movie-card{
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.card-layout-more-card:hover .movie-card-more {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.selected-card-active:hover {
+    filter: contrast(1) brightness(1) !important;
+    
+}
+.user_card:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.forum-card-post:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.forum_post:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+    background-color: var(--secondary-colour-gray-light);
+}
+.post-main:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+    background-color: var(--secondary-colour-gray-light);
+}
+.active-review-card:hover {
+    filter: contrast(1) brightness(1) !important;
+    
+}
+/* .review-card:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+} */
+.review-card:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+}
+.review-card:hover .review-card .user-profile-container .hiddenLabel:hover {
+    filter: none !important;
+    transition: 0.3s;
+}
+.features-section-card:hover {
+    filter: contrast(1.4) brightness(1.2);
+    transition: 0.3s;
+    background-color: var(--secondary-colour-gray);
+}
 .body_mask {
    
     animation: fadeIn 0.4s forwards;
@@ -840,7 +916,7 @@ nav a{
     font-size: 1.2rem
 }
 .logo_name_footer {width: 100%;
-    font-size: var(--text-mid-size);
+    font-size: var(--text-mid-line);
 }
 .background-section-current-movie_popular {
     position: absolute;
@@ -1101,6 +1177,7 @@ nav a{
     line-height: 2rem;
 }
 .user_container {
+    border-radius: 8px;
     padding: 16px;
     background-color: var(--secondary-colour-gray);
     color: white !important;
@@ -1385,6 +1462,12 @@ nav a{
     font-size:var(--text-extra-very-small-size);
     
 }
+.review_text_card {
+    font-style: italic;
+    margin-top: 10px;
+    ;
+    font-size: var(--text-very-small-size);
+}
 .mobile-dropdown .catgory_box {
     font-weight: initial !important;
 }
@@ -1666,15 +1749,21 @@ nav a{
     filter: brightness(70%);
     object-fit: cover;
     width: 100%;
-   height: 220px
+   height: 160px
   
  
+}
+.welcome-section .review-card-layout {
+    width: 100% !important;
+}
+.welcome-section .review-card {
+    width: 100%;
 }
 .movie-card-category img {
     height: 300px;
 }
 .movie-card-more img{
-    height: 200px;
+    height: 160px;
 }
 .movie-card-category {
     border: 2px solid white;
@@ -1719,6 +1808,7 @@ nav a{
     justify-content: start;
     align-items: center;
     text-align: center;
+    width: 100% !important;
 }
 
 .age_info {
@@ -1871,7 +1961,7 @@ nav a{
     justify-content:stretch !important
 }
 .selected-card-active img {
-    width: 300px !important;
+    width: 100%;
 }
 .selected-card-active .card-info {
     height: 70%;
@@ -2050,6 +2140,10 @@ nav a{
     display: flex;
     justify-content: center;
 }
+footer .logo-container img {
+    width: 62px;
+    height: 62px;
+}
 .footer-content {
     display: flex;
     flex-direction: row;
@@ -2183,6 +2277,7 @@ nav a{
     max-width: 120px;
 }
 .post-text {
+    margin-top: 2%;
     color: white;
 }
 .movie-card-trending .button-custom {
@@ -2458,6 +2553,9 @@ nav a{
 .active-review-card .movie-img-review {
     
     width: 90%;
+}
+.welcome-section .reviews_container  {
+    width: 100%;
 }
 .welcome-section {
     background-color:var(--secondary-colour-gray-light);
@@ -3205,6 +3303,9 @@ nav a{
     padding:  5px 15px;
     background-color:var(--labels-bg);
 }
+.icons-footer {
+    align-items: center;
+}
 .recent-post-title {
     z-index: 3;
 }
@@ -3301,7 +3402,7 @@ nav a{
 .contact-icon {
     
     margin-right: 20px;
-    filter: var(--white-filter);
+   
     width:  40px;
     height: 40px;
 }
@@ -3471,15 +3572,19 @@ nav a{
 
 footer {
     position: relative;
-    background-color: gray;
+    background-color: rgb(226 226 226);
    
     padding: 5% 0;
+}
+#fb-icon-footer {
+    width: 46px;
+    height: 46px;
 }
 .col-custom a {
     line-height: 2rem
 }
 .footer-container {
-    color: white;
+    color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
@@ -3683,7 +3788,7 @@ color: black;
 padding-bottom: 0;
 }
 .active-nav {
-    border: 2px solid rgba(255, 255, 255, 0.589);
+    background-color: var(--primary-colour);
 }
 .wrapper-search .search_box .dropdown ul li:hover{
 color: #6f768d;
@@ -4033,8 +4138,8 @@ background-color: rgb(82, 82, 86);
 .active-page {
     font-weight: 800;
     padding: 6px 10px;
-    background-color: white;
-    color: var(--primary-colour) !important;
+    background-color: var(--primary-colour) ;
+    color: white !important;;
     
 }
 .pagination-container {
@@ -4070,14 +4175,16 @@ cursor: pointer;
     flex-wrap: wrap;
 }
 .features_container .link {
+    margin: 2px auto;
     width: 200px;
     padding: 14px;
     font-weight: 700;
     animation: fadeIn 0.5s forwards;
 }
 .features_container .link:hover {
-   background-color: white;
-   color: var(--primary-colour);
+    inset: 2px solid white;
+   background-color: var(--primary-colour);
+  
 }
 .movies_dropdown {
     border: 2px solid white;
@@ -4111,9 +4218,10 @@ cursor: pointer;
     justify-content: left;
     flex-wrap: wrap;
 }
+
 .catgory_box:hover{
-    color: var(--primary-colour) !important;
-    background-color: var(--secondary-colour-gray-very-light);
+
+    background-color: var(--primary-colour);
 }
 
 
@@ -5127,9 +5235,7 @@ line-height: 1 !important;
         position: relative;
         height: 300px;
     }
-    .recent-post .post-text {
-        top: 0;
-    }
+    
     .recent-post, .old_posts{
         width: 500px;
     }
@@ -5144,6 +5250,12 @@ line-height: 1 !important;
 
 
 @media (max-width: 800px) {
+    .active-review-card {
+        width: 100% !important;
+    }
+    .active-review-card .movie-img-review {
+        width: 100px;
+    }
     .details-slider .detail-item .detail-content {
         padding: 0;
     }
@@ -5192,6 +5304,7 @@ line-height: 1 !important;
     .text_about_col {
         margin: 0 0 0 2vh 
     }
+   
     .hero-text {
        
         background-color: #1d1c1cdb;
@@ -5200,6 +5313,9 @@ line-height: 1 !important;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+    .hero-text-cat { 
+        background-color: initial !important
     }
     .text-big {
         padding: 25% 0;
@@ -5265,6 +5381,9 @@ line-height: 1 !important;
         --text-large-size-header:  2rem;
        
         
+    }
+    .selected-card-active {
+        width: 100%!important;
     }
     
        
@@ -5386,6 +5505,7 @@ line-height: 1 !important;
     .hamburger {
         width: 50px;
         height: 50px;
+        
 
     }
     .logo_name {
@@ -5452,6 +5572,12 @@ line-height: 1 !important;
     
 }
 @media (max-width: 569px) {
+    .category_movies {
+        padding-top: 0;
+    }
+    .search-cat {
+        margin: 30px auto !important;
+    }
     .features_col {
         width: 100%;
     }

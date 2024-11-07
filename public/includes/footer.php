@@ -38,7 +38,7 @@
                 <div class="col-footer col-custom">
                     <h5>Contact</h5>
                     <div class="row-custom icons-footer">
-                        <a href="">  <img class="contact-icon" alt="" src="./imgs/icons/facebook.svg"></a>
+                        <a href="">  <img class="contact-icon" id="fb-icon-footer"alt="" src="./imgs/icons/facebook.svg"></a>
                         <a href="">   <img class="contact-icon" alt="" src="./imgs/icons/linkedin.svg"></a>
                         <a href=""> <img class="contact-icon" alt="" src="./imgs/icons/twitter.svg"></a>
                        

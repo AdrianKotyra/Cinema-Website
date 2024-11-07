@@ -2071,8 +2071,10 @@ for (let i = 1; i <= 99; i++) {
 // --------------------READ MORE MOVIE CARD INFO-------------------
 
 function moreinfoCard(){
+ 
   document.querySelectorAll('.trigger-more-info-button').forEach(button => {
     button.addEventListener('click', (event)=>{
+      const crossActivecard = document.querySelectorAll(".card-cross-expendable");
       event.preventDefault();
       button.style.display="none"
       const parentDiv = event.target.closest('.movie-card-expandable');
@@ -2088,26 +2090,21 @@ function moreinfoCard(){
       hiddenDesc.forEach(element => element.style.display = "block");
     
     
-      document.removeEventListener('click', handleOutsideClick);
-    
-    
-      document.addEventListener('click', handleOutsideClick);
-    
-      function handleOutsideClick(event) {
-        
-        if (!parentDiv.contains(event.target)) {
-          // Remove 'selected-card-active' class and hide hidden descriptions
+  
+      crossActivecard.forEach(cross=>{
+        cross.addEventListener('click', ()=>{
           parentDiv.classList.remove("selected-card-active");
           hiddenDesc.forEach(element => element.style.display = "none");
          
           button.style.display="block"
-          document.removeEventListener('click', handleOutsideClick);
-        }
-      }
+        });
+      })
+    
+     
     });
     
   });
-  
+ 
 }
 
 moreinfoCard()

@@ -23,7 +23,7 @@
 
 
         <div class="reviews-all-container">
-            <?php get_render_reviews($limit, $start)?>
+            <?php get_render_reviews_main($limit, $start)?>
           
         </div>
 

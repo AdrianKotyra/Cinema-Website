@@ -776,10 +776,10 @@ function renderNext7Days() {
             <div class="movie-section-current">
                 <div class="background-section-current-movie category_background" style="background-image: url(\''.$category_img.'\');">
                 </div>
-                <div class="hero-text">
+                <div class="hero-text hero-text-cat">
                     <h3 class="text-big">'.$category_name.' Movies</h3>
                     <p class="text-mid">'.$category_desc.'</p>
-                    <button class="button-custom">Sign up</button>
+                  
                 </div>
             </div>';
         
@@ -1004,7 +1004,8 @@ function renderNext7Days() {
         $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
         $html = '
             <div class="card-layout-more-card">
-            <div class="movie-card-more movie-card-expandable" data-id='.$movie_id.'> 
+            <div class="movie-card-more movie-card-expandable" data-id='.$movie_id.'>
+                <img class="card-cross-expendable card-movie-hidden-info" loading="lazy" src="./imgs/icons/cross.svg" alt=""> 
                 <img class="card-movie-img" loading="lazy" src="./'.$movie_poster.'" alt="">
                 <div class="text-container card-info more-card-info">
                     <div class="title_age_container">
@@ -1031,7 +1032,7 @@ function renderNext7Days() {
         $movie_card = '
                   <div class="card-layout-trending-card">
                     <div class="movie-card movie-card-trending movie-card-expandable" data-id="'.$movie_id.'">
-                        
+                        <img class="card-cross-expendable card-movie-hidden-info" loading="lazy" src="./imgs/icons/cross.svg" alt="">
                         <img class="card-movie-img" loading="lazy" src="./'.$movie_poster.'" alt="">
                             <div class="text-container card-info">
                                <div class="title_age_container">
@@ -1358,7 +1359,7 @@ function renderNext7Days() {
                     echo ' 
                     <div class="card-layout-more-card">
                     <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
-                        
+                        <img class="card-cross-expendable card-movie-hidden-info" loading="lazy" src="./imgs/icons/cross.svg" alt=""> 
                         <img loading="lazy" class="card-movie-img" src="./'.$movie_poster.'" alt="">
                             <div class="text-container card-info">
                                <div class="title_age_container">
@@ -1397,7 +1398,7 @@ function renderNext7Days() {
                     echo ' 
                     <div class="card-layout-more-card">
                    <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
-                        
+                        <img class="card-cross-expendable card-movie-hidden-info" loading="lazy" src="./imgs/icons/cross.svg" alt=""> 
                         <img loading="lazy" class="card-movie-img" src="./'.$movie_poster.'" alt="">
                             <div class="text-container card-info">
                                <div class="title_age_container">
@@ -1499,7 +1500,7 @@ function renderNext7Days() {
                     $user_prof= $row["user_occupation"];
                     $user_label = render_hidden_user_label($user_img, $user_firstname, $user_lastname, $user_prof, $user_review_id);
                 }
-                echo '<div class="review-card-layout">
+                echo '<div class="review-card-layout ">
                     <div class="review-card row-custom vetical-scroll-grab-class">
 
                         <p class="review_rating">'.$review_rating.'/10</p>
@@ -1536,6 +1537,7 @@ function renderNext7Days() {
         
        
     }
+    
     function get_selected_movie_reviews(){
         global $connection;
         global $database;

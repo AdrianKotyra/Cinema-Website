@@ -13,14 +13,13 @@
         <span class="header-trigger8 trigger"></span>
         
         <div class="reviews_all ">
-            <div>
+           
                 <div class="reviews_container vetical-scroll-grab-class ">
                     <?php get_render_reviews(9, 0)?>
                     
                 </div>
               
-              
-            </div>  
+          
          
           
         </div>
