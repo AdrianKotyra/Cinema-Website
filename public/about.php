@@ -203,6 +203,20 @@
 
   </section>
 
+  <section class="gallery_about_section">
+    <h1 class="header_About">Explore our facility.</h1>
+    <div class="grid-gallery" id="gallery-wrap">
+      <?php get_gallery_images()?>
+
+
+
+      
+    </div>
+
+
+
+  </section>
+
 
 
 

@@ -798,7 +798,7 @@ function renderNext7Days() {
             <div class="movie-section-current">
                 <div class="background-section-current-movie category_background" style="background-image: url(\''.$category_img.'\');">
                 </div>
-                <div class="hero-text">
+                <div class="hero-text hero-text-cat">
                     <h3 class="text-big">'.$category_name.' Movies</h3>
                     <p class="text-mid">'.$category_desc.'</p>
                     <button class="button-custom">Sign up</button>
@@ -807,7 +807,17 @@ function renderNext7Days() {
         
         }
     }
-
+    function get_gallery_images(){
+        global $database;
+        $query = $database-> query_array("SELECT * from gallery");
+        while ($row = mysqli_fetch_array($query)) {
+            $image_name = $row["image_name"];
+            $image_title = $row["image_title"];
+            echo '<a href="./imgs/gallery_cinema/'.$image_name.'" data-fancybox="gallery" data-caption="'.$image_title.'" data-fancybox-index="0">
+                <img src="./imgs/gallery_cinema/'.$image_name.'" />
+            </a>';
+        }
+    }
     function get_selected_movie() {
         global $database;
         if (isset($_GET["movie"])) {

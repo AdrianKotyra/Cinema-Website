@@ -327,6 +327,39 @@ function select_and_display_reviews() {
   
     }
 }
+function select_and_display_gallery() {
+    global $connection;
+
+    $query = "SELECT * from gallery";
+    $select_users_query = mysqli_query($connection, $query);
+    while($row = mysqli_fetch_assoc($select_users_query)) {
+        $image_id = $row["id"];
+        $image_name = $row["image_name"];
+        $image_title = $row["image_title"];
+    
+        echo"<tr>";
+        echo "<td>$image_id</td>";
+        echo "<td>$image_name</td>";
+        echo "<td>$image_title</td>";
+        echo "<td><img class='table_img' width=100 height=100 src='../public/imgs/gallery_cinema/$image_name'></td>";
+        echo "<td><a href='gallery.php?source=edit_image&image_id={$image_id}'>EDIT</a></td>";
+        echo "<td > <span class='delete_button'  data-link='gallery.php?delete_image=$image_id'> Delete </span></td>";
+        // echo "<td><a href='movies.php?delete_movie={$movie_id}'>DELETE</a></td>";
+        echo"</tr>";
+    }
+
+    if(isset($_GET["delete_image"])) {
+        $image_to_be_deleted = $_GET["delete_image"];
+        // delete relational column before deleting movie
+        $query_delete_gallery_image= "DELETE from gallery WHERE id={$image_to_be_deleted}";
+        $query_delete_gallery_image = mysqli_query($connection, $query_delete_gallery_image);
+
+        echo '<script> window.location.href = "gallery.php" </script>';
+
+    }
+  
+
+}
 function select_and_display_movies() {
     global $connection;
 

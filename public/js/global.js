@@ -21,6 +21,7 @@ function mobileDropDowns(){
     })
   })
 }
+
 mobileDropDowns()
 function zoomReviewCard() {
   const reviewCards = document.querySelectorAll(".review-card");
@@ -2243,7 +2244,9 @@ function manageStartsReviews(){
   });
 }
 
-
+// -----------------GALLERY ABOUT FANCYBOX----------------------
 
  
-
+Fancybox.bind(document.getElementById("gallery-wrap"), "[data-fancybox]", {
+  // Your custom options
+});

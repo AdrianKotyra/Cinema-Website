@@ -7,7 +7,8 @@ $search = $_POST["data"];
 
 if(!empty($search)) {
     $message = "Results not found";
-    $query = "SELECT * FROM users where user_firstname or user_lastname  LIKE '%$search%'";
+    $query = "SELECT * FROM users WHERE user_firstname LIKE '%$search%' OR user_lastname LIKE '%$search%'";
+
     $search_query = mysqli_query($connection, $query);
     $search_count = mysqli_num_rows($search_query);
     if(!$search_query) {

@@ -17,6 +17,12 @@ include "php/init.php"?>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css">
     <link rel="icon" type="image/x-icon" href="./imgs/icons/movie-clapper-open.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- fancybox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+    />
   </head>
  <?php  include("./includes/registration_form.php");  ?>        <!--log register modal -->
 <?php  include("./includes/registration_confirmation.php");  ?> <!--  register modal confirmation window -->

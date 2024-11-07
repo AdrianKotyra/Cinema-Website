@@ -2511,13 +2511,30 @@ footer .logo-container img {
     color: black !important;;
     background-color: white !important;
 }
+.grid-gallery {
+    
+    column-count: 3;
+}
+.grid-gallery img {
+    cursor: pointer;
+    margin-bottom: 20px;
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    filter: contrast(100%);
+    transition: all 0.2s ease-in-out;
+}
+
+.grid-gallery img:hover {
+filter: contrast(125%);
+}
 .accordian-faq {
     height: fit-content;
     min-height: 100px;
     z-index: 2;
     cursor: pointer;
     padding: 20px ;
-    margin: 10px;
+    
     
     color: white;
     background-color: var(--secondary-colour-gray-light)
@@ -4634,6 +4651,14 @@ cursor: pointer;
 }
 .staff_section .header_About{
     color: white;
+    margin-bottom: 5%;
+}
+.gallery_about_section {
+    padding: 5% 0;
+}
+.gallery_about_section .header_About {
+    color: rgb(255, 255, 255);
+    margin-bottom: 5%;
 }
 
 .container_about_section {
@@ -4644,6 +4669,7 @@ cursor: pointer;
     /* grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); */
 }
 .video_section .header_About {
+    margin-bottom: 5%;
     color: rgb(255, 255, 255);
 }
 .text_about_col *{
@@ -5221,6 +5247,9 @@ line-height: 1 !important;
        
         grid-template-columns: repeat(2, 1fr);
     }
+    .grid-gallery {
+        column-count: 2;
+    }
    
     .posts-container {
         flex-direction: column;
@@ -5407,7 +5436,8 @@ line-height: 1 !important;
     }
     .mobile-dashboard-user-settings {
         display: block;
-        padding: 5%;
+      
+        
     }
     .registration_container {
         top: 0;
@@ -5572,6 +5602,9 @@ line-height: 1 !important;
     
 }
 @media (max-width: 569px) {
+    .grid-gallery {
+        column-count: 1;
+    }
     .category_movies {
         padding-top: 0;
     }

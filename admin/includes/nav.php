@@ -20,7 +20,7 @@
                     
                 </li>
                
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -37,7 +37,7 @@
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -153,6 +153,18 @@
                    
                     <li class="">
                         <a href="comments.php"><i class="fa-solid fa-comments"></i> Comments</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo13"><i class="fa-solid fa-person"></i></i> Gallery <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo13" class="collapse">
+                            <li>
+                                <a href="gallery.php">Gallery</a>
+                            </li>
+                            <li>
+                                <a href="gallery.php?source=add_image">Add image</a>
+                            </li>
+                          
+                        </ul>
                     </li>
                  
                 </ul>
