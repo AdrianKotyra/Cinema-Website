@@ -443,6 +443,9 @@ function runQuiz() {
   }
 
   function handleChoiceClick(event) {
+  
+    const quizNumber = document.querySelector("#question-number");
+    const quizQuestion = document.querySelector("#question-text");
     const selectedChoice = event.target;
     const answer = parseInt(selectedChoice.getAttribute("data-answer"), 10);
 
@@ -458,6 +461,8 @@ function runQuiz() {
       }
 
       correctAnswers++;
+     
+      
     } else {
       feedback.style.backgroundColor="red"
       feedback.textContent = "Incorrect!";
@@ -466,6 +471,7 @@ function runQuiz() {
 
     setTimeout(() => {
       currentQuestion++;
+      quizNumber.innerHTML=currentQuestion+1;
       feedback.style.backgroundColor="white"
       if (currentQuestion < questions.length) {
         showQuestion();
@@ -514,12 +520,17 @@ function showQuizKids(){
       <div class="image-container">
         <img class="quiz_image" src="" alt="">
       </div>
+      <div class="row-custom question_number_container">
+        <p>Question number:</p>&nbsp;
+        <p id="question-number">  1</p>/10
+      </div>
+   
       <div class="question">
-        <p id="question-text">Question 1: What is the capital of United Kingdom?</p>
+        <p id="question-text"></p>
         <div class="choices">
-          <button class="choice" data-answer="0" >London</button>
-          <button class="choice" data-answer="1" ">Paris</button>
-          <button class="choice" data-answer="2" ">Nairobi</button>
+          <button class="choice" data-answer="0" ></button>
+          <button class="choice" data-answer="1" "></button>
+          <button class="choice" data-answer="2" "></button>
         </div>
         <p id="feedback"></p>
       </div>

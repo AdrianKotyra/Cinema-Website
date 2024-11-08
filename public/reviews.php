@@ -10,9 +10,35 @@
         $total_pages = ceil($total_records / $limit);
         
     ?>
+    <section class="about_container">
+      
+   
+       
+   
+        <video class=" video_about_all"  height="100%" autoplay  muted loop >
+            <source src="./videos/reviews/slider.mp4" type="video/mp4">
+        
+        
+        </video>
+       <div class="hero-text hero-text-sub">
+         <h3 class="text-big">Reviews </h3>
+       </div>
+       
+   
+     
+   
+         
+     
+      
+        
+   
+     
+   
+      
+    </section>
     <section class="wrapper-content news-section ">
         
-        <h5 class="section-header text-mid header-subpage">Reviews</h5>
+   
         <div class="searcher-container-reviews">
             <?php include "includes/search-reviews.php"?>
         </div>
@@ -23,7 +49,7 @@
 
 
         <div class="reviews-all-container">
-            <?php get_render_reviews_main($limit, $start)?>
+            <?php get_render_reviews($limit, $start)?>
           
         </div>
 

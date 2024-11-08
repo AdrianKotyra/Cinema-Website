@@ -10,8 +10,34 @@
         $total_pages = ceil($total_records / $limit);
         
     ?>
+    <section class="about_container">
+      
+   
+       
+        <video class=" video_about_all"  height="100%" autoplay  muted loop >
+            <source src="./videos/user_posts/slider.mp4" type="video/mp4">
+        
+        
+        </video>
+  
+       <div class="hero-text hero-text-sub">
+         <h3 class="text-big">Users Posts </h3>
+       </div>
+       
+   
+     
+   
+         
+     
+      
+        
+   
+     
+   
+      
+    </section>
     <section class="wrapper-content news-section ">
-        <h5 class="section-header text-mid header-subpage">Users Posts</h5>
+       
     
         <div class="searcher-container-reviews">
             <?php include "includes/search-forum-posts.php"?>

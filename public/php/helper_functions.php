@@ -550,18 +550,6 @@ function contact_slider(){
     </video>';
     
 }
-function about_slider(){
-    global $user;
-    global $session;
-    
-    echo 
-    '<video class=" video_about_all"  height="100%" autoplay  muted loop >
-    <source src="./videos/about/cinematic_animation.mp4" type="video/mp4">
-    
-    
-    </video>';
-    
-}
 
 
 function get_selected_movie_review_movie(){
