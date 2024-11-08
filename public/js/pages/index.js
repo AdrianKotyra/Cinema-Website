@@ -1,3 +1,60 @@
+
+
+// ------------hero-text-slider---------
+
+function sliderHeroText() {
+	const buttonHeroLogin = document.querySelector(".hero-login-btn");
+	const buttonHeroSignup = document.querySelector(".hero-singup-btn");
+	const slide1 = document.querySelector(".hero-text-slide-1");
+	const slide2 = document.querySelector(".hero-text-slide-2");
+	const allSlides = document.querySelectorAll(".hero-slide");
+
+	// Function to handle animation and text change
+	function handleHoverAnimation(button, text, animationClass) {
+		button.addEventListener("mouseover", () => {
+			button.classList.add("active-button-text-hero");
+				const heading = slide2.querySelector("h3");
+
+				heading.classList.remove("header-text-hero-animation-class-right") 
+				heading.classList.remove("header-text-hero-animation-class-left") 
+				setTimeout(() => {
+					heading.classList.add(animationClass) 
+					heading.innerHTML = text; // Update text
+				}, 1);
+			
+	
+				
+			
+			
+		});
+	}
+
+	// Initialize slides by deactivating all
+	allSlides.forEach(slide => slide.classList.remove("active-hero-slide"));
+
+	// Activate slide 1 after 2 seconds
+	setTimeout(() => {
+		slide1.classList.add("active-hero-slide");
+	}, 1000);
+
+	// Switch to slide 2 after another 2 seconds
+	setTimeout(() => {
+		slide1.classList.remove("active-hero-slide");
+		slide2.classList.add("active-hero-slide");
+
+		// Add hover animations for buttons
+		handleHoverAnimation(buttonHeroLogin, "Discover hundreds of movies", "header-text-hero-animation-class-left");
+		handleHoverAnimation(buttonHeroSignup, "Become part of Limelight cinema", "header-text-hero-animation-class-right");
+	}, 3000);
+}
+
+sliderHeroText();
+
+
+
+
+
+
 // ------------Function to show more items---------
 let itemsPerPage = 12;  
 let currentlyVisible = 12; 

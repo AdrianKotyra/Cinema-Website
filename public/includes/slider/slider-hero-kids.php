@@ -1,3 +1,14 @@
+
+
+<div class="slide" >
+
+   <video class="video" width="100%" height="100%" autoplay  muted loop>
+       <source src="./videos/slider_kids/animation (8).mp4" type="video/mp4">
+      
+    
+   </video>
+  
+</div>
 <div class="slide" >
 
    <video class="video" width="100%" height="100%" autoplay  muted loop>
@@ -75,4 +86,3 @@
    </video>
   
 </div>
-
