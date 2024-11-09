@@ -538,18 +538,7 @@
         // Return the genres as a comma-separated string, or return an empty string if no genres
         return !empty($genres) ? implode(', ', $genres) : '';
     }
-function contact_slider(){
-    global $user;
-    global $session;
-    
-    echo 
-    '<video class=" video_about_all"  height="100%" autoplay  muted loop >
-    <source src="./videos/contact/contact-bg_animation.mp4" type="video/mp4">
-    
-    
-    </video>';
-    
-}
+
 
 
 function get_selected_movie_review_movie(){

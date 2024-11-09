@@ -15,7 +15,7 @@
         <div class="reviews_all ">
            
                 <div class="reviews_container vetical-scroll-grab-class ">
-                    <?php get_render_reviews(9, 0)?>
+                    <?php get_render_reviews(7, 0)?>
                     
                 </div>
               
@@ -26,17 +26,15 @@
         
     
                   
-                    
+        
+
+
             
                   
                  
 
             
-            
-          
-        <div class="welcome-bg">
-
-        </div> 
+    
 
    
 

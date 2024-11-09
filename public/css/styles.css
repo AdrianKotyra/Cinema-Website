@@ -192,10 +192,12 @@
     padding: 5%;
     background-color: var(--secondary-colour-gray-light);
 }
+
 .text_wrapper_quiz {
+  
     border: 2px solid white;
     border-radius: 12px;
-    padding: 20px;
+
     width: 80%;
     background-color: var(--secondary-colour-gray);
 }
@@ -205,10 +207,9 @@
     line-height: 2rem;
     color:#ffffff
 }
-.quiz_text_container  {
-    color: white;
-}
+
 .quiz_text_container {
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -726,7 +727,11 @@ nav .link {
 .features-section-card:hover {
     filter: contrast(1.4) brightness(1.2);
     transition: 0.3s;
-    background-color: var(--secondary-colour-gray);
+    
+}
+.features-section-card:hover .bg_features {
+    filter: blur(5px);
+    
 }
 .body_mask {
    
@@ -1288,7 +1293,7 @@ nav a{
     width: auto !important;
 }
 .review-card-layout {
-    margin: 24px 0 ;
+    
     width: 600px;
     height: 200px;
 }
@@ -2581,6 +2586,7 @@ filter: contrast(125%);
     width: 90%;
 }
 .welcome-section .reviews_container  {
+    padding: 0 0 5% 0;
     width: 100%;
 }
 .welcome-section {
@@ -2596,14 +2602,9 @@ filter: contrast(125%);
     justify-content: right;
 }
 .reviews_container {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-   padding: 0 0 300px 0;
-    cursor: pointer;
-    height: 700px;
-    overflow-y: hidden;
-   position: relative;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 }
 .review-button {
     width: 150px;
@@ -3463,16 +3464,31 @@ filter: contrast(125%);
     padding: 5% !important;
 }
 .features-section-card p {
-    opacity: 70%;
+    font-weight: 800;
+}
+.features_card_desc {
+    padding: 5%;
+    position: relative;
+    z-index: 2;
+    
 }
 .features-section-card {
+    background-color: var(--secondary-colour-gray);
+    position: relative;
     border: 2px solid white;
-    padding: 5%;
+  
     border-radius: 8px;
     color: white;
-    background-color: var(--secondary-colour-gray-light)
+   
 }
-.features-section-card img {
+.bg_features {
+    object-fit: cover;
+    opacity: 18%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.icon_features {
     filter: var(--main-color-filter);
     
     width: 40px;
@@ -5660,6 +5676,11 @@ line-height: 1 !important;
     .current-movie-wrapper {
         text-align: center;
         flex-direction: column;
+    }
+    .movie-img-review {
+        opacity: 15%;
+        position: absolute;
+        width: 100% !important;
     }
     /* .movie-section {
         height: 100% !important;

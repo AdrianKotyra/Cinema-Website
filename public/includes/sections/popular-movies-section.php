@@ -3,8 +3,13 @@
   
        
     <div class="popular-mobile-section wrapper-content">  
-    
-       
+            
+            <div class="row-custom header-section-container">
+            <h5 class="section-header text-mid header-intersect22">Most popular</h5>
+            <a href="category.php?subcategory=popular">View All</a>
+      
+            </div>  
+            <span class="header-trigger22 trigger"></span>
             <div class="movies-container expandable-container">
                 <div class="scrolling-wrapper slider-trending row-custom">
 
@@ -22,7 +27,7 @@
 
 
         <div class="row-custom header-section-container">
-        <h5 class="section-header text-mid header-intersect1">Most popular</h5>
+            <h5 class="section-header text-mid header-intersect1">Most popular</h5>
             <a href="category.php?subcategory=popular">View All</a>
             
         </div>  

@@ -8,7 +8,11 @@
    
        
     
-         <?php contact_slider()?>
+    <video class=" video_about_all"  height="100%" autoplay  muted loop >
+      <source src="./videos/contact/slider.mp4" type="video/mp4">
+    
+    
+    </video>
         <div class="hero-text hero-text-sub">
         <h3 class="text-big">Contact <br>
         
