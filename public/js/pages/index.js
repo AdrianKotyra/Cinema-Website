@@ -15,18 +15,23 @@ function sliderHeroText() {
 			button.classList.add("active-button-text-hero");
 				const heading = slide2.querySelector("h3");
 
-				heading.classList.remove("header-text-hero-animation-class-right") 
-				heading.classList.remove("header-text-hero-animation-class-left") 
+				heading.classList.remove("header-text-hero-animation-class-right")
+				heading.classList.remove("header-text-hero-animation-class-left")
 				setTimeout(() => {
-					heading.classList.add(animationClass) 
-					heading.innerHTML = text; // Update text
+					if(heading.innerHTML !== text) {
+						heading.classList.add(animationClass)
+
+						heading.innerHTML = text; // Update text
+					}
+
 				}, 1);
-			
-	
-				
-			
-			
+
+
+
+
+
 		});
+
 	}
 
 	// Initialize slides by deactivating all
@@ -56,8 +61,8 @@ sliderHeroText();
 
 
 // ------------Function to show more items---------
-let itemsPerPage = 12;  
-let currentlyVisible = 12; 
+let itemsPerPage = 12;
+let currentlyVisible = 12;
 function showItems() {
 
   const items = document.querySelectorAll('.more-movies-container .card-layout-more-card');
@@ -65,17 +70,17 @@ function showItems() {
 
   items&&items.forEach((item, index) => {
     if (index < currentlyVisible) {
-      item.style.display = 'block';  
+      item.style.display = 'block';
     } else {
-      item.style.display = 'none';  
+      item.style.display = 'none';
     }
   });
-  
+
   // Hide "Load More" button if all items are visible
   if (buttonShowMore&& currentlyVisible >= items.length) {
     buttonShowMore.style.display = "none";
   }
-  
+
   buttonShowMore&&buttonShowMore.addEventListener("click", () => {
   currentlyVisible += itemsPerPage;  // Increment visible items
   showItems();  // Update the displayed items
@@ -173,7 +178,7 @@ jQuery(function ($) {
 
 	// Slick slider settings
 	$('.flickfeed').slick({
-  
+
 		dots: true,
 		infinite: true,
 		speed: 300,
@@ -327,14 +332,14 @@ function scrollSlidersBy(classSection, triggerButtonRight, triggerButtonLeft ){
 	})
 	triggerLeft.addEventListener("click", ()=>{
 	  const currentScreenWidth = window.innerWidth;
-   
+
 	  sliderContainer.scrollBy({
-		left: -currentScreenWidth * 0.8,  
-		behavior: 'smooth'         
+		left: -currentScreenWidth * 0.8,
+		behavior: 'smooth'
 	  });
 	})
   }
-  
+
   scrollSlidersBy("trends-slider", "slider-arrow-trending-right", "slider-arrow-trending-left")
   scrollSlidersBy("current-slider", "slider-arrow-currnet-right", "slider-arrow-currnet-left")
   scrollSlidersBy("comming-slider", "slider-arrow-comming-right", "slider-arrow-comming-left")

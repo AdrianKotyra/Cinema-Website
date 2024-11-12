@@ -20,15 +20,15 @@
   <?php include("./includes/sections/questions-section.php")  ?>
 
 
-   
+
   <?php include("includes/footer.php")?>
   <script src="js/pages/index.js"></script>
 
-  
 
 
 
 
-   
+
+
 </body>
 </html>

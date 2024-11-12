@@ -4,31 +4,31 @@
 
   <?php include "includes/nav.php"?>
   <section class="about_container">
-      
-   
-       
-   
+
+
+
+
     <video class=" video_about_all"  height="100%" autoplay  muted loop >
       <source src="./videos/about/slider.mp4" type="video/mp4">
-    
-    
+
+
     </video>
     <div class="hero-text hero-text-sub">
       <h3 class="text-big">When you’re here, you’re home. <br>
       So is all your entertainment.
     </div>
-    
 
-  
 
-      
-  
-   
-     
 
-  
 
-   
+
+
+
+
+
+
+
+
   </section>
 
 
@@ -41,7 +41,7 @@
     </div>
 
 
-      
+
 
 
 
@@ -59,10 +59,10 @@
       </div>
 
     </div>
-   
 
 
-      
+
+
 
 
   </section>
@@ -72,13 +72,13 @@
       <div class="video_box">
         <iframe width="100%" height="100%" src="https://www.youtube.com/embed/KJymhrqnwLk?si=JleoZ1qRi7H91TPw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-     
+
     </div>
-   
-   
 
 
-      
+
+
+
 
 
   </section>
@@ -96,16 +96,16 @@
           <span class="cities-trigger3"></span>
           <h5 class="cities4">- Inverness</h5>
           <span class="cities-trigger4"></span>
-          <h5 class="cities5">- Aberdeen</h5> 
-          <span class="cities-trigger5"></span> 
+          <h5 class="cities5">- Aberdeen</h5>
+          <span class="cities-trigger5"></span>
       </div>
-     
+
       <div class="map_box">
         <img src="./imgs/cinemas_map.jpg" alt="">
       </div>
-     
+
     </div>
-   
+
 
 
   </section>
@@ -113,10 +113,10 @@
   <section class="staff_section">
     <h1 class="header_About">Meet our starting line-up.</h1>
     <div class=" col-custom wrapper-content">
-   
-        
-        
-        
+
+
+
+
         <div class="faq-container staff-container row">
             <?php get_render_members()?>
         </div>
@@ -130,73 +130,74 @@
 
   <section class="features_section">
     <h1 class="header_About">Go ahead, make yourself at home.</h1>
-    
+
     <div class="features_grid">
           <div class="col-custom features_col">
-            <img src="./imgs/blog_features.jpg" alt="">
+            <img src="./imgs/features_posts.jpg" alt="">
             <div class="text_feature_card">
               <h5>Forum</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Numquam minus aliquam, blanditiis dolor expedita error.
+              <p>Never miss a breaking story in entertainment! Our news section delivers real-time updates on movie
+              releases, casting announcements, box office results, and more.
               </p>
-              <a  target="_blank" href="forum_posts_all.php"> 
+              <a  target="_blank" href="forum_posts_all.php">
                 <button class="button-custom">check here</button>
               </a>
 
 
             </div>
-            
+
           </div>
-         
+
           <div class="col-custom features_col">
-            <img src="./imgs/news_features.jpg" alt="">
+            <img src="./imgs/features_news.jpg" alt="">
             <div class="text_feature_card">
               <h5>News</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Numquam minus aliquam, blanditiis dolor expedita error.
+              <p>Stay up to date with the latest in the film industry! Our blog offers insightful articles, movie
+              reviews, and behind-the-scenes stories
               </p>
-              <a  target="_blank" href="posts.php"> 
+              <a  target="_blank" href="posts.php">
                 <button class="button-custom">check here</button>
               </a>
 
             </div>
-            
+
           </div>
-         
+
           <div class="col-custom features_col">
-            <img src="./imgs/users_features.jpg" alt="">
+            <img src="./imgs/features_users.jpg" alt="">
             <div class="text_feature_card">
               <h5>Users</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Numquam minus aliquam, blanditiis dolor expedita error.
+              <p> Connect with other film lovers, share your
+              thoughts, and tailor your experience to match your unique movie preferences.
               </p>
-              <a  target="_blank" href="users.php"> 
+              <a  target="_blank" href="users.php">
                 <button class="button-custom">check here</button>
               </a>
-             
+
 
             </div>
-            
+
           </div>
-         
+
           <div class="col-custom features_col">
-            <img src="./imgs/reviews_features.jpg" alt="">
+            <img src="./imgs/features_reviews.jpg" alt="">
             <div class="text_feature_card">
               <h5>Reviews</h5>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Numquam minus aliquam, blanditiis dolor expedita error.
+              <p>Our movie reviews section helps you
+                    decide what to watch next by offering ratings, detailed critiques, and insights into various aspects
+                    of filmmaking.
               </p>
-              <a  target="_blank" href="reviews.php"> 
+              <a  target="_blank" href="reviews.php">
                 <button class="button-custom">check here</button>
               </a>
 
 
             </div>
-            
+
           </div>
-         
-        
-      
+
+
+
     </div>
 
 
@@ -214,7 +215,7 @@
 
 
 
-      
+
     </div>
 
 
@@ -228,11 +229,11 @@
   <?php include("includes/footer.php")?>
   <script src="js/pages/about.js"></script>
 
-  
 
 
 
 
-   
+
+
 </body>
 </html>

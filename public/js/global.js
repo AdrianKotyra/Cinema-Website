@@ -15,7 +15,7 @@ function mobileDropDowns(){
     dropTrigger.addEventListener("click", ()=>{
 
       const dropDown = dropTrigger.querySelector(".drop-down-content");
-      !dropDown.classList.contains("active-dropdown-mobile") ? 
+      !dropDown.classList.contains("active-dropdown-mobile") ?
       dropDown.classList.add("active-dropdown-mobile") :
       dropDown.classList.remove("active-dropdown-mobile")
     })
@@ -110,7 +110,7 @@ function displaConfirmationModalBooking(day, time, movieId, ticketQuantity, Tick
       <input type="hidden" class="input-hidden" name="Ticket_price_unit" value="${TicketPriceUnit}">
       <input type="hidden" class="input-hidden" name="total_price_number" value="${totalPriceNumber}">
 
-   
+
       <div class="row-custom modal-booking-container">
           <img class="modal_movie_img" src="${imgMovieSrc}" alt="">
           <div>
@@ -128,25 +128,25 @@ function displaConfirmationModalBooking(day, time, movieId, ticketQuantity, Tick
 
             <h5>Total Price: </h5>
             <p>${totalPriceNumber}£ </p>
-      
+
 
             <button type="submit"class="button-custom button-post-added" name="submit_booking">
               Proceed
             </button>
-          </div>   
-    </div>   
-  
+          </div>
+    </div>
+
   </div>
   </form>
   `
-   
+
   modalMain.innerHTML=modal
   const crossExit = document.querySelector(".cross_quiz")
   crossExit.addEventListener("click", ()=>{
     modalMain.innerHTML=""
   })
   })
- 
+
 }
 function displayConfBooking(day, time, movieId, ticketQuantity){
   const confiramtionBooking = document.querySelector(".confiramtion-booking");
@@ -154,7 +154,7 @@ function displayConfBooking(day, time, movieId, ticketQuantity){
   confiramtionBooking.scrollIntoView({
     behavior: 'smooth', // Scroll with a smooth transition
     block: 'center' // Scroll until the element is at the top
- 
+
   });
   const totalPriceContainer = document.querySelector(".total_price_booking")
   const ticketQuantityContainer = document.querySelector(".ticket_number_conf")
@@ -171,7 +171,7 @@ function displayConfBooking(day, time, movieId, ticketQuantity){
   dayInfo.innerHTML=day
 
   displaConfirmationModalBooking(day, time, movieId, ticketQuantity, TicketPriceUnit, totalPriceNumber  )
-  
+
 }
 
 function bookMovieDate(){
@@ -183,45 +183,45 @@ function bookMovieDate(){
 
   selects.forEach(select=>{
     select.addEventListener("click", ()=>{
-   
+
       const activeDay = document.querySelector(".date_day_active");
       const activeCard = document.querySelector(".active-screen-card");
 
-     
-      
+
+
       if(activeDay&&activeCard ) {
         const dataTimeScreen =  activeCard.getAttribute("data-time");
         const dataDay =  activeDay.getAttribute("data-day");
         const movieId =  activeDay.getAttribute("data-movie-id");
-       
-      
+
+
         if(dataTimeScreen&&dataDay&&movieId) {
-      
+
           const chooseTicketsBooking = document.querySelector(".choose-tickets-booking");
 
           chooseTicketsBooking.scrollIntoView({
               behavior: 'smooth', // Scroll with a smooth transition
               block: 'center' // Scroll until the element is at the top
-           
+
             });
               const confirmButton1 = document.querySelector(".confirm-booking-part_1")
               confirmButton1.addEventListener("click", ()=>{
                 const ticketQuantity = Number(document.querySelector(".counter-ticket").innerHTML);
                 console.log(ticketQuantity)
                 displayConfBooking(dataDay, dataTimeScreen, movieId, ticketQuantity)
-          
-            
-               
-             
-            
+
+
+
+
+
             })
-       
-        
-          
+
+
+
 
           // window.location.href = `movie_booking.php?movie?${movieId}`;
         }
-      
+
 
       }
 
@@ -235,16 +235,16 @@ function bookMovieDate(){
         allDates.forEach(date=>{
           date.classList.remove("date_day_active")
         })
-  
+
         date.classList.add("date_day_active");
         // const activeDay = document.querySelector(".date_day_active");
         // const dataDAy =  activeDay.getAttribute("data-day");
         // const postId =  activeDay.getAttribute("data-movie-id");
         // const dayAndPostId = [dataDAy,postId];
-   
-       
-        
-        
+
+
+
+
       })
     })
   }
@@ -257,20 +257,20 @@ function bookMovieDate(){
       screenCard.addEventListener("click", ()=>{
         allTimeScreenCards.forEach(screenCard=>{
           screenCard.classList.remove("active-screen-card")
-        
+
         })
         screenCard.classList.add("active-screen-card");
         // const activeCard = document.querySelector(".active-screen-card");
         // const dataTimeScreen =  activeCard.getAttribute("data-time");
-      
-        
-       
+
+
+
       })
     })
 
   }
- 
- 
+
+
 }
 bookMovieDate()
 // DISPLAY BOOK CONTENT MOVIE.PHP
@@ -280,24 +280,24 @@ function checkUserAgeAjax() {
   SendDataAjax(data, "ajax/GET_USER_AGE_BOOKING.php")
   .then(data => {
     let trimmed_data = data.trim();
-  
+
     offLoader()
     if(trimmed_data=="true") {
-   
+
       return true
     } else {
-     
+
       return false
     }
 
-   
-   
-  
+
+
+
   })
   .catch(error => {
       console.error('Error:', error);
   })
- 
+
 }
 function displayBookMovieContent(){
   const bookContainer = document.querySelector(".book_container");
@@ -310,38 +310,38 @@ function displayBookMovieContent(){
     .then(data => {
       let trimmed_data = data.trim();
       if(trimmed_data=="true") {
- 
+
         bookContainer.style.display="block";
         bookAnchor.scrollIntoView({
           behavior: 'smooth', // Scroll with a smooth transition
           block: 'start' // Scroll until the element is at the top
         });
-      
-      }  
+
+      }
       else if(trimmed_data=="no_tickets") {
         GeneralModal("Tickets out of stock", "cross", "red_icons" )
-  
-      
-      } 
+
+
+      }
       else if(trimmed_data=="no_time") {
         GeneralModal("Not available times for this movie", "cross", "red_icons" )
-  
-      
-      } 
-      else if(trimmed_data=="no_logged") { 
+
+
+      }
+      else if(trimmed_data=="no_logged") {
         GeneralModal("Please log in to book a ticket", "cross", "red_icons" )
       }
-      else if(trimmed_data=="false") { 
+      else if(trimmed_data=="false") {
         GeneralModal("Only adults memeber can book a ticket", "cross", "red_icons" )
       }
-    
-    
+
+
     })
     .catch(error => {
         console.error('Error:', error);
     })
 
-  
+
   })
 }
 
@@ -421,7 +421,7 @@ function runQuiz() {
 
   // Shuffle the questions
   const shuffledQuestions = shuffleArray(questions);
-  
+
   let currentQuestion = 0;
   let correctAnswers = 0;
 
@@ -443,7 +443,7 @@ function runQuiz() {
   }
 
   function handleChoiceClick(event) {
-  
+
     const quizNumber = document.querySelector("#question-number");
     const quizQuestion = document.querySelector("#question-text");
     const selectedChoice = event.target;
@@ -461,8 +461,8 @@ function runQuiz() {
       }
 
       correctAnswers++;
-     
-      
+
+
     } else {
       feedback.style.backgroundColor="red"
       feedback.textContent = "Incorrect!";
@@ -503,13 +503,13 @@ function showQuizKids(){
   const quizTrigger = document.querySelectorAll(".quiz_link");
   const modalMain = document.querySelector(".modal_container");
   function disableQuiz(){
-  
+
     const quizContainer = document.querySelector(".quiz-container");
     const crossExit = document.querySelector(".cross_quiz")
     crossExit.addEventListener("click", ()=>{
       quizContainer.style.display="none"
     })
-   
+
   }
 
   const quizLiteral = `<div class="quiz-container">
@@ -524,7 +524,7 @@ function showQuizKids(){
         <p>Question number:</p>&nbsp;
         <p id="question-number">  1</p>/10
       </div>
-   
+
       <div class="question">
         <p id="question-text"></p>
         <div class="choices">
@@ -544,7 +544,7 @@ function showQuizKids(){
       setTimeout(() => {
         runQuiz()
       }, 200);
-     
+
     })
   })
 
@@ -603,39 +603,39 @@ function calculateUserAge() {
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
     return age;
-  } 
+  }
 }
 verticalScrollActive()
 
 function ajaxReloadComponent(file_location, container){
   $(document).ready(function(){
-   
-   
+
+
     $.ajax({
-        url: file_location,  
-        method: 'POST', 
+        url: file_location,
+        method: 'POST',
         success: function(response) {
-          
+
             $(container).html(response);
         },
         error: function(xhr, status, error) {
-        
+
             console.log('Error: ' + error);
         }
     });
-  
+
 });
 }
 
 function ajaxReloadImageMainComponent(file_location, container){
   $(document).ready(function(){
-   
-   
+
+
     $.ajax({
-        url: file_location,  
-        method: 'POST',  
+        url: file_location,
+        method: 'POST',
         success: function(response) {
-          
+
             $(container).html(response);
             displayDropdowns() //<---- give reloaded image functionality to drop again
         },
@@ -643,7 +643,7 @@ function ajaxReloadImageMainComponent(file_location, container){
             console.log('Error: ' + error);
         }
     });
-  
+
 });
 }
 
@@ -668,15 +668,15 @@ function showUploadedImage(){
 
 function changeLikeAnimation(forumCommentId){
   const likeIcon = document.querySelector(`.like-icon_num_${forumCommentId}`);
- 
+
   if(likeIcon.classList.contains("active_like")) {
     likeIcon.classList.remove("active_like")
     setTimeout(() => {
       likeIcon.classList.add("inactive_like")
     }, 1);
- 
 
-  } 
+
+  }
   else {
     likeIcon.classList.remove("inactive_like")
     setTimeout(() => {
@@ -691,13 +691,13 @@ function displayCommentEdit() {
   const editLabel = document.querySelectorAll(".edit_comment");
   const allOptions = document.querySelectorAll(".comment_options")
   editLabel && editLabel.forEach(edit => {
- 
+
     edit.addEventListener("click", function() {
-  
+
       const closestCommentLabel = edit.closest('.comment_edit_label');
-      
+
       const options = closestCommentLabel.querySelector(".comment_options");
-   
+
       if (options && !options.classList.contains("comment-options-active")) {
         allOptions.forEach(option=>{
           option.classList.remove("comment-options-active");
@@ -705,8 +705,8 @@ function displayCommentEdit() {
         setTimeout(() => {
           options.classList.add("comment-options-active");
         }, 2);
-       
-        
+
+
       }
       else {
         options.classList.remove("comment-options-active");
@@ -717,13 +717,13 @@ function displayCommentEdit() {
 
 displayCommentEdit()
 function addLikeForumPosts(){
- 
+
 
   const likes = document.querySelectorAll(".like");
 
   likes.forEach(like=>{
     like.addEventListener('click', function() {
-     
+
       const forumCommentId = like.getAttribute("data-comment-id");
       const forumCommentPostId = like.getAttribute("data-post-id");
       const data = [forumCommentId, forumCommentPostId]
@@ -737,26 +737,26 @@ function addLikeForumPosts(){
           likesContainer.innerHTML=`likes: ${data_array[0]}`;
           likeIcon.src=data_array[1];
           changeLikeAnimation(forumCommentId)
-        
+
         })
         .catch(error => {
             console.error('Error:', error);
         })
     })
   })
-  
+
 }
 addLikeForumPosts()
 
 
 function addLikeNews(){
- 
+
 
   const likes = document.querySelectorAll(".like_news");
 
   likes.forEach(like=>{
     like.addEventListener('click', function() {
-     
+
       const forumCommentId = like.getAttribute("data-comment-id");
       const forumCommentPostId = like.getAttribute("data-post-id");
       const data = [forumCommentId, forumCommentPostId]
@@ -770,15 +770,15 @@ function addLikeNews(){
           likesContainer.innerHTML=`likes: ${data_array[0]}`;
           likeIcon.src=data_array[1];
           changeLikeAnimation(forumCommentId)
-          
-        
+
+
         })
         .catch(error => {
             console.error('Error:', error);
         })
     })
   })
-  
+
 }
 addLikeNews()
 
@@ -814,7 +814,7 @@ function displayForumPostsAddPostModal(){
 
   const triggerModalButton = document.querySelector(".add_form_post_trigger");
   if(triggerModalButton) {
-   
+
     const closeModal = document.querySelector(".closeModal");
     const modalAddPost = document.querySelector(".forum_posts_modal_form");
 
@@ -824,8 +824,8 @@ function displayForumPostsAddPostModal(){
       closeModal.addEventListener("click", ()=>{
         modalAddPost.style.display="none"
         closeModalWindowBg()
-        
-       
+
+
       })
     })
   }
@@ -839,14 +839,14 @@ displayForumPostsAddPostModal()
 // DISPLAY REVIEWS ADD REVIEW FORM MODAL
 function displayReviewsFormModal() {
   const triggerModalButton = document.querySelector(".add_review_post_trigger");
-  
+
   if (triggerModalButton) {
     triggerModalButton.addEventListener("click", () => {
       const closeModal = document.querySelectorAll(".closeModal");
       const modalAddPost = document.querySelector(".reviews_modal_form");
       const data = " ";
 
-      
+
       SendDataAjax(data, "ajax/CHECK_IF_USER_LOGGED_IN.php")
         .then(data => {
           let trimmed_data = data.trim();
@@ -880,7 +880,7 @@ displayReviewsFormModal()
 
 
 function AjaxrefreshComponent($selector, $component_location){
- 
+
     var xhr = new XMLHttpRequest();
     xhr.open('GET', $component_location, true); // Request the PHP file that generates the component
     xhr.onload = function() {
@@ -922,17 +922,17 @@ function BookingModal(text, icon, classColourFilter, movieID){
   const modalContainer = document.querySelector(".modal_container")
   const modal = `<div class="modal-forum-posts_delete modal_general">
 
-  
+
 	<div class="col-custom">
 		<img class="modal-tick ${classColourFilter}" src="./imgs/icons/${icon}.svg" alt="">
 		<h5>${text} <br> <b>
-	
-	
+
+
 		<button class="button-custom button-post-added bookingApprove">
 			OK
 		</button>
 
-	</div>   
+	</div>
 
 </div>`
 modalContainer.innerHTML=modal;
@@ -942,44 +942,44 @@ const buttonExit = document.querySelectorAll(".button-post-added");
 
 buttonExit.forEach(element => { element.addEventListener("click", ()=>{
   closeModalWindowBg()
- 
+
   window.location.href = `movie.php?movie=${movieID}`
   modalWindow.style.display="none";
 
 })
-  
+
 });
- 
+
 }
 function GeneralModal(text, icon, classColourFilter){
 
   const modalContainer = document.querySelector(".modal_container")
   const modal = `<div class="modal-forum-posts_delete modal_general">
 
-  
+
 	<div class="col-custom">
 		<img class="modal-tick ${classColourFilter}" src="./imgs/icons/${icon}.svg" alt="">
 		<h5>${text} <br> <b>
-	
-	
+
+
 		<button class="button-custom button-post-added">
 			OK
 		</button>
 
-	</div>   
+	</div>
 
 </div>`
   modalContainer.innerHTML=modal;
   initiateModalWindowBg()
   const modalWindow = document.querySelector(".modal-forum-posts_delete");
 	const buttonExit = document.querySelectorAll(".button-post-added");
-  
+
 	buttonExit.forEach(element => { element.addEventListener("click", ()=>{
     closeModalWindowBg()
 		modalWindow.style.display="none";
 
 	})
-    
+
   });
 }
 function modalWindowAddReview(text, icon){
@@ -990,13 +990,13 @@ function modalWindowAddReview(text, icon){
 	<div class="col-custom">
 		<img class="modal-tick" src="./imgs/icons/${icon}.svg" alt="">
 		<h5>${text} <br> <b>
-	
-	
+
+
 		<button class="button-custom button-post-added">
 			OK
 		</button>
 
-	</div>   
+	</div>
 
 </div>`
   modalContainer.innerHTML=modal;
@@ -1007,40 +1007,40 @@ function modalWindowAddReview(text, icon){
   }, 3000);
 	buttonExit.forEach(element => { element.addEventListener("click", ()=>{
     window.location.reload();
-  
+
 		modalWindow.style.display="none";
 
 	})
-    
+
   });
 }
 
 
 // DELETE NOTS FROM USER NAV
 function deleteNotsNav(){
- 
+
 
   const container = document.querySelector(".nots_container_list");
   const deleteButton = document.querySelector(".delete_nots_trigger");
   const notCounter = document.querySelector(".not_count_span");
   deleteButton?
   deleteButton.addEventListener("click", ()=>{
-  
+
     const postId = "";
     SendDataAjax(postId, "ajax/DELETE_AND_RERENDER_NOTS.php")
       .then(data => {
         container.innerHTML=data;
         container.style.display="none"
         notCounter.innerHTML="0"
-    
-      
+
+
       })
       .catch(error => {
           console.error('Error:', error);
       })
   }) : null
 }
-  
+
 deleteNotsNav()
 
 
@@ -1075,7 +1075,7 @@ slider.forEach(ele=>ele.addEventListener('mousedown', (e) => {
   startX = e.pageX - rect.left;
   // Get initial scroll position in pixels from left
   scrollLeft = ele.scrollLeft;
-  
+
 }));
 
 slider.forEach(ele=>ele.addEventListener('mouseleave', () => {
@@ -1116,13 +1116,13 @@ function initialActiveCard(){ //<==========initial first card active
     const cardId = cards[0].getAttribute("data-id");
     const cardTrailer = cards[0].getAttribute("data-trailer");
     cards[0].classList.add("active-card")
-    
+
     movieTrailer.src= cardTrailer
     buttonCurrentMovie.setAttribute('href', `movie.php?movie=${cardId}`);
     const CardbackgroundImage = document.querySelector(`.active-card img`)
     moviesSection.style.backgroundImage = `url('${CardbackgroundImage.src}')`;
     changeBackgroundOnClick()
-  } 
+  }
 }
 function incrementDecrementTickets(){
   const counterTicket = document.querySelector(".counter-ticket");
@@ -1133,53 +1133,53 @@ function incrementDecrementTickets(){
   const priceTicketElement = document.querySelector(".ticket_price");
   const priceTicketValue = Number(priceTicketElement.innerHTML);
   let counter = 1;
-  
+
     incrementor.addEventListener("click", ()=>{
       counter += 1;
       let priceTicketCalc = priceTicketValue * counter;
       counterTicket.innerHTML= counter;
       priceTicketElement.innerHTML= priceTicketCalc;
     })
-  
+
     decrementor.addEventListener("click", ()=>{
       counter -= 1;
       let priceTicketCalc = priceTicketValue * counter;
       counterTicket.innerHTML= counter;
       priceTicketElement.innerHTML= priceTicketCalc;
     })
-  
+
   }
-  
+
 }
 incrementDecrementTickets()
 initialActiveCard()
 
-function changeBackgroundOnClick(){ //<==========change active card 
+function changeBackgroundOnClick(){ //<==========change active card
   const moviesSection = document.querySelector(".background-section-current-movie_popular");
   const cards = document.querySelectorAll(".movie-card-detailed");
   const movieTrailer = document.querySelector(".selected-popular-movie-trailer");
   const buttonCurrentMovie = document.querySelector(".current-trending-button");
   const trailerContainer = document.querySelector(".trailer-trending-selected-movie-card")
   const movieSelectedDetails = document.querySelector(".current-trending-movie-details")
-  
+
   cards? cards.forEach(card=>card.addEventListener("click", ()=>{
     const cardId = card.getAttribute("data-id");
     const cardTrailer = card.getAttribute("data-trailer");
-  
-  
 
- 
+
+
+
 
     setTimeout(() => {
-     
 
-          
+
+
     // Check if the card is already active
     if (card.classList.contains("active-card")) {
       // If the card is already active, stop the function from running further
       return;
     }
-    
+
     trailerContainer.classList.add("trailer-trending-selected-movie-card-animtion")
     movieSelectedDetails.classList.add("trailer-trending-selected-movie-card-animtion")
     setTimeout(() => {
@@ -1196,42 +1196,42 @@ function changeBackgroundOnClick(){ //<==========change active card
 
     buttonCurrentMovie.setAttribute('href', `movie.php?movie=${cardId}`);
 
-  
+
     movieTrailer.src = cardTrailer;
 
-  
+
     const cardBackgroundImage = card.querySelector('img'); // Get the image inside the current card
     moviesSection.style.backgroundImage = `url('${cardBackgroundImage.src}')`;
 
 
 
-     
+
     }, 1);
-  
+
   })): null
-} 
+}
 changeBackgroundOnClick()
 
 // -------------------------Search movies bar nav--------------------------------
 
-function searchBar(){
-  $(".search_field .input").click(function(){
-    $(".wrapper-search .search_box .dropdown").addClass("show");
-  });
-  
-  
-  
-  $(".default_option").click(function(){
-    $(".dropdown ul").toggleClass("active");
-  });
-  
-  $(".dropdown ul li").click(function(){
-    var text = $(this).text();
-    $(".default_option").text(text);
-    $(".dropdown ul").removeClass("active");
-  });
-}
-searchBar()
+// function searchBar(){
+//   $(".search_field .input").click(function(){
+//     $(".wrapper-search .search_box .dropdown").addClass("show");
+//   });
+
+
+
+//   $(".default_option").click(function(){
+//     $(".dropdown ul").toggleClass("active");
+//   });
+
+//   $(".dropdown ul li").click(function(){
+//     var text = $(this).text();
+//     $(".default_option").text(text);
+//     $(".dropdown ul").removeClass("active");
+//   });
+// }
+// searchBar()
 function addCommentAjax(){
   const buttonTriggerAddComment = document.querySelector(".add_comment");
   const commentContainer = document.querySelector(".result_comment");
@@ -1240,10 +1240,10 @@ function addCommentAjax(){
     buttonTriggerAddComment.addEventListener("click", ()=>{
 
     const commentTextValue = commentText.value;
-   
+
     const dataPostIdAttribute =  buttonTriggerAddComment.getAttribute("data-post-id");
 
-    
+
     dataPostId = [dataPostIdAttribute, commentTextValue ]
     const loader = `<li class="box_result row comment_row loader_box">
     <div class="loader"></div>
@@ -1257,27 +1257,27 @@ function addCommentAjax(){
         displayCommentEdit()
         deleteCommentForumAjax()
       }, 1000);
-  
-           
+
+
     })
     .catch(error => {
         console.error('Error:', error);
     })
 }) }
-  
+
 addCommentAjax()
-// DELETE COMMENTS  NEWS 
+// DELETE COMMENTS  NEWS
 function deleteCommenNewsAjax(){
   const delete_comment_trigger = document.querySelectorAll(".delete_comment_news_trigger");
   const commentContainer = document.querySelector(".result_comment");
 
-  
- 
+
+
     delete_comment_trigger.forEach(trigger=>{
     trigger.addEventListener("click", ()=>{
 
-  
-   
+
+
     const dataCommentIdAttribute =  trigger.getAttribute("data-comment-id");
     const postIdAttribute =  trigger.getAttribute("data-post-id");
     dataPostId = [dataCommentIdAttribute, postIdAttribute ]
@@ -1294,14 +1294,14 @@ function deleteCommenNewsAjax(){
         displayCommentEdit()
         deleteCommenNewsAjax()
       }, 1000);
-  
-           
+
+
     })
     .catch(error => {
         console.error('Error:', error);
     })
 }) })}
-  
+
 deleteCommenNewsAjax()
 
 function addCommentNewsAjax(){
@@ -1312,10 +1312,10 @@ function addCommentNewsAjax(){
     buttonTriggerAddComment.addEventListener("click", ()=>{
 
     const commentTextValue = commentText.value;
-   
+
     const dataPostIdAttribute =  buttonTriggerAddComment.getAttribute("data-post-id");
 
-    
+
     dataPostId = [dataPostIdAttribute, commentTextValue ]
     const loader = `<li class="box_result row comment_row loader_box">
     <div class="loader"></div>
@@ -1328,15 +1328,15 @@ function addCommentNewsAjax(){
         addLikeNews()
         displayCommentEdit()
         deleteCommenNewsAjax()
-      }, 1000); 
-  
-           
+      }, 1000);
+
+
     })
     .catch(error => {
         console.error('Error:', error);
     })
 }) }
-  
+
 addCommentNewsAjax()
 
 
@@ -1347,13 +1347,13 @@ function deleteCommentForumAjax(){
   const delete_comment_trigger = document.querySelectorAll(".delete_comment_trigger");
   const commentContainer = document.querySelector(".result_comment");
 
-  
- 
+
+
     delete_comment_trigger.forEach(trigger=>{
     trigger.addEventListener("click", ()=>{
 
-  
-   
+
+
     const dataCommentIdAttribute =  trigger.getAttribute("data-comment-id");
     const postIdAttribute =  trigger.getAttribute("data-post-id");
     dataPostId = [dataCommentIdAttribute, postIdAttribute ]
@@ -1370,14 +1370,14 @@ function deleteCommentForumAjax(){
         displayCommentEdit()
         deleteCommentForumAjax()
       }, 1000);
-  
-           
+
+
     })
     .catch(error => {
         console.error('Error:', error);
     })
 }) })}
-  
+
 deleteCommentForumAjax()
 
 
@@ -1389,13 +1389,13 @@ function movieCurrentBackground() {
   const movieCurrentMovie = document.querySelector(".movie-section-current img");
   if(movieCurrentSection && movieCurrentMovie) {
     const movieCurrentMovieImage = movieCurrentMovie.getAttribute("src");
-  
+
 
     movieCurrentSection.style.backgroundImage = `url(${movieCurrentMovieImage})`;
   }
 
-   
-    
+
+
   }
 
 
@@ -1407,14 +1407,14 @@ function movieCurrentBackground() {
 // -------------------------Select popular movie and get it by sending ajax--------------------------------
 
 function getIdFromPopularMovies(){
- 
+
   const selectedMoviePopularId = document.querySelectorAll(".movie-card-detailed");
 
   selectedMoviePopularId.forEach(ele=>ele.addEventListener("click", ()=> {
     const MovieSelectedTitle = document.querySelector(".selected_movie_title");
     const MovieSelectedDescription = document.querySelector(".selected_movie_description");
     const selectedMovieId = ele.getAttribute("data-id")
-    
+
     SendDataAjax(selectedMovieId, "ajax/GET_MOVIE_BY_ID.php")
     .then(data => {
       const movieData = JSON.parse(data);
@@ -1424,13 +1424,13 @@ function getIdFromPopularMovies(){
       console.log(selectedMovieTitle)
       MovieSelectedTitle.textContent=selectedMovieTitle;
       MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
-      
+
     })
     .catch(error => {
         console.error('Error:', error);
     });
   }))
-} 
+}
 
 getIdFromPopularMovies()
 
@@ -1445,14 +1445,14 @@ function initialiseAjaxFirstSelectedMoviePopular(){
     popularMoviesCards.forEach(card=>{
       ids.push(card.getAttribute("data-id"));
     })
- 
+
     SendDataAjax(ids[0], "ajax/GET_MOVIE_BY_ID.php")
     .then(data => {
       const movieData = JSON.parse(data);
       const selectedMovieTitle = movieData[0][0]
       const selectedMovieDescription = movieData[0][1]
       const selectedMovieDescriptionShorted = selectedMovieDescription.substring(0, 250);
-    
+
       MovieSelectedTitle.textContent=selectedMovieTitle;
       MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
     })
@@ -1460,7 +1460,7 @@ function initialiseAjaxFirstSelectedMoviePopular(){
         console.error('Error:', error);
     });
   }
-  
+
 }
 
 
@@ -1480,29 +1480,29 @@ function SendDataAjax(sendData, file) {
       });
   });
 }
-   
- 
+
+
 // -------------------------Display hamburger--------------------------------
 
 function displayHamburger() {
-  
-  // const NavLinks = ` 
- 
+
+  // const NavLinks = `
+
   // `
   const hamburger =  document.querySelector(".hamburger");
   const containerLinks = document.querySelector(".container-links");
-  
+
   function changeToHamburger() {
-   
+
 
     if (window.innerWidth <= 1250) {
-      hamburger.style.display = "block"; 
-      containerLinks.style.display = "none"; 
+      hamburger.style.display = "block";
+      containerLinks.style.display = "none";
     } else {
-      containerLinks.style.display = "flex"; 
-      hamburger.style.display = "none"; 
-      // displayRegistration()    
-      
+      containerLinks.style.display = "flex";
+      hamburger.style.display = "none";
+      // displayRegistration()
+
     }
   }
 
@@ -1518,19 +1518,19 @@ function displayHamburger() {
 displayHamburger();
 // -------------------------Search  AJAX--------------------------------
 function searchMovies(){
- 
+
   const resultsSearched = document.querySelector(".list-searched-movies")
   const movieSearcheInput = document.querySelector(".search-movie");
 
- 
+
   movieSearcheInput.addEventListener("keyup", function(){
     const movieSearcheInputValue = movieSearcheInput.value;
     if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
       SendDataAjax(movieSearcheInputValue, "ajax/GET_SEARCHED_MOVIES.php")
       .then(data => {
       resultsSearched.innerHTML=data;
-        
-        
+
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1539,10 +1539,10 @@ function searchMovies(){
     else {
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   })
- 
+
 }
 searchMovies()
 
@@ -1552,17 +1552,17 @@ function searchReviews(){
   const resultsSearched = document.querySelector(".list-searched-posts")
   const movieSearcheInput = document.querySelector(".search-reviews");
 
- 
+
   movieSearcheInput? movieSearcheInput.addEventListener("keyup", function(){
     const reviewSearcheInputValue = movieSearcheInput.value;
     if (reviewSearcheInputValue.trim().length > 0 && reviewSearcheInputValue!="") {
       SendDataAjax(reviewSearcheInputValue, "ajax/GET_SEARCHED_REVIEWS.php")
       .then(data => {
-      
+
       results.style.display="flex"
       resultsSearched.innerHTML=data;
-        
-        
+
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1572,10 +1572,10 @@ function searchReviews(){
       results.style.display="none"
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   }) : null
- 
+
 }
 searchReviews()
 function searchUsers(){
@@ -1583,17 +1583,17 @@ function searchUsers(){
   const resultsSearched = document.querySelector(".list-searched-posts")
   const usersSearcheInput = document.querySelector(".search-users");
 
- 
+
   usersSearcheInput? usersSearcheInput.addEventListener("keyup", function(){
     const usersSearcheInputValue = usersSearcheInput.value;
     if (usersSearcheInputValue.trim().length > 0 && usersSearcheInputValue!="") {
       SendDataAjax(usersSearcheInputValue, "ajax/GET_SEARCHED_USERS.php")
       .then(data => {
-      
+
       results.style.display="flex"
       resultsSearched.innerHTML=data;
-        
-        
+
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1603,31 +1603,31 @@ function searchUsers(){
       results.style.display="none"
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   }) : null
- 
+
 }
 searchUsers()
 
 // -------------------------Search POSTS AJAX--------------------------------
 
 function searchPosts(){
- 
+
   const resultsSearched = document.querySelector(".list-searched-posts")
   const movieSearcheInput = document.querySelector(".search-post");
   const containerSearchedPosts =  document.querySelector(".search-results-posts");
- 
+
   movieSearcheInput? movieSearcheInput.addEventListener("keyup", function(){
     const movieSearcheInputValue = movieSearcheInput.value;
-    
+
     if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
       SendDataAjax(movieSearcheInputValue, "ajax/GET_SEARCHED_POSTS.php")
       .then(data => {
       containerSearchedPosts.style.display="flex"
       resultsSearched.innerHTML=data;
-        
-        
+
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1637,28 +1637,28 @@ function searchPosts(){
       containerSearchedPosts.style.display="none"
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   }) : null
- 
+
 }
 searchPosts()
 function searchForumPosts(){
- 
+
   const resultsSearched = document.querySelector(".list-searched-forum-posts")
   const postSearcheInput = document.querySelector(".search-forum-posts-input");
   const containerSearchedPosts =  document.querySelector(".search-results-posts");
- 
+
   postSearcheInput? postSearcheInput.addEventListener("keyup", function(){
     const postSearcheInputValue = postSearcheInput.value;
-    
+
     if (postSearcheInputValue.trim().length > 0 && postSearcheInputValue!="") {
       SendDataAjax(postSearcheInputValue, "ajax/GET_SEARCHED_USERS_FORUM_POSTS.php")
       .then(data => {
       containerSearchedPosts.style.display="flex"
       resultsSearched.innerHTML=data;
-        
-        
+
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1668,72 +1668,72 @@ function searchForumPosts(){
       containerSearchedPosts.style.display="none"
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   }) : null
- 
+
 }
 searchForumPosts()
 // -------------------------Search bar width mobile screen adjustement--------------------------------
-function searchbarWider(){
+// function searchbarWider(){
 
 
-  const logo = document.querySelector(".logo_container_main")
-  const hamburger = document.querySelector(".hamburger");
-  const navContainer = document.querySelector(".navigation-container");
-  const searchBox = document.querySelector(".search_box_main");
-  const searchBar = document.querySelector(".wrapper-search .search_box .search_field");
+//   const logo = document.querySelector(".logo_container_main")
+//   const hamburger = document.querySelector(".hamburger");
+//   const navContainer = document.querySelector(".navigation-container");
+//   const searchBox = document.querySelector(".search_box_main");
+//   const searchBar = document.querySelector(".wrapper-search .search_box .search_field");
 
-  logo.style.display="flex"
-  searchBar.style.width="224px"
-  navContainer.style.justifyContent = "space-between";
-  function mobileNav(){
-    
-      hamburger.style.display="none"
-      logo.style.display="none"
-      searchBox.style.width="100%"
-      searchBar.style.width="100%"
-    
-   
-  }
-  
+//   logo.style.display="flex"
+//   searchBar.style.width="224px"
+//   navContainer.style.justifyContent = "space-between";
+//   function mobileNav(){
 
-  if (window.innerWidth > 767) { 
+//       hamburger.style.display="none"
+//       logo.style.display="none"
+//       searchBox.style.width="100%"
+//       searchBar.style.width="100%"
 
-    searchBox.style.width="224px"
-    searchBar.style.width="180px" //while resizing back to 200px normal wide search bar
-    searchBar.addEventListener("click", ()=>{
-      logo.style.display="flex"
-      searchBox.style.width="324px"
-      searchBar.style.width="100%"
-      
-    })
-  }
-  if (window.innerWidth < 567) { 
 
-    searchBar.style.width="100%"
+//   }
 
-    searchBar.addEventListener("click",  mobileNav)
-    // if click on other element than search display off hamb and logo 
-    document.addEventListener('click', function(event) {
-      
-      if (!searchBar.contains(event.target)) {
-        logo.style.display="flex"
-        if (window.innerWidth < 567) { 
-          hamburger.style.display="block"
 
-        }
-        
-      }
-    });
-  }
+//   if (window.innerWidth > 767) {
 
-}
+//     searchBox.style.width="224px"
+//     searchBar.style.width="180px" //while resizing back to 200px normal wide search bar
+//     searchBar.addEventListener("click", ()=>{
+//       logo.style.display="flex"
+//       searchBox.style.width="324px"
+//       searchBar.style.width="100%"
 
-window.addEventListener("resize", function(){
-  searchbarWider()
-})
-searchbarWider()
+//     })
+//   }
+//   if (window.innerWidth < 567) {
+
+//     searchBar.style.width="100%"
+
+//     searchBar.addEventListener("click",  mobileNav)
+//     // if click on other element than search display off hamb and logo
+//     document.addEventListener('click', function(event) {
+
+//       if (!searchBar.contains(event.target)) {
+//         logo.style.display="flex"
+//         if (window.innerWidth < 567) {
+//           hamburger.style.display="block"
+
+//         }
+
+//       }
+//     });
+//   }
+
+// }
+
+// window.addEventListener("resize", function(){
+//   searchbarWider()
+// })
+// searchbarWider()
 
 
 // send ajax to create review
@@ -1744,10 +1744,10 @@ function sendAJAXReview(dataInput){
   .then(data => {
     console.log(data.trim())
     if(data.trim()==="success") {
-    
+
       const text = "Your review has been successfully added";
       modalWindowAddReview(text, "tick")
-     
+
     }
     else if(data.trim()==="not_logged") {
       const text2 = "You need to be logged in before adding reviews";
@@ -1757,8 +1757,8 @@ function sendAJAXReview(dataInput){
       const text3 = "You already left review for this movie.";
       modalWindowAddReview(text3, "error")
     }
-   
- 
+
+
   })
   .catch(error => {
       console.error('Error:', error);
@@ -1777,27 +1777,27 @@ function selectSearchedMovieReview() {
       // Hide all reviews
       searchedMovieReviews.forEach(movie => {
         movie.style.display = "none";
-        
+
       });
-      
+
       // Show the clicked review
       movie.style.display = "flex";
       movie.classList.add("notHover")
       movie.classList.add("movie-selected-movie-review")
       // get movie id
-     
-  
 
-   
+
+
+
       stars.forEach(star=>{
       star.addEventListener("click", ()=>{
         stars.forEach(star=>{star.classList.remove("active-star");})
         star.classList.add("active-star")
-        
+
       })
       })
       buttonTrigger.addEventListener("click", (event)=>{
-       
+
         const selectedMovie = document.querySelector(".movie-selected-movie-review");
         const movieId = selectedMovie.getAttribute("data-id");
         const reviewText= document.querySelector(".review_input_text").value;
@@ -1818,19 +1818,19 @@ function selectSearchedMovieReview() {
             reviewText,
             reviewRating
           ];
-  
+
           // After creating extracted data from form send ajax
           sendAJAXReview(data)
-         
+
           container.style.display="none"
           closeModalWindowBg()
         }
-       
-       
 
-     
 
-      
+
+
+
+
       })
     });
   });
@@ -1845,7 +1845,7 @@ function addSelectedMovieReview() {
         star.addEventListener("click", ()=>{
           stars.forEach(star=>{star.classList.remove("active-star");})
           star.classList.add("active-star")
-          
+
         })
       })
 
@@ -1871,30 +1871,30 @@ function addSelectedMovieReview() {
             reviewText,
             reviewRating
           ];
-  
+
           // After creating extracted data from form send ajax
           sendAJAXReview(data)
-         
+
           container.style.display="none"
           closeModalWindowBg()
-  
-        }
-   
-       
-     
 
-      
+        }
+
+
+
+
+
       })
 }
-  
+
 addSelectedMovieReview()
 
 function searchMoviesReviewsForm(){
- 
+
   const resultsSearched = document.querySelector(".list-searched-movies-reviews")
   const movieSearcheInput = document.querySelector(".search-movie-review");
 
- 
+
   movieSearcheInput&&movieSearcheInput.addEventListener("keyup", function(){
     const movieSearcheInputValue = movieSearcheInput.value;
     if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
@@ -1902,7 +1902,7 @@ function searchMoviesReviewsForm(){
       .then(data => {
       resultsSearched.innerHTML=data;
       selectSearchedMovieReview()
-     
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1911,17 +1911,17 @@ function searchMoviesReviewsForm(){
     else {
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   })
- 
+
 }
 function selectedMoviesReviewsForm(){
- 
+
   const resultsSearched = document.querySelector(".list-searched-movies-reviews")
   const movieSearcheInput = document.querySelector(".search-movie-review");
 
- 
+
   movieSearcheInput&&movieSearcheInput.addEventListener("keyup", function(){
     const movieSearcheInputValue = movieSearcheInput.value;
     if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
@@ -1929,7 +1929,7 @@ function selectedMoviesReviewsForm(){
       .then(data => {
       resultsSearched.innerHTML=data;
       selectSearchedMovieReview()
-     
+
       })
       .catch(error => {
           console.error('Error:', error);
@@ -1938,10 +1938,10 @@ function selectedMoviesReviewsForm(){
     else {
       resultsSearched.innerHTML=""
     }
-    
-  
+
+
   })
- 
+
 }
 
 // -------------------------Display dropdowns--------------------------------
@@ -2002,14 +2002,14 @@ function displayDropdowns() {
   });
   dropNavTriggerContact && dropNavTriggerContact.addEventListener("mouseover", () => {
     hideAllDropdowns();
-   
+
   });
 
 
   featuresNavTrigger && featuresNavTrigger.addEventListener("mouseover", () => {
     hideAllDropdowns();
     featuresDropdown && (featuresDropdown.style.display = "block");
-    
+
   });
   // Hide dropdowns on mouse leave (mouseleave is more reliable than mouseout)
   moviesDropdown && moviesDropdown.addEventListener("mouseleave", () => {
@@ -2045,17 +2045,17 @@ function intersectionHeaders(TriggeringElement, header){
     if(entry.isIntersecting===true) {
       header.classList.remove("inactive-header")
       header.classList.add("active-header")
-  
-  
+
+
     }
     else {
-     
+
       header.classList.add("inactive-header")
-      
+
     }
-   
-  
-  
+
+
+
   }
   const ObsOptionsNext = {
     root:null,
@@ -2063,7 +2063,7 @@ function intersectionHeaders(TriggeringElement, header){
     rootMargin: '-30px'
   }
   const observer = new IntersectionObserver(ObsCallbacknext, ObsOptionsNext)
-  
+
   observer.observe(TriggeringElement)
 }
 
@@ -2083,40 +2083,40 @@ for (let i = 1; i <= 99; i++) {
 // --------------------READ MORE MOVIE CARD INFO-------------------
 
 function moreinfoCard(){
- 
+
   document.querySelectorAll('.trigger-more-info-button').forEach(button => {
     button.addEventListener('click', (event)=>{
       const crossActivecard = document.querySelectorAll(".card-cross-expendable");
       event.preventDefault();
       button.style.display="none"
       const parentDiv = event.target.closest('.movie-card-expandable');
-      if (!parentDiv) return; 
-    
-     
-    
+      if (!parentDiv) return;
+
+
+
       document.querySelectorAll(".movie-card-expandable").forEach(card => card.classList.remove("selected-card-active"));
-    
-     
+
+
       parentDiv.classList.add("selected-card-active");
       const hiddenDesc = parentDiv.querySelectorAll(".card-movie-hidden-info");
       hiddenDesc.forEach(element => element.style.display = "block");
-    
-    
-  
+
+
+
       crossActivecard.forEach(cross=>{
         cross.addEventListener('click', ()=>{
           parentDiv.classList.remove("selected-card-active");
           hiddenDesc.forEach(element => element.style.display = "none");
-         
+
           button.style.display="block"
         });
       })
-    
-     
+
+
     });
-    
+
   });
- 
+
 }
 
 moreinfoCard()
@@ -2140,7 +2140,7 @@ function faqCordians(){
       eachQuestionAnswer.style.display = eachQuestionAnswer.style.display === "block" ? "none" : "block";
 
 
-    
+
 
   }))
 }
@@ -2233,7 +2233,7 @@ function manageStartsReviews(){
               }
           });
 
-       
+
       });
 
       star.addEventListener("mouseover", function() {
@@ -2257,7 +2257,50 @@ function manageStartsReviews(){
 
 // -----------------GALLERY ABOUT FANCYBOX----------------------
 
- 
+
 Fancybox.bind(document.getElementById("gallery-wrap"), "[data-fancybox]", {
   // Your custom options
 });
+
+
+
+
+
+
+// Lazy loading function
+function lazyLoadImages() {
+  // Select all images with the class 'lazy'
+  const lazyImages = document.querySelectorAll('img.lazy');
+
+  // Check if Intersection Observer is supported
+  if ('IntersectionObserver' in window) {
+    // Create a new Intersection Observer
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        // Check if the image is in the viewport
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          // Set the src attribute to load the image
+          img.src = img.getAttribute('data-src');
+          // Remove the 'lazy' class as it's no longer needed
+          img.classList.remove('lazy');
+          // Unobserve the image after loading
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    // Observe each image
+    lazyImages.forEach(img => observer.observe(img));
+  } else {
+    // Fallback for browsers that don't support Intersection Observer
+    // Simply load all images immediately
+    lazyImages.forEach(img => {
+      img.src = img.getAttribute('data-src');
+      img.classList.remove('lazy');
+    });
+  }
+}
+
+// Run the lazy load function
+document.addEventListener("DOMContentLoaded", lazyLoadImages);

@@ -18,40 +18,40 @@ getTodaysDate()
 
 function createConfirmWindowDeleteRow(){
     const deleteButton = document.querySelectorAll(".delete_button")
- 
+
     const modalContainer = document.querySelector(".modal-window-container");
     const confirmationModalLiteral = `
      <div class="confirmationWindowModal">
         <img class="cross_modal_admin exit-modal"src="../public/imgs/icons/cross.svg" alt="">
-    
+
         <div class="buttons-message-container">
             <p>Are you sure you want to delete this record?</p>
             <div class="buttons-ok-cancel">
                 <button class="accept_button">OK</button>
                 <button class="exit-modal">Cancel</button>
             </div>
-        
+
         </div>
     </div>
-    
+
     `
-    
+
     deleteButton.forEach(button => {
-       
+
         button.addEventListener("click", ()=>{
-          
+
             modalContainer.innerHTML=confirmationModalLiteral;
 
             const acceptButton = document.querySelector(".accept_button")
 
             acceptButton.addEventListener("click", ()=>{
                 let selectedDeleteLink = button.getAttribute("data-link");
-            
+
                 window.location.href = `${selectedDeleteLink}`;
             })
-          
-       
-            
+
+
+
             const exitModal = document.querySelectorAll(".exit-modal");
             exitModal.forEach(ele=>ele.addEventListener("click", ()=>{
 
@@ -60,10 +60,10 @@ function createConfirmWindowDeleteRow(){
             }))
         })
     });
-  
 
 
-   
+
+
 
 }
 createConfirmWindowDeleteRow()
@@ -77,14 +77,14 @@ function SendDataAjax(sendData, file) {
         });
     });
   }
-     
+
 // -------------------------Search  AJAX--------------------------------
 function searchMoviesAdmin(){
- 
+
     const moviesContainer = document.querySelector(".movies-table");
     const movieSearcheInput = document.querySelector(".search-movies-input-admin");
-  
-   
+
+
     movieSearcheInput.addEventListener("keyup", function(){
       const movieSearcheInputValue = movieSearcheInput.value;
       if (movieSearcheInputValue.trim().length > 0 && movieSearcheInputValue!="") {
@@ -92,7 +92,7 @@ function searchMoviesAdmin(){
         .then(data => {
             moviesContainer.innerHTML=data;
             createConfirmWindowDeleteRow()
-          
+
         })
         .catch(error => {
             console.error('Error:', error);
@@ -101,9 +101,9 @@ function searchMoviesAdmin(){
       else {
         resultsSearched.innerHTML=""
       }
-      
-    
+
+
     })
-   
+
   }
 searchMoviesAdmin()
