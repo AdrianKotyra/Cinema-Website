@@ -14,16 +14,16 @@
 
             <div class="widget-posts">
             <div class="searcher-container-reviews">
-                <form role="search" method="get" action="" class="search-post-container forum-seacher">
-                    <div class="input-container">
-                        <input type="search" class="search-forum-posts-input" value="" name="r" placeholder="Search users posts" />
-                        <div class="search-results-posts">
-                            <ul class="list-searched-forum-posts col-custom">
+            <form role="search" method="get" action="" class="search-post-container">
+                <div class="input-container">
+                    <input type="search" class="search-post" value="" name="s" placeholder="Search post..." />
+                    <div class="search-results-posts">
+                        <ul class="list-searched-posts col-custom">
 
-                            </ul>
-                        </div>
+                        </ul>
                     </div>
-                </form>
+                </div>
+            </form>
             </div>
                 <?php recent_posts('recent_posts_all_literal_main_page', 5, 0)?>
                 <a href="posts.php">

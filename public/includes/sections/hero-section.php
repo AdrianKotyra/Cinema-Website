@@ -1,23 +1,26 @@
-<section class="hero-section">
 
 
-    <section class="hero-section  category_hero">
+
+    <section class="hero-section  category_hero row-custom">
 
         <div class="hero-index-text">
-            <div class="hero-text-slide-1 hero-slide">
-                <h3>Access the world of movies</h3>
-            </div>
-            <div class="hero-text-slide-2 hero-slide">
-                <h3>Where every visit is an adventure for all ages!</h3>
-                <div class="col text-hero-buttons">
-                    <button class="button-custom hero-login-btn login-link">
-                        log in
-                    </button>
-                    <button class="button-custom hero-singup-btn sign_up_link">
-                        sign in
-                    </button>
+            <div class="para-hero">
+                <div class="hero-text-slide-1 hero-slide">
+                    <h3>Access the world of movies</h3>
+                </div>
+                <div class="hero-text-slide-2 hero-slide">
+                    <h3>Explore hundreds of movies  for all ages!</h3>
+                    <div class="col text-hero-buttons">
+                        <button class="button-custom hero-login-btn login-link">
+                            log in
+                        </button>
+                        <button class="button-custom hero-singup-btn sign_up_link">
+                            sign in
+                        </button>
+                    </div>
                 </div>
             </div>
+
 
 
         </div>
@@ -34,9 +37,3 @@
 
 
     </section>
-
-
-
-
-
-</section>

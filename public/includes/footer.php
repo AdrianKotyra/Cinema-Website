@@ -1,5 +1,12 @@
-<footer>
-   
+<?php
+    $current_page = basename($_SERVER['PHP_SELF']);
+?>
+
+<footer class='<?php if($current_page == 'reviews.php' ||$current_page == 'users.php'
+|| $current_page == 'forum_posts_all.php'|| $current_page == 'posts.php'|| $current_page == 'contact.php' )
+
+{ echo 'bg-dark'; } ?>'>
+
         <div class="wrapper-content footer-content">
             <div class="logo-container-footer">
                         <a class="logo-container row-custom footer-logo" href="index.php">
@@ -7,13 +14,16 @@
                             <div class="logo_name_footer">
                                 Limelight Cinema
                             </div>
-                        
+
 
                         </a>
             </div>
-            <div class="footer-container ">
+            <div class="footer-container <?php if($current_page == 'reviews.php' ||$current_page == 'users.php'
+                || $current_page == 'forum_posts_all.php'|| $current_page == 'posts.php'|| $current_page == 'contact.php' )
 
-              
+                { echo 'white-text'; } ?>">
+
+
                 <div class="col-footer col-custom">
                     <h5>Profile</h5>
                     <a>FAQ</a>
@@ -41,9 +51,9 @@
                         <a href="">  <img class="contact-icon" id="fb-icon-footer"alt="" src="./imgs/icons/facebook.svg"></a>
                         <a href="">   <img class="contact-icon" alt="" src="./imgs/icons/linkedin.svg"></a>
                         <a href=""> <img class="contact-icon" alt="" src="./imgs/icons/twitter.svg"></a>
-                       
+
                     </div>
-                
+
                 </div>
 
 
@@ -56,7 +66,7 @@
         <script src="./js/global.js"></script>
         <script src="./js/user_settings.js"></script>
         <script src="./js/user_login_register.js"></script>
-    
+
         <?php ob_end_flush();?>
-        
+
     </footer>
