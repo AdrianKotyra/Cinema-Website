@@ -1,13 +1,22 @@
 <?php include "includes/header.php"?>
     <?php include "includes/nav.php"?>
-    <?php user_redirect()?>   
+    <?php user_redirect()?>
     <section class="wrapper-content news-section ">
         <h5 class="section-header text-mid header-subpage">Users</h5>
-        <?php include("includes/search-users.php")?>
+        <form role="search" method="get" action="" class="search-post-container search-user">
+            <div class="input-container">
+                <input type="search" class="search-users" value="" name="s" placeholder="Search user..." />
+                <div class="search-results-posts">
+                    <ul class="list-searched-posts col-custom">
+
+                    </ul>
+                </div>
+            </div>
+        </form>
 
         <div class="users-all-container">
-         
-          
+
+
         </div>
 
 
@@ -38,29 +47,29 @@
 
 
             }
-           
 
-            
+
+
 
         ?>
-  
-      
-      
-       
-       
+
+
+
+
+
     </section>
-   
-   
-     
 
-      
- 
-   
 
- 
-  
+
+
+
+
+
+
+
+
     <?php include("includes/footer.php")?>
-  
-  
+
+
   </body>
 </html>

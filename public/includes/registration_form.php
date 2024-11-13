@@ -71,12 +71,12 @@
 
                                 <h1>Login</h1>
                                 <div class="form-group position-relative mb-4">
-                                    <input type="text"  placeholder="email" name="email"  class="log_user_email form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="username"
+                                    <input type="text"  required placeholder="email" name="email"  class="log_user_email form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="username"
                                         placeholder="Username">
                                         <i class="fa fa-user-o"></i>
                                 </div>
                                 <div class="form-group position-relative mb-4">
-                                    <input type="text" class="log_user_password"  placeholder="password" name="password" class=" log_user_password form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="password"
+                                    <input required type="text" class="log_user_password"  placeholder="password" name="password" class=" log_user_password form-control border-top-0 border-right-0 border-left-0 rounded-0 shadow-none" id="password"
                                         placeholder="Password">
                                         <i class="fa fa-key"></i>
 

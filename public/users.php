@@ -22,7 +22,7 @@
 
     </video>
     <div class="hero-text hero-text-sub">
-        <h3 class="text-big">Users </h3>
+        <h3 class="text-big white-text ">Users </h3>
     </div>
 
 

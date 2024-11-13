@@ -14,7 +14,7 @@
 
     </video>
     <div class="hero-text hero-text-sub">
-      <h3 class="text-big">When you’re here, you’re home. <br>
+      <h3 class="text-big white-text">When you’re here, you’re home. <br>
       So is all your entertainment.
     </div>
 

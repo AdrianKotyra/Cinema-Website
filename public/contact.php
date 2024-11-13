@@ -4,24 +4,24 @@
 
   <?php include "includes/nav.php"?>
     <section class="about_container contact_container">
-      
-   
-       
-    
+
+
+
+
     <video class=" video_about_all"  height="100%" autoplay  muted loop >
       <source src="./videos/contact/slider.mp4" type="video/mp4">
-    
-    
+
+
     </video>
         <div class="hero-text hero-text-sub">
-        <h3 class="text-big">Contact <br>
-        
+        <h3 class="text-big white-text ">Contact <br>
+
         </div>
     </section>
     <section class="contact-section">
         <div class="contact-form-container">
         <div class="container col-custom">
-    
+
       <div class="form">
         <div class="contact-info">
           <h3 class="title">Let's get in touch</h3>
@@ -73,62 +73,62 @@
             <label for="firstname">firstname</label>
             <div class="input-container">
               <input type="text" name="firstname" class="input firstname" />
-         
+
               <span></span>
             </div>
             <label for="lastname">lastname</label>
             <div class="input-container">
               <input type="text" name="lastname" class="input lastname" />
-          
+
               <span></span>
             </div>
             <label for="Email">Email</label>
             <div class="input-container">
               <input type="email" name="email" class="input email" />
-          
-        
+
+
             </div>
             <label for="message">Message</label>
             <div class="input-container textarea">
               <textarea name="message" class="input msg"></textarea>
-             
-           
+
+
             </div>
             <input value="Send" class="btnform send-contact-form-btn" />
           </form>
-         
+
 
         </div>
-      
-      
+
+
       </div>
-       
+
     <div class="alert-container-contact">
-          
+
           </div>
 
     </div>
- 
+
 
 
 
     </section>
-    
-
-  
-
-      
-  
-   
-     
-
-  
-
-   
-  
 
 
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -136,11 +136,11 @@
   <?php include("includes/footer.php")?>
   <script src="js/pages/contact.js"></script>
 
-  
 
 
 
 
-   
+
+
 </body>
 </html>

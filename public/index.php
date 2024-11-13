@@ -6,9 +6,11 @@
 
   <?php include("./includes/sections/hero-section.php")  ?>
   <?php include("./includes/sections/features-section.php")  ?>
+  <?php include("./includes/sections/about-section.php")  ?>
   <?php include("./includes/sections/quiz-section.php")  ?>
-  <?php include("./includes/sections/top-rated-movies-section.php")  ?>
   <?php include("./includes/sections/review-section.php")  ?>
+  <?php include("./includes/sections/top-rated-movies-section.php")  ?>
+
   <?php include("./includes/sections/popular-movies-section.php")  ?>
   <?php include("./includes/sections/trending-movies-section.php")  ?>
   <?php include("./includes/sections/comming-movies-section.php")  ?>

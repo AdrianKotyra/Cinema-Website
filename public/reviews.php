@@ -21,7 +21,7 @@
 
     </video>
     <div class="hero-text hero-text-sub">
-        <h3 class="text-big">Reviews </h3>
+        <h3 class="text-big white-text ">Reviews </h3>
     </div>
 
 

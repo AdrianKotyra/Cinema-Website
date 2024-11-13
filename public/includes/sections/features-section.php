@@ -1,5 +1,5 @@
 <section class="features-section ">
-    <h5 class="section-header text-mid header-intersect17">Learn what we can do for you</h5>
+    <h5 class="section-header  text-mid header-intersect17">Learn what we can do for you</h5>
     <span class="header-trigger17 trigger"></span>
     <div class="features-container-grid">
         <a target="_blank" href="forum_posts_all.php" class="features-section-card">

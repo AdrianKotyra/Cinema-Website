@@ -4,7 +4,7 @@ include("../php/init.php");
 $user_id_logged = $user->user_id;
 if($user_id_logged) {
     global $connection;
-    $query_select_user = $database-> query_array("SELECT * FROM users where user_id = $user_id_logged "); 
+    $query_select_user = $database-> query_array("SELECT * FROM users where user_id = $user_id_logged ");
     while($row = mysqli_fetch_array($query_select_user)) {
         $user_firstname = $row["user_firstname"];
         $user_lastname = $row["user_lastname"];
@@ -39,8 +39,8 @@ if($user_id_logged) {
                 echo '
                 <div class="ticket-small settings_user_card">
                     <div class="settings_card_options options-tickets-container">
-                    
-                        <p class="option_card_settings delete_settings_button" data-booking-id="'.$booking_id.'"> Cancel </p>
+
+
                         <p class="option_card_settings download_settings_button" data-booking-id="'.$booking_id.'"> Download </p>
                     </div>
                     <div class="title">
@@ -54,62 +54,62 @@ if($user_id_logged) {
 
                     <table>
                         <tr>
-                           
+
                             <th>NAME</th>
                             <th>SURNAME</th>
                         </tr>
                         <tr>
-                          
+
                             <td class="ticket_data">'.$user_firstname .'</td>
                             <td class="ticket_data">'. $user_lastname .'</td>
                         </tr>
                     </table>
-                  
+
                     <table>
                         <tr>
-                           
+
                             <th>DATE</th>
                             <th>TIME</th>
                         </tr>
                         <tr>
-                          
+
                             <td class="ticket_data">'.$date_booking_trimmed.'</td>
                             <td class="ticket_data">'. $time_show.'</td>
                         </tr>
                     </table>
                     <table>
                         <tr>
-                           
+
                             <th>PRICE</th>
                             <th>QUANTITY</th>
                         </tr>
                         <tr>
-                          
+
                             <td class="ticket_data">'.$ticket_price.'£</td>
                             <td class="ticket_data">'. $ticket_quantity.'</td>
                         </tr>
                     </table>
                     <table>
                         <tr>
-                           
+
                             <th>SEAT</th>
                             <th>TOTAL</th>
                         </tr>
                         <tr>
-                          
+
                             <td class="ticket_data">'.$seat_number.'</td>
                             <td class="ticket_data">'. $ticket_price.'£</td>
                         </tr>
                     </table>
-                  
+
                     </div>
 
                     <div class="serial">
                         <table class="barcode"><tr></tr></table>
                         <div class="numbers">
-                            
+
                             <span>'.$serial_number.'</span>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -119,10 +119,10 @@ if($user_id_logged) {
         }
 
 
-       
-   
-       
-} 
+
+
+
+}
 echo ' </div>';
 
 }

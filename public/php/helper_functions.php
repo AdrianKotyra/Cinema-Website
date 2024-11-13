@@ -669,9 +669,9 @@ function renderNext7Days() {
 
                 </div>
 
-                <div class="current-movie-desc-container col-custom">
+                <div class="current-movie-desc-container white-text col-custom">
                 <div>
-                    <h1 class="selected_movie_title">'.$movie_title.'</h1>
+                    <h1 class="selected_movie_title ">'.$movie_title.'</h1>
                     <span class="selected_movie_director"> Directed by ' .$movie_director.'</span> <br>
                       <span class="movie_selected_age" style="background-color:'.$age_colour.'" >' .$movie_age.' +</span> <br>
                     <div class="movie-details row-custom">
