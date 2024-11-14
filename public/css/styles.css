@@ -404,7 +404,7 @@
 
 .user-avatar-trigger {
     justify-content: space-between;
-    padding: 0 42px;
+    padding: 0 30px;
     cursor: pointer;
 }
 
@@ -948,7 +948,7 @@ body {
 
 nav {
     top: 0;
-    z-index: 999;
+    z-index: 9999999;
     width: 100%;
     height: 40px;
     position: fixed;
@@ -1151,9 +1151,7 @@ nav a {
     height: 100%;
     width: 100%;
 }
-.hero-index-text h3 {
-    height: 400px;
-}
+
 .active-button-text-hero {}
 
 .header-text-hero-animation-class-left {
@@ -1402,6 +1400,7 @@ nav a {
 }
 .about-section .para-hero p {
     line-height: 1.7rem;
+    padding-right: 5%;
 }
 .active-mobile-links {
     display: flex !important;
@@ -1776,7 +1775,7 @@ nav a {
     width: 100%;
     height: 100%;
     background-color: var(--secondary-colour-gray);
-    z-index: 99999;
+    z-index: 9999999
 }
 
 .mobile_header {
@@ -2781,13 +2780,35 @@ footer .logo-container img {
     position: absolute;
     top: 0;
     left: 0;
-    width: 60%;
+    width: 50%;
     height: 100%;
     background: linear-gradient(to left, rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 30%, rgba(0, 0, 0, 0) 80%);
     pointer-events: none;
 }
 .about-section {
+    align-items: center;
     flex-direction: row-reverse;
+}
+.features-section .features_card_desc p {
+    opacity: 0%;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.features-section .features-section-card h5{
+    font-weight: 800;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.features-section .features-section-card:hover  .features_card_desc p{
+    opacity: 100%;
+    transition: 0.3s;
+}
+.features-section .features-section-card:hover  .features_card_desc h5{
+    opacity: 0%;
+
 }
 .about-section-container {
 align-items: center;
@@ -2796,7 +2817,7 @@ align-items: center;
 .video {
     border: none;
     object-fit: cover;
-    width: 100%;
+    width: 60%;
     height: 100%;
 }
 
@@ -3246,6 +3267,19 @@ align-items: center;
 .active-nav-mobile p {
     color: var(--primary-colour) !important;
 }
+.active-hero-section-bg {
+    background-color: white;
+
+
+}
+.active-hero-section-text {
+    color: black !important;
+}
+.active-hero-slider-bg::before {
+
+
+    background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0.7) 30%, rgba(255, 255, 255, 0) 80%) !important;
+}
 
 .reg-cross {
     background-color: var(--primary-colour);
@@ -3639,7 +3673,7 @@ video {
     background-color: white;
     width: 80vw;
     height: 90vh;
-    z-index: 999999;
+    z-index: 999999999999;
 }
 
 .active-hero-slide {
@@ -3659,18 +3693,21 @@ video {
     z-index: 2222;
 
     text-align: left !important;
-    width: 40%;
+    width: 50%;
 
 }
-
+.text-hero-buttons {
+    margin-top: 20px;
+}
 .text-hero-buttons * {
     margin-top: 20px;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 .para-hero {
+    font-family:monospace;
     text-align: left;
-    width: 80%;
+    width: 100%;
     padding: 20% 0 0 10%;
 }
 .hero-index-text h3 {
@@ -3706,7 +3743,7 @@ video {
 }
 
 .hero-section .video_mixed {
-    filter: brightness(0.5);
+
     object-fit: cover;
     width: 100%;
 }
@@ -3751,7 +3788,7 @@ video {
 .slides_container, .slides_container_about {
 
     overflow: hidden;
-    width: 60%;
+    width: 50%;
     height: 100%;
 }
 
@@ -3761,7 +3798,7 @@ video {
     position: absolute;
     top: 0;
     right:  0;
-    width: 60%;
+    width: 50%;
     height: 100%;
     background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 30%, rgba(0, 0, 0, 0) 80%);
     pointer-events: none;
@@ -3978,8 +4015,11 @@ video {
 .features-section-card p {
     font-weight: 800;
 }
-
+.para-about {
+    padding: 0;
+}
 .features_card_desc {
+    height: 100%;
     padding: 5%;
     position: relative;
     z-index: 2;
@@ -4822,7 +4862,7 @@ footer {
 }
 
 .pagination-container a {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: var(--text-small-size);
 }
 
@@ -6439,9 +6479,7 @@ h1 {
 /*<==mobile  */
 
 @media (max-width: 800px) {
-    .hero-index-text h3 {
-        height: 200px;
-    }
+
     .active-review-card {
         width: 100% !important;
     }
@@ -6526,6 +6564,15 @@ h1 {
         top: 50%;
         transform: translate(-50%, -50%);
     }
+    .about-section {
+        height: auto;
+    }
+    .about-section  .para-hero{
+        position: relative;
+        transform: translate(0);
+        text-align: left;
+        padding: 5%;
+    }
 
     .hero-text-cat {
         background-color: initial !important;
@@ -6583,16 +6630,23 @@ h1 {
         top: 50%;
         transform: translate(-50%, -50%);
     }
-
+    .about-text-container-section {
+        width: 100%;
+    }
     .card-layout-trending-card {
         height: 305px;
     }
-
+    .slides_container_about-section{
+        width: 0%;
+    }
     .card-movie-img,
     .movie-card-more img {
         height: 160px;
     }
+    .about-section .para-hero p {
 
+        padding-right: 0%;
+    }
     :root {
         --Heading-size: 4.5rem;
         --Heading-line-height: 5rem;
@@ -6883,6 +6937,9 @@ h1 {
     }
 }
 @media (max-width: 609px) {
+    .video {
+        width: 100%;
+    }
     .hero-index-text h3 {
         height: auto;
     }
@@ -6895,7 +6952,9 @@ h1 {
         width: 100%;
     }
     .slides_container::before {
-        width: 0;
+        width: 100%;
+
+        background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.3) 100%, rgba(34, 34, 36) 30%);
     }
     .slides_container_about::before {
         width: 0;
@@ -6910,6 +6969,8 @@ h1 {
         width: 100%;
         height: 100%;
     }
+
+
 }
 
 @media (max-width: 569px) {
@@ -6955,10 +7016,25 @@ h1 {
     .date_day{
         width: 100%;
     }
+    .features-section .features_card_desc p {
+        opacity: 100%;
+    }
+    .features-section .features-section-card h5 {
+        font-weight: 800;
+        position: relative;
+        top: 0%;
+        left: 0%;
+        transform: translate(0%, 0%);
+    }
+    .features-section .features-section-card:hover  .features_card_desc h5{
+        opacity: 100%;
+
+    }
 }
 
 /*<==mobile very small */
 @media (max-width: 400px) {
+
     .reviews_container {
         grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
     }

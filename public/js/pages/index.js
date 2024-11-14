@@ -3,6 +3,8 @@
 // ------------hero-text-slider---------
 
 function sliderHeroText() {
+	const sliderContainerBefore = document.querySelector(".slides_container");
+	const heroSection = document.querySelector(".main-hero");
 	const buttonHeroLogin = document.querySelector(".hero-login-btn");
 	const buttonHeroSignup = document.querySelector(".hero-singup-btn");
 	const slide1 = document.querySelector(".hero-text-slide-1");
@@ -20,6 +22,17 @@ function sliderHeroText() {
 				setTimeout(() => {
 					if(heading.innerHTML !== text) {
 						heading.classList.add(animationClass)
+						if(button == buttonHeroLogin) {
+							heroSection.classList.add("active-hero-section-bg")
+							heading.classList.add("active-hero-section-text")
+							sliderContainerBefore.classList.add("active-hero-slider-bg")
+						}
+						else {
+							heroSection.classList.remove("active-hero-section-bg")
+							heading.classList.remove("active-hero-section-text")
+							sliderContainerBefore.classList.remove("active-hero-slider-bg")
+						}
+
 
 						heading.innerHTML = text; // Update text
 					}

@@ -176,7 +176,7 @@
     <section class="more-section movie-more-section">
 
     <div class="wrapper-content">
-        <h5 class="section-header text-mid">Similar titles</h5>
+        <h5 class="section-header text-white text-mid">Similar titles</h5>
         <div class="container-custom movie-similar-titles">
 
         <?php get_movies_of_genres_by_movie_id();?>

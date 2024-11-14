@@ -12,14 +12,14 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="admin_msg">
-                   
+
                     <?php show_admin_messages_num_nav();?>
-                  
-                  
+
+
                     <a href="admin_messages.php" class="dropdown-toggle"><i class="fa fa-envelope"></i> </a>
-                    
+
                 </li>
-               
+
                 <!-- <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -45,7 +45,7 @@
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                   
+
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo1"><i class="fa-solid fa-book"></i></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo1" class="collapse">
@@ -68,8 +68,8 @@
                             </li>
                         </ul>
                     </li>
-                
-                 
+
+
 
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo4"><i class="fa fa-fw fa-film"></i> Movies <i class="fa fa-fw fa-caret-down"></i></a>
@@ -113,7 +113,7 @@
                             <li>
                                 <a href="reviews.php?source=add_reviews">Add review</a>
                             </li>
-                          
+
                         </ul>
                     </li>
                     <li>
@@ -125,7 +125,7 @@
                             <li>
                                 <a href="forum.php?source=add_posts">Add Posts</a>
                             </li>
-                          
+
                         </ul>
                     </li>
                     <li>
@@ -137,7 +137,7 @@
                             <li>
                                 <a href="staff.php?source=add_staff">Add staff</a>
                             </li>
-                          
+
                         </ul>
                     </li>
                     <li>
@@ -146,11 +146,11 @@
                             <li>
                                 <a href="tickets.php">View Tickets</a>
                             </li>
-                           
-                          
+
+
                         </ul>
                     </li>
-                   
+
                     <li class="">
                         <a href="comments.php"><i class="fa-solid fa-comments"></i> Comments</a>
                     </li>
@@ -163,10 +163,22 @@
                             <li>
                                 <a href="gallery.php?source=add_image">Add image</a>
                             </li>
-                          
+
                         </ul>
                     </li>
-                 
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo33"><i class="fa-solid fa-person"></i></i> Quiz <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo33" class="collapse">
+                            <li>
+                                <a href="quiz.php">Quiz</a>
+                            </li>
+                            <li>
+                                <a href="quiz.php?source=add_question">Add question</a>
+                            </li>
+
+                        </ul>
+                    </li>
+
                 </ul>
-            </div>     
+            </div>
 </nav>

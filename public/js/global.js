@@ -348,69 +348,28 @@ function displayBookMovieContent(){
 
 displayBookMovieContent()
 // -----------------quiz---------------
-function runQuiz() {
-  const questions = [
-    {
-      question: "What is the name of the snowman in Frozen?",
-      choices: ["Olaf", "Sven", "Kristoff"],
-      correct: 0,
-      img_src : "./imgs/quiz/olaf.png"
-    },
-    {
-      question: "Who is the main character in Toy Story that is a cowboy?",
-      choices: ["Buzz Lightyear", "Woody", "Jessie"],
-      correct: 1,
-      img_src : "./imgs/quiz/Woody.jpg"
-    },
-    {
-      question: "Which movie features a fish named Nemo who gets lost?",
-      choices: ["Finding Dory", "Finding Nemo", "Shark Tale"],
-      correct: 1,
-      img_src : "./imgs/quiz/Nemo.jpg"
-    },
-    {
-      question: "What is the name of the lion in The Lion King?",
-      choices: ["Mufasa", "Scar", "Simba"],
-      correct: 2,
-      img_src : "./imgs/quiz/Simba.png"
-    },
-    {
-      question: "In Harry Potter, what house does Harry belong to?",
-      choices: ["Hufflepuff", "Slytherin", "Gryffindor"],
-      correct: 2,
-      img_src : "./imgs/quiz/Gryffindor.jpg"
-    },
-    {
-      question: "Which movie features a family of superheroes called The Incredibles?",
-      choices: ["The Incredibles", "Big Hero 6", "Avengers"],
-      correct: 0,
-      img_src : "./imgs/quiz/Incredibles.jpg"
-    },
-    {
-      question: "Who is the friendly blue genie in Aladdin?",
-      choices: ["Genie", "Jafar", "Iago"],
-      correct: 0,
-      img_src : "./imgs/quiz/genie.png"
-    },
-    {
-      question: "What type of animal is Shrek's best friend?",
-      choices: ["Donkey", "Horse", "Dragon"],
-      correct: 0,
-      img_src : "./imgs/quiz/donkey.jpg"
-    },
-    {
-      question: "Which movie features characters named Mike and Sulley who work in a factory?",
-      choices: ["Monsters University", "Monsters, Inc.", "Despicable Me"],
-      correct: 1,
-      img_src : "./imgs/quiz/Monsters.jpeg"
-    },
-    {
-      question: "What is the name of the girl who goes to Wonderland in Alice in Wonderland?",
-      choices: ["Belle", "Alice", "Wendy"],
-      correct: 1,
-      img_src : "./imgs/quiz/alice.jpg"
-    }
-  ];
+
+
+
+// get data from sql ajax and then run quiz js function with list of question retrieved from ajax sql
+async function retrieveDataQuizAjax() {
+  try {
+    const data = "";
+    const response = await SendDataAjax(data, "ajax/GET_QUIZ.php");
+
+
+    const questions = JSON.parse(response);
+    runQuiz(questions)
+
+  } catch (error) {
+    console.error('Error:', error);
+    throw error;
+  }
+}
+// js function to run quiz
+function runQuiz(questions) {
+  const numberOfQuestions = document.querySelector(".question_len");
+  numberOfQuestions.innerHTML = questions.length;
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -522,7 +481,7 @@ function showQuizKids(){
       </div>
       <div class="row-custom question_number_container">
         <p>Question number:</p>&nbsp;
-        <p id="question-number">  1</p>/10
+        <p id="question-number">  1</p>/ <span class="question_len"> 10 </span>
       </div>
 
       <div class="question">
@@ -542,13 +501,14 @@ function showQuizKids(){
       modalMain.innerHTML=quizLiteral;
       disableQuiz()
       setTimeout(() => {
-        runQuiz()
+        retrieveDataQuizAjax()
       }, 200);
 
     })
   })
 
 }
+
 showQuizKids()
 function verticalScrollActive() {
   const containers = document.querySelectorAll('.vetical-scroll-grab-class');
