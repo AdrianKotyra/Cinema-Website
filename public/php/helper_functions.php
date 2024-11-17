@@ -530,13 +530,13 @@
 
             if (!empty($result)) {
                 foreach ($result as $row) {
-                    $genres[] = $row['name'];
+                    $genres[] = '<a href="category.php?category='.$row['name'].'"><p class="genre_card">'.$row['name'].'</p> </a>';
                 }
             }
         }
 
         // Return the genres as a comma-separated string, or return an empty string if no genres
-        return !empty($genres) ? implode(', ', $genres) : '';
+        return !empty($genres) ? implode('', $genres) : '';
     }
 
 
@@ -677,9 +677,11 @@ function renderNext7Days() {
                     <div class="movie-details row-custom">
                         <span>'.$release_date.'</span>
                     </div>
+                    <div class="selected-movie-genres-container">
+                        '.$genres.'<br>
+                    </div>
 
 
-                    '.$genres.'<br>
                     '.$rating.'
 
 
@@ -1048,7 +1050,12 @@ function renderNext7Days() {
 
             $query = "SELECT * FROM reviews where user_review_id = $user_id order by review_date desc  ";
             $search_query = mysqli_query($connection, $query);
-
+            if(mysqli_num_rows($search_query) ==0) {
+                echo '<div class="alert alert-secondary" role="alert">
+                    No users reviews found
+                    </div>';
+                return;
+            }
             while($row = mysqli_fetch_array($search_query)) {
                 $review = $row["review"];
                 $movie_review_id = $row["movie_review_id"];
@@ -1134,7 +1141,12 @@ function renderNext7Days() {
 
             $query = "SELECT * FROM forum_posts where post_user_id = $user_id order by post_date desc  ";
             $search_query = mysqli_query($connection, $query);
-
+            if(mysqli_num_rows($search_query) ==0) {
+                echo '<div class="alert alert-secondary" role="alert">
+                    No users posts found
+                    </div>';
+                return;
+            }
             while($row = mysqli_fetch_array($search_query)) {
                 $post_id = $row["id"];
                 $post_title    = $row['post_title'];
@@ -1535,7 +1547,12 @@ function renderNext7Days() {
 
         $query = "SELECT * FROM reviews where movie_review_id = $movie_selected_id order by review_date";
         $search_query = mysqli_query($connection, $query);
-
+        if(mysqli_num_rows($search_query) ==0) {
+            echo '<div class="alert alert-secondary" role="alert">
+                No users reviews found
+                </div>';
+            return;
+        }
         while($row = mysqli_fetch_array($search_query)) {
             $review = $row["review"];
             $movie_review_id = $row["movie_review_id"];
@@ -1688,6 +1705,12 @@ function renderNext7Days() {
             $movie_id = $_GET["id"];
             $query = "SELECT * FROM reviews where movie_review_id= $movie_id order by review_date desc  ";
             $search_query = mysqli_query($connection, $query);
+            if(mysqli_num_rows($search_query)<1) {
+                echo '<div class="alert alert-secondary reviews_alert" role="alert">
+                        no results
+                        </div>';
+                return;
+            }
 
             while($row = mysqli_fetch_array($search_query)) {
                 $review = $row["review"];
@@ -1777,27 +1800,34 @@ function renderNext7Days() {
 
                         </p>
 
-                        <a class="user_link" href="user.php?id='.$user_id.'&&source=all_posts">
-                            <button class="button-custom user-button">
-                                Users posts
-                            </button>
-                        </a>
 
-                        <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
-                            <button class="button-custom user-button">
-                                Users reviews
-                            </button>
-                        </a>
                         <div class="user_links user_links_get_user row-custom">
-                            <a target="_blank" href="'.$user_facebook.'">
-                               <img class="fb_icon"src="./imgs/icons/facebook.svg">
-                            </a>
-                            <a target="_blank" href="'.$user_linkedin.'">
-                                <img src="./imgs/icons/linkedin.svg">
-                            </a>
-                           <a target="_blank" href="'.$user_twitter.'">
-                            <img src="./imgs/icons/twitter.svg">
-                            </a>
+                            <div class="user-buttons-profile-container">
+                                <a class="user_link" href="user.php?id='.$user_id.'&&source=all_posts">
+                                    <button class="button-custom user-button">
+                                        Users posts
+                                    </button>
+                                </a>
+
+                                <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
+                                    <button class="button-custom user-button">
+                                        Users reviews
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="profile-socials-user">
+                                 <a target="_blank" href="'.$user_facebook.'">
+                                <img class="fb_icon"src="./imgs/icons/facebook.svg">
+                                </a>
+                                <a target="_blank" href="'.$user_linkedin.'">
+                                    <img src="./imgs/icons/linkedin.svg">
+                                </a>
+                                <a target="_blank" href="'.$user_twitter.'">
+                                <img src="./imgs/icons/twitter.svg">
+                                </a>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
@@ -2377,7 +2407,7 @@ function renderNext7Days() {
             while ($row = mysqli_fetch_array($query)) {
                 $post_title = $row["post_title"];
 
-                echo '<h5 class="section-header text-mid header-subpage post-header-page">'.$post_title.'</h5>';
+                echo '<h5 class="section-header white-text text-mid header-subpage post-header-page">'.$post_title.'</h5>';
             }
 
         }
@@ -2393,7 +2423,7 @@ function renderNext7Days() {
             while ($row = mysqli_fetch_array($query)) {
                 $post_title = $row["post_title"];
 
-                echo '<h5 class="section-header text-mid header-subpage post-header-page">'.$post_title.'</h5>';
+                echo '<h5 class="section-header text-mid white-text header-subpage post-header-page">'.$post_title.'</h5>';
             }
 
         }
@@ -2513,6 +2543,25 @@ function renderNext7Days() {
                 $movie_title = $row["title"];
 
                 echo $movie_title;
+            }
+
+
+
+
+
+        }
+    }
+    function get_seleected_movie_reviews_img(){
+        global $database;
+        if (isset($_GET["id"])) {
+            $movie_id = $_GET["id"];
+
+            $query = $database-> query_array("SELECT * from movies where id = $movie_id ");
+
+            while ($row = mysqli_fetch_array($query)) {
+                $movie_img = $row["poster"];
+
+                echo $movie_img;
             }
 
 

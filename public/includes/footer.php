@@ -2,8 +2,16 @@
     $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<footer class='<?php if($current_page == 'reviews.php' ||$current_page == 'users.php'
-|| $current_page == 'forum_posts_all.php'|| $current_page == 'posts.php'|| $current_page == 'contact.php' )
+<footer class='<?php if($current_page == 'reviews.php'
+||$current_page == 'users.php'
+|| $current_page == 'forum_posts_all.php'
+|| $current_page == 'posts.php'
+|| $current_page == 'contact.php'
+|| $current_page == 'user.php'
+|| $current_page == 'category.php'
+|| $current_page == 'movie_reviews.php'
+
+)
 
 { echo 'bg-dark'; } ?>'>
 
@@ -18,8 +26,16 @@
 
                         </a>
             </div>
-            <div class="footer-container <?php if($current_page == 'reviews.php' ||$current_page == 'users.php'
-                || $current_page == 'forum_posts_all.php'|| $current_page == 'posts.php'|| $current_page == 'contact.php' )
+            <div class="footer-container <?php if($current_page == 'reviews.php'
+                ||$current_page == 'users.php'
+                || $current_page == 'forum_posts_all.php'|| $current_page == 'posts.php'
+                || $current_page == 'contact.php'
+                || $current_page == 'user.php'
+                || $current_page == 'category.php'
+                || $current_page == 'movie_reviews.php'
+
+
+                )
 
                 { echo 'white-text'; } ?>">
 

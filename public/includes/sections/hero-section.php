@@ -10,7 +10,7 @@
                 </div>
                 <div class="hero-text-slide-2 hero-slide">
                     <h3>Explore movies  for all ages!</h3>
-                    <div class="col text-hero-buttons">
+                    <div class="text-hero-buttons">
                         <button class="button-custom hero-login-btn login-link">
                             log in
                         </button>

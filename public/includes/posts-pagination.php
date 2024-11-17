@@ -1,4 +1,4 @@
-<?php 
+<?php
     global $database;
     // Get the current page number or set it to 1 if not present
     $page = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -11,12 +11,12 @@
     $sql_total = "SELECT COUNT(post_id) FROM posts";
     $total_result = $database-> query_array($sql_total);
     $total_records = $total_result->fetch_array()[0];
-    
+
     $total_pages = ceil($total_records / $limit);
-    
+
 ?>
-    
-<div class="pagination-container">
+
+<div class="pagination-container white-text">
     <ul class="row-custom">
         <?php if($page > 1): ?>
             <li><a href="?page=<?php echo $page-1; ?>">Previous</a></li>
@@ -24,10 +24,10 @@
 
         <?php for($i = 1; $i <= $total_pages; $i++): ?>
             <li style="margin: 0 5px;">
-                <a  class="<?php if($i == $page) echo 'active-page'; ?>" 
+                <a  class="<?php if($i == $page) echo 'active-page'; ?>"
                 href="?page=<?php echo $i; ?>"><?php echo $i; ?>
-               
-            
+
+
                 </a>
             </li>
         <?php endfor; ?>

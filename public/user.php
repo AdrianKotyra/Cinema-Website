@@ -1,7 +1,7 @@
 <?php include "includes/header.php"?>
     <?php include "includes/nav.php"?>
     <?php user_redirect()?>
-    <section class="wrapper-content news-section ">
+    <section class="wrapper-content news-section user-page-container">
         <h5 class="section-header text-mid header-subpage">Users</h5>
         <form role="search" method="get" action="" class="search-post-container search-user">
             <div class="input-container">

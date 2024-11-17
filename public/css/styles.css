@@ -55,7 +55,12 @@
     --gray-filter: invert(100%) sepia(0%) saturate(5516%) hue-rotate(277deg) brightness(112%) contrast(67%);
     --strong-gray-filter: filter: invert(17%) sepia(1%) saturate(5994%) hue-rotate(203deg) brightness(92%) contrast(84%);
 }
-
+.fancybox__container {
+    z-index: 9999999999999999999 !important;
+}
+.main-hero, .about-section, .gallery_about_section {
+    background-color: var(--secondary-colour-gray);
+}
 .hero-test-container .header-section-container a {
     padding-right: 5%;
 }
@@ -668,10 +673,18 @@ nav .link {
 }
 
 .text_feature_card {
+    height: 100%;
+
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
     padding: 16px;
     text-align: center;
 }
-
+.text_feature_card a {
+    display: flex;
+    justify-content: center;
+}
 .text_feature_card h5 {
     font-weight: 800;
 }
@@ -723,7 +736,7 @@ nav .link {
 
 .text-mid {
     line-height: var(--text-mid-line);
-    font-family: "Libre Caslon Text", serif;
+
     font-weight: 700;
     font-style: normal;
 }
@@ -738,7 +751,7 @@ nav .link {
     text-align: left;
     font-size: var(--text-large-size);
     line-height: var(--text-large-line);
-    font-family: "Libre Caslon Text", serif;
+
     font-weight: 700;
     font-style: normal;
 }
@@ -746,7 +759,7 @@ nav .link {
 .heading-custom {
     font-size: var(--Heading-size);
     line-height: var(--Heading-line-height);
-    font-family: "Libre Caslon Text", serif;
+
     font-weight: 700;
     font-style: normal;
 }
@@ -823,7 +836,7 @@ nav .link {
 }
 
 .selected-card-active:hover {
-    filter: contrast(1.4) brightness(0.8) !important;
+    filter: contrast(1) brightness(1) !important;
 }
 
 .user_card:hover {
@@ -837,9 +850,16 @@ nav .link {
 }
 
 .forum_post:hover {
+
     filter: contrast(0.9) brightness(1.2);
     transition: 0.3s;
     background-color: var(--secondary-colour-gray-light);
+}
+.forum_post:hover  .post-header{
+    color: black !important;
+}
+.forum_post:hover  .post-date{
+    color: black !important;
 }
 
 .post-main:hover {
@@ -904,11 +924,11 @@ nav .link {
 
 body {
     display: none;
-    font-family: "Libre Caslon Text", serif;
+    font-family:monospace;
     font-weight: 400;
     font-style: normal;
     margin: 0;
-    background-color: var(--secondary-colour-gray);
+
 }
 
 .active-header:after {
@@ -967,8 +987,18 @@ a {
     color: white;
     opacity: 80%;
 }
-
+.user-buttons-profile-container {
+    display: flex;
+    align-items: center;
+}
+.profile-socials-user {
+    display: flex;
+    align-items: center;
+}
 .user_links_get_user {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
     justify-content: right !important;
 }
 
@@ -1138,15 +1168,12 @@ nav a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right,
-            rgb(194, 192, 192),
-            rgba(194, 192, 192, 0.7) 30%,
-            rgba(0, 0, 0, 0) 80%);
+    background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 30%, rgba(0, 0, 0, 0) 80%);
     pointer-events: none;
 }
 
 .movie-section-current {
-    background-color: rgb(194, 192, 192);
+    background-color: rgb(34, 34, 36);
     position: relative;
     height: 100%;
     width: 100%;
@@ -1276,6 +1303,7 @@ nav a {
 }
 
 .user_links {
+
     margin-bottom: 6px;
     z-index: 22;
     align-items: center;
@@ -1285,7 +1313,9 @@ nav a {
 .users_profile_occupation {
     opacity: 70%;
 }
+.image-name-user{
 
+}
 .fb_icon_card {
     width: 36px !important;
     height: 36px !important;
@@ -1344,8 +1374,8 @@ nav a {
 }
 
 .fb_icon {
-    width: 40px !important;
-    height: 40px !important;
+    width: 36px !important;
+    height: 36px !important;
 }
 
 .cards-user-occpuation {
@@ -1434,12 +1464,13 @@ nav a {
 }
 
 .user_link {
+    margin-right: 12px;
     margin-top: 12px;
 }
 
 .users_profile_img {
     object-fit: cover;
-    width: 400px;
+    width: 300px;
     height: 400px;
 }
 
@@ -1463,8 +1494,8 @@ nav a {
 }
 
 .category_movies {
-    padding-top: 20vh;
-    background-color: var(--secondary-colour-gray);
+    padding: 20vh 0 15vh;
+
 }
 
 .category_movies .container-custom {
@@ -1944,6 +1975,9 @@ nav a {
 }
 
 .button-custom {
+    justify-content: center;
+    align-items: center;
+    display: flex;
     -webkit-box-shadow: -1px 2px 6px 0px rgba(49, 217, 43, 1);
     -moz-box-shadow: -1px 2px 6px 0px rgba(49, 217, 43, 1);
     box-shadow: -1px 2px 6px 0px rgba(49, 217, 43, 1);
@@ -2252,7 +2286,14 @@ nav a {
     filter: invert(0%) sepia(0%) saturate(12%) hue-rotate(257deg) brightness(104%) contrast(104%) !important;
 
 }
+.selected-movie-genres-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+   flex-wrap: wrap;
+}
 .genre_card {
+    display: inline;
     color: black;
     border-radius: 12px;
     padding: 10px 20px;
@@ -2626,12 +2667,13 @@ footer .logo-container img {
 
 .post img {
     object-fit: cover;
-    min-width: 120px;
+   width: 100px;
     height: 80px;
-    max-width: 120px;
+    max-width: 100px;
 }
 
 .post-text {
+
     margin-top: 2%;
     color: white;
 }
@@ -2655,16 +2697,21 @@ footer .logo-container img {
 }
 
 .selected-post-wrapper {
+    width:calc(100% - 300px);
     padding-bottom: 5%;
-    margin: 5%;
+
     background-color: var(--secondary-colour-gray);
 }
 
 .movie-more-section {
     background-image: url("") !important;
 }
-
+.widget-posts .post-text {
+    width: 170px;
+}
 .widget-posts {
+    margin-top: 75px;
+    width: 300px;
     background-color: var(--secondary-colour-gray);
 }
 
@@ -2699,13 +2746,17 @@ footer .logo-container img {
 }
 
 .selected-post-container {
-    padding: 20px;
-    width: 70%;
+    padding: 0 20px;
+    width: 100%;
 }
 
 .widget-posts {
-    height: fit-content;
-    width: 30%;
+    overflow-y: scroll;
+    height: 100vh;
+    top: 75px;
+    position: sticky;
+    /* height: fit-content; */
+    width: 300px;
 }
 
 .recent-post .post-text {
@@ -2722,7 +2773,7 @@ footer .logo-container img {
 }
 
 .comment-container {
-    margin: 0 5%;
+    margin: 0 30px;
 }
 
 .recent-post img {
@@ -3383,8 +3434,8 @@ align-items: center;
 }
 
 .forum_posts_main_img {
-    min-width: 140px;
-    width: 140px;
+
+    width: 100px;
     object-fit: cover;
 }
 
@@ -3697,6 +3748,8 @@ video {
 
 }
 .text-hero-buttons {
+    display: flex;
+    flex-direction: row;
     margin-top: 20px;
 }
 .text-hero-buttons * {
@@ -3705,7 +3758,7 @@ video {
     margin-bottom: 20px;
 }
 .para-hero {
-    font-family:monospace;
+
     text-align: left;
     width: 100%;
     padding: 20% 0 0 10%;
@@ -3914,9 +3967,11 @@ video {
     display: block;
     text-align: center;
 }
-
+.post-section {
+    background-color: var(--secondary-colour-gray);
+}
 .news-section {
-    background-color: var(--secondary-colour-gray-light);
+
     padding-bottom: 10%;
     position: relative;
 }
@@ -4113,7 +4168,7 @@ video {
 }
 
 .post-header-page {
-    margin-left: 5% !important;
+    margin-left: 20px !important;
 }
 
 .post-title-all {
@@ -4129,6 +4184,7 @@ video {
 }
 
 .list-post-card {
+    border-radius: 12px;
     border: 2px solid white;
     position: relative;
     padding: 20px;
@@ -4400,7 +4456,7 @@ footer {
 
 .wrapper-search .search_box {
     margin: 12px;
-
+    border: 2px solid black;
     background: #fff;
     border-radius: 5px;
     height: 35px;
@@ -4489,7 +4545,7 @@ footer {
     padding-left: 20px;
     padding-right: 38px;
     color: #6f768d;
-    transform: translate(0px, -3px);
+    transform: translate(-3px, -3px);
 }
 
 .main-posts .post-date,
@@ -4860,7 +4916,7 @@ footer {
     z-index: 200;
     margin-top: 50px;
 }
-
+.pagination-container a
 .pagination-container a {
     color: rgb(0, 0, 0);
     font-size: var(--text-small-size);
@@ -5006,10 +5062,10 @@ footer {
 }
 
 .comment_window {
-    color: white;
+    color: rgb(0, 0, 0);
     position: relative;
     padding: 12px;
-    background-color: var(--secondary-colour-gray);
+    background-color: white;
 }
 
 .pull-right {
@@ -5024,7 +5080,7 @@ footer {
     /* border: 3px solid var(--primary-colour); */
 
     border-radius: 3px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .header_comment {
@@ -5422,7 +5478,12 @@ footer {
 .img_about_col {
     width: 50%;
 }
-
+.reviews_alert {
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 300px;
+}
 .img_about_col img {
     margin: auto;
     display: block;
@@ -5430,12 +5491,17 @@ footer {
     width: 100%;
     height: 600px;
 }
-
+.hero-reviews-movie img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
 .about_container,
-.contact_container {
+.contact_container,
+.hero-reviews-movie {
     position: relative;
     width: 100%;
-    height: 550px;
+    height: 550px !important;
 }
 
 .about_Section {
@@ -6424,7 +6490,9 @@ h1 {
     .post-text {
         margin: 5%;
     }
-
+    .selected-post-wrapper {
+        width: 100%;
+    }
     .mobile-more-posts-container {
         display: block;
     }
@@ -6479,7 +6547,9 @@ h1 {
 /*<==mobile  */
 
 @media (max-width: 800px) {
-
+    .user_container {
+        margin-bottom: 62px;
+    }
     .active-review-card {
         width: 100% !important;
     }
@@ -6581,7 +6651,9 @@ h1 {
     .text-big {
         padding: 25% 0;
     }
-
+    .user_links_get_user {
+        justify-content: center !important;
+    }
     .about_container_header p {
         text-align: left;
     }
@@ -6665,11 +6737,22 @@ h1 {
     .selected-card-active {
         width: 100% !important;
     }
+    .user-page-container {
+        padding: 0 !important;
+    }
+    .button-custom{
+
+        height: 32px;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 767px) {
     .about_text_container{
         width: 100%;
+    }
+    .selected-movie-genres-container {
+        justify-content: center;
     }
     .about_img_container {
         display: none;
@@ -6937,6 +7020,9 @@ h1 {
     }
 }
 @media (max-width: 609px) {
+    .text-hero-buttons {
+        display: flex;
+        justify-content: center; }
     .video {
         width: 100%;
     }
@@ -7030,6 +7116,7 @@ h1 {
         opacity: 100%;
 
     }
+
 }
 
 /*<==mobile very small */
