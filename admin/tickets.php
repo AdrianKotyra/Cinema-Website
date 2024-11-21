@@ -5,14 +5,14 @@
     <body>
 
     <div id="wrapper">
-        
+
         <!-- Navigation -->
         <?php include("includes/nav.php")?>
 
         <div id="page-wrapper">
             <div class="container-fluid">
 
-          
+
             <div class="row">
 
                 <div class="col-lg-12">
@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-        
+
 
             </div>
 
@@ -41,32 +41,32 @@
                     $source = "";
                 }
                 switch($source) {
-               
-                    
+
+
                     case 'edit_ticket';
-                    include "includes/edit_ticket.php";
+                    include "includes/tickets/edit_ticket.php";
                     break;
                     case 'assign_ticket_movie';
-                    include "includes/assign_ticket.php";
+                    include "includes/tickets/assign_ticket.php";
                     break;
 
-                    default: include "includes/view_all_tickets.php";
+                    default: include "includes/tickets/view_all_tickets.php";
                     break;
 
 
                 }
-                
+
 
 
             ?>
-           
+
 
 
         </div>
-     
+
 
     </div>
- 
+
 
     <?php include("includes/admin_footer.php") ?>
 

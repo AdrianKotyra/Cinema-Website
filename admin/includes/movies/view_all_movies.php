@@ -2,7 +2,7 @@
 <div class="searcher-container-posts">
     <?php include "search-movies.php"?>
 </div>
-  
+
 <table class="table table-bordered table-hover">
 
                 <thead>
@@ -23,8 +23,7 @@
                 <tbody class="movies-table">
 
                     <?php select_and_display_movies();?>
-                
+
 
                 </tbody>
 </table>
-

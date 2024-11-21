@@ -9,11 +9,16 @@ if(isset($_POST["data"])) {
     $movie_subcat = $_POST["data"][0];
     $age_limit = user_logged_age_movies_selection();
 
-  
-    $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN 
-    movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON 
+
+    $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN
+    movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON
     movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$movie_subcat' AND movies.title LIKE '%$search%'and movies.age <= $age_limit ");
-  
+    if(mysqli_num_rows($query)==0) {
+        echo '<div class="alert alert-secondary" role="alert">
+                No movies found
+            </div>';
+        return;
+    }
     while ($row = mysqli_fetch_array($query)) {
             $movie_title = $row["title"];
             $movie_id = $row["id"];
@@ -23,27 +28,27 @@ if(isset($_POST["data"])) {
             $movie_desc = $row["description"];
             $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
 
-            echo ' 
-            <div class="card-layout-trending-card">
-           <div class="movie-card movie-card-trending movie-card-expandable" data-id="'.$movie_id.'">
-                
-                <img loading="lazy" class="card-movie-img" src="./'.$movie_poster.'" alt="">
-                    <div class="text-container card-info">
-                       <div class="title_age_container">
-                        <p class="card-movie-title">'.$movie_title.'</p>
-                        <p class="age_info">'.$movie_age.'+</p>
+            echo '
+            <div class="card-layout-more-card">
+                   <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
+                        <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
+                        <img  class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                            <div class="text-container card-info">
+                               <div class="title_age_container">
+                                <p class="card-movie-title">'.$movie_title.'</p>
+                                <p class="age_info">'.$movie_age.'+</p>
+                                </div>
+                                <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                <button class="button-custom trigger-more-info-button">Book</button>
+                                <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
+                                <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
+
+
+                            </div>
                         </div>
-                        <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
-                        <button class="button-custom trigger-more-info-button">Book</button>
-                        <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
-                        <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
-                       
-                      
                     </div>
-                </div>
-            </div>
         ';
-        
+
     }
 
 

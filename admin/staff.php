@@ -5,14 +5,14 @@
     <body>
 
     <div id="wrapper">
-        
+
         <!-- Navigation -->
         <?php include("includes/nav.php")?>
 
         <div id="page-wrapper">
             <div class="container-fluid">
 
-          
+
             <div class="row">
 
                 <div class="col-lg-12">
@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-        
+
 
             </div>
 
@@ -42,31 +42,31 @@
                 }
                 switch($source) {
                     case 'add_staff';
-                    include "includes/add_staff.php";
+                    include "includes/staff/add_staff.php";
                     break;
 
                     case 'edit_staff';
-                    include "includes/edit_staff.php";
+                    include "includes/staff/edit_staff.php";
                     break;
 
 
-                    default: include "includes/view_all_staff.php";
+                    default: include "includes/staff/view_all_staff.php";
                     break;
 
 
                 }
-                
+
 
 
             ?>
-           
+
 
 
         </div>
-     
+
 
     </div>
- 
+
 
     <?php include("includes/admin_footer.php") ?>
 

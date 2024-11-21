@@ -42,13 +42,13 @@
                 }
                 switch($source) {
                     case 'add_question';
-                    include "includes/add_question.php";
+                    include "includes/quiz/add_question.php";
                     break;
 
 
 
 
-                    default: include "includes/view_all_quiz.php";
+                    default: include "includes/quiz/view_all_quiz.php";
                     break;
 
 

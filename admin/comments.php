@@ -5,14 +5,14 @@
     <body>
 
     <div id="wrapper">
-        
+
         <!-- Navigation -->
         <?php include("includes/nav.php")?>
 
         <div id="page-wrapper">
             <div class="container-fluid">
 
-          
+
             <div class="row">
 
                 <div class="col-lg-12">
@@ -25,7 +25,7 @@
 
                 </div>
             </div>
-        
+
 
             </div>
 
@@ -41,30 +41,30 @@
                     $source = "";
                 }
                 switch($source) {
-                  
+
 
                     case 'edit_comment';
-                    include "includes/edit_comment.php";
+                    include "includes/comments/edit_comment.php";
                     break;
 
 
-                    default: include "includes/view_all_comments.php";
+                    default: include "includes/comments/view_all_comments.php";
                     break;
 
 
                 }
-                
+
 
 
             ?>
-           
+
 
 
         </div>
-     
+
 
     </div>
- 
+
 
     <?php include("includes/admin_footer.php") ?>
 

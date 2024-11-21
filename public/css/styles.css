@@ -1117,6 +1117,7 @@ nav a {
 
 .logo_name,
 .logo_name_footer {
+    text-align: center;
     text-shadow: 3px 3px 2px rgba(128, 0, 0, 0), 2px 4px 13px rgba(49, 217, 43, 1);
 
     color: var(--primary-colour) !important;
@@ -2326,6 +2327,7 @@ nav a {
     height: 600px !important;
     z-index: 9999 !important;
     justify-content: stretch !important;
+    z-index: 9999999999999;
 }
 
 .selected-card-active img {
@@ -2524,6 +2526,7 @@ nav a {
 }
 
 .stars {
+    flex-wrap: wrap;
     display: flex;
     justify-content: center;
 }
@@ -2563,9 +2566,11 @@ footer .logo-container img {
 
 .star:hover,
 .star.selected {
-    color: #fbcd16;
+    filter: var(--main-color-filter);
 }
-
+.star.selected {
+    filter: var(--main-color-filter);
+}
 .screen-card-select:hover .book-screen {
     border: 2px solid white;
     background-color: WHITE;
@@ -2573,6 +2578,7 @@ footer .logo-container img {
 }
 
 .book_container {
+    background-color: var(--secondary-colour-gray);
     padding: 2%;
     position: relative;
     animation: bookContainerAnimation 1s ease-in-out;
@@ -3214,6 +3220,7 @@ align-items: center;
 }
 
 .registration_container {
+    border: 2px solid black;
     border-radius: 8px;
 
     overflow-y: scroll;
@@ -3264,7 +3271,9 @@ align-items: center;
     margin: 0px auto;
     padding: 10px;
 }
-
+.login-conf-user-details-container {
+    padding-top: 10%;
+}
 .poster_reg_form span {
     display: block;
     margin: auto;
@@ -3272,13 +3281,15 @@ align-items: center;
 }
 
 .login-confirmation-window {
+    z-index: 9999999999999999999999999999;
     position: relative;
-    height: 300px !important;
+    width: 50% !important;
+    height: 70% !important;
 }
 
 .login-modal-container {
-    height: 300px;
-    justify-content: space-evenly;
+    height: 100%;
+    justify-content: space-between;
 }
 
 .login-modal-avatar-img {
@@ -3710,7 +3721,7 @@ video {
     background-color: white;
     width: 400px;
     height: 240px;
-    z-index: 9999999;
+    z-index: 999999999999999999;
 }
 
 .registration_container {
@@ -3830,6 +3841,7 @@ video {
 }
 
 .membership_container {
+    height: 20%;
     border-bottom-left-radius: 18px;
     border-bottom-right-radius: 18px;
     color: white;
@@ -4580,8 +4592,8 @@ footer {
     height: 125px !important;
 }
 
-.option_card_settings {
-    padding: 6px;
+.desc-container-review h5{
+    font-weight: 600;
 }
 
 .option_card_settings a:hover {
@@ -5499,6 +5511,7 @@ footer {
 .about_container,
 .contact_container,
 .hero-reviews-movie {
+    background-color: var(--secondary-colour-gray);
     position: relative;
     width: 100%;
     height: 550px !important;
@@ -5594,7 +5607,7 @@ h1 {
 .container-create-post {
     padding: 16px;
     position: relative;
-    max-height: 80vh;
+    max-height: 100vh;
 }
 
 .container-create-post input[type="text"] {
@@ -5672,6 +5685,7 @@ h1 {
 }
 
 .container-create-post h1 {
+    padding-top: 40px;
     color: #333;
 }
 
@@ -6547,6 +6561,13 @@ h1 {
 /*<==mobile  */
 
 @media (max-width: 800px) {
+    .login-conf-user-details-container {
+        padding-top: 150px;
+    }
+    .login-confirmation-window {
+        width: 100% !important;
+        height: 100% !important;
+    }
     .user_container {
         margin-bottom: 62px;
     }
@@ -6709,7 +6730,14 @@ h1 {
         height: 305px;
     }
     .slides_container_about-section{
-        width: 0%;
+        position: absolute;
+
+        width: 100%;
+
+    }
+    .slides_container_about::before {
+        width: 100%;
+        background: linear-gradient(rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 50%, rgba(0, 0, 0, 0) 80%);
     }
     .card-movie-img,
     .movie-card-more img {
@@ -7042,9 +7070,8 @@ h1 {
 
         background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.3) 100%, rgba(34, 34, 36) 30%);
     }
-    .slides_container_about::before {
-        width: 0;
-    }
+
+
     .hero-index-text {
         width: 100%;
     }
@@ -7055,13 +7082,31 @@ h1 {
         width: 100%;
         height: 100%;
     }
+    .closeModal {
+        width: 36px;
+        height: 36px;
+    }
+    .add_review_post_trigger, .add_form_post_trigger {
+        margin: auto;
+    }
+    .searcher-container-reviews .search-post-container {
+        display: flex;
+        justify-content: center;
+    }
+    .search-post-container {
+        justify-content: center;
+        display: flex
 
+    }
 
 }
 
 @media (max-width: 569px) {
     .wrapper-search .search_box .search_field {
         width: auto;
+    }
+    .reviews_container {
+
     }
     .search-results {
         transform: translate(0);
@@ -7088,7 +7133,9 @@ h1 {
     .features_col {
         width: 100%;
     }
-
+    .header-section-container {
+        flex-direction: column;
+    }
     .video_section {
         padding: 2vh;
     }
@@ -7116,15 +7163,53 @@ h1 {
         opacity: 100%;
 
     }
+    .footer-logo {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .all-posts-list-container {
+        grid-template-columns: 1fr;
+    }
+    .users-all-container {
+        grid-template-columns: 1fr;
+    }
+    .user_card {
+        width: 100%;
+    }
+    .reviews-all-container {
+        grid-template-columns: 1fr;
+    }
+    .features-container-grid {
+        grid-template-columns: 1fr;
+    }
+    .categories-section .movies-container {
+        grid-template-columns: 1fr;
+    }
+    .posts-forum-container {
+        grid-template-columns: 1fr;
+    }
+    .reviews_container {
+        grid-template-columns: 1fr;
+    }
+    .faq-container {
+        gap: 0;
+        grid-template-columns: 1fr;
+    }
+    .create-post {
+        width: 100%;
+        height: 100%;
+    }
+    .reviews_modal_form, .forum_posts_modal_form {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%)
+    }
 
 }
 
 /*<==mobile very small */
 @media (max-width: 400px) {
 
-    .reviews_container {
-        grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-    }
 
     .logo-container img {
         width: 40px;

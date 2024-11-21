@@ -5,14 +5,14 @@
     <body>
 
     <div id="wrapper">
-        
+
         <!-- Navigation -->
         <?php include("includes/nav.php")?>
 
         <div id="page-wrapper">
             <div class="container-fluid">
 
-          
+
             <div class="row">
 
                 <div class="col-lg-12">
@@ -22,13 +22,13 @@
                     </h1>
                     <p>You have <?php show_admin_messages_num()?> new messages</p>
 
-                    
+
 
 
 
                 </div>
             </div>
-        
+
 
             </div>
 
@@ -40,32 +40,32 @@
                     $source = $_GET["source"];
 
                 }
-                
+
                 else {
                     $source = "";
                 }
                 switch($source) {
                     case 'reply_msg';
-                    include "includes/reply_msg.php";
+                    include "includes/admin_msgs/reply_msg.php";
                     break;
 
-                    default: include "includes/view_all_admin_messages.php";
+                    default: include "includes/admin_msgs/view_all_admin_messages.php";
                     break;
 
 
                 }
-                
+
 
 
             ?>
-           
+
 
 
         </div>
-     
+
 
     </div>
-  
+
 
     <?php include("includes/admin_footer.php") ?>
 
