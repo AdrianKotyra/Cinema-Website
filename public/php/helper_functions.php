@@ -1802,19 +1802,7 @@ function renderNext7Days() {
 
 
                         <div class="user_links user_links_get_user row-custom">
-                            <div class="user-buttons-profile-container">
-                                <a class="user_link" href="user.php?id='.$user_id.'&&source=all_posts">
-                                    <button class="button-custom user-button">
-                                        Users posts
-                                    </button>
-                                </a>
 
-                                <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
-                                    <button class="button-custom user-button">
-                                        Users reviews
-                                    </button>
-                                </a>
-                            </div>
                             <div class="profile-socials-user">
                                  <a target="_blank" href="'.$user_facebook.'">
                                 <img class="fb_icon"src="./imgs/icons/facebook.svg">
@@ -1829,8 +1817,22 @@ function renderNext7Days() {
 
 
                         </div>
+
                     </div>
                 </div>
+                      <div class="user-buttons-profile-container">
+                                <a class="user_link" href="user.php?id='.$user_id.'&&source=all_posts">
+                                    <button class="button-custom user-button">
+                                        Users posts
+                                    </button>
+                                </a>
+
+                                <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
+                                    <button class="button-custom user-button">
+                                        Users reviews
+                                    </button>
+                                </a>
+                            </div>
                 ';
             }
 

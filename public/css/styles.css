@@ -988,6 +988,7 @@ a {
     opacity: 80%;
 }
 .user-buttons-profile-container {
+    padding: 5% 0%;
     display: flex;
     align-items: center;
 }
@@ -1417,8 +1418,11 @@ nav a {
 .reviews-container {
     gap: 30px;
 }
-
+.header_link {
+    color: black
+}
 .user-bio {
+    padding: 5%;
     line-height: 2rem;
 }
 
@@ -1460,8 +1464,8 @@ nav a {
 .image-bio {
     width: 100%;
     justify-content: space-between;
-    height: 400px;
-    margin-left: 10%;
+    height: 100%;
+
 }
 
 .user_link {
@@ -2302,6 +2306,7 @@ nav a {
 }
 
 .active-review-card {
+
     overflow-y: scroll;
     border: 3px solid var(--primary-colour);
     position: fixed !important;
@@ -2311,7 +2316,7 @@ nav a {
     padding-bottom: 20px;
     width: 800px !important;
     height: 600px !important;
-    z-index: 9999 !important;
+    z-index: 9999999999999 !important;
     justify-content: stretch !important;
 }
 
@@ -6561,6 +6566,27 @@ h1 {
 /*<==mobile  */
 
 @media (max-width: 800px) {
+    .active-review-card {
+        margin: 0;
+        height: 100% !important;
+        width: 100% !important;
+    }
+
+    .user-buttons-profile-container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .desc-container-review {
+        padding: 5%;
+    }
+    .screen-up-review {
+        visibility: visible;
+    }
+    .reviews-all-container .active-review-card {
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0;
+    }
     .login-conf-user-details-container {
         padding-top: 150px;
     }

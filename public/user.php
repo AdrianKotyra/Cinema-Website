@@ -2,7 +2,8 @@
     <?php include "includes/nav.php"?>
     <?php user_redirect()?>
     <section class="wrapper-content news-section user-page-container">
-        <h5 class="section-header text-mid header-subpage">Users</h5>
+        <a href="users.php" class="header_link">     <h5 class="section-header text-mid header-subpage">Users</h5></a>
+
         <form role="search" method="get" action="" class="search-post-container search-user">
             <div class="input-container">
                 <input type="search" class="search-users" value="" name="s" placeholder="Search user..." />
