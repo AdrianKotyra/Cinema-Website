@@ -67,6 +67,9 @@
 .white-text {
     color: rgb(255, 255, 255) !important;
 }
+.black-text {
+    color: rgb(0, 0, 0) !important;
+}
 
 .header-section-container a {
     user-select: none;
@@ -1464,7 +1467,7 @@ nav a {
 .image-bio {
     width: 100%;
     justify-content: space-between;
-    height: 100%;
+
 
 }
 
@@ -4762,7 +4765,14 @@ footer {
     justify-content: center;
     cursor: pointer;
 }
-
+.movie_views_counter {
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.799);
+    color: rgb(0, 0, 0);
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
 .user_avatar_dashboard_controller span img {
     width: 20px;
     height: 20px;
@@ -6818,6 +6828,10 @@ h1 {
 
 
 @media (max-width: 767px) {
+    .movie_views_counter {
+        bottom: auto;
+    }
+
     .background-section-current-movie::before {
         background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 100%, rgba(0, 0, 0, 0) 100%);
     }

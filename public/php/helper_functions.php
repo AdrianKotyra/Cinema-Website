@@ -132,6 +132,31 @@
             ' ;
             return $ticket;
     }
+
+
+    function increment_movies_views(){
+        global $database;
+        global $connection;
+        if(isset($_GET["movie"])) {
+            $movie_id = $_GET["movie"];
+            $movie_view = 1;
+
+            $query1 =  $database-> query_array("SELECT * FROM movies_views where movie_id = $movie_id ");
+            if(mysqli_num_rows($query1)==0) {
+                $query2 =  $database-> query_array("INSERT INTO movies_views (movie_id, views) VALUES('{$movie_id}', '{$movie_view}')");
+            }
+            else {
+                $query3 =  $database-> query_array("UPDATE movies_views SET views = views + 1 WHERE movie_id = $movie_id");
+
+            }
+
+
+
+
+
+        }
+
+    }
     function notifications_count($user_id){
         global $database;
 
@@ -643,7 +668,7 @@ function renderNext7Days() {
 
 
 
-    function selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc, $movie_director,  $movie_age, $movie_id) {
+    function selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc, $movie_director,  $movie_age, $movie_id,  $movie_views) {
         global $database;
         $rating = get_movie_rating($movie_id);
         $age_colour = "";
@@ -697,6 +722,7 @@ function renderNext7Days() {
                     '.$movie_desc.'
                 </p>
             </div>
+            <span class="movie_views_counter">Views: '. $movie_views.' </span>
             </div>
         ';
 
@@ -802,6 +828,10 @@ function renderNext7Days() {
         if (isset($_GET["movie"])) {
             $movie_id = $_GET["movie"];
 
+            $query_select_views = $database-> query_array("SELECT views from movies_views where movie_id = $movie_id");
+            while ($row = mysqli_fetch_array($query_select_views)) {
+                $movie_views = $row["views"];
+            }
             $query = $database-> query_array("SELECT * from movies where id = $movie_id");
             while ($row = mysqli_fetch_array($query)) {
                 $movie_title = $row["title"];
@@ -811,7 +841,8 @@ function renderNext7Days() {
                 $movie_id = $row["id"];
                 $movie_desc  = $row["description"];
                 $movie_director  = $row["director"];
-                echo  selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc, $movie_director,  $movie_age, $movie_id);
+
+                echo  selected_movie_page($movie_title, $release_date, $movie_poster, $movie_desc, $movie_director,  $movie_age, $movie_id, $movie_views);
             }
 
         }
@@ -1309,7 +1340,29 @@ function renderNext7Days() {
             $number_card++; // Increment the card counter
         }
     }
+    function get_popular_movies_cards($card_type) {
+        $age_limit = user_logged_age_movies_selection();
+        global $database;
+        global $connection;
+        $query1 = $database->query_array("SELECT * from movies_views order by views DESC LIMIT 10 offset 0");
+        while ($row = mysqli_fetch_array($query1)) {
+            $movie_id = $row["movie_id"];
 
+            $query2 = $database->query_array("SELECT * from movies where id =  $movie_id and movies.age <= $age_limit");
+
+            while ($row = mysqli_fetch_array($query2)) {
+
+
+
+            $movie_title = $row["title"];
+            $movie_age =  $row["age"];
+            $movie_desc = $row["description"];
+            $movie_id = $row["id"];
+            $movie_poster = $row["poster"];
+            $movie_trailer = $row["trailer_link"];
+            echo $card_type($movie_id, $movie_desc,  $movie_poster, $movie_title,  $movie_age, $movie_trailer );
+        }    }
+    }
 
     function get_kinds_movies_cards($type_movies, $card_type) {
         $age_limit = user_logged_age_movies_selection();
@@ -1343,6 +1396,7 @@ function renderNext7Days() {
         $age_limit = user_logged_age_movies_selection();
         if (isset($_GET["category"])) {
             $movie_cat = $_GET["category"];
+
             $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN
             movies_genres ON movies.id = movies_genres.movie_id INNER JOIN genres ON
             movies_genres.genre_id = genres.id WHERE genres.name ='$movie_cat' and movies.age <= $age_limit");
@@ -1381,44 +1435,157 @@ function renderNext7Days() {
         }
         if (isset($_GET["subcategory"])) {
             $movie_subcat = $_GET["subcategory"];
-            $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN
-            movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON
-            movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$movie_subcat'");
+            if( $movie_subcat=="popular") {
+                $age_limit = user_logged_age_movies_selection();
+                global $database;
+                global $connection;
+                $query1 = $database->query_array("SELECT * from movies_views order by views DESC LIMIT 10 offset 0");
+                while ($row = mysqli_fetch_array($query1)) {
+                    $movie_id = $row["movie_id"];
 
-            while ($row = mysqli_fetch_array($query)) {
-                    $movie_title = $row["title"];
-                    $movie_id = $row["id"];
-                    $movie_poster = $row["poster"];
-                    $movie_release_date = $row["year"];
-                    $movie_age = $row["age"];
-                    $movie_desc = $row["description"];
-                    $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
+                    $query2 = $database->query_array("SELECT * from movies where id =  $movie_id and movies.age <= $age_limit");
 
-                    echo '
-                    <div class="card-layout-more-card">
-                   <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
-                        <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
-                        <img  class="card-movie-img" src="./'.$movie_poster.'" alt="">
-                            <div class="text-container card-info">
-                               <div class="title_age_container">
-                                <p class="card-movie-title">'.$movie_title.'</p>
-                                <p class="age_info">'.$movie_age.'+</p>
+                    while ($row = mysqli_fetch_array($query2)) {
+                        $movie_title = $row["title"];
+                        $movie_id = $row["id"];
+                        $movie_poster = $row["poster"];
+                        $movie_release_date = $row["year"];
+                        $movie_age = $row["age"];
+                        $movie_desc = $row["description"];
+                        $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
+
+                        echo '
+                        <div class="card-layout-more-card">
+                       <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
+                            <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
+                            <img  class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                                <div class="text-container card-info">
+                                   <div class="title_age_container">
+                                    <p class="card-movie-title">'.$movie_title.'</p>
+                                    <p class="age_info">'.$movie_age.'+</p>
+                                    </div>
+                                    <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                    <button class="button-custom trigger-more-info-button">Book</button>
+                                    <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
+                                    <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
+
+
                                 </div>
-                                <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
-                                <button class="button-custom trigger-more-info-button">Book</button>
-                                <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
-                                <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
-
-
                             </div>
                         </div>
-                    </div>
-                ';
+                    ';
+
+                    }
+                    }
+                    }
+                    if( $movie_subcat=="Top Rated") {
+                        $age_limit = user_logged_age_movies_selection();
+                        global $database;
+                        global $connection;
+                        $query = $database->query_array("
+                            SELECT
+                                movies.age,
+                                movies.title,
+                                movies.description,
+                                movies.id,
+                                movies.poster,
+                                movies.trailer_link,
+                                movies.year,
+                                reviews.review_rating,
+                                reviews.movie_review_id
+                            FROM movies
+                            INNER JOIN reviews ON movies.id = reviews.movie_review_id
+                            WHERE movies.age <= $age_limit
+                            AND reviews.review_rating >= 8
+
+
+                            ");
+                            $num_rows = mysqli_num_rows($query);
+                            $number_card = 1; // Initialize counter for cards
+                            while ($row = mysqli_fetch_array($query)) {
+
+
+
+
+                                $movie_title = $row["title"];
+                                $movie_age =  $row["age"];
+                                $movie_desc = $row["description"];
+                                $movie_id = $row["id"];
+                                $movie_poster = $row["poster"];
+                                $movie_trailer = $row["trailer_link"];
+                                $movie_date = substr($row["year"],0,4);
+                                $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
+                                echo '
+                                <div class="card-layout-more-card">
+                               <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
+                                    <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
+                                    <img  class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                                        <div class="text-container card-info">
+                                           <div class="title_age_container">
+                                            <p class="card-movie-title">'.$movie_title.'</p>
+                                            <p class="age_info">'.$movie_age.'+</p>
+                                            </div>
+                                            <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                            <button class="button-custom trigger-more-info-button">Book</button>
+                                            <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
+                                            <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
+
+
+                            }
+                            }
+                    else {
+                        $query =  $database-> query_array( "SELECT movies.title, movies.id, movies.poster, movies.year , movies.age, movies.description  FROM movies INNER JOIN
+                        movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON
+                        movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$movie_subcat'");
+
+                        while ($row = mysqli_fetch_array($query)) {
+                                $movie_title = $row["title"];
+                                $movie_id = $row["id"];
+                                $movie_poster = $row["poster"];
+                                $movie_release_date = $row["year"];
+                                $movie_age = $row["age"];
+                                $movie_desc = $row["description"];
+                                $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
+
+                                echo '
+                                <div class="card-layout-more-card">
+                               <div class="movie-card movie-card-more movie-card-expandable" data-id="'.$movie_id.'">
+                                    <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
+                                    <img  class="card-movie-img" src="./'.$movie_poster.'" alt="">
+                                        <div class="text-container card-info">
+                                           <div class="title_age_container">
+                                            <p class="card-movie-title">'.$movie_title.'</p>
+                                            <p class="age_info">'.$movie_age.'+</p>
+                                            </div>
+                                            <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                            <button class="button-custom trigger-more-info-button">Book</button>
+                                            <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
+                                            <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            ';
+
+                        }
+                    }
+
+
+                    }
+
 
             }
 
-        }
-    }
+
+
+
 
 
 

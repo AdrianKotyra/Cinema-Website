@@ -64,7 +64,7 @@
             </div>
             <div class=" col-custom vetical-scroll-grab-class container-popular-scroller">
 
-                <?php get_kinds_movies_cards("popular", "movie_small_card")?>
+                <?php get_popular_movies_cards("movie_small_card")?>
             </div>
 
         </div>

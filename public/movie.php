@@ -1,5 +1,6 @@
 <?php include "includes/header.php"?>
 <?php include "includes/nav.php"?>
+<?php increment_movies_views()?>
 <script src="js/pages/movie/renderTimesBooking.js"></script>
     <section class=" movie-section">
 

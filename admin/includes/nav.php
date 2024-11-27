@@ -150,12 +150,17 @@
 
                         </ul>
                     </li>
-
+                    <li class="">
+                        <a href="most_viewed.php"><i class="fa-solid fa-check"></i> Most viewed movies</a>
+                    </li>
+                    <li class="">
+                        <a href="top_rated.php"><i class="fa-solid fa-star"></i>Top rated movies</a>
+                    </li>
                     <li class="">
                         <a href="comments.php"><i class="fa-solid fa-comments"></i> Comments</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo13"><i class="fa-solid fa-person"></i></i> Gallery <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo13"><i class="fa-regular fa-heart"></i></i> Gallery <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo13" class="collapse">
                             <li>
                                 <a href="gallery.php">Gallery</a>

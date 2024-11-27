@@ -360,6 +360,99 @@ function select_and_display_gallery() {
 
 
 }
+function select_and_display_top_rated_movies() {
+    $age_limit = user_logged_age_movies_selection();
+    global $connection;
+    global $database;
+
+    $age_limit = user_logged_age_movies_selection();
+            global $database;
+            global $connection;
+            $query = $database->query_array("
+                SELECT
+                    movies.age,
+                    movies.title,
+                    movies.description,
+                    movies.id,
+                    movies.poster,
+                    movies.trailer_link,
+                    movies.year,
+                    reviews.review_rating,
+                    reviews.movie_review_id
+                FROM movies
+                INNER JOIN reviews ON movies.id = reviews.movie_review_id
+                WHERE movies.age <= $age_limit
+                AND reviews.review_rating >= 8 LIMIT 10
+
+
+        ");
+
+        while ($row = mysqli_fetch_array($query)) {
+        $movie_rating = $row["review_rating"];
+        $movie_id = $row["id"];
+        $movie_title = $row["title"];
+        $movie_poster = $row["poster"];
+
+        $movie_age  = $row["age"];
+        echo"<tr>";
+        echo "<td>$movie_id</td>";
+        echo "<td>$movie_title</td>";
+
+        echo "<td> $movie_rating /10</td>";
+        echo "<td><img class='table_img' width=100 height=100 src='../public/$movie_poster'></td>";
+        echo "<td>$movie_age+</td>";
+
+        }
+
+}
+
+
+
+
+
+
+
+
+
+function select_and_display_most_movies() {
+    $age_limit = user_logged_age_movies_selection();
+    global $connection;
+    global $database;
+
+    $query1 = $database->query_array("SELECT * from movies_views order by views DESC LIMIT 10 offset 0");
+    while ($row = mysqli_fetch_array($query1)) {
+        $movie_id = $row["movie_id"];
+        $movie_views = $row["views"];
+        $query2 = $database->query_array("SELECT * from movies where id =  $movie_id and movies.age <= $age_limit");
+
+        while ($row = mysqli_fetch_array($query2)) {
+
+        $movie_id = $row["id"];
+        $movie_title = $row["title"];
+        $movie_poster = $row["poster"];
+
+        $movie_age  = $row["age"];
+        echo"<tr>";
+        echo "<td>$movie_id</td>";
+        echo "<td>$movie_title</td>";
+
+        echo "<td> $movie_views</td>";
+        echo "<td><img class='table_img' width=100 height=100 src='../public/$movie_poster'></td>";
+        echo "<td>$movie_age+</td>";
+
+        }
+
+    }
+
+
+
+
+
+
+
+
+}
+
 function select_and_display_movies() {
     global $connection;
 
@@ -826,10 +919,13 @@ function display_kinds_options() {
             $kind_id = intval($row["id"]);
             $kind_name = htmlspecialchars($row["name"], ENT_QUOTES, 'UTF-8');
             $checked = in_array($kind_id, $selected_kinds) ? 'checked' : '';
-            echo '<div>
-                    <input type="checkbox" name="movie_kinds[]" value="' . $kind_id . '" ' . $checked . ' id="genre_' . $kind_id . '">
-                    <label for="genre_' . $kind_id . '">' . $kind_name . '</label><br>
-                  </div>';
+            if( $kind_name != "popular" &&  $kind_name !="Top Rated") {
+                echo '<div>
+                <input type="checkbox" name="movie_kinds[]" value="' . $kind_id . '" ' . $checked . ' id="genre_' . $kind_id . '">
+                <label for="genre_' . $kind_id . '">' . $kind_name . '</label><br>
+              </div>';
+            }
+
         }
 
 
@@ -973,10 +1069,14 @@ function display_kinds_options_add_movie() {
     while ($row = mysqli_fetch_assoc($result2)) {
         $kind_id = $row["id"];
         $kind_name = $row["name"];
-        echo '<div>
-                <input type="checkbox" name="movie_kinds[]" value="' . $kind_id . ' id="genre_' . $kind_id . '">
-                <label for="genre_' . $kind_id . '">' . $kind_name . '</label><br>
-            </div>';
+        // NOW ALLOWED ASSIGNIG MOVIES TO TOP RATED OR MOST RATED BECAUSE ITS RELATED TO USERS RATINGS AND VIEWS
+        if( $kind_name!="popular" && $kind_name!="Top Rated") {
+            echo '<div>
+            <input type="checkbox" name="movie_kinds[]" value="' . $kind_id . ' id="genre_' . $kind_id . '">
+            <label for="genre_' . $kind_id . '">' . $kind_name . '</label><br>
+        </div>';
+        }
+
     }
 
 

@@ -6,7 +6,7 @@
 
             <div class="row-custom header-section-container">
                 <h5 class="section-header text-mid header-intersect4">Currently playing</h5>
-                <a href="category.php?subcategory=current">View All</a>
+                <a class="black-text" href="category.php?subcategory=current">View All</a>
 
             </div>
 
