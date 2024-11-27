@@ -2393,9 +2393,11 @@ nav a {
 }
 
 .movie-booking-banner img {
+    filter: grayscale(60%);
     width: 100%;
     height: 100%;
     object-fit: cover;
+
 }
 
 .confiramtion-booking {
@@ -4096,7 +4098,9 @@ video {
     position: relative;
     z-index: 2;
 }
-
+.movie_nots_container {
+    text-align: center;
+}
 .features-section-card {
     background-color: var(--secondary-colour-gray);
     position: relative;
@@ -4105,7 +4109,16 @@ video {
     border-radius: 8px;
     color: white;
 }
-
+.img_movie_checkout_container img{
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.img_movie_checkout_container {
+    width: 300px;
+    height: 300px;
+}
 .bg_features {
     object-fit: cover;
     opacity: 48%;
@@ -4746,6 +4759,8 @@ footer {
 
 .movie_bookings_nots_container {
     align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .user_avatar_dashboard_controller span img {
@@ -6801,7 +6816,11 @@ h1 {
     }
 }
 
+
 @media (max-width: 767px) {
+    .background-section-current-movie::before {
+        background: linear-gradient(to right, rgb(34, 34, 36), rgba(34, 34, 36, 0.7) 100%, rgba(0, 0, 0, 0) 100%);
+    }
     .about_text_container{
         width: 100%;
     }
@@ -7128,6 +7147,12 @@ h1 {
 }
 
 @media (max-width: 569px) {
+    .booking-info {
+        padding: 2%;
+    }
+    .img_movie_checkout_container{
+        display: none;
+    }
     .wrapper-search .search_box .search_field {
         width: auto;
     }

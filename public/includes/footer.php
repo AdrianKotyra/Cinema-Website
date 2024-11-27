@@ -10,6 +10,7 @@
 || $current_page == 'user.php'
 || $current_page == 'category.php'
 || $current_page == 'movie_reviews.php'
+|| $current_page == 'movie_booking.php'
 
 )
 
@@ -33,7 +34,7 @@
                 || $current_page == 'user.php'
                 || $current_page == 'category.php'
                 || $current_page == 'movie_reviews.php'
-
+                || $current_page == 'movie_booking.php'
 
                 )
 
