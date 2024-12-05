@@ -2059,7 +2059,7 @@ function moreinfoCard(){
 
       parentDiv.classList.add("selected-card-active");
       const hiddenDesc = parentDiv.querySelectorAll(".card-movie-hidden-info");
-      hiddenDesc.forEach(element => element.style.display = "block");
+      hiddenDesc.forEach(element => element.style.display = "flex");
 
 
 

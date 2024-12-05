@@ -11,9 +11,9 @@
         </div>
         <span class="header-trigger22 trigger"></span>
         <div class="movies-container expandable-container">
-            <div class="scrolling-wrapper slider-trending row-custom">
+            <div class="scrolling-wrapper slider-trending row-custom mobile-screen-grid-cards">
+                <?php   get_kinds_movies_cards_mobile("popular", "movie_big_card", 6); ?>
 
-                <?php get_kinds_movies_cards("popular", "movie_big_card"); ?>
 
             </div>
         </div>
@@ -62,7 +62,7 @@
 
 
             </div>
-            <div class=" col-custom vetical-scroll-grab-class container-popular-scroller">
+            <div class=" col-custom vetical-scroll-grab-class container-popular-scroller full-screen-grid-cards">
 
                 <?php get_popular_movies_cards("movie_small_card")?>
             </div>

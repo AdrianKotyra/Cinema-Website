@@ -1033,13 +1033,37 @@ function renderNext7Days() {
                         <p class="age_info">'.$movie_age .'+</p>
                     </div>
 
-                    <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                    <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                     <button class="button-custom trigger-more-info-button">Book</button>
                     <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                     <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
                 </div>
             </div>
             </div>
+            ';
+        return $html;
+    }
+
+    function movie_more_card_mobile($movie_id, $movie_desc,  $movie_poster, $movie_title,  $movie_age, $movie_trailer ) {
+        $genres = get_selected_movie_genres_array_by_movie_id($movie_id);
+        $html = '
+
+            <div class="movie-card-more movie-card-expandable" data-id='.$movie_id.'>
+                <img class="card-cross-expendable card-movie-hidden-info"  src="./imgs/icons/cross.svg" alt="">
+                <img class="card-movie-img lazy" data-src="./'.$movie_poster.'" alt="">
+                <div class="text-container card-info more-card-info">
+                    <div class="title_age_container">
+                        <p class="card-movie-title">'.$movie_title.'</p>
+                        <p class="age_info">'.$movie_age .'+</p>
+                    </div>
+
+                    <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
+                    <button class="button-custom trigger-more-info-button">Book</button>
+                    <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
+                    <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
+                </div>
+            </div>
+
             ';
         return $html;
     }
@@ -1059,7 +1083,7 @@ function renderNext7Days() {
                                 <p class="card-movie-title">'.$movie_title.'</p>
                                 <p class="age_info">'.$movie_age.'+</p>
                                 </div>
-                                <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                                 <button class="button-custom trigger-more-info-button">Book</button>
                                 <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                                 <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
@@ -1388,7 +1412,30 @@ function renderNext7Days() {
             echo $card_type($movie_id, $movie_desc,  $movie_poster, $movie_title,  $movie_age, $movie_trailer );
         }
     }
+    function get_kinds_movies_cards_mobile($type_movies, $card_type, $limit) {
+        $age_limit = user_logged_age_movies_selection();
+        global $database;
+        global $connection;
 
+        $query = $database->query_array("SELECT movies.age, movies.title, movies.description, movies.id, movies.poster, movies.trailer_link FROM movies INNER JOIN
+        movies_kinds ON movies.id = movies_kinds.movie_id INNER JOIN kinds ON
+        movies_kinds.movie_kind_id = kinds.id WHERE kinds.name ='$type_movies' and movies.age <= $age_limit order by movies.id DESC LIMIT $limit offset 0");
+
+        while ($row = mysqli_fetch_array($query)) {
+
+
+
+
+
+            $movie_title = $row["title"];
+            $movie_age =  $row["age"];
+            $movie_desc = $row["description"];
+            $movie_id = $row["id"];
+            $movie_poster = $row["poster"];
+            $movie_trailer = $row["trailer_link"];
+            echo $card_type($movie_id, $movie_desc,  $movie_poster, $movie_title,  $movie_age, $movie_trailer );
+        }
+    }
 
     function get_categories_movies_cards(){
         global $database;
@@ -1419,7 +1466,7 @@ function renderNext7Days() {
                                 <p class="card-movie-title">'.$movie_title.'</p>
                                 <p class="age_info">'.$movie_age.'+</p>
                                 </div>
-                                <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                                 <button class="button-custom trigger-more-info-button">Book</button>
                                 <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                                 <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
@@ -1464,7 +1511,7 @@ function renderNext7Days() {
                                     <p class="card-movie-title">'.$movie_title.'</p>
                                     <p class="age_info">'.$movie_age.'+</p>
                                     </div>
-                                    <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                    <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                                     <button class="button-custom trigger-more-info-button">Book</button>
                                     <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                                     <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
@@ -1525,7 +1572,7 @@ function renderNext7Days() {
                                             <p class="card-movie-title">'.$movie_title.'</p>
                                             <p class="age_info">'.$movie_age.'+</p>
                                             </div>
-                                            <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                            <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                                             <button class="button-custom trigger-more-info-button">Book</button>
                                             <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                                             <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
@@ -1563,7 +1610,7 @@ function renderNext7Days() {
                                             <p class="card-movie-title">'.$movie_title.'</p>
                                             <p class="age_info">'.$movie_age.'+</p>
                                             </div>
-                                            <p class="card-movie-genres card-movie-hidden-info">'.$genres.'</p>
+                                            <div class="card-movie-genres card-movie-hidden-info">'.$genres.'</div>
                                             <button class="button-custom trigger-more-info-button">Book</button>
                                             <a href="movie.php?movie='.$movie_id.'" class=" movie-link card-movie-hidden-info">Book</a>
                                             <p class="card-movie-desc  card-movie-hidden-info">'.$movie_desc.'</p>
@@ -1938,9 +1985,14 @@ function renderNext7Days() {
         global $database;
         if(isset($_GET["id"])) {
             $user_id = $_GET["id"];
-            $query = "SELECT * FROM users where user_id = $user_id ";
-            $search_query = mysqli_query($connection, $query);
-            while($row = mysqli_fetch_array($search_query)) {
+
+            $stmt = $connection->prepare("SELECT * FROM users where user_id = ? ");
+            $stmt->bind_param("s", $user_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+
+            while($row = mysqli_fetch_array( $result)) {
                 $user_id = $row["user_id"];
                 $user_name = $row["user_firstname"];
                 $user_bio = $row["user_bio"];
@@ -2055,15 +2107,14 @@ function renderNext7Days() {
     function get_render_faq(){
         global $connection;
 
+        $stmt = $connection->prepare("SELECT * FROM faq");
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        $query = "SELECT * FROM faq";
-        $search_query = mysqli_query($connection, $query);
-        $search_count = mysqli_num_rows($search_query);
-        if(!$search_query) {
-            die("Query Failed" . mysqli_error($connection));
-        }
-        if($search_count>=1) {
-            while($row = mysqli_fetch_array($search_query)) {
+
+
+        if ($result->num_rows >= 1) {
+            while ($row = $result->fetch_assoc()) {
                 $question = $row["question"];
                 $answer = $row["answer"];
 
@@ -2081,6 +2132,8 @@ function renderNext7Days() {
                 </div>
             </div>';
         }}
+
+        $stmt->close();
 
     }
     function selected_post_literal($post_title, $post_id,$post_text, $post_img, $post_header, $post_date_trimmed){

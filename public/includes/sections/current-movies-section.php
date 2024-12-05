@@ -14,8 +14,14 @@
             <div class="movies-container expandable-container">
 
 
-                <div class="scrolling-wrapper row-custom current-slider ">
+                <div class="scrolling-wrapper row-custom current-slider full-screen-grid-cards">
                     <?php get_kinds_movies_cards("current", "movie_big_card")?>
+
+                </div>
+
+                <div class="scrolling-wrapper row-custom current-slider mobile-screen-grid-cards">
+
+                    <?php   get_kinds_movies_cards_mobile("current", "movie_big_card", 6); ?>
 
                 </div>
             </div>

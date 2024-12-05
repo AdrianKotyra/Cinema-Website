@@ -951,7 +951,7 @@ body {
 .show-more-titles-button {
 
         display: block;
-        margin: 20px auto;
+        margin: 40px 0;
 
 }
 
@@ -1470,6 +1470,10 @@ nav a {
 
 
 }
+.exit_button_quiz {
+    display: block;
+   margin: auto;
+}
 
 .user_link {
     margin-right: 12px;
@@ -1532,7 +1536,7 @@ nav a {
     z-index: 2;
     border: 2px solid white;
 
-    overflow-y: scroll;
+
     margin: 24px 0;
 
     position: relative;
@@ -1586,8 +1590,7 @@ nav a {
     border-bottom-right-radius: 16px;
     border-bottom-left-radius: 16px;
     padding-bottom: 2vh;
-    user-select: none;
-    -webkit-user-drag: none;
+
     width: 100%;
 }
 
@@ -1990,8 +1993,8 @@ nav a {
     -moz-box-shadow: -1px 2px 6px 0px rgba(49, 217, 43, 1);
     box-shadow: -1px 2px 6px 0px rgba(49, 217, 43, 1);
     border-radius: 4px;
-    width: 140px;
-    height: 40px;
+    width: 120px;
+    height: 36px;
     background-color: var(--primary-colour);
     color: white;
     border: none;
@@ -2002,6 +2005,7 @@ nav a {
 }
 
 .genre_link {
+    margin: 0 !important;
     text-decoration: none;
     color: white;
 }
@@ -2012,6 +2016,7 @@ nav a {
 }
 
 .card-info a {
+    justify-content: center;
     line-height: 2.3rem;
     margin: auto;
 }
@@ -2162,6 +2167,9 @@ nav a {
 .age_info {
     opacity: 70%;
 }
+.mobile-screen-grid-cards {
+    display: none !important;
+}
 
 .trending-section .movie-card-trending {
     border: 2px solid white;
@@ -2282,10 +2290,13 @@ nav a {
     text-align: left;
     line-height: 2rem !important;
 }
-
 .card-movie-genres {
-    margin: 20px auto !important;
+    flex-wrap: wrap;
+    gap: 20px;
+   justify-content: center;
+   margin: 20px 0;
 }
+
 
 .selected-card-active .card-info {
     padding-bottom: 50px;
@@ -2333,7 +2344,7 @@ nav a {
     padding-bottom: 20px;
     width: 800px !important;
     height: 600px !important;
-    z-index: 9999 !important;
+    z-index: 99999999 !important;
     justify-content: stretch !important;
     z-index: 9999999999999;
 }
@@ -2479,7 +2490,7 @@ nav a {
 .choose-seats-container h3 {
     padding: 0 0 16px 0;
     text-align: center;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .booking-info p {
@@ -3486,6 +3497,7 @@ align-items: center;
     color: black;
 }
 .desc-container-review {
+    overflow: hidden;
     padding: 12px 0;
     user-select: none;
 }
@@ -3916,6 +3928,7 @@ video {
 }
 
 .scrolling-wrapper {
+    touch-action: pan-y;
     -webkit-overflow-scrolling: touch;
     display: flex;
     flex-wrap: nowrap !important;
@@ -4078,6 +4091,7 @@ video {
 }
 
 .contact-icon {
+
     margin-right: 20px;
 
     width: 40px;
@@ -4578,7 +4592,7 @@ footer {
     padding-left: 20px;
     padding-right: 38px;
     color: #6f768d;
-    transform: translate(-3px, -3px);
+    transform: translate(-3px, -6px);
 }
 
 .main-posts .post-date,
@@ -5637,7 +5651,7 @@ h1 {
 .container-create-post {
     padding: 16px;
     position: relative;
-    max-height: 100vh;
+    max-height: 80vh;
 }
 
 .container-create-post input[type="text"] {
@@ -6814,6 +6828,7 @@ h1 {
     }
 
     .selected-card-active {
+        height: 100% !important;
         width: 100% !important;
     }
     .user-page-container {
@@ -6971,6 +6986,9 @@ h1 {
         text-align: center;
         margin: auto;
     }
+    .map_box img {
+        width: 100%;
+    }
 
     .quiz_img_container img {
         width: 100%;
@@ -7107,6 +7125,38 @@ h1 {
     }
 }
 @media (max-width: 609px) {
+    .fancybox__toolbar__column.is-right {
+        flex-wrap: wrap !important;
+    }
+    .features_grid {
+        grid-template-columns: 1fr;
+    }
+    .arrow-section{
+        display: none;
+    }
+    .more-section .container-custom {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .full-screen-grid-cards{
+        display: none !important;;
+    }
+    .mobile-screen-grid-cards{
+        display: grid !important;
+    }
+    .trending-section .movie-card-trending {
+        width: 100%;
+    }
+    .movie-card {
+        width: 100%;
+    }
+    .expandable-container {
+        height: auto;
+    }
+    .scrolling-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
     .text-hero-buttons {
         display: flex;
         justify-content: center; }
