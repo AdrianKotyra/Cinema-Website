@@ -456,7 +456,7 @@ function select_and_display_most_movies() {
 function select_and_display_movies() {
     global $connection;
 
-    $query = "SELECT * from movies";
+    $query = "SELECT * from movies order by id desc";
     $select_users_query = mysqli_query($connection, $query);
     while($row = mysqli_fetch_assoc($select_users_query)) {
         $movie_id = $row["id"];

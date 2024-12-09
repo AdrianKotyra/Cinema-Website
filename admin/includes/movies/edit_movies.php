@@ -19,8 +19,10 @@
         $post_image_temp   = $_FILES['image']['tmp_name'];
         $trailer_link        = $_POST['trailer_link'];
         $movie_age = $_POST['movie_age'];
+        $movie_director = $_POST['movie_director'];
 
-        
+
+
         // IF IMAGE WASNT UPLOAD KEEP IT THE SAME
         if($post_image==="images/") {
 
@@ -40,11 +42,12 @@
         $query_update .="year = '{$release_date}', ";
         $query_update .="description   = '{$movie_desc}', ";
         $query_update .="age   = '{$movie_age}', ";
+        $query_update .="director   = '{$movie_director}', ";
         $query_update .="trailer_link= '{$trailer_link}'";
         $query_update .= "WHERE id = {$movie_id_to_be_edited} ";
 
         $update_user= mysqli_query($connection,$query_update);
-    
+
         move_uploaded_file($post_image_temp, "../public/$post_image" );
 
         alert_text("Movie has been updated", "movies.php");
@@ -56,7 +59,7 @@
         // ----------------------------------UPDATEING RELATIONS CODE MOVIES_KINDS----------------------------------
 
         edit_movies_kinds();
-        
+
 
 
 
@@ -83,7 +86,7 @@
         $select_users_query = mysqli_query($connection, $query);
         $row = mysqli_fetch_assoc($select_users_query);
 
-
+        $movie_direc = $row["director"];
         $movie_id_db = $row["id"];
         $movie_age = $row["age"];
         $movie_title_db = $row["title"];
@@ -93,7 +96,7 @@
         $movie_trailer_link_db  = $row["trailer_link"];
 
 
-    
+
 
 
     }
@@ -122,27 +125,32 @@
         <label for="movie_age">Movie audience age</label>
         <br>
         <input type="number" class="form-control" name="movie_age" value=<?php echo "$movie_age"?>>
-        
+
+
+    </div>
+    <div class="form-group">
+        <label for="movie_director">Movie director</label>
+        <input required type="text" class="form-control" name="movie_director" value="<?php echo $movie_direc;?>">
     </div>
     <div class="form-group">
         <label for="movie_desc">Description</label>
         <input type="text" class="form-control" name="movie_desc" value="<?php echo $movie_desc_db;?>">
     </div>
-    
+
     <div class="form-group">
         <label for="trailer_link">Trailer Link</label>
         <input type="text" class="form-control" name="trailer_link" value=<?php echo "$movie_trailer_link_db"?>>
     </div>
     <div class="form-group">
-      
+
       <p>Select Movie Genres</p>
       <div class="genres-options-container">
           <?php display_genres_options()?>
       </div>
-     
+
   </div>
   <div class="form-group">
-    
+
       <p>Select Movie Kinds</p>
       <div class="genres-options-container">
           <?php display_kinds_options()?>
@@ -160,8 +168,8 @@
     </div>
 
 
-   
-    
+
+
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="edit_movie" value="Update Movie">
     </div>

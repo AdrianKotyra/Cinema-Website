@@ -1,4 +1,5 @@
-<?php include "../php/init.php";
+<?php include("../../php/init.php");
+
 
 if (isset($_POST["update_user_main"])) {
     global $connection;
@@ -31,7 +32,7 @@ if (isset($_POST["update_user_main"])) {
             die("File upload failed.");
         } else {
             // Optionally update image path to use the relative path
-            $post_image = time() . '_' . $post_image; 
+            $post_image = time() . '_' . $post_image;
         }
     }
 

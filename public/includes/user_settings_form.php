@@ -10,6 +10,7 @@
     <div class="mobile-dashboard-user-settings">
 
         <div class="mobile-userimg-container col-custom">
+        <img class="hamburger-menu-settings-mobile" src="./imgs/icons/hamburger.svg" alt="">
         <div class="user_img_modal_container">
             <a href="user.php?id=<?php echo $user->user_id; ?>">
                 <img class="form_user_setting_profile_img" src="./imgs/users_avatars/<?php echo $user->user_img; ?>" alt="">
@@ -19,7 +20,7 @@
             <h3 class="form_user_setting_profile_name"><?php echo $user->user_firstname. " ". $user->user_lastname;?></h3>
         </div>
 
-            <img class="hamburger-menu-settings-mobile" src="./imgs/icons/hamburger.svg" alt="">
+
             <div class="user_avatar_dashboard_controller mobile-settings-links-container dashboard-mobile row-custom">
 
 

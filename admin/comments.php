@@ -16,10 +16,13 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                       Comments
+                    <a href="comments.php">
+                        <h1 class="page-header">
+                        Comments
 
-                    </h1>
+                        </h1>
+                    </a>
+
 
 
 

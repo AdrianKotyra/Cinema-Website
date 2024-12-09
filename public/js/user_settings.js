@@ -1,4 +1,4 @@
-function userSettingsFunctionality() {
+function logoutCloseWindow() {
     const crossExit = document.querySelector(".user_Settings_cross")
     const userSettingsUserLogged = document.querySelector(".user_settings_container");
 
@@ -21,9 +21,8 @@ function userSettingsFunctionality() {
 
     TriggerSettingsUser? TriggerSettingsUser.forEach(trigger=>{trigger.addEventListener("click", ()=>{
 
-
       setTimeout(() => {
-        userSettingsFunctionality()
+        logoutCloseWindow()
         userSettingsModalactiveLinks()
 
       }, 200);
@@ -59,7 +58,7 @@ function userSettingsFunctionality() {
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
       $.ajax(
         {
-            url: 'ajax/GET_USER_FORM.php',
+            url: 'ajax/user_settings/GET_USER_FORM.php',
             aSync: false,
             dataType: "html",
             success: function(data) {
@@ -82,7 +81,7 @@ function userSettingsFunctionality() {
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
       $.ajax(
         {
-            url: 'ajax/GET_USER_TICKETS.php',
+            url: 'ajax/user_settings/GET_USER_TICKETS.php',
             aSync: false,
             dataType: "html",
             success: function(data) {
@@ -104,7 +103,7 @@ function userSettingsFunctionality() {
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
     $.ajax(
       {
-          url: 'ajax/GET_USER_POSTS_SETTINGS.php',
+          url: 'ajax/user_settings/GET_USER_POSTS_SETTINGS.php',
           aSync: false,
           dataType: "html",
           success: function(data) {
@@ -128,7 +127,7 @@ function userSettingsFunctionality() {
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
     $.ajax(
       {
-          url: 'ajax/GET_USER_REVIEWS_SETTINGS.php',
+          url: 'ajax/user_settings/GET_USER_REVIEWS_SETTINGS.php',
           aSync: false,
           dataType: "html",
           success: function(data) {
@@ -153,7 +152,7 @@ function userSettingsFunctionality() {
 
     $.ajax(
       {
-          url: 'ajax/GET_USER_DETAILS_FORM.php',
+          url: 'ajax/user_settings/GET_USER_DETAILS_FORM.php',
           aSync: false,
           dataType: "html",
           success: function(data) {
@@ -178,14 +177,14 @@ function userSettingsFunctionality() {
 
       // Sending the form data, including the image, via AJAX
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'ajax/UPDATE_USER_DETAILS_FORM_SETTINGS.php', true);
+      xhr.open('POST', 'ajax/user_settings/UPDATE_USER_DETAILS_FORM_SETTINGS.php', true);
       xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             settingsConfirmationModal("Details", "updated")
             // update image user from settings and then from main screen
             get_user_form_settings_ajax()
-            ajaxReloadComponent("ajax/UPDATE_USER_AVATAR_SETTINGS.php", ".user_img_modal_container")
-            ajaxReloadImageMainComponent("ajax/UPDATE_USER_AVATAR_MAIN.php", ".user_profile_img_container")
+            ajaxReloadComponent("ajax/user_settings/UPDATE_USER_AVATAR_SETTINGS.php", ".user_img_modal_container")
+            ajaxReloadImageMainComponent("ajax/user_settings/UPDATE_USER_AVATAR_MAIN.php", ".user_profile_img_container")
             // give new reloaded component js functionality again
 
 
@@ -203,7 +202,7 @@ function userSettingsFunctionality() {
 
     triggerTickets.forEach(triggerLink=>{
       triggerLink.addEventListener("click", ()=>{
-        userSettingsFunctionality()
+        logoutCloseWindow()
         userSettingsModalactiveLinks()
         userControllerSettings()
         get_user_tickets_ajax();
@@ -232,6 +231,7 @@ function userSettingsFunctionality() {
     if (triggerSettingsDashboard) {
       triggerSettingsDashboard.forEach(trigger => {
         trigger.addEventListener("click", () => {
+
           userControllerSettings()
         })})}
 
@@ -414,7 +414,7 @@ function settingsConfirmationModal($element, $text){
     triggerButtonS.forEach(button=>{
       button.addEventListener("click", ()=>{
         const postId = button.getAttribute("data-post-id");
-        SendDataAjax(postId, "ajax/USER_SETTINGS_DELETE_POST_AND_RERENDER.php")
+        SendDataAjax(postId, "ajax/user_settings/USER_SETTINGS_DELETE_POST_AND_RERENDER.php")
           .then(data => {
             get_user_posts_settings_ajax() //<---- GET_USER_POSTS_SETTINGS.php rerender posts by sending another ajax
             settingsConfirmationModal("Post", "deleted")
@@ -434,7 +434,7 @@ function settingsConfirmationModal($element, $text){
     triggerButtonS.forEach(button=>{
       button.addEventListener("click", ()=>{
         const postId = button.getAttribute("data-post-id");
-        SendDataAjax(postId, "ajax/USER_SETTINGS_DELETE_REVIEW_AND_RERENDER.php")
+        SendDataAjax(postId, "ajax/user_settings/USER_SETTINGS_DELETE_REVIEW_AND_RERENDER.php")
           .then(data => {
             get_user_reviews_settings_ajax()//<---- GET_USER_POSTS_SETTINGS.php rerender posts by sending another ajax
             settingsConfirmationModal("Review", "deleted")
@@ -455,7 +455,7 @@ function settingsConfirmationModal($element, $text){
 
       // Sending the form data, including the image, via AJAX
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'ajax/UPDATE_SELECTED_REVIEW_SETTINGS.php', true);
+      xhr.open('POST', 'ajax/user_settings/UPDATE_SELECTED_REVIEW_SETTINGS.php', true);
       xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             settingsConfirmationModal("review", "updated")
@@ -475,7 +475,7 @@ function settingsConfirmationModal($element, $text){
 
       // Sending the form data, including the image, via AJAX
       var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'ajax/UPDATE_SELECTED_POST_SETTINGS.php', true);
+      xhr.open('POST', 'ajax/user_settings/UPDATE_SELECTED_POST_SETTINGS.php', true);
       xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             settingsConfirmationModal("post", "updated")

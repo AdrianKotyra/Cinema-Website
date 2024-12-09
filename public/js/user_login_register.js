@@ -298,10 +298,14 @@ function userNotifications(){
   })
   deleteNotsNavMobile()
 }
+
+
+
 function mobileNavSettingsHamburger(){
   const mobileLinksUser = document.querySelector(".mobile-settings-links-container");
   const hambMobile = document.querySelector(".hamburger-menu-settings-mobile");
   const allNobileLinks = document.querySelectorAll(".user_settings_link");
+
   hambMobile.addEventListener("click", ()=>{
 
     !mobileLinksUser.classList.contains("active-mobile-links")?
@@ -323,13 +327,14 @@ function displayMobileNav(){
   const hamb = document.querySelector(".hamburger");
   const mobileNav = document.querySelector(".mobile-nav");
   hamb.addEventListener("click", ()=>{
+
+
+
     mobileNav.style.display="block"
     menuReg()
     LogOutUser(".user_logout-link");
 
     displayUserSettings()
-
-    userControllerSettings()
     mobileNavSettingsHamburger()
     userNotifications()
 
@@ -339,19 +344,7 @@ function displayMobileNav(){
   })
 }
 
-function activatedMobieMenuResizing() {
-
-  if (window.innerWidth <= 1250) {
 
 
-    displayMobileNav();
 
-
-  }
-
-}
-activatedMobieMenuResizing()
-
-window.addEventListener("resize", () => {
-  displayMobileNav();
-});
+displayMobileNav();

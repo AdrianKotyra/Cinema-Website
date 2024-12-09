@@ -1,22 +1,27 @@
 <?php
 
 if(isset($_POST['create_movie'])) {
+    global $connection;
     alert_text("Post has been added", "posts.php");
 
 
     $post_title    = $_POST['post_title'];
-    $post_text   = $_POST['post_text'];
+
+    $post_text = mysqli_real_escape_string($connection, $_POST['post_text']);
     $post_header        = $_POST['post_header'];
-    $post_date        = $_POST['post_date'];
+
+    $post_img_name =   $_FILES['image']['name'];
     $post_img        = '../public/imgs/posts/'.$_FILES['image']['name'];
     $post_image_temp   = $_FILES['image']['tmp_name'];
+    $post_date =  date('Y-m-d H:i:s');
 
     //    if no uploaded image give it default image
-    if($post_img ===""){
+    if($post_img_name ===""){
 
-        $post_img="imgs/posts/default_image.jpg";
+        $post_img="imgs/forum_posts/default_image.jpg";
 
-        
+
+
     }
 
 
@@ -53,28 +58,26 @@ if(isset($_POST['create_movie'])) {
     </div>
 
 
-    <div class="form-group">
-        <label for="post_text">post text</label>
-        <input required type="text" class="form-control" name="post_text">
-    </div>
 
+
+    <div class="form-group">
+        <label for="post_text">Post Text</label>
+        <textarea name="post_text" class="form-control" id="exampleFormControlTextarea1" class="text_area_admin"rows="3"></textarea>
+    </div>
     <div class="form-group">
         <label for="post_header">Post header</label>
         <input required type="text" class="form-control" name="post_header">
     </div>
-    
-    <div class="form-group">
-        <label for="post_date">Post Date</label>
-        <input required type="date" class="form-control" id="datePicker" name="post_date">
-    </div>
+
+
 
     <div class="form-group">
         <label for="image">Post Image</label>
         <input type="file"  name="image">
     </div>
 
-   
-   
+
+
     <div class="form-group">
         <input class="btn btn-primary" type="submit" name="create_movie" value="Add Post">
     </div>

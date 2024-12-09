@@ -16,10 +16,13 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                       Movies
+                    <a href="movies.php">
+                        <h1 class="page-header">
+                        Movies
 
-                    </h1>
+                        </h1>
+                    </a>
+
 
 
 

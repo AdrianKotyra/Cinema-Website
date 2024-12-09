@@ -1,5 +1,5 @@
 <?php session_start();
-include("../php/init.php");
+include("../../php/init.php");
 
 $user_id_logged = $user->user_id;
 if($user_id_logged) {
@@ -25,19 +25,19 @@ if($user_id_logged) {
         $user_DOB =  $row['user_DOB'];
 }}
 if ($user->user_age < 17) {
-    $user_age_modal = '<div class="row-custom membership_container">  
+    $user_age_modal = '<div class="row-custom membership_container">
     <img class="login-modal-age-avatar-img" src="imgs/junior_member.jpg" alt="">
-        <span>You are a Junior member </span> 
+        <span>You are a Junior member </span>
     </div>';
 } else {
-    $user_age_modal = '<div class="row-custom membership_container">  
+    $user_age_modal = '<div class="row-custom membership_container">
     <img class="login-modal-age-avatar-img" src="imgs/adult_member.jpg" alt="">
-        <span>You are Adult member </span> 
+        <span>You are Adult member </span>
     </div>';
 }
 $user_age = $user->user_age;
 $user_form = '
-<div class="col-custom user_info_setttings_header"> 
+<div class="col-custom user_info_setttings_header">
         <h1 class="user_details_header"> Account Information </h1>
         <span class="user_details_header">'.$user_age_modal.' </span>
 </div>
@@ -71,7 +71,7 @@ $user_form = '
 
     <div class="form-group user-form-row">
 
-        <img width=200 src="./imgs/users_avatars/'.$user_image.'" alt="">
+        <img class="user_img_settings"  src="./imgs/users_avatars/'.$user_image.'" alt="">
     </div>
 
     <div class="form-group user-form-row">
@@ -81,7 +81,7 @@ $user_form = '
 
     <div class="form-group user-form-row">
         <label for="user_bio">User Bio</label>
-        <textarea class="form-control user_bio" name="user_bio" rows="6"><'.$user_bio.'></textarea>
+        <textarea class="form-control user_bio" name="user_bio" rows="6">'.$user_bio.'</textarea>
     </div>
     <div class="form-group user-form-row">
         <label for="user_occupation">User Occupation</label>
@@ -99,14 +99,14 @@ $user_form = '
         <label for="user_facebook">User Facebook</label>
         <input type="text" class="form-control user_facebook" name="user_facebook" value="'.$user_facebook.'">
     </div>
-    
+
     <div class="form-group user-form-row">
         <input class="btn btn-primary update_user_main" value="Update User" name="update_user_main">
     </div>
-  
-    
+
+
 </form>
 <div class="user_dashboard_form_alerts">
-        
+
 </div>';
 echo $user_form;

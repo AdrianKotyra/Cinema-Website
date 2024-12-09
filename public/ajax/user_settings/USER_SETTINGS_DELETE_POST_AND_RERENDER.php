@@ -1,10 +1,10 @@
 
-<?php include "../php/init.php"?>
+<?php include("../../php/init.php");?>
 
-<?php 
+<?php
     global $connection;
     if (isset($_POST["data"])) {
-       
+
         $post_id = $_POST["data"];
         $query = "DELETE from forum_posts where id = $post_id";
         $delete_post = mysqli_query($connection, $query);

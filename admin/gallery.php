@@ -16,10 +16,13 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                       Gallery
+                    <a href="gallery.php">
+                        <h1 class="page-header">
+                        Gallery
 
-                    </h1>
+                        </h1>
+                    </a>
+
 
 
 

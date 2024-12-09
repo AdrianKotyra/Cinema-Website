@@ -1,5 +1,5 @@
 <?php session_start();
-include("../php/init.php");
+include("../../php/init.php");
 
 $user_id_logged = $user->user_id;
 if($user_id_logged) {
@@ -23,7 +23,7 @@ if($user_id_logged) {
 
         echo '  <div class="settings_user_card ">
                         <div class="settings_card_options">
-                            <p class="option_card_settings"> 
+                            <p class="option_card_settings">
                                 <a target="_blank"  href="forum_post.php?id='.$post_id.'">
                                     View
                                 </a>
@@ -31,35 +31,35 @@ if($user_id_logged) {
                             <p class="option_card_settings delete_settings_button" data-post-id="'.$post_id.'"> Delete </p>
                             <p class="option_card_settings edit_settings_button" data-post-id="'.$post_id.'"> Edit </p>
                         </div>
-                      
+
                         <img class="forum-post-img settings_post_img" src="'.$post_img.'" alt="">
-                        
+
                         <div class="forum-container-text col-custom">
-                          
+
                                 <h5>'.$post_title.'</h5>
                                <div class="post-reply-counter row-custom">
                                         <div class="col-custom date-settings-post">
                                             <span class="date-label-post">'. $post_year .'</span> <br>
                                             <span class="date-label-post">'. $post_time .'</span>
                                         </div>
-                                      
-                                        <div> 
+
+                                        <div>
                                             <img class="forum-post-comment-img"src="imgs/icons/comment.svg" alt="">
                                             <span class="post-reply-counter-number">'.$post_num_comments.'</span>
-                                        
-                                        </div>
-                                    
-                                    
-                                    </div>
-                                
-                        </div>
-                        
-                
-                </div>';
-           
 
-        
-        
-    } 
+                                        </div>
+
+
+                                    </div>
+
+                        </div>
+
+
+                </div>';
+
+
+
+
+    }
     echo '</div>';
-} 
+}

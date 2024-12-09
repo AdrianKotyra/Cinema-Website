@@ -16,10 +16,13 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <h1 class="page-header">
-                       QUIZ
+                    <a href="quiz.php">
+                        <h1 class="page-header">
+                        QUIZ
 
-                    </h1>
+                        </h1>
+                    </a>
+
 
 
 

@@ -1,10 +1,10 @@
 
-<?php include "../php/init.php"?>
+<?php include("../../php/init.php");?>
 
-<?php 
+<?php
     global $connection;
     if (isset($_POST["data"])) {
-       
+
         $review_id = $_POST["data"];
         $query = "DELETE from reviews where id = $review_id";
         $search_query = mysqli_query($connection, $query);
@@ -13,9 +13,9 @@
     //         $movie_desc  = $row["description"];
     //         $data[] = [$movie_title, $movie_desc];
 
-        
-         
-    
+
+
+
     //     }
 
     // echo json_encode($data);

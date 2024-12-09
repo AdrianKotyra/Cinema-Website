@@ -38,7 +38,7 @@
         </form>
 
             <?php recent_posts('recent_posts_all_literal_main_page', 5, 0)?>
-            <a href="forum_posts_all.php">
+            <a href="posts.php">
 
                     See more
 

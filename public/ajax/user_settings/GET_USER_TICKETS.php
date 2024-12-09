@@ -1,5 +1,5 @@
 <?php session_start();
-include("../php/init.php");
+include("../../php/init.php");
 
 $user_id_logged = $user->user_id;
 if($user_id_logged) {

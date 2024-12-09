@@ -1,5 +1,5 @@
 <?php session_start();
-include("../php/init.php");
+include("../../php/init.php");
 
 $user_id_logged = $user->user_id;
 if($user_id_logged) {
@@ -23,8 +23,8 @@ if($user_id_logged) {
             $movie_poster = $row["poster"];
         }
 
-       
-   
+
+
         echo '<div class="review-card review-card-mobile review_sesttings_card row-custom vetical-scroll-grab-class settings_user_card">
                 <p class="review_rating">'.$review_rating.'/10</p>
                 <div class="settings_card_options">
@@ -33,18 +33,18 @@ if($user_id_logged) {
                     <p class="option_card_settings edit_settings_button_review" data-post-id="'.$movie_review_id.'"> Edit </p>
                 </div>
                 <img class="movie-img-review settings_img_review" src="./'.$movie_poster.'" alt="">
-              
+
                 <div class="desc-container-review col-custom">
                 <h5>'.$movie_title.'</h5>
-              
+
                 <p class="user_review_card">'.$review.'</p>
                 <span class="review-date">'. $review_date.'</span>
-            
+
                 </div>
 
 
             </div>';
-} 
+}
 echo ' </div>';
 
 }

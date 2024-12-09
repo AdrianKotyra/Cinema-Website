@@ -96,13 +96,12 @@
 }
 
 .review_rating {
-    border-left: 2px solid white;
-    border-bottom: 2px solid white;
+    border-radius: 6px;
     height: 54px;
     width: 60px;
     position: absolute;
     top: 0;
-    right: -3px;
+    right: 0px;
     padding: 15px;
     background-color: var(--primary-colour);
     color: white;
@@ -164,8 +163,9 @@
     height: 54px !important;
     position: absolute;
     bottom: 0;
-    right: -3px;
+    right: 0;
     padding: 15px;
+    border-radius: 8px;
     background-color: var(--primary-colour);
 }
 
@@ -621,6 +621,15 @@
 }
 
 .post-searched-title {
+    font-weight: 700;
+     line-height: 1.2rem;
+    font-size:var(--text-very-small-size);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /* text-overflow: ellipsis; */
+    white-space: normal;
     color: black;
     padding-left: 5px !important;
     text-align: left;
@@ -784,9 +793,17 @@ nav .link {
 }
 
 .main-posts .post-header {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
     line-height: 1.2rem;
     color: white;
     font-size: var(--text-very-small-size);
+    line-height: 1.2rem;
+
 }
 
 .list_cinemas {
@@ -1534,7 +1551,7 @@ nav a {
 
 .review-card {
     z-index: 2;
-    border: 2px solid white;
+
 
 
     margin: 24px 0;
@@ -1762,9 +1779,16 @@ nav a {
     color: white;
     font-size: var(--text-extra-very-small-size);
 }
-
+.active-review-card .review_text_card {
+    display: block;
+}
 .review_text_card {
-
+    display: -webkit-box;         /* Creates a flex-like box for multi-line truncation */
+    -webkit-line-clamp: 1;        /* Number of lines to display */
+    -webkit-box-orient: vertical; /* Sets box orientation to vertical */
+    overflow: hidden;             /* Hides overflowing content */
+    text-overflow: ellipsis;      /* Adds ellipsis (...) to clipped content */
+    white-space: normal;
     margin-top: 10px;
 
 }
@@ -2214,9 +2238,13 @@ nav a {
     font-size: var(--text-very-small-size) !important;
     background-color: var(--secondary-colour-gray);
 }
-
+.user_img_settings {
+    width: 200px;
+}
 .hamburger-menu-settings-mobile {
-    display: block;
+   position: absolute;
+   left: 10px;
+   top: 10px;
     margin: auto;
     filter: var(--white-filter);
     cursor: pointer;
@@ -2743,6 +2771,7 @@ footer .logo-container img {
 }
 
 .post-desc-selected {
+    font-size: var(--text-small-medium-size);
     line-height: 2rem;
     padding: 10px;
     margin: 0;
@@ -3497,6 +3526,7 @@ align-items: center;
     color: black;
 }
 .desc-container-review {
+    width: 100%;
     overflow: hidden;
     padding: 12px 0;
     user-select: none;
@@ -3512,6 +3542,13 @@ align-items: center;
 }
 
 .user_review_card {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin-top: 10px;
     margin: 10px 0;
     line-height: 2rem;
 }
@@ -4029,7 +4066,7 @@ video {
 }
 
 .recent-post .post-title {
-    width: 120px;
+
     text-align: center;
     padding: 5px 15px;
     position: absolute;
@@ -4093,7 +4130,7 @@ video {
 .contact-icon {
 
     margin-right: 20px;
-
+    background-color: white;
     width: 40px;
     height: 40px;
 }
@@ -4330,7 +4367,7 @@ footer {
 
 #fb-icon-footer {
     width: 46px;
-    height: 46px;
+
 }
 
 .col-custom a {
@@ -4628,6 +4665,16 @@ footer {
 }
 
 .desc-container-review h5{
+    margin-right: 50px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.2rem;
+    /* color: white; */
+
     font-weight: 600;
 }
 
@@ -7262,6 +7309,9 @@ h1 {
         display: flex;
     }
     .date_day{
+        width: 100%;
+    }
+    .user_img_settings{
         width: 100%;
     }
     .features-section .features_card_desc p {
