@@ -1,3 +1,6 @@
+<a href="forum.php?source=add_posts">
+  <button class="button-admin">Add forum post</button>
+</a>
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -14,7 +17,7 @@
                 <tbody>
 
                     <?php select_and_display_forum_posts();?>
-                
+
 
                 </tbody>
 </table>

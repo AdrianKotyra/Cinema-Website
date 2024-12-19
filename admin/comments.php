@@ -16,7 +16,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="comments.php">
+                    <a href="comments.php" class="text-center">
                         <h1 class="page-header">
                         Comments
 
@@ -27,6 +27,7 @@
 
 
                 </div>
+
             </div>
 
 

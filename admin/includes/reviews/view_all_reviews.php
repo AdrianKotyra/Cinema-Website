@@ -1,3 +1,7 @@
+<a href="reviews.php?source=add_reviews">
+    <button class="button-admin">Add review</button>
+</a>
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -17,7 +21,7 @@
                 <tbody>
 
                  <?php select_and_display_reviews()?>
-                
+
 
                 </tbody>
 </table>

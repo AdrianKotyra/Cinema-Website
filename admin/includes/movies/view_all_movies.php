@@ -1,4 +1,6 @@
-
+<a href="movies.php?source=add_movies">
+    <button class="button-admin">Add movies</button>
+</a>
 <div class="searcher-container-posts">
     <?php include "search-movies.php"?>
 </div>

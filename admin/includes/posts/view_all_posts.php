@@ -1,3 +1,7 @@
+<a href="posts.php?source=add_posts">
+    <button class="button-admin">Add posts</button>
+</a>
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -14,7 +18,7 @@
                 <tbody>
 
                     <?php select_and_display_posts();?>
-                
+
 
                 </tbody>
 </table>

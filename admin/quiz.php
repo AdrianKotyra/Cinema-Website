@@ -16,7 +16,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="quiz.php">
+                    <a href="quiz.php" class="text-center">
                         <h1 class="page-header">
                         QUIZ
 

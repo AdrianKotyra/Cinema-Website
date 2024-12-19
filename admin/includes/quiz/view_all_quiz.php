@@ -1,3 +1,7 @@
+<a href="gallery.php?source=add_image">
+    <button class="button-admin">Add quiz question</button>
+</a>
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>

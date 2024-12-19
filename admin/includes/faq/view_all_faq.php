@@ -1,3 +1,8 @@
+<a href="faq.php?source=add_faq">
+    <button class="button-admin">Add faq</button>
+</a>
+
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -12,7 +17,7 @@
                 <tbody>
 
                    <?php render_faq_table()?>
-                
+
 
                 </tbody>
 </table>

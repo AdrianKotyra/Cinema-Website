@@ -43,6 +43,14 @@ function createConfirmWindowDeleteRow(){
             modalContainer.innerHTML=confirmationModalLiteral;
 
             const acceptButton = document.querySelector(".accept_button")
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    let selectedDeleteLink = button.getAttribute("data-link");
+
+                    window.location.href = `${selectedDeleteLink}`;
+                }
+
+            })
 
             acceptButton.addEventListener("click", ()=>{
                 let selectedDeleteLink = button.getAttribute("data-link");

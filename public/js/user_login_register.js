@@ -63,18 +63,24 @@ function loginUserAJAX(){
       const acceptButtonLogin = document.querySelector(".accept-buttom-login");
       const regContainer = document.querySelector(".registration_container");
 
-
+      function refreshPage(){
+        BodyMask.style.display="none";
+        confirmationWindowLogin.style.display="none";
+        body.style.overflowY="scroll"
+        window.location.href = window.location.href;
+      }
 
       const BodyMask = document.querySelector(".body_mask")
       const body = document.querySelector("body");
       regContainer.style.display="none";
       confirmationWindowLogin.style.display="block";
-
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          refreshPage()
+        }
+      })
       acceptButtonLogin.addEventListener("click", ()=>{
-        BodyMask.style.display="none";
-        confirmationWindowLogin.style.display="none";
-        body.style.overflowY="scroll"
-        window.location.href = window.location.href;
+        refreshPage()
       })
 
 
@@ -100,16 +106,22 @@ function loginUserAJAX(){
     regContainer.style.display="none";
     confirmationWindow.style.display="block";
 
-
-    acceptButton&&acceptButton.addEventListener("click", ()=>{
+    function refreshPage(){
       BodyMask.style.display="none";
       confirmationWindow.style.display="none";
       body.style.overflowY="scroll"
+      window.location.href = window.location.href;
+    }
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        refreshPage()
+      }
+    })
+    acceptButton&&acceptButton.addEventListener("click", ()=>{
+      refreshPage()
     })
     acceptButtonLogin&&acceptButtonLogin.addEventListener("click", ()=>{
-      BodyMask.style.display="none";
-      confirmationWindow.style.display="none";
-      body.style.overflowY="scroll"
+      refreshPage()
     })
 
 

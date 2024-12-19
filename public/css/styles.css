@@ -3328,13 +3328,14 @@ align-items: center;
     display: block;
     margin: auto;
     width: 100%;
+
+    font-size: var( --header-section);
 }
 
 .login-confirmation-window {
     z-index: 9999999999999999999999999999;
     position: relative;
-    width: 50% !important;
-    height: 70% !important;
+
 }
 
 .login-modal-container {
@@ -3369,10 +3370,10 @@ align-items: center;
     text-align: center;
     color: WHITE;
     width: 100%;
-    height: 150px;
+    height: 250px;
     background-position: center;
     background-size: cover;
-    background-image: url("../imgs/login-bg2.jpg");
+    background-image: url("../imgs/cinematic.jpg");
 }
 
 .active-nav-mobile h3,
@@ -3584,7 +3585,8 @@ align-items: center;
 }
 
 .container-reg-conf .col-custom {
-    height: 240px;
+    padding: 50px;
+
     text-align: center;
 }
 
@@ -3768,7 +3770,7 @@ video {
 }
 
 .confirmation_window_register {
-    animation: loginModalAnimation 0.5s ease-in-out;
+    animation: loginModalAnimation 0.8s ease-in-out;
     border-radius: 18px;
     filter: none;
     /* animation: registration_animation 0.5s forwards; */
@@ -3778,8 +3780,8 @@ video {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
-    width: 400px;
-    height: 240px;
+    /* width: 400px;
+    height: 240px; */
     z-index: 999999999999999999;
 }
 
@@ -5156,11 +5158,14 @@ footer {
 }
 
 .confirm_reg_new_user {
-    width: 80%;
+    border: none;
+    color: white;
+    background: var(--primary-colour);
+    width: 25%;
     display: block;
     margin: auto;
     padding: 10px;
-    border: 2px solid var(--primary-colour);
+
     margin-bottom: 40px;
 }
 
@@ -5494,15 +5499,15 @@ footer {
 
 @keyframes loginModalAnimation {
     0% {
+        transform: translate(-50%, -30%);
         opacity: 0%;
-        height: 0px;
-        width: 0px;
+
     }
 
     100% {
+        transform: translate(-50%, -50%);
         opacity: 100%;
-        width: 400px;
-        height: 240px;
+
     }
 }
 
@@ -6676,7 +6681,9 @@ h1 {
     .login-conf-user-details-container {
         padding-top: 150px;
     }
-    .login-confirmation-window {
+    .login-confirmation-window, .confirmation_window_register {
+
+
         width: 100% !important;
         height: 100% !important;
     }

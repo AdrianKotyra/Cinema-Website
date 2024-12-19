@@ -1,3 +1,7 @@
+<a href="users.php?source=add_users">
+    <button class="button-admin">Add user</button>
+</a>
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -17,7 +21,7 @@
                 <tbody>
 
                     <?php select_and_display_users();?>
-                
+
 
                 </tbody>
 </table>

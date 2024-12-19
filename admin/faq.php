@@ -16,13 +16,12 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="faq.php">
+                    <a href="faq.php" class="text-center">
                         <h1 class="page-header">
                         FAQ
 
                         </h1>
                     </a>
-
 
 
 

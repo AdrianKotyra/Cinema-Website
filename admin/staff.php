@@ -16,7 +16,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="staff.php">
+                    <a href="staff.php" class="text-center">
                         <h1 class="page-header">
                         Staff
 

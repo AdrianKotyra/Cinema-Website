@@ -2048,7 +2048,7 @@ function renderNext7Days() {
 
                                 <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
                                     <button class="button-custom user-button">
-                                        Users reviews
+                                        reviews
                                     </button>
                                 </a>
                             </div>

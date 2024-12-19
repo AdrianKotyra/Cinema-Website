@@ -1,3 +1,8 @@
+
+<a href="staff.php?source=add_staff">
+  <button class="button-admin">Add staff</button>
+</a>
+
 <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
@@ -15,7 +20,7 @@
                 <tbody>
 
               <?php select_and_display_staff()?>
-                
+
 
                 </tbody>
 </table>

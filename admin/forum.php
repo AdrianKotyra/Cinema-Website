@@ -16,7 +16,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="forum.php">
+                    <a href="forum.php" class="text-center">
                         <h1 class="page-header">
                         Posts
 

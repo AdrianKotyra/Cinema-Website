@@ -1,6 +1,8 @@
 
+<a href="gallery.php?source=add_image">
+    <button class="button-admin">Add image</button>
+</a>
 
-  
 <table class="table table-bordered table-hover">
 
                 <thead>
@@ -18,8 +20,7 @@
                 <tbody class="movies-table">
 
                     <?php select_and_display_gallery();?>
-                
+
 
                 </tbody>
 </table>
-

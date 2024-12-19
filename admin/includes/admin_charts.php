@@ -8,9 +8,9 @@
                     </div>
                     <div class="col-xs-9 text-right">
 
-                 
+
                     <div class='huge'><?php get_row_count("posts") ?></div>
-                        <div>Posts</div>
+                        <div>Admin News</div>
                     </div>
                 </div>
             </div>
@@ -31,9 +31,9 @@
                         <i class="fa fa-comments fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                   
+
                      <div class='huge'><?php get_row_count("comments_news") ?></div>
-                      <div>Comments</div>
+                      <div>User Comments</div>
                     </div>
                 </div>
             </div>
@@ -55,10 +55,10 @@
                     </div>
                     <div class="col-xs-9 text-right">
                     <?php
-                       
+
                     ?>
                     <div class='huge'><?php get_row_count("users") ?></div>
-                        <div> Users</div>
+                        <div> Users Accounts</div>
                     </div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <?php
-                           
+
 
                         ?>
                         <div class='huge'> <?php get_row_count("genres") ?></div>
@@ -105,7 +105,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("movies") ?></div>
                          <div>Movies</div>
                     </div>
@@ -128,7 +128,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("faq") ?></div>
                          <div>FAQ</div>
                     </div>
@@ -151,7 +151,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("reviews") ?></div>
                          <div>Reviews</div>
                     </div>
@@ -174,7 +174,7 @@
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("forum_posts") ?></div>
                          <div>Forum posts</div>
                     </div>
@@ -191,13 +191,13 @@
     </div>
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
-            <div class="panel-heading forum-panel">
+            <div class="panel-heading staff-panel">
                 <div class="row">
                     <div class="col-xs-3">
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("staff") ?></div>
                          <div>Staff Members</div>
                     </div>
@@ -214,13 +214,13 @@
     </div>
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
-            <div class="panel-heading forum-panel">
+            <div class="panel-heading tickets-panel">
                 <div class="row">
                     <div class="col-xs-3">
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("tickets") ?></div>
                          <div>Tickets</div>
                     </div>
@@ -237,13 +237,13 @@
     </div>
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
-            <div class="panel-heading forum-panel">
+            <div class="panel-heading comments-panel">
                 <div class="row">
                     <div class="col-xs-3">
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("comments_news") ?></div>
                          <div>Comments news</div>
                     </div>
@@ -260,13 +260,13 @@
     </div>
     <div class="col-lg-3 col-md-6">
         <div class="panel panel-yellow">
-            <div class="panel-heading forum-panel">
+            <div class="panel-heading messages-panel">
                 <div class="row">
                     <div class="col-xs-3">
                         <i class="fa fa-list fa-5x"></i>
                     </div>
                     <div class="col-xs-9 text-right">
-                        
+
                         <div class='huge'> <?php get_row_count("messages_to_admin") ?></div>
                          <div>admin messages</div>
                     </div>
@@ -282,12 +282,12 @@
         </div>
     </div>
 </div>
-   
 
 
 
 
-  
+
+
 
 
     <div id="columnchart_material" style="width: 'auto'; height: 500px;"></div>

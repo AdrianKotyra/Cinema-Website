@@ -16,7 +16,7 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="gallery.php">
+                    <a href="gallery.php" class="text-center">
                         <h1 class="page-header">
                         Gallery
 

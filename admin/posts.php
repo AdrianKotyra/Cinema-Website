@@ -16,13 +16,12 @@
             <div class="row">
 
                 <div class="col-lg-12">
-                    <a href="posts.php">
-                        <h1 class="page-header">
+                    <a href="posts.php" class="text-center">
+                        <h1 class="page-header" >
                         Posts
 
                         </h1>
                     </a>
-
 
 
 
