@@ -1693,7 +1693,16 @@ function renderNext7Days() {
 
             $review_date_year = substr($review_date, 0,10);
             $review_date_time = substr($review_date,11);
-
+            $review_rating_color ="";
+            if($review_rating<=3) {
+                $review_rating_color ="red";
+            }
+            elseif($review_rating>3 && $review_rating<=7){
+                $review_rating_color ="#cccc20";
+            }
+            else {
+                $review_rating_color ="#31d92b";
+            }
             $query2 = $database-> query_array("SELECT * from movies where id = $movie_review_id AND age <= $age_limit");
             $search_count = mysqli_num_rows($query2);
             if ($search_count>=1) {
@@ -1716,7 +1725,7 @@ function renderNext7Days() {
                 echo '<div class="review-card-layout ">
                     <div class="review-card row-custom vetical-scroll-grab-class">
 
-                        <p class="review_rating">'.$review_rating.'/10</p>
+                        <p class="review_rating" style="background-color:'.$review_rating_color.'">'.$review_rating.'/10</p>
                         <div  class="screen-up-review" alt="">
                                <img  src="./imgs/icons/zoom-in.svg" >
                         </div>
@@ -1755,6 +1764,8 @@ function renderNext7Days() {
         global $connection;
         global $database;
 
+
+
        if(isset($_GET["movie"])) {
         $movie_selected_id = $_GET["movie"];
 
@@ -1773,6 +1784,16 @@ function renderNext7Days() {
             $user_review_id = $row["user_review_id"];
             $review_date = $row["review_date"];
             $review_rating = $row["review_rating"];
+            $review_rating_color ="";
+            if($review_rating<=3) {
+                $review_rating_color ="red";
+            }
+            elseif($review_rating>3 && $review_rating<=7){
+                $review_rating_color ="#cccc20";
+            }
+            else {
+                $review_rating_color ="#31d92b";
+            }
             $query2 = $database-> query_array("SELECT * from movies where id = $movie_review_id");
             $search_count = mysqli_num_rows($query2);
             if ($search_count>=1) {
@@ -1797,7 +1818,7 @@ function renderNext7Days() {
               <div class="review-card-layout">
                     <div class="review-card row-custom vetical-scroll-grab-class">
 
-                        <p class="review_rating">'.$review_rating.'/10</p>
+                        <p class="review_rating" style="background-color:'.$review_rating_color.'"> '.$review_rating.'/10</p>
                         <div  class="screen-up-review" alt="">
                                <img  src="./imgs/icons/zoom-in.svg" >
                         </div>
@@ -2340,11 +2361,7 @@ function renderNext7Days() {
         global $session;
         global $user;
         $user_label = render_hidden_user_label($user_avatar, $user_comment_name, $user_comment_lastname, $user_occupation, $comment_user_id);
-        // only display reply if user is logged in
-        if($session->signed_in==true) {
-        $user_reply = '<span class="replay" >Reply</span>';
-        } else {$user_reply =  ' ';
-        }
+
 
         // only display edit for users comments
         if($session->signed_in==true && $user->user_id == $comment_user_id ) {
@@ -2352,7 +2369,7 @@ function renderNext7Days() {
                 <img class="edit_comment edit_comment_num_'.$comment_id.'"src="./imgs/icons/edit.svg">
                 <div class="comment_options">
 
-                    <span class="edit_comment_trigger" data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Edit </span>
+
                     <span class="delete_comment_trigger"data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Delete </span>
                 </div>
             </div>';
@@ -2383,7 +2400,7 @@ function renderNext7Days() {
                     <span class="comment_date">'.$comment_year.'</span>
 
                     <div class="tools_comment">
-                        '. $user_reply.'
+
                         <a data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'" class="like " >'.$like_icon.'</a>
 
                        <span class="count_'.$comment_id.'">likes: '.$likes_count.'</span>
@@ -2403,10 +2420,7 @@ function renderNext7Days() {
         global $user;
         $user_label = render_hidden_user_label($user_avatar, $user_comment_name, $user_comment_lastname, $user_occupation, $comment_user_id);
         // only display reply if user is logged in
-        if($session->signed_in==true) {
-        $user_reply = '<span class="replay" >Reply</span>';
-        } else {$user_reply =  ' ';
-        }
+
 
         // only display edit for users comments
         if($session->signed_in==true && $user->user_id == $comment_user_id ) {
@@ -2414,7 +2428,7 @@ function renderNext7Days() {
                 <img class="edit_comment edit_comment_num_'.$comment_id.'"src="./imgs/icons/edit.svg">
                 <div class="comment_options">
 
-                    <span class="edit_comment_news_trigger" data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Edit </span>
+
                     <span class="delete_comment_news_trigger"data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Delete </span>
                 </div>
             </div>';
@@ -2445,7 +2459,7 @@ function renderNext7Days() {
                     <span class="comment_date">'.$comment_year.'</span>
 
                     <div class="tools_comment">
-                        '. $user_reply.'
+
                         <a data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'" class="like_news " >'.$like_icon.'</a>
 
                        <span class="count_'.$comment_id.'">likes: '.$likes_count.'</span>

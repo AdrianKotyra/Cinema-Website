@@ -5,23 +5,23 @@ include "../php/init.php";
 
 
     global $database;
-   
+
     $post_id =  $_POST["data"][0];
     $comment_user_id = $user->user_id;
     $comment_text   = $_POST["data"][1];
     $comment_date        = date("Y-m-d H:i:s");
-    
-  
+
+
 
     $query = "INSERT INTO comments_news(comment_post_id, comment_user_id, comment_text, comment_date) ";
-    
+
     $query .= "VALUES('{$post_id}','{$comment_user_id}','{$comment_text}','{$comment_date}') ";
 
     $query_add_comment = $database->query_array($query);
 
-   
 
-   
+
+
     $query2 = $database-> query_array("SELECT * from comments_news where comment_post_id = $post_id order by comment_date DESC");
     $rowcount=mysqli_num_rows($query2);
     if($rowcount>0) {
@@ -33,7 +33,7 @@ include "../php/init.php";
             $comment_year = substr($comment_date, 0, 10);
             $comment_time = substr($comment_date, 11);
             $query3 = $database-> query_array("SELECT * from users where user_id = $comment_user_id");
-       
+
 
             while ($row = mysqli_fetch_array($query3)) {
                 $user_comment_name = $row["user_firstname"];
@@ -44,21 +44,17 @@ include "../php/init.php";
 
                 $likes_count = likes_count_news($comment_id);
                 $like_icon = likeIconChangeNews($comment_id);
-             
+
                 global $session;
-                // only display reply if user is logged in 
-                if($session->signed_in==true) {
-                $user_reply = '<span class="replay" >Reply</span>';
-                } else {$user_reply =  ' ';
-                }
-        
+
+
                 // only display edit for users comments
                 if($session->signed_in==true && $user->user_id == $comment_user_id ) {
-                    $edit_options = '<div class="comment_edit_label col-custom"> 
+                    $edit_options = '<div class="comment_edit_label col-custom">
                         <img class="edit_comment edit_comment_num_'.$comment_id.'"src="./imgs/icons/edit.svg">
                         <div class="comment_options">
 
-                            <span class="edit_comment_news_trigger" data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Edit </span>
+
                             <span class="delete_comment_news_trigger"data-comment-id="'.$comment_id.'" data-post-id = "'.$post_id.'"> Delete </span>
                         </div>
                     </div>';
@@ -78,26 +74,24 @@ include "../php/init.php";
 
                         <h4>'. $user_comment_name . ' '. $user_comment_lastname. '</h4>
                     </div>
-                    
+
                     <p class="comment_text">'.$comment_text .'</p>
                     <span class="comment_date">'.$comment_time.'</span>
                     <span class="comment_date">'.$comment_year.'</span>
-                   
+
                     <div class="tools_comment">
                         '. $user_reply.'
                         <a data-comment-id="'.$comment_id.'"class="like_news " >'.$like_icon.'</a>
-                      
-                       <span class="count_'.$comment_id.'">likes: '.$likes_count.'</span> 
-                     
-                     
+
+                       <span class="count_'.$comment_id.'">likes: '.$likes_count.'</span>
+
+
                     </div>
             </li>';
             }
         }}
 
-    
+
 
 
 ?>
-
-

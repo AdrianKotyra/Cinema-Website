@@ -38,11 +38,17 @@
         <div class="row-custom container-popular-details-trailer">
             <div class="current-trending-movie-details">
                 <div class="movie-card-info-container">
-                    <h1 class="text-big text-white selected_movie_title">Lorem, ipsum dolor.</h1>
-                    <p class="text-mid selected_movie_description">Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Inventore unde saepe laboriosam ipsam culpa laudantium?</p>
-                    <a class="current-trending-button" href=""> <button
-                            class="button-custom current-trending-button">Book</button></a>
+                    <a class="popular_movie_link"href="">
+                        <h1 class="text-big text-white selected_movie_title selected_movie_title_popular ">
+
+                        </h1>
+                    </a>
+                    <p class="text-mid selected_movie_description"></p>
+                    <div class="popular-movie-views">
+                        Views:
+                        <span class="popular-movie-views-counter"></span>
+                    </div>
+
 
                 </div>
                 <div class="trailers-selected-movies ">
@@ -59,6 +65,8 @@
 
                     </div>
                 </div>
+                <a class="current-trending-button" href=""> <button
+                class="button-custom current-trending-button">Book</button></a>
 
 
             </div>

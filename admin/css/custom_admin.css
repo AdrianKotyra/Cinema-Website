@@ -1,3 +1,6 @@
+html {
+    background-color: white;
+}
 .alert_header {
     font-weight: 800;
     font-size: 2rem;
@@ -145,4 +148,10 @@ textarea {
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+@media (max-width: 609px) {
+    .confirmationWindowModal {
+        width: 100%;
+        height: 100%;
+    }
 }

@@ -1373,18 +1373,23 @@ function getIdFromPopularMovies(){
   selectedMoviePopularId.forEach(ele=>ele.addEventListener("click", ()=> {
     const MovieSelectedTitle = document.querySelector(".selected_movie_title");
     const MovieSelectedDescription = document.querySelector(".selected_movie_description");
+    const MovieSelectedViews = document.querySelector(".popular-movie-views-counter");
+    const popularMovieLink = document.querySelector(".popular_movie_link");
+
     const selectedMovieId = ele.getAttribute("data-id")
 
     SendDataAjax(selectedMovieId, "ajax/GET_MOVIE_BY_ID.php")
     .then(data => {
       const movieData = JSON.parse(data);
-      const selectedMovieTitle = movieData[0][0]
-      const selectedMovieDescription = movieData[0][1]
+      const selectedMovieTitle = movieData[0][0];
+      const selectedMovieDescription = movieData[0][1];
+      const selectedMovieViews = movieData[0][2];
+      const popularMoviePage = `movie.php?movie=${movieData[0][3]}`;
       const selectedMovieDescriptionShorted = selectedMovieDescription.substring(0, 250);
-      console.log(selectedMovieTitle)
+      popularMovieLink.href=popularMoviePage;
       MovieSelectedTitle.textContent=selectedMovieTitle;
       MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
-
+      MovieSelectedViews.textContent=selectedMovieViews;
     })
     .catch(error => {
         console.error('Error:', error);
@@ -1400,8 +1405,10 @@ function initialiseAjaxFirstSelectedMoviePopular(){
     const MovieSelectedTitle = document.querySelector(".selected_movie_title");
     if(MovieSelectedTitle) {
     const MovieSelectedDescription = document.querySelector(".selected_movie_description");
-    const ids = []
+    const ids = [];
     const popularMoviesCards = document.querySelectorAll(".movie-card-detailed");
+    const MovieSelectedViews = document.querySelector(".popular-movie-views-counter");
+    const popularMovieLink = document.querySelector(".popular_movie_link");
     popularMoviesCards.forEach(card=>{
       ids.push(card.getAttribute("data-id"));
     })
@@ -1411,10 +1418,15 @@ function initialiseAjaxFirstSelectedMoviePopular(){
       const movieData = JSON.parse(data);
       const selectedMovieTitle = movieData[0][0]
       const selectedMovieDescription = movieData[0][1]
+      const selectedMovieViews = movieData[0][2];
+      const popularMoviePage = `movie.php?movie=${movieData[0][3]}`;
       const selectedMovieDescriptionShorted = selectedMovieDescription.substring(0, 250);
 
+
+      popularMovieLink.href=popularMoviePage;
       MovieSelectedTitle.textContent=selectedMovieTitle;
       MovieSelectedDescription.textContent=selectedMovieDescriptionShorted + "...";
+      MovieSelectedViews.textContent=selectedMovieViews;
     })
     .catch(error => {
         console.error('Error:', error);
