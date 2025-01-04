@@ -1510,6 +1510,7 @@ nav a {
 }
 
 .users_profile_img {
+    border-radius: 24px;
     object-fit: cover;
     width: 300px;
     height: 400px;
@@ -4885,7 +4886,22 @@ footer {
     background-color: white;
     position: fixed;
 }
-
+.header-settings {
+    position: relative;
+}
+.header-settings img{
+    cursor: pointer;
+    margin-top: 18px;
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+.user_content_settings {
+    display: none;
+}
+.user_content_settings_active {
+    display: block;
+}
 .user_dashboard_form {
     position: relative;
     color: white;

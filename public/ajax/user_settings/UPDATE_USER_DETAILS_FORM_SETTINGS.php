@@ -25,8 +25,9 @@ if (isset($_POST["update_user_main"])) {
             $post_image = $row['user_img'];
         }
     } else {
-        // Ensure the uploaded image moves to the correct destination
-        $destination = __DIR__ . "/../imgs/users_avatars/" . time() . '_' . $post_image; // Use absolute path
+
+        $destination = __DIR__ . "/../../imgs/users_avatars/" . time() . '_' . $post_image;
+
         if (!move_uploaded_file($post_image_temp, $destination)) {
             // Handle file upload failure
             die("File upload failed.");

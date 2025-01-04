@@ -106,8 +106,28 @@
     </div>
     <div class="user_dashboard_form">
 
+        <div class="user_content_settings user_dashboard_form_tickets">
 
-        <?php include("includes/user_details_profile.php");?>
+        </div>
+        <div class="user_content_settings user_dashboard_form_details">
+
+        </div>
+        <div class="user_content_settings user_dashboard_form_posts">
+
+        </div>
+        <div class="user_content_settings user_dashboard_form_info user_content_settings_active">
+
+        </div>
+        <div class="user_content_settings user_dashboard_form_reviews">
+
+
+        </div>
+
+
+
+
+
+
 
 
 

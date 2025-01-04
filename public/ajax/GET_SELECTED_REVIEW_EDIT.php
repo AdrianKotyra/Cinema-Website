@@ -5,14 +5,14 @@
 
 <!-- // get edited post query -->
 <?php
-  
+
   if(isset($_POST["data"])) {
     global $connection;
     $review_id = $_POST["data"];
-   
+
    $query = "SELECT * FROM reviews where movie_review_id =  $review_id ";
    $search_query = mysqli_query($connection, $query);
-  
+
    while($row = mysqli_fetch_array($search_query)) {
        $review = $row["review"];
        $review_id_selected = $row["id"];
@@ -38,18 +38,23 @@
 
 
 echo '
+
+
+   <div class="header-settings ">
+    <img class="backer-settings-reviews" src="./imgs/icons/left-arrow.svg">
     <h1 class="edit_post_header">Edit review</h1>
+    </div>
 
    <div class="review-card review_sesttings_card row-custom vetical-scroll-grab-class settings_user_card">
-               
+
                 <img class="movie-img-review settings_img_review" src="./'.$movie_poster.'" alt="">
-              
+
                 <div class="desc-container-review col-custom">
                 <h5>'.$movie_title.'</h5>
-              
+
                 <p class="user_review_card">'.$review.'</p>
                 <span class="review-date">'. $review_date.'</span>
-            
+
                 </div>
 
 
@@ -69,8 +74,8 @@ echo '
         <option value="8">8</option>
         <option value="9">9</option>
         <option value="10">10</option>
-        
-      
+
+
     </select>
 
     <input class="edit_post_settings_input hidden"type="text" class="form-control" name="review_id" value="'.$review_id_selected.'">
@@ -82,8 +87,8 @@ echo '
     </div>
 
 
-   
-    
+
+
     <div class="form-group">
         <input class="btn btn-primary edit_review_button" type="submit" name="edit_review" value="Update Review">
     </div>

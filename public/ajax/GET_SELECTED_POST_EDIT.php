@@ -5,7 +5,7 @@
 
 <!-- // get edited post query -->
 <?php
-  
+
     if(isset($_POST["data"])) {
         global $connection;
         $post_id_to_be_edited = $_POST["data"];
@@ -25,8 +25,8 @@
             $post_num_comments=mysqli_num_rows($query3);
 
 
-          
-     
+
+
 
         }
 
@@ -38,10 +38,13 @@
 // get edited post
 
 echo '
-    <h1 class="edit_post_header">Edit post</h1>
+    <div class="header-settings ">
+        <img class="backer-settings-posts" src="./imgs/icons/left-arrow.svg">
+        <h1 class="edit_post_header">Edit post</h1>
+    </div>
 
     <div class="settings_user_card ">
-      
+
 
     <img class="forum-post-img settings_post_img" src="'.$post_img.'" alt="">
 
@@ -53,19 +56,19 @@ echo '
             <span class="date-label-post">'. $post_year .'</span> <br>
             <span class="date-label-post">'. $post_time .'</span>
         </div>
-                
-        <div> 
+
+        <div>
             <img class="forum-post-comment-img"src="imgs/icons/comment.svg" alt="">
             <span class="post-reply-counter-number">'.$post_num_comments.'</span>
-        
+
         </div>
-            
-            
+
+
         </div>
-                                    
+
         </div>
-                        
-                
+
+
     </div>
 
 
@@ -83,7 +86,7 @@ echo '
         <label for="post_title">Post title</label>
         <input class="edit_post_settings_input"type="text" class="form-control" name="post_title" value="'.$post_title.'">
     </div>
-   
+
 
 
     <div class="form-group user-form-row">
@@ -99,8 +102,8 @@ echo '
     </div>
 
 
-   
-    
+
+
     <div class="form-group">
         <input class="btn btn-primary edit_post_button" type="submit" name="edit_post" value="Update Post">
     </div>

@@ -11,7 +11,7 @@ if (isset($_POST["post_id"])) {
     if (isset($_FILES['image']) && $_FILES['image']['name'] != '') {
         $file_name = basename($_FILES['image']['name']);
         $post_img = 'imgs/forum_posts/' . time() . '_' . $file_name;
-        $destination = __DIR__ . "/../imgs/forum_posts/" . time() . '_' . $file_name;  // Absolute path
+        $destination = __DIR__ . "/../../imgs/forum_posts/" . time() . '_' . $file_name;  // Absolute path
 
         // Try to move the uploaded file
         if (move_uploaded_file($_FILES['image']['tmp_name'], $destination)) {

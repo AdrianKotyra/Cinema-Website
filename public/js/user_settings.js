@@ -22,6 +22,7 @@ function logoutCloseWindow() {
     TriggerSettingsUser? TriggerSettingsUser.forEach(trigger=>{trigger.addEventListener("click", ()=>{
 
       setTimeout(() => {
+        initiateFetchingUserData()
         logoutCloseWindow()
         userSettingsModalactiveLinks()
 
@@ -54,7 +55,7 @@ function logoutCloseWindow() {
   function get_user_form_settings_ajax(){
 
 
-    const settingsContentContainer = document.querySelector(".user_dashboard_form");
+    const settingsContentContainer = document.querySelector(".user_dashboard_form_details");
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
       $.ajax(
         {
@@ -77,7 +78,7 @@ function logoutCloseWindow() {
   function get_user_tickets_ajax(){
 
 
-    const settingsContentContainer = document.querySelector(".user_dashboard_form");
+    const settingsContentContainer = document.querySelector(".user_dashboard_form_tickets");
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
       $.ajax(
         {
@@ -86,7 +87,7 @@ function logoutCloseWindow() {
             dataType: "html",
             success: function(data) {
               settingsContentContainer.innerHTML=data;
-              displayUserSettingsPostCards()
+              displayUserSettingsPostCards(settingsContentContainer)
               downloadTicket()
 
              },
@@ -99,7 +100,7 @@ function logoutCloseWindow() {
   }
   function get_user_posts_settings_ajax(){
 
-    const settingsContentContainer = document.querySelector(".user_dashboard_form");
+    const settingsContentContainer = document.querySelector(".user_dashboard_form_posts");
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
     $.ajax(
       {
@@ -108,7 +109,7 @@ function logoutCloseWindow() {
           dataType: "html",
           success: function(data) {
             settingsContentContainer.innerHTML=data;
-            displayUserSettingsPostCards()
+            displayUserSettingsPostCards(settingsContentContainer)
             deleteFromSettingsUserPost()
             editFromSettingsUserPost()
 
@@ -123,7 +124,7 @@ function logoutCloseWindow() {
   }
   function get_user_reviews_settings_ajax(){
 
-    const settingsContentContainer = document.querySelector(".user_dashboard_form");
+    const settingsContentContainer = document.querySelector(".user_dashboard_form_reviews");
     settingsContentContainer.innerHTML = '<div class="loader"></div>';
     $.ajax(
       {
@@ -132,7 +133,7 @@ function logoutCloseWindow() {
           dataType: "html",
           success: function(data) {
             settingsContentContainer.innerHTML=data;
-            displayUserSettingsPostCards()
+            displayUserSettingsPostCards(settingsContentContainer)
             deleteFromSettingsUserReview()
             editFromSettingsUserReview()
 
@@ -147,7 +148,7 @@ function logoutCloseWindow() {
   }
   function get_user_details_settings_ajax(){
 
-    const settingsContentContainer = document.querySelector(".user_dashboard_form");
+    const settingsContentContainer = document.querySelector(".user_dashboard_form_info");
     settingsContentContainer.innerHTML='<div class="loader"></div>';
 
     $.ajax(
@@ -221,8 +222,17 @@ function logoutCloseWindow() {
 
   }
   show_bought_tickets()
+
   function querySelectAll(selector) {
     return document.querySelectorAll(selector);
+  }
+
+  function initiateFetchingUserData(){
+    get_user_tickets_ajax();
+    get_user_form_settings_ajax();
+    get_user_details_settings_ajax();
+    get_user_posts_settings_ajax();
+    get_user_reviews_settings_ajax();
   }
 
   // add listener to triggers to initiate the settings
@@ -232,14 +242,24 @@ function logoutCloseWindow() {
       triggerSettingsDashboard.forEach(trigger => {
         trigger.addEventListener("click", () => {
 
+
           userControllerSettings()
         })})}
 
 
   }
 
+
+  const reviewSettingsLiteral = ``
+
   function userControllerSettings() {
 
+    function disableUserDashbaord(){
+      const allDashbaords = document.querySelectorAll(".user_content_settings");
+      allDashbaords.forEach(allDashbaord=>{
+        allDashbaord.classList.remove("user_content_settings_active");
+      })
+    }
 
     const userDetailsTrigger = querySelectAll(".user_details_link");
     const userChangeDetailsTrigger = querySelectAll(".user_change_details_link");
@@ -247,40 +267,81 @@ function logoutCloseWindow() {
     const userReviewsTrigger = querySelectAll(".user_reviews_link");
     const userTicketsTrigger = querySelectAll(".user_tickets_link");
 
+    const ticketsContainer =  document.querySelector(".user_dashboard_form_tickets");
+    const postsContainer = document.querySelector(".user_dashboard_form_posts");
+    const reviewsContentContainer = document.querySelector(".user_dashboard_form_reviews");
+    const detailsContentContainer = document.querySelector(".user_dashboard_form_info");
+    const settingsUpdateContentContainer = document.querySelector(".user_dashboard_form_details");
+
+
     userTicketsTrigger.forEach(trigger => {
       trigger.addEventListener("click", () => {
-        get_user_tickets_ajax();
+        disableUserDashbaord()
+
+        ticketsContainer.classList.add("user_content_settings_active");
+
+        displayUserSettingsPostCards(ticketsContainer)
+        downloadTicket()
+
+
       });
     });
 
     userChangeDetailsTrigger.forEach(trigger => {
       trigger.addEventListener("click", () => {
-        get_user_form_settings_ajax();
+        disableUserDashbaord()
+        settingsUpdateContentContainer.classList.add("user_content_settings_active");
+
       });
     });
 
     userDetailsTrigger.forEach(trigger => {
       trigger.addEventListener("click", () => {
-        get_user_details_settings_ajax();
+        disableUserDashbaord()
+        detailsContentContainer.classList.add("user_content_settings_active");
+
       });
     });
 
     userPostsTrigger.forEach(trigger => {
       trigger.addEventListener("click", () => {
-        get_user_posts_settings_ajax();
+        disableUserDashbaord()
+        postsContainer.classList.add("user_content_settings_active");
+        displayUserSettingsPostCards(postsContainer)
+        deleteFromSettingsUserPost()
+        editFromSettingsUserPost()
+
       });
     });
 
     userReviewsTrigger.forEach(trigger => {
       trigger.addEventListener("click", () => {
-        get_user_reviews_settings_ajax();
+        disableUserDashbaord()
+        reviewsContentContainer.classList.add("user_content_settings_active");
+        displayUserSettingsPostCards(reviewsContentContainer)
+        deleteFromSettingsUserReview()
+        editFromSettingsUserReview()
+
+
       });
     });
 
 
   }
 
-
+  // USER SETTINGS BACK FROM EDIT TO MAIN DASHBOARD SETTINGS
+  function backerReviews(){
+    const triggerBack = document.querySelector(".backer-settings-reviews");
+    triggerBack.addEventListener("click", ()=>{
+      get_user_reviews_settings_ajax();
+    })
+  }
+  function backerPosts(){
+    const triggerBack = document.querySelector(".backer-settings-posts");
+    triggerBack.addEventListener("click", ()=>{
+      get_user_posts_settings_ajax();
+    })
+  }
   // inititate setting when page is loaded
   userControllerSettings()
 
@@ -312,68 +373,92 @@ function logoutCloseWindow() {
 
   // INITIALISE LOG OUT TRIGGER ON PAGE LOAD
   LogOutUser(".user_logout-link");
-  function displayUserSettingsPostCards() {
 
-    const allCardsPosts = document.querySelectorAll(".settings_user_card");
-    let currentlyVisibleLabel = null; // Track the currently visible settings label
 
+  function displayUserSettingsPostCards(container) {
+    console.log("Initializing displayUserSettingsPostCards");
+
+    const allCardsPosts = container.querySelectorAll(".settings_user_card");
+    let currentlyVisibleLabel = null;
+
+    // Ensure all settings labels are initially hidden
     allCardsPosts.forEach(card => {
+      const settingsLabel = card.querySelector(".settings_card_options");
+      if (settingsLabel) {
+        settingsLabel.style.display = "none"; // Explicitly hide initially
+      }
+    });
+
+    // Clear any existing event listeners before adding new ones
+    allCardsPosts.forEach(card => {
+      const newCard = card.cloneNode(true); // Clone card to remove listeners
+      card.replaceWith(newCard); // Replace the old card with the new one
+    });
+
+    const updatedCards = container.querySelectorAll(".settings_user_card");
+
+    updatedCards.forEach(card => {
       card.addEventListener("click", (event) => {
+        console.log("Card clicked:", card);
 
-        allCardsPosts.forEach(card => {
-          card.classList.remove("active_settings_Card");})
-          setTimeout(() => {
-            card.classList.add("active_settings_Card");
-        }, 1);
+        // Remove 'active' class from all cards
+        updatedCards.forEach(card => card.classList.remove("active_settings_Card"));
 
-        event.stopPropagation(); // Prevent click event from bubbling up to document
+        // Add 'active' class to the clicked card
+        card.classList.add("active_settings_Card");
 
-        // Get the settings label for the clicked card
         const settingsLabel = card.querySelector(".settings_card_options");
+        console.log("Clicked card settings label:", settingsLabel);
 
-        // Hide any currently visible settings label (if it's not the same one)
+        // Hide currently visible label if it's not the same
         if (currentlyVisibleLabel && currentlyVisibleLabel !== settingsLabel) {
           currentlyVisibleLabel.style.display = "none";
-
-
-
         }
 
-        // Toggle the visibility of the clicked card's settings label
-        if (settingsLabel.style.display === "block") {
-          settingsLabel.style.display = "none";
+        // Toggle the clicked card's settings label
+        const computedStyle = getComputedStyle(settingsLabel);
+        console.log("Computed style:", computedStyle.display);
 
+        if (computedStyle.display === "block") {
+          settingsLabel.style.display = "none";
           currentlyVisibleLabel = null;
         } else {
-
           settingsLabel.style.display = "block";
           currentlyVisibleLabel = settingsLabel;
         }
+
+        event.stopPropagation(); // Prevent this click from triggering document click
       });
     });
 
-    // Add an event listener to the document to handle clicks outside the cards
-    document.addEventListener('click', function(event) {
-      // If there is a visible label and the click was outside any card
+    // Handle clicks outside cards and settings labels
+    document.addEventListener("click", function(event) {
       if (currentlyVisibleLabel) {
-        let clickedInsideAvatar = false;
+        let clickedInsideCardOrLabel = false;
 
-        allCardsPosts.forEach(card => {
+        updatedCards.forEach(card => {
           if (card.contains(event.target)) {
-            clickedInsideAvatar = true;
+            clickedInsideCardOrLabel = true;
           }
         });
 
-        // If the click was outside all avatars, hide the visible label
-        if (!clickedInsideAvatar) {
-          allCardsPosts.forEach(card => {
-            card.classList.remove("active_settings_Card");})
+        // Check if the click was inside the currently visible label
+        if (currentlyVisibleLabel.contains(event.target)) {
+          clickedInsideCardOrLabel = true;
+        }
+
+        // If the click was outside all cards and labels, hide the visible label
+        if (!clickedInsideCardOrLabel) {
           currentlyVisibleLabel.style.display = "none";
-          currentlyVisibleLabel = null; // Reset the visible label tracker
+          currentlyVisibleLabel = null;
+
+          updatedCards.forEach(card => card.classList.remove("active_settings_Card"));
         }
       }
     });
   }
+
+
   // USER MODAL WINDOW  COFIRMATION
 function settingsConfirmationModal($element, $text){
     const modalContainer = document.querySelector(".modal_container")
@@ -492,7 +577,7 @@ function settingsConfirmationModal($element, $text){
 
 
     const triggerButtonS = document.querySelectorAll(".edit_settings_button")
-    const container = document.querySelector(".user_dashboard_form");
+    const container = document.querySelector(".user_dashboard_form_posts");
     triggerButtonS.forEach(button=>{
       button.addEventListener("click", ()=>{
 
@@ -501,7 +586,7 @@ function settingsConfirmationModal($element, $text){
           .then(data => {
             container.innerHTML=data;
             updateSelectedPostAjax()
-            // showUploadedImageSettings()
+            backerPosts()
 
           })
           .catch(error => {
@@ -515,7 +600,7 @@ function settingsConfirmationModal($element, $text){
 
 
     const triggerButtonS = document.querySelectorAll(".edit_settings_button_review")
-    const container = document.querySelector(".user_dashboard_form");
+    const container = document.querySelector(".user_dashboard_form_reviews");
     triggerButtonS.forEach(button=>{
       button.addEventListener("click", ()=>{
 
@@ -524,6 +609,7 @@ function settingsConfirmationModal($element, $text){
           .then(data => {
             container.innerHTML=data;
             updateSelectedReviewAjax()
+            backerReviews()
 
 
 
