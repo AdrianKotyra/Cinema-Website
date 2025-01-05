@@ -7,10 +7,8 @@
 <footer>
         <div class="up-section">
             <a class="logo-container row-custom footer-logo" href="index.php">
-                <img src="./imgs/icons/cinema.svg" alt="">
-                <div class="logo_name_footer">
-                    Limelight Cinema
-                </div>
+                <img src="./imgs/icons/limelogo.png" alt="">
+
 
 
             </a>

@@ -35,9 +35,28 @@
     }
     if(isset($_GET["delete_user"])) {
         $user_to_be_deleted = $_GET["delete_user"];
+
+        // delete user img
+        $query2 = "SELECT * from users WHERE user_id = $user_to_be_deleted";
+        $delete_user_img = mysqli_query($connection, $query2);
+        while($row = mysqli_fetch_assoc($delete_user_img)) {
+            $user_img = $row["user_img"];
+
+            $destination_img_upload = "../public/imgs/users_avatars/$user_img";
+            if (file_exists($destination_img_upload)) {
+                unlink($destination_img_upload);
+
+            }
+        }
+
+        // delete user record
+
         $query = "DELETE from users WHERE user_id={$user_to_be_deleted}";
         $delete_user = mysqli_query($connection, $query);
+
         echo '<script> window.location.href = "users.php" </script>';
+
+
 
     }
 
@@ -350,7 +369,23 @@ function select_and_display_gallery() {
 
     if(isset($_GET["delete_image"])) {
         $image_to_be_deleted = $_GET["delete_image"];
-        // delete relational column before deleting movie
+        // delete user img
+        $query2 = "SELECT * from gallery WHERE id = $image_to_be_deleted";
+        $delete_gallery_img = mysqli_query($connection, $query2);
+        while($row = mysqli_fetch_assoc($delete_gallery_img)) {
+            $gallery_img = $row["image_name"];
+
+            $destination_img_upload = "../public/imgs/gallery_cinema/$gallery_img";
+
+            if (file_exists($destination_img_upload)) {
+                unlink($destination_img_upload);
+
+            }
+        }
+
+               // delete user record
+
+
         $query_delete_gallery_image= "DELETE from gallery WHERE id={$image_to_be_deleted}";
         $query_delete_gallery_image = mysqli_query($connection, $query_delete_gallery_image);
 
@@ -519,7 +554,26 @@ function select_and_display_genres() {
     }
 
     if(isset($_GET["delete_genre"])) {
+
+
         $genre_to_be_deleted = $_GET["delete_genre"];
+
+
+
+        // delete user img
+        $query2 = "SELECT * from genres WHERE id = $genre_to_be_deleted";
+        $delete_genre_img = mysqli_query($connection, $query2);
+        while($row = mysqli_fetch_assoc($delete_genre_img)) {
+            $category_image = $row["category_img"];
+
+            $destination_img_upload = "../public/$category_image";
+            if (file_exists($destination_img_upload)) {
+                unlink($destination_img_upload);
+
+            }
+        }
+
+
         $query = "DELETE from genres WHERE id={$genre_to_be_deleted}";
         $delete_movie = mysqli_query($connection, $query);
         echo '<script> window.location.href = "genres.php" </script>';
@@ -557,6 +611,20 @@ function select_and_display_posts() {
 
     if(isset($_GET["delete_post"])) {
         $post_to_be_deleted = $_GET["delete_post"];
+        // delete post img
+        $query2 = "SELECT * from posts WHERE post_id = $post_to_be_deleted";
+        $delete_post_img = mysqli_query($connection, $query2);
+        while($row = mysqli_fetch_assoc($delete_post_img)) {
+
+
+            $destination_img_upload = $row["post_img"];
+            if (file_exists($destination_img_upload)) {
+                unlink($destination_img_upload);
+
+            }
+        }
+
+
         $query = "DELETE from posts WHERE post_id={$post_to_be_deleted}";
         $delete_post = mysqli_query($connection, $query);
         echo '<script> window.location.href = "posts.php" </script>';
@@ -595,6 +663,21 @@ function select_and_display_staff() {
 
     if(isset($_GET["delete_staff"])) {
         $staff_to_be_deleted = $_GET["delete_staff"];
+        $query2 = "SELECT * from staff WHERE id = $staff_to_be_deleted";
+        $delete_staff_img = mysqli_query($connection, $query2);
+        while($row = mysqli_fetch_assoc($delete_staff_img)) {
+            $staff_img = $row["staff_image"];
+
+            $destination_img_upload = "../public/imgs/staff_images/$staff_img";
+
+            if (file_exists($destination_img_upload)) {
+                unlink($destination_img_upload);
+
+            }
+        }
+
+        // delete user record
+
         $query = "DELETE from staff WHERE id={$staff_to_be_deleted}";
         $delete_staff = mysqli_query($connection, $query);
         echo '<script> window.location.href = "staff.php" </script>';
@@ -637,7 +720,23 @@ function select_and_display_forum_posts() {
     }
 
     if(isset($_GET["delete_post"])) {
-        $post_to_be_deleted = $_GET["delete_post"];
+            $post_to_be_deleted = $_GET["delete_post"];
+            // delete user img
+            $query2 = "SELECT * from forum_posts WHERE id = $post_to_be_deleted";
+            $delete_user_img = mysqli_query($connection, $query2);
+            while($row = mysqli_fetch_assoc($delete_user_img)) {
+                $user_img = $row["post_img"];
+
+                $destination_img_upload = $user_img;
+
+                if (file_exists($destination_img_upload)) {
+                    unlink($destination_img_upload);
+
+                }
+            }
+
+            // delete user record
+
         $query = "DELETE from forum_posts WHERE id={$post_to_be_deleted}";
         $delete_post = mysqli_query($connection, $query);
         echo '<script> window.location.href = "forum.php" </script>';

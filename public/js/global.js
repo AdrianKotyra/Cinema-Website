@@ -353,13 +353,19 @@ displayBookMovieContent()
 
 // get data from sql ajax and then run quiz js function with list of question retrieved from ajax sql
 async function retrieveDataQuizAjax() {
+
+
   try {
     const data = "";
     const response = await SendDataAjax(data, "ajax/GET_QUIZ.php");
 
 
     const questions = JSON.parse(response);
-    runQuiz(questions)
+    if(questions) {
+      offLoader()
+      runQuiz(questions)
+    }
+
 
   } catch (error) {
     console.error('Error:', error);
@@ -477,7 +483,7 @@ function showQuizKids(){
     <h1>Quiz</h1>
     <div class="col-custom">
       <div class="image-container">
-        <img class="quiz_image" src="" alt="">
+        <img class="quiz_image" src="./imgs/placeholder-image.jpg" alt="">
       </div>
       <div class="row-custom question_number_container">
         <p>Question number:</p>&nbsp;
@@ -485,24 +491,27 @@ function showQuizKids(){
       </div>
 
       <div class="question">
-        <p id="question-text"></p>
+        <p id="question-text">question</p>
         <div class="choices">
-          <button class="choice" data-answer="0" ></button>
-          <button class="choice" data-answer="1" "></button>
-          <button class="choice" data-answer="2" "></button>
+          <button class="choice" data-answer="0" >answer 1</button>
+          <button class="choice" data-answer="1" ">answer 2</button>
+          <button class="choice" data-answer="2" ">answer 3</button>
         </div>
         <p id="feedback"></p>
       </div>
 
     </div>
+
     </div>`;
   quizTrigger && quizTrigger.forEach(trigger=>{
     trigger.addEventListener("click", ()=>{
+      displayLoader()
       modalMain.innerHTML=quizLiteral;
       disableQuiz()
+
       setTimeout(() => {
         retrieveDataQuizAjax()
-      }, 200);
+      }, 500);
 
     })
   })

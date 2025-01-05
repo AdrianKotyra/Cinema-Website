@@ -2064,13 +2064,13 @@ function renderNext7Days() {
                       <div class="user-buttons-profile-container">
                                 <a class="user_link" href="user.php?id='.$user_id.'&&source=all_posts">
                                     <button class="button-custom user-button">
-                                        Users posts
+                                        Posts
                                     </button>
                                 </a>
 
                                 <a  class="user_link"href="user.php?id='.$user_id.'&&source=all_reviews">
                                     <button class="button-custom user-button">
-                                        reviews
+                                        Reviews
                                     </button>
                                 </a>
                             </div>

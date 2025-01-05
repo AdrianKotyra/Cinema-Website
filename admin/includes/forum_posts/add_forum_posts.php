@@ -7,15 +7,15 @@ if(isset($_POST['create_forum_post'])) {
     $post_user_forum   = $_POST['post_user_forum'];
     $post_text   = $_POST['post_text'];
     $post_date        = $_POST['post_date'];
-    $post_img        = "imgs/forum_posts/".$_FILES['image']['name'];
+    $post_img        = '../public/imgs/forum_posts/'.$_FILES['image']['name'];
     $post_image_temp   = $_FILES['image']['tmp_name'];
 
     //    if no uploaded image give it default image
     if($post_img ===""){
 
-        $post_img="imgs/forum_posts/default_image.jpg";
+        $post_img="../public/imgs/forum_posts/default_image.jpg";
 
-        
+
     }
 
     move_uploaded_file($post_image_temp, "$post_img" );
@@ -58,7 +58,7 @@ if(isset($_POST['create_forum_post'])) {
 
        </select>
     </div>
-    
+
     <div class="form-group">
         <label for="post_date">Post Date</label>
         <input required type="date" class="form-control" id="datePicker" name="post_date">
@@ -69,8 +69,8 @@ if(isset($_POST['create_forum_post'])) {
         <input required type="file"  name="image">
     </div>
 
-   
-   
+
+
     <div class="form-group">
         <input required class="btn btn-primary" type="submit" name="create_forum_post" value="Add Post">
     </div>
