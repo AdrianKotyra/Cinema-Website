@@ -330,7 +330,7 @@ function select_and_display_reviews() {
 function select_and_display_gallery() {
     global $connection;
 
-    $query = "SELECT * from gallery";
+    $query = "SELECT * from gallery order by id desc";
     $select_users_query = mysqli_query($connection, $query);
     while($row = mysqli_fetch_assoc($select_users_query)) {
         $image_id = $row["id"];

@@ -812,14 +812,15 @@ function renderNext7Days() {
 
         }
     }
-    function get_gallery_images(){
+    function get_gallery_images($offset, $limit){
         global $database;
-        $query = $database-> query_array("SELECT * from gallery");
+        $query = $database-> query_array("SELECT * from gallery ORDER BY id desc LIMIT $limit OFFSET $offset ");
         while ($row = mysqli_fetch_array($query)) {
             $image_name = $row["image_name"];
             $image_title = $row["image_title"];
-            echo '<a href="./imgs/gallery_cinema/'.$image_name.'" data-fancybox="gallery" data-caption="'.$image_title.'" data-fancybox-index="0">
+            echo '<a class="gallery_container_img"href="./imgs/gallery_cinema/'.$image_name.'" data-fancybox="gallery" data-caption="'.$image_title.'" data-fancybox-index="0">
                 <img src="./imgs/gallery_cinema/'.$image_name.'" />
+                <span class="gallery_image_desc">'.$image_title .' </span>
             </a>';
         }
     }

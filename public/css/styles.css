@@ -61,6 +61,9 @@
 .main-hero, .about-section, .gallery_about_section {
     background-color: var(--secondary-colour-gray);
 }
+.main-hero {
+    font-family: fantasy;
+}
 .hero-test-container .header-section-container a {
     padding-right: 5%;
 }
@@ -696,6 +699,13 @@ nav .link {
 .text_feature_card a {
     display: flex;
     justify-content: center;
+}
+.link_gallery {
+    color: white;
+    display: table;
+
+    margin: auto;
+    text-align: center;
 }
 .text_feature_card h5 {
     font-weight: 800;
@@ -2067,6 +2077,7 @@ nav a {
 }
 
 .section-header {
+    font-family: fantasy;
     font-size: var( --header-section);
     opacity: 100% !important;
     position: relative;
@@ -2359,6 +2370,11 @@ nav a {
     border-radius: 12px;
     padding: 10px 20px;
 
+}
+.genre_card:hover {
+    transition: 0.3s ease-in-out;
+    color:black;
+    background: #ffffff;
 }
 .current-trending-button{
     margin-top: 40px;
@@ -3065,8 +3081,15 @@ align-items: center;
     padding: 0 5%;
     column-count: 3;
 }
+.gallery_section .grid-gallery {
+    padding: 5%;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    display: grid;
 
+}
 .grid-gallery img {
+    border-radius: 6px;
     cursor: pointer;
     margin-bottom: 20px;
     width: 100%;
@@ -3865,6 +3888,7 @@ video {
 }
 
 .hero-text .text-big {
+    font-family: fantasy;
     font-size: var(--text-large-size-header);
 }
 
@@ -4806,8 +4830,8 @@ footer {
     background-color: #52ff00ad;
     z-index: 999;
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     position: fixed;
     top: 10px;
     right: 20px;
@@ -4822,13 +4846,15 @@ footer {
 }
 
 .user_settings_link_active {
+    transition: 0.2s;
     background-color: var(--primary-colour) !important;
     color: white !important;
 }
 
 .user_avatar_dashboard_controller span {
     cursor: pointer;
-
+    align-items: center;
+    display: flex;
     width: 100%;
     padding: 20px;
 }
@@ -5096,7 +5122,8 @@ footer {
 }
 
 .features_container .link {
-    margin: 2px auto;
+    display: inline;
+    margin: 2px 0;
     width: 200px;
     padding: 14px;
     font-weight: 700;
@@ -5672,6 +5699,7 @@ footer {
     padding: 5% 0;
 }
 
+
 .gallery_about_section .header_About {
     color: rgb(255, 255, 255);
     margin-bottom: 5%;
@@ -5921,6 +5949,7 @@ h1 {
 }
 
 .header_About {
+    font-family: fantasy;
     color: rgb(0, 0, 0);
     padding: 10vh 0 5vh 0;
     font-weight: 900;
@@ -7744,9 +7773,87 @@ h1 {
     display: table;
     margin: auto;
 }
-
+.gallery_container_img {
+    position: relative;
+}
+.gallery_image_desc {
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    left: 0;
+    width: 90%;
+    transform: translate(20px, -30px);
+    bottom: 0;
+    color: white;
+    z-index: 2;
+    position: absolute;
+}
 .ticket-small-pdf .serial-table {
     text-align: center;
     display: table;
     margin: auto;
+}footer {
+    background-color: #353745;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.f-logo {
+    color: #FFFFFF;
+    font-family: 'Turret Road';
+    letter-spacing: 2px;
+    padding: 5px 10px;
+    font-size: 25px;
+}
+
+.up-section, .down-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 0px;
+    margin: 5px;
+    width: 80%;
+    flex-wrap: wrap;
+}
+    .up-section { border-bottom: 1px solid #545562; }
+        .up-section ul, .down-section ul { font-family: 'Montserrat'; margin: 0; padding: 0 20px; }
+            .up-section ul li a, .down-section ul li a { font-size: 16px; color: #FFFFFF; transition: all ease .5s; }
+            .up-section ul li a:hover, .down-section ul li a:hover { color: #9A9FF6; }
+            .up-section ul li p, .down-section ul li p { font-size: 14px; color: #FFFFFF; line-height: 10px; transition: all ease .5s; }
+        .up-section h1, .down-section h1 { color: #9697A0; font-size: 20px; font-family: 'Montserrat'; }
+
+.social-icons { display: flex; }
+
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        margin: 0 5px;
+        background-color: #424356;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, .1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all ease .5s;
+    }
+
+    .social-icons a:hover { background-color: #9A9FF6; }
+    .social-icons i { color: #FFFFFF; font-size: 14px; }
+        .social-icons a:hover i { color: #424356; }
+
+
+
+
+@media(max-width: 820px) {
+
+    .up-section, .down-section { flex-direction: column; align-items: center; text-align: center; }
+        .up-section ul h1, .down-section ul h1 { font-size: 25px; }
+        .up-section ul li, .down-section ul li { text-align: center; margin: 10px; }
+}
+
+@media(max-width: 420px) {
+    .search { flex-direction: column; }
+    .copyright { font-size: 14px; }
+    .f-logo { font-size: 16px; }
 }

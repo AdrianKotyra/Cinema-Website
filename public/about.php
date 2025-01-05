@@ -9,7 +9,7 @@
 
 
     <video class=" video_about_all"  height="100%" autoplay  muted loop >
-      <source src="./videos/about/slider.mp4" type="video/mp4">
+      <source src="./videos/about/fell-in-love-moewalls-com.mp4" type="video/mp4">
 
 
     </video>
@@ -210,12 +210,19 @@
   <section class="gallery_about_section">
     <h1 class="header_About">Explore our facility.</h1>
     <div class="grid-gallery" id="gallery-wrap">
-      <?php get_gallery_images()?>
+      <?php get_gallery_images(0, 6)?>
 
 
 
 
     </div>
+
+    <a class="link_gallery" href="gallery.php" target="_blank">
+      <button class="button-custom">
+        View more
+
+      </button>
+    </a>
 
 
 
