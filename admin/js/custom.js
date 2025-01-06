@@ -16,6 +16,9 @@ getTodaysDate()
 
 //CREATE CONFIRMATION WINDOW TO DELETE RECORD. RECORD DELETION ON PASSING DATA-LINK ATTRIBUTE  AND GOING TO THE LINK
 
+
+
+
 function createConfirmWindowDeleteRow(){
     const deleteButton = document.querySelectorAll(".delete_button")
 

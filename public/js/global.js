@@ -1209,29 +1209,31 @@ function addCommentAjax(){
     buttonTriggerAddComment.addEventListener("click", ()=>{
 
     const commentTextValue = commentText.value;
-
     const dataPostIdAttribute =  buttonTriggerAddComment.getAttribute("data-post-id");
 
+    if(commentTextValue!=="") {
+      dataPostId = [dataPostIdAttribute, commentTextValue ]
+      const loader = `<li class="box_result row comment_row loader_box">
+      <div class="loader"></div>
+      </li>`
+      SendDataAjax(dataPostId, "ajax/add_rerender_comments_forum.php")
+      .then(data => {
+        commentContainer.innerHTML=loader;
+        setTimeout(() => {
+          commentContainer.innerHTML=data;
+          addLikeForumPosts()
+          displayCommentEdit()
+          deleteCommentForumAjax()
+        }, 1000);
 
-    dataPostId = [dataPostIdAttribute, commentTextValue ]
-    const loader = `<li class="box_result row comment_row loader_box">
-    <div class="loader"></div>
-    </li>`
-    SendDataAjax(dataPostId, "ajax/add_rerender_comments_forum.php")
-    .then(data => {
-      commentContainer.innerHTML=loader;
-      setTimeout(() => {
-        commentContainer.innerHTML=data;
-        addLikeForumPosts()
-        displayCommentEdit()
-        deleteCommentForumAjax()
-      }, 1000);
+
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      })
+    }
 
 
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    })
 }) }
 
 addCommentAjax()

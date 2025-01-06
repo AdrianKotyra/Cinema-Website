@@ -81,7 +81,7 @@ include "../php/init.php";
                     <span class="comment_date">'.$comment_year.'</span>
 
                     <div class="tools_comment">
-                        '. $user_reply.'
+
                         <a data-comment-id="'.$comment_id.'"class="like " >'.$like_icon.'</a>
 
                        <span class="count_'.$comment_id.'">likes: '.$likes_count.'</span>

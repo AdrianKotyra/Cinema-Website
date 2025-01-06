@@ -10,6 +10,13 @@ html {
     height: 100px;
     object-fit: cover;
 }
+.alert-box-user-deletion {
+    border: 2px solid black;
+    background-color:rgb(255, 255, 255) !important;
+}
+.alert-box-user-deletion {
+    display: none;
+}
 .text_area_admin {
     resize: none !important;
 }
@@ -118,7 +125,7 @@ textarea {
 }
 
 .confirmationWindowModal {
-
+    overflow-y: scroll;
     left: 50%;
     top: 50%;
     transform: translate(-50%,-50%);

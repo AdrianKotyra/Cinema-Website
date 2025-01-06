@@ -16,7 +16,7 @@ global $connection;
     $max = 26;
 
     $user_role  = "user";
-    $post_image="default-avatar.jpg";
+    $post_image="default_avatar.jpg";
 
 
 

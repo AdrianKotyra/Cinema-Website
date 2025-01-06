@@ -1,5 +1,16 @@
 <?php
 
+    function check_record($table, $id_table_name, $id){
+        global $connection;
+        // Check if record exists
+        $query_check = "SELECT * FROM $table WHERE $id_table_name = $id";
+        $result_check = mysqli_query($connection, $query_check);
+
+
+        return mysqli_num_rows($result_check) > 0;
+
+    }
+
     function escape_string($string) {
         global $connection;
         return mysqli_real_escape_string($connection, $string);
@@ -32,8 +43,12 @@
         echo "<td > <span class='delete_button' data-link='users.php?delete_user=$user_id'> Delete </span></td>";
         // echo "<td><a href='users.php?delete_user={$user_id}'>DELETE</a></td>";
         echo"</tr>";
+
+
     }
+
     if(isset($_GET["delete_user"])) {
+        $msgs = [];
         $user_to_be_deleted = $_GET["delete_user"];
 
         // delete user img
@@ -41,21 +56,115 @@
         $delete_user_img = mysqli_query($connection, $query2);
         while($row = mysqli_fetch_assoc($delete_user_img)) {
             $user_img = $row["user_img"];
+            echo  $user_img;
+            if( $user_img!=="default_avatar.jpg") {
+                $destination_img_upload = "../public/imgs/users_avatars/$user_img";
+                if (file_exists($destination_img_upload)) {
+                    unlink($destination_img_upload);
 
-            $destination_img_upload = "../public/imgs/users_avatars/$user_img";
-            if (file_exists($destination_img_upload)) {
-                unlink($destination_img_upload);
-
+                }
             }
+
         }
 
-        // delete user record
+        // delete user account
 
-        $query = "DELETE from users WHERE user_id={$user_to_be_deleted}";
-        $delete_user = mysqli_query($connection, $query);
+        if(check_record('users', 'user_id', $user_to_be_deleted)) {
+            $query = "DELETE from users WHERE user_id={$user_to_be_deleted}";
+            $delete_user_account = mysqli_query($connection, $query);
 
-        echo '<script> window.location.href = "users.php" </script>';
+            $msgs[] = "User records has been deleted";
+        }
 
+        // delete user booking
+
+        if(check_record('bookings', 'user_id', $user_to_be_deleted)) {
+            $query3 = "DELETE from bookings WHERE user_id={$user_to_be_deleted}";
+            $delete_user_booking = mysqli_query($connection, $query3);
+            $msgs[] = "User bookings have been deleted";
+        }
+
+
+
+        // delete user comments
+        if(check_record('comments_forum', 'comment_user_id', $user_to_be_deleted)) {
+            $query4 = "DELETE from comments_forum WHERE comment_user_id={$user_to_be_deleted}";
+            $delete_user_comment = mysqli_query($connection, $query4);
+            $msgs[] = "User comments have been deleted";
+        }
+
+        // delete user posts
+        if(check_record('forum_posts', 'post_user_id', $user_to_be_deleted)) {
+            $query5 = "DELETE from forum_posts WHERE post_user_id={$user_to_be_deleted}";
+            $delete_user_posts = mysqli_query($connection, $query5);
+            $msgs[] = "User posts have been deleted";
+        }
+        // delete user notifications bookings
+        if(check_record('notifications_bookings', 'user_notification_id', $user_to_be_deleted)) {
+            $query6 = "DELETE from 	notifications_bookings WHERE user_notification_id={$user_to_be_deleted}";
+            $delete_user_booking_nots = mysqli_query($connection, $query6);
+            $msgs[] = "User notifications bookings have been deleted";
+        }
+
+        // delete user notifications forum posts
+        if(check_record('notifications_forum_posts_comments', 'user_notification_id', $user_to_be_deleted)) {
+            $query7 = "DELETE from 	notifications_forum_posts_comments WHERE user_notification_id={$user_to_be_deleted}";
+            $delete_user_posts_nots = mysqli_query($connection, $query7);
+            $msgs[] = "User notifications posts have been deleted";
+        }
+        // delete user reviews
+        if(check_record('reviews', 'user_review_id', $user_to_be_deleted)) {
+            $query8 = "DELETE from 	reviews WHERE user_review_id={$user_to_be_deleted}";
+            $delete_user_reviews = mysqli_query($connection, $query8);
+            $msgs[] = "User reviews have been deleted";
+        }
+        // delete user likes
+        if(check_record('news_comments_likes', 'user_liker_id', $user_to_be_deleted)) {
+            $query9 = "DELETE from 	news_comments_likes WHERE user_liker_id={$user_to_be_deleted}";
+            $delete_user_likes = mysqli_query($connection, $query9);
+            $msgs[] = "User likes have been deleted";
+        }
+
+        // show modal alert window for deletion user
+        echo "<script>
+
+        const containerAlerts = document.querySelector('.alert-box-user-deletion');
+        containerAlerts.style.display='block';
+        const acceptButton = document.querySelector('.accept_button');
+        const msg_container = document.querySelector('.buttons-message-container p');
+
+
+        acceptButton.addEventListener('click', ()=>{
+
+          window.location.href = 'users.php';
+        })
+
+        </script>";
+
+        // echo '<script> window.location.href = "users.php" </script>';
+        if (!empty($msgs)) {
+            foreach ($msgs as $msg) {
+                $escaped_msg = htmlspecialchars($msg, ENT_QUOTES, 'UTF-8');
+
+
+                $container_msg = "
+                    <div class='alert alert-danger col-lg-12 text-center mx-auto' role='alert'>
+                        $escaped_msg
+                    </div>
+                    <br>
+                ";
+
+                $escaped_container_msg = json_encode($container_msg);
+
+
+                echo
+                    "<script>
+
+                   msg_container.insertAdjacentHTML('afterbegin' ,$escaped_container_msg );
+
+                    </script>";
+            }
+        }
 
 
     }
@@ -244,7 +353,7 @@ function validate_user_registration() {
 
             // if no uploaded image give it default image
             if($post_image ===""){
-                $post_image="default-avatar.jpg";
+                $post_image="default_avatar.jpg";
             }
 
             move_uploaded_file($post_image_temp, $destination_img_upload );
