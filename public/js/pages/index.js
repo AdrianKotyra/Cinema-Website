@@ -45,6 +45,7 @@ function sliderHeroText() {
 
 		});
 
+
 	}
 
 	// Initialize slides by deactivating all

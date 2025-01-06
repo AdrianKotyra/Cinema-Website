@@ -2000,7 +2000,9 @@ nav a {
   font-weight: 600;
   padding: 10px 0;
 }
-
+.video_sub {
+  filter: brightness(0.7);
+}
 .mobile-link-admin {
   line-height: 1 !important;
 }
@@ -4818,12 +4820,17 @@ footer {
 }
 
 .about_Section .about_container_header p {
+  border-radius: 12px;
+  color: white;
+  background-color: var(--secondary-colour-gray);
   columns: 4 250px;
   text-align: left;
   padding: 2%;
-  column-rule: 3px dotted var(--primary-colour);
-}
 
+}
+.text_feature_card p {
+  text-align: left;
+}
 .settings_card_options {
   display: none;
   border: 1px solid var(--primary-colour);

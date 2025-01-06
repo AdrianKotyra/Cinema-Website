@@ -1,6 +1,6 @@
 
    <video class="video_mixed" width="100%" height="100%" autoplay  muted loop>
-       <source src="./videos/slider_adults/puss-in-boots-the-last-wish-moewalls-com.mp4" type="video/mp4">
+       <source src="./videos/slider_adults/miles-morales-swinging-spiderman-moewalls-com.mp4" type="video/mp4">
 
 
    </video>

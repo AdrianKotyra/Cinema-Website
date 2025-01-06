@@ -14,8 +14,8 @@
 
 
 
-    <video class=" video_about_all" height="100%" autoplay muted loop>
-        <source src="./videos/user_posts/slider.mp4" type="video/mp4">
+    <video class=" video_about_all video_sub" height="100%" autoplay muted loop>
+        <source src="./videos/user_posts/rick-and-morty-x-dragon-ball-moewalls-com.mp4" type="video/mp4">
 
 
     </video>

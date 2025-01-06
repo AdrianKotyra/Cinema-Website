@@ -16,8 +16,8 @@
 
 
 
-    <video class=" video_about_all" height="100%" autoplay muted loop>
-        <source src="./videos/members/slider.mp4" type="video/mp4">
+    <video class=" video_about_all video_sub" height="100%" autoplay muted loop>
+        <source src="./videos/members/iron-man-vs-batman-moewalls-com.mp4" type="video/mp4">
 
 
     </video>

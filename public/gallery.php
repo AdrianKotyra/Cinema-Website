@@ -8,8 +8,8 @@
 
 
 
-    <video class=" video_about_all"  height="100%" autoplay  muted loop >
-      <source src="./videos/gallery/gallery.mp4" type="video/mp4">
+    <video class=" video_about_all video_sub"  height="100%" autoplay  muted loop >
+      <source src="./videos/gallery/anna-frozen-2-moewalls-com.mp4" type="video/mp4">
 
 
     </video>
