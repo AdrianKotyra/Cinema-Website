@@ -116,6 +116,9 @@
 
         </div>
         <div class="user_content_settings user_dashboard_form_info user_content_settings_active">
+            <div class="alerts-settings-main">
+
+            </div>
 
         </div>
         <div class="user_content_settings user_dashboard_form_reviews">

@@ -34,7 +34,13 @@ global $connection;
 
         $errors[] = "Your username is too short, should be longer than 2 characters";
     }
+    if (strpbrk($user_firstname, '0123456789')) {
+        $errors[] = "Username can not include numbers";
+    }
 
+    if (strpbrk($user_lastname, '0123456789')) {
+        $errors[] = "Username can not include numbers";
+    }
 
     if(strlen($user_firstname)>=$max) {
 

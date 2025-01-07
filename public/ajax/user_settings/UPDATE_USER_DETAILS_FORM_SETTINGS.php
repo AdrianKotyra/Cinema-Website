@@ -2,7 +2,13 @@
 
 
 if (isset($_POST["update_user_main"])) {
+
     global $connection;
+
+    $errors = [];
+    $min = 3;
+    $max = 26;
+
     $user_id       =  $_POST['user_id'];
     $user_password =  $_POST['user_password'];
     $user_firstname = $_POST['user_firstname'];
@@ -37,25 +43,73 @@ if (isset($_POST["update_user_main"])) {
         }
     }
 
-    // Now update the database
-    $query_update = "UPDATE users SET ";
-    $query_update .= "user_firstname = '{$user_firstname}', ";
-    $query_update .= "user_password = '{$user_password}', ";
-    $query_update .= "user_lastname = '{$user_lastname}', ";
-    $query_update .= "user_email = '{$user_email}', ";
-    $query_update .= "user_img = '{$post_image}', ";  // Update the image
-    $query_update .= "user_bio = '{$user_bio_posted}', ";
-    $query_update .= "user_facebook = '{$user_facebook_posted}', ";
-    $query_update .= "user_twitter = '{$user_twitter_posted}', ";
-    $query_update .= "user_linkedin = '{$user_linkedin_posted}', ";
-    $query_update .= "user_DOB = '{$user_DOB_posted}', ";
-    $query_update .= "user_occupation = '{$user_occupation_posted}' ";
-    $query_update .= "WHERE user_id = {$user_id}";
 
-    $update_user = mysqli_query($connection, $query_update);
 
-    if (!$update_user) {
-        die("Query Failed " . mysqli_error($connection));
+    if (strpbrk($user_firstname, '0123456789')) {
+
+        $errors[] = "Username can not include numbers";
     }
+    if (strpbrk($user_lastname, '0123456789')) {
+
+        $errors[] = "Lastname can not include numbers";
+    }
+
+    if(strlen($user_firstname)<=$min) {
+
+        $errors[] = "Users username is too short, should be longer than $min characters";
+    }
+    if(strlen($user_firstname)>=$max) {
+
+        $errors[] = "Users username is too long, should be shorter than $max characters";
+    }
+
+    if(strlen($user_lastname)<=$min) {
+
+        $errors[] = "Users lastname is too short, should be longer than $min characters";
+    }
+    if(strlen($user_lastname)>=$max) {
+
+        $errors[] = "Users lastname is too long, should be shorter than $max characters";
+    }
+    if(strlen($user_email)>=$max) {
+
+        $errors[] = "Users email is too long, should be shorter than $max characters";
+    }
+    if(strlen($user_email)<=$min) {
+
+        $errors[] = "Users email is too short, should be longer than $min characters";
+    }
+
+
+    if(!empty($errors)) {
+
+        echo json_encode($errors);
+    } else {
+        echo json_encode("updated");
+        // Now update the database
+
+        $query_update = "UPDATE users SET ";
+        $query_update .= "user_firstname = '{$user_firstname}', ";
+        $query_update .= "user_password = '{$user_password}', ";
+        $query_update .= "user_lastname = '{$user_lastname}', ";
+        $query_update .= "user_email = '{$user_email}', ";
+        $query_update .= "user_img = '{$post_image}', ";  // Update the image
+        $query_update .= "user_bio = '{$user_bio_posted}', ";
+        $query_update .= "user_facebook = '{$user_facebook_posted}', ";
+        $query_update .= "user_twitter = '{$user_twitter_posted}', ";
+        $query_update .= "user_linkedin = '{$user_linkedin_posted}', ";
+        $query_update .= "user_DOB = '{$user_DOB_posted}', ";
+        $query_update .= "user_occupation = '{$user_occupation_posted}' ";
+        $query_update .= "WHERE user_id = {$user_id}";
+
+        $update_user = mysqli_query($connection, $query_update);
+
+        if (!$update_user) {
+            die("Query Failed " . mysqli_error($connection));
+        }
+    }
+
+
+
 }
 ?>

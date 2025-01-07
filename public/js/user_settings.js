@@ -170,32 +170,65 @@ function logoutCloseWindow() {
       });
 
   }
-  function updateUserDetailsAjax(){
-    document.querySelector('.update_user_main').addEventListener('click', function(e) {
-      e.preventDefault();
-      var form = document.getElementById('user_form_Settings');
-      var formData = new FormData(form);
+  function updateUserDetailsAjax() {
+    document.querySelector('.update_user_main').addEventListener('click', function (e) {
+        e.preventDefault();
+        var form = document.getElementById('user_form_Settings');
+        var formData = new FormData(form);
 
-      // Sending the form data, including the image, via AJAX
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', 'ajax/user_settings/UPDATE_USER_DETAILS_FORM_SETTINGS.php', true);
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            settingsConfirmationModal("Details", "updated")
-            // update image user from settings and then from main screen
-            get_user_form_settings_ajax()
-            ajaxReloadComponent("ajax/user_settings/UPDATE_USER_AVATAR_SETTINGS.php", ".user_img_modal_container")
-            ajaxReloadImageMainComponent("ajax/user_settings/UPDATE_USER_AVATAR_MAIN.php", ".user_profile_img_container")
-            // give new reloaded component js functionality again
+        // Sending the form data, including the image, via AJAX
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'ajax/user_settings/UPDATE_USER_DETAILS_FORM_SETTINGS.php', true);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                try {
+                    // Parse the server's JSON response
+                    var response = JSON.parse(xhr.responseText);
+
+                    // Check for success
+                    if (response==="updated") {
+
+                        // Display confirmation modal
+                        settingsConfirmationModal("Details", "updated");
+
+                        // Perform additional actions
+                        get_user_form_settings_ajax();
+                        ajaxReloadComponent("ajax/user_settings/UPDATE_USER_AVATAR_SETTINGS.php", ".user_img_modal_container");
+                        ajaxReloadImageMainComponent("ajax/user_settings/UPDATE_USER_AVATAR_MAIN.php", ".user_profile_img_container");
 
 
+                    } else {
+                        const alertContainer = document.querySelector(".user_dashboard_form_alerts");
+                          let listErrors = response;
+                          let errorsDivision = "";
+                          for (let i=0; i<listErrors.length; i++) {
+                            errorsDivision += `
+                            <div class='alert alert-danger col-lg-12 text-center mx-auto' role='alert'>
+                             ${listErrors[i]}
+                           </div>`
+                          }
 
+                          alertContainer.innerHTML=errorsDivision;
 
-          }
-      };
-      xhr.send(formData);
-  });
-  }
+                    }
+                } catch (error) {
+                    console.error("Failed to parse response:", error);
+                    alert("Unexpected server response. Please try again.");
+                }
+            }
+        };
+
+        // Handle network errors
+        xhr.onerror = function () {
+            console.error("An error occurred during the AJAX request.");
+            alert("Failed to communicate with the server. Please check your network connection.");
+        };
+
+        xhr.send(formData);
+    });
+}
+
 
 
   function show_bought_tickets(){

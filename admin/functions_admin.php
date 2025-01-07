@@ -300,6 +300,14 @@ function validate_user_registration() {
 
             $errors[] = "Please select date of birth";
         }
+        if (strpbrk($user_firstname, '0123456789')) {
+
+            $errors[] = "Username can not include numbers";
+        }
+        if (strpbrk($user_lastname, '0123456789')) {
+
+            $errors[] = "Lastname can not include numbers";
+        }
 
         if(strlen($user_firstname)<=$min) {
 
